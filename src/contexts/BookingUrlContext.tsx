@@ -1,7 +1,7 @@
 import { createContext, useContext, useEffect, ReactNode } from "react";
 
 const BASE_BOOKING_URL =
-  "https://clienthub.getjobber.com/hubs/e7849464-5cd3-44cf-8cf8-c1fd5e2eb2fb/public/requests/4986053/new";
+  "https://cal.com/legacyindustrialcoatings/on-site-estimate";
 
 /** Bare base link — attribution params are appended at click time. */
 export const DEFAULT_BOOKING_URL = BASE_BOOKING_URL;
@@ -27,7 +27,7 @@ type StoredAttribution = {
   ts: number;
 };
 
-/** Normalize paid-ad attribution into the human-readable values Jobber displays. */
+/** Normalize paid-ad attribution into human-readable campaign values. */
 const normalizeAttribution = (data: UtmMap): UtmMap => {
   const normalized = { ...data };
   const source = (normalized.utm_source || "").trim();
@@ -184,7 +184,7 @@ if (typeof window !== "undefined") {
 }
 
 /**
- * Build the Jobber booking URL with attribution appended.
+ * Build the calendar booking URL with attribution appended.
  *
  * Any params already present on `baseUrl` are treated as an explicit override
  * (e.g. /gpt pins utm_source=chatgpt) and are never replaced by stored values.

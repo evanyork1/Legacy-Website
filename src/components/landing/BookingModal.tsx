@@ -1,5 +1,5 @@
 import { useEffect } from "react";
-import { useBookingUrl } from "@/contexts/BookingUrlContext";
+import { openCalBooking } from "@/lib/calBooking";
 
 interface BookingModalProps {
   isOpen: boolean;
@@ -7,14 +7,12 @@ interface BookingModalProps {
 }
 
 export const BookingModal = ({ isOpen, onClose }: BookingModalProps) => {
-  const url = useBookingUrl();
-
   useEffect(() => {
     if (isOpen) {
-      window.open(url, "_blank", "noopener,noreferrer");
+      openCalBooking();
       onClose();
     }
-  }, [isOpen, onClose, url]);
+  }, [isOpen, onClose]);
 
   return null;
 };

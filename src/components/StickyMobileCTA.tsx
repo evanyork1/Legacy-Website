@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { Calendar } from "lucide-react";
-import { useBookingUrl } from "@/contexts/BookingUrlContext";
+import { openCalBooking } from "@/lib/calBooking";
+import { Button } from "@/components/ui/button";
 
 interface StickyMobileCTAProps {
   label?: string;
@@ -11,7 +12,6 @@ export const StickyMobileCTA = ({
   label = "Book My Free Estimate",
   threshold = 300,
 }: StickyMobileCTAProps) => {
-  const url = useBookingUrl();
   const [visible, setVisible] = useState(false);
 
   useEffect(() => {
@@ -31,15 +31,14 @@ export const StickyMobileCTA = ({
         }`}
         aria-hidden={!visible}
       >
-        <a
-          href={url}
-          target="_blank"
-          rel="noopener noreferrer"
+        <Button
+          type="button"
+          onClick={openCalBooking}
           className="flex items-center justify-center w-full bg-blue-900 hover:bg-blue-950 active:bg-blue-950 text-white font-semibold py-2 rounded-md text-sm min-h-0"
         >
           <Calendar className="mr-2 h-4 w-4" />
           {label}
-        </a>
+        </Button>
       </div>
     </>
   );
