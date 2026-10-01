@@ -56,9 +56,15 @@ const initializeCal = () => {
 
 export const openCalBooking = () => {
   initializeCal();
+  const bookingUrl = new URL(buildBookingUrl(
+    window.location.pathname === "/gpt"
+      ? "https://cal.com/legacyindustrialcoatings/on-site-estimate?utm_source=chatgpt"
+      : undefined,
+  ));
+  const attribution = Object.fromEntries(bookingUrl.searchParams.entries());
   window.Cal?.ns?.[NAMESPACE]?.("modal", {
     calLink: "legacyindustrialcoatings/on-site-estimate",
-    config: { layout: "month_view", useSlotsViewOnSmallScreen: "true" },
+    config: { ...attribution, layout: "month_view", useSlotsViewOnSmallScreen: "true" },
   });
 };
 
