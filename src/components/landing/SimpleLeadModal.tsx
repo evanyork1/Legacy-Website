@@ -7,7 +7,7 @@ import { Textarea } from "@/components/ui/textarea";
 import { supabase } from "@/integrations/supabase/client";
 import { toast } from "sonner";
 import { Phone } from "lucide-react";
-import { buildBookingUrl } from "@/contexts/BookingUrlContext";
+import { openCalBooking } from "@/lib/calBooking";
 
 interface SimpleLeadModalProps {
   isOpen: boolean;
@@ -109,7 +109,7 @@ export const SimpleLeadModal = ({ isOpen, onClose }: SimpleLeadModalProps) => {
               
               <Button
                 onClick={() => {
-                  window.open(buildBookingUrl(), "_blank", "noopener,noreferrer");
+                  openCalBooking();
                   handleClose();
                 }}
                 variant="outline"

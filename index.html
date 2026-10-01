@@ -10,7 +10,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     
     <!-- Preload hero image for LCP -->
-    <link rel="preload" as="image" href="/lovable-uploads/85530262-ab7f-4339-af86-ed63ee721679.png" fetchpriority="high" />
+    <link rel="preload" as="image" href="/lovable-uploads/85530262-ab7f-4339-af86-ed63ee721679.webp" fetchpriority="high" />
 
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -76,71 +76,14 @@
     <!-- End Meta Pixel Code -->
 
 
-    <!-- Jivosite "Book an Estimate" button hijack -> Jobber booking page -->
+    <!-- Route third-party chat estimate buttons to the same on-site calendar. -->
     <script>
       (function() {
-        var BASE_BOOKING_URL = "https://clienthub.getjobber.com/hubs/e7849464-5cd3-44cf-8cf8-c1fd5e2eb2fb/public/requests/4986053/new";
-        var ATTR_KEYS = ['utm_source','utm_medium','utm_campaign','utm_term','utm_content','gclid','gbraid','wbraid','fbclid','msclkid'];
         var TARGET = 'book an estimate';
-
-        // Reads the same attribution payload the React app stores (see BookingUrlContext).
-        function readStored() {
-          var stores = [];
-          try { stores.push(window.localStorage); } catch (e) {}
-          try { stores.push(window.sessionStorage); } catch (e) {}
-          for (var i = 0; i < stores.length; i++) {
-            try {
-              var raw = stores[i].getItem('lic_utms');
-              if (!raw) continue;
-              var parsed = JSON.parse(raw);
-              if (parsed && parsed.data) return parsed.data;
-              if (parsed) return parsed;
-            } catch (e) {}
-          }
-          return {};
+        function openCalendar() {
+          if (typeof window.openEstimateCalendar === 'function') window.openEstimateCalendar();
+          else window.open('https://cal.com/legacyindustrialcoatings/on-site-estimate', '_blank', 'noopener,noreferrer');
         }
-
-        function getBookingUrl() {
-          var url = BASE_BOOKING_URL;
-          var params = [];
-          if (window.location.pathname === '/gpt') {
-            params.push('utm_source=chatgpt');
-          } else {
-            var raw = readStored();
-            var stored = {};
-            for (var k0 in raw) { if (Object.prototype.hasOwnProperty.call(raw, k0)) stored[k0] = raw[k0]; }
-            // Keep Jobber's lead source human-readable while preserving campaign IDs.
-            var source = (stored.utm_source || '').trim();
-            var medium = (stored.utm_medium || '').trim().toLowerCase();
-            var isNumericSource = /^\d{5,}$/.test(source);
-            var isPaidMedium = ['cpc','ppc','paid','paidsearch','paid_search'].indexOf(medium) !== -1;
-            var hasGoogleClickId = !!(stored.gclid || stored.gbraid || stored.wbraid);
-            if (isNumericSource) {
-              if (!stored.utm_campaign) stored.utm_campaign = stored.utm_source;
-            }
-            if (stored.msclkid && isNumericSource) {
-              stored.utm_source = 'Bing Ads';
-              stored.utm_medium = stored.utm_medium || 'cpc';
-            } else if (stored.fbclid && isNumericSource) {
-              stored.utm_source = 'Facebook Ads';
-              stored.utm_medium = stored.utm_medium || 'paid_social';
-            } else if (hasGoogleClickId || (isNumericSource && isPaidMedium) || (source.toLowerCase() === 'google' && isPaidMedium) || source.toLowerCase() === 'google-ads') {
-              stored.utm_source = 'Google Ads';
-              stored.utm_medium = stored.utm_medium || 'cpc';
-            }
-            var hasSource = false;
-            for (var i = 0; i < ATTR_KEYS.length; i++) {
-              var k = ATTR_KEYS[i];
-              if (stored[k]) {
-                params.push(k + '=' + encodeURIComponent(stored[k]));
-                if (k === 'utm_source') hasSource = true;
-              }
-            }
-            if (!hasSource) params.push('utm_source=website');
-          }
-          return url + '?' + params.join('&');
-        }
-
 
         function matches(el) {
           if (!el || el.nodeType !== 1) return false;
@@ -167,7 +110,7 @@
             btn.addEventListener('click', function(e) {
               e.stopPropagation();
               e.preventDefault();
-              window.open(getBookingUrl(), '_blank');
+              openCalendar();
             }, true);
           });
         }
@@ -179,7 +122,7 @@
             if (matches(path[i])) {
               e.stopPropagation();
               e.preventDefault();
-              window.open(getBookingUrl(), '_blank');
+              openCalendar();
               return;
             }
           }

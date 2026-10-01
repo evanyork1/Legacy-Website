@@ -9,7 +9,7 @@ import { useQuoteFormDFW } from "@/hooks/useQuoteFormDFW";
 import { Button } from "@/components/ui/button";
 import { Calendar } from "lucide-react";
 import { Seo } from "@/components/seo/Seo";
-import { buildBookingUrl } from "@/contexts/BookingUrlContext";
+import { openCalBooking } from "@/lib/calBooking";
 
 const QuoteDFW = () => {
   const {
@@ -40,18 +40,13 @@ const QuoteDFW = () => {
   const customFinalButton = (
     <div className="order-1 sm:order-2 flex flex-col gap-3">
       <Button 
-        asChild
+        onClick={openCalBooking}
         className="bg-gradient-to-r from-green-600 to-green-700 hover:from-green-700 hover:to-green-800 text-white font-semibold px-6 sm:px-8 py-3 text-base sm:text-lg shadow-xl hover:shadow-2xl transform hover:scale-105 transition-all duration-200"
       >
-        <a 
-          href={buildBookingUrl()}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="flex items-center justify-center"
-        >
+        <span className="flex items-center justify-center">
           <Calendar className="h-5 w-5 mr-2" />
           Book In Person Measurement
-        </a>
+        </span>
       </Button>
       <p className="text-xs text-center text-gray-600">
         Schedule your free measurement to finalize pricing

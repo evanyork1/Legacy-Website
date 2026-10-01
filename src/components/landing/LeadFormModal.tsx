@@ -1,7 +1,7 @@
 import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/ui/dialog";
 import { Button } from "@/components/ui/button";
 import { Phone } from "lucide-react";
-import { buildBookingUrl } from "@/contexts/BookingUrlContext";
+import { openCalBooking } from "@/lib/calBooking";
 
 interface LeadFormModalProps {
   isOpen: boolean;
@@ -37,7 +37,7 @@ export const LeadFormModal = ({ isOpen, onClose }: LeadFormModalProps) => {
             
             <Button
               onClick={() => {
-                window.open(buildBookingUrl(), "_blank", "noopener,noreferrer");
+                openCalBooking();
                 onClose();
               }}
               variant="outline"

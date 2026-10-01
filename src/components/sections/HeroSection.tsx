@@ -44,10 +44,10 @@ const HeroSection = () => {
 
   // Gallery images for rotating background - memoized for performance
   const galleryImages = useMemo(() => [
-    '/lovable-uploads/85530262-ab7f-4339-af86-ed63ee721679.png',
-    '/lovable-uploads/259c870a-cc78-430c-867f-54d087457e73.png',
-    '/lovable-uploads/4118a438-beef-487b-949a-0e4db42b6da7.png',
-    '/lovable-uploads/f8190725-62df-42e7-9d92-285d2f3f78e3.png'
+    '/lovable-uploads/85530262-ab7f-4339-af86-ed63ee721679.webp',
+    '/lovable-uploads/259c870a-cc78-430c-867f-54d087457e73.webp',
+    '/lovable-uploads/4118a438-beef-487b-949a-0e4db42b6da7.webp',
+    '/lovable-uploads/f8190725-62df-42e7-9d92-285d2f3f78e3.webp'
   ], []);
 
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
@@ -76,23 +76,20 @@ const HeroSection = () => {
     return (
       <section className="relative overflow-hidden">
         {/* Hero Container - Fixed Height on Mobile */}
-        <div className="h-[70vh] lg:min-h-screen relative flex items-center">
-        {/* Background Images with Optimized Fade Transition */}
+        <div className="h-[70vh] lg:min-h-screen relative flex items-center bg-cover bg-center" style={{ backgroundImage: "url('/lovable-uploads/home-hero-preview.jpg')" }}>
+        {/* A tiny preview fills the hero immediately; the priority image replaces it as it loads. */}
         {galleryImages.map((image, index) => (
-          <div
-            key={index}
-            className={`absolute inset-0 bg-cover bg-center bg-no-repeat transition-opacity duration-1000 ${
-              index === currentImageIndex ? 'opacity-100' : 'opacity-0'
-            }`}
-            style={{
-              backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('${image}')`,
-              backgroundSize: 'cover',
-              backgroundPosition: 'center center',
-              backgroundAttachment: 'scroll',
-              willChange: index === currentImageIndex || index === (currentImageIndex + 1) % galleryImages.length ? 'opacity' : 'auto'
-            }}
-          />
+          index === 0 || index === currentImageIndex ? <img
+            key={image}
+            src={image}
+            alt=""
+            aria-hidden="true"
+            loading={index === 0 ? 'eager' : 'lazy'}
+            fetchPriority={index === 0 ? 'high' : 'auto'}
+            className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-1000 ${index === currentImageIndex ? 'opacity-100' : 'opacity-0'}`}
+          /> : null
         ))}
+        <div className="absolute inset-0 bg-black/60" aria-hidden="true" />
         
         <div className="container mx-auto px-4 lg:px-8 relative w-full z-10">
           
