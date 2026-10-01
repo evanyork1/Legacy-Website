@@ -1,2 +1,0 @@
-- [ ] Switch all estimate scheduling actions from Jobber to the on-site-estimate Cal calendar.
-- [ ] Remove the home-page gray loading flash and verify the first view on desktop and mobile.
