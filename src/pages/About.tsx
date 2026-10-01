@@ -140,13 +140,13 @@ const About = () => {
             <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
               <div>
                 <h2 className="text-3xl lg:text-4xl font-bold text-gray-900 mb-6">
-                  From Garages to Commercial Spaces
+                  Complex Commercial Projects
                 </h2>
                 <p className="text-lg text-gray-600 mb-6 leading-relaxed">
-                  No project is too big or too small for Legacy. We bring the same level of professionalism and commitment whether we're coating a residential garage or a massive commercial facility.
+                  Every floor is specified and executed under a strict technical protocol: substrate analysis, moisture and vapor testing, priming systems matched to the slab, and controlled cure cycles — engineered to perform under real traffic, not just on day one.
                 </p>
                 <p className="text-lg text-gray-600 mb-8 leading-relaxed">
-                  What sets us apart isn't just our skill – it's our commitment to every single floor. We don't just show up and do a job. We take pride in our work, and it shows in the results.
+                  What truly sets Legacy apart is the experience around the project: a dedicated project manager, daily progress updates, and constant communication from scope approval to final handover — one team accountable for quality, schedule, and results.
                 </p>
                 <div className="space-y-4">
                   <div className="flex items-center">
