@@ -10,6 +10,7 @@ type CalFunction = ((...args: unknown[]) => void) & {
 declare global {
   interface Window {
     Cal?: CalFunction;
+    openEstimateCalendar?: () => void;
   }
 }
 
@@ -60,3 +61,5 @@ export const openCalBooking = () => {
     config: { layout: "month_view", useSlotsViewOnSmallScreen: "true" },
   });
 };
+
+if (typeof window !== "undefined") window.openEstimateCalendar = openCalBooking;
