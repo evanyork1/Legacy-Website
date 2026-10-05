@@ -6,6 +6,7 @@
  *
  * Any failure exits non-zero so Netlify aborts the deploy.
  */
+function flatPath(f) { return f === "index.html" ? f : f.replace(/\/index\.html$/, ".html"); }
 import { existsSync, readFileSync, readdirSync, statSync } from "node:fs";
 import { resolve, join, relative } from "node:path";
 

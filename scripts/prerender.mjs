@@ -183,7 +183,9 @@ async function renderRoute(browser, route) {
 }
 
 function writeRouteHtml(route, html) {
-  const rel = route === "/" ? "index.html" : `${route.replace(/^\//, "")}/index.html`;
+  // Flat `<route>.html` files: Netlify serves /about from about.html with a
+  // 200 (no trailing-slash 301), matching the no-slash canonical + sitemap.
+  const rel = route === "/" ? "index.html" : `${route.replace(/^\//, "")}.html`;
   const target = join(DIST, rel);
   mkdirSync(resolve(target, ".."), { recursive: true });
   writeFileSync(target, html, "utf8");
