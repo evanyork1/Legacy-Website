@@ -30,7 +30,21 @@ Deno.serve(async (req) => {
       );
     }
 
-    const packetData: FloorPacketWebhookData = await req.json();
+    const body = await req.json().catch(() => ({}));
+    const id = String(body?.id || '');
+    if (!/^[0-9a-f-]{36}$/i.test(id)) {
+      return new Response(JSON.stringify({ error: 'Invalid id' }), { status: 400, headers: { ...corsHeaders, 'Content-Type': 'application/json' } });
+    }
+    // Never trust the request body: load the real saved lead so blank or
+    // forged calls can't push empty leads to Zapier/Jobber.
+    const { createClient } = await import('https://esm.sh/@supabase/supabase-js@2');
+    const admin = createClient(Deno.env.get('SUPABASE_URL')!, Deno.env.get('SUPABASE_SERVICE_ROLE_KEY')!);
+    const { data: row } = await admin.from('floor_packets').select('*').eq('id', id).maybeSingle();
+    if (!row || !String(row.name || '').trim() || !String(row.email || '').trim() || !String(row.phone || '').trim()) {
+      console.warn('Skipping webhook: packet missing or blank', id);
+      return new Response(JSON.stringify({ skipped: true }), { status: 200, headers: { ...corsHeaders, 'Content-Type': 'application/json' } });
+    }
+    const packetData: FloorPacketWebhookData = row as FloorPacketWebhookData;
     console.log('Floor packet webhook received for id:', packetData.id);
 
     const origin = req.headers.get('origin') || '';
