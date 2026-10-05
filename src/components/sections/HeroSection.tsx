@@ -78,16 +78,18 @@ const HeroSection = () => {
         {/* Hero Container - Fixed Height on Mobile */}
         <div className="h-[70vh] lg:min-h-screen relative flex items-center bg-cover bg-center" style={{ backgroundImage: "url('/lovable-uploads/home-hero-preview.jpg')" }}>
         {/* A tiny preview fills the hero immediately; the priority image replaces it as it loads. */}
+        {/* All slides stay mounted so each one cross-fades instead of popping in/out. */}
         {galleryImages.map((image, index) => (
-          index === 0 || index === currentImageIndex ? <img
+          <img
             key={image}
             src={image}
             alt=""
             aria-hidden="true"
-            loading={index === 0 ? 'eager' : 'lazy'}
-            fetchPriority={index === 0 ? 'high' : 'auto'}
-            className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-1000 ${index === currentImageIndex ? 'opacity-100' : 'opacity-0'}`}
-          /> : null
+            loading="eager"
+            decoding="async"
+            fetchPriority={index === 0 ? 'high' : 'low'}
+            className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-1000 ease-in-out ${index === currentImageIndex ? 'opacity-100' : 'opacity-0'}`}
+          />
         ))}
         <div className="absolute inset-0 bg-black/60" aria-hidden="true" />
         
