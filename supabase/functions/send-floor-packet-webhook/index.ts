@@ -44,6 +44,11 @@ Deno.serve(async (req) => {
       console.warn('Skipping webhook: packet missing or blank', id);
       return new Response(JSON.stringify({ skipped: true }), { status: 200, headers: { ...corsHeaders, 'Content-Type': 'application/json' } });
     }
+    const { error: claimErr } = await admin.from('webhook_send_log').insert({ source: 'floor-packet', lead_id: id, page: req.headers.get('origin') || null });
+    if (claimErr) {
+      console.warn('Already sent floor packet alert', id);
+      return new Response(JSON.stringify({ skipped: true, reason: 'already_sent' }), { status: 200, headers: { ...corsHeaders, 'Content-Type': 'application/json' } });
+    }
     const packetData: FloorPacketWebhookData = row as FloorPacketWebhookData;
     console.log('Floor packet webhook received for id:', packetData.id);
 

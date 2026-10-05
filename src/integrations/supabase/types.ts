@@ -1161,6 +1161,33 @@ export type Database = {
         }
         Relationships: []
       }
+      webhook_send_log: {
+        Row: {
+          created_at: string
+          id: string
+          lead_id: string
+          page: string | null
+          source: string
+          status: number | null
+        }
+        Insert: {
+          created_at?: string
+          id?: string
+          lead_id: string
+          page?: string | null
+          source: string
+          status?: number | null
+        }
+        Update: {
+          created_at?: string
+          id?: string
+          lead_id?: string
+          page?: string | null
+          source?: string
+          status?: number | null
+        }
+        Relationships: []
+      }
       webhook_settings: {
         Row: {
           deposit_webhook_url: string | null

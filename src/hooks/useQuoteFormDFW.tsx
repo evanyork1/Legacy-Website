@@ -48,41 +48,10 @@ export const useQuoteFormDFW = () => {
 
       console.log('DFW quote saved successfully:', insertedQuote);
       
-      // Call DFW webhook directly after successful submission
-      try {
-        const webhookUrl = 'https://hooks.zapier.com/hooks/catch/18144828/u21rmpg/';
-        const webhookPayload = {
-          id: insertedQuote.id,
-          name: insertedQuote.name,
-          email: insertedQuote.email,
-          phone: insertedQuote.phone,
-          zip_code: insertedQuote.zip_code,
-          garage_type: insertedQuote.garage_type,
-          custom_sqft: insertedQuote.custom_sqft,
-          space_type: insertedQuote.space_type,
-          other_space_type: insertedQuote.other_space_type,
-          color_choice: insertedQuote.color_choice,
-          estimated_price: insertedQuote.estimated_price,
-          lead_source: insertedQuote.lead_source,
-          created_at: insertedQuote.created_at
-        };
-
-        console.log('Calling DFW webhook:', webhookUrl, webhookPayload);
-        
-        await fetch(webhookUrl, {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-          },
-          mode: 'no-cors',
-          body: JSON.stringify(webhookPayload),
-        });
-        
-        console.log('DFW webhook called successfully');
-      } catch (webhookError) {
-        console.error('Webhook call failed but quote was saved:', webhookError);
-        // Don't throw error - quote was saved successfully
-      }
+      // Zapier alert is sent server-side, once per saved lead.
+      supabase.functions
+        .invoke('send-regional-quote-webhook', { body: { id: insertedQuote.id, region: 'DFW' } })
+        .then(({ error: whErr }) => { if (whErr) console.error('Quote alert failed:', whErr); });
 
       return insertedQuote;
     },
