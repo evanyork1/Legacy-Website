@@ -74,7 +74,7 @@ const failures = [];
 
 // 1) Every prerendered route must exist and contain real content -------
 for (const file of REQUIRED_FILES) {
-  const full = resolve(DIST, file);
+  const full = resolve(DIST, flatPath(file));
   if (!existsSync(full)) {
     failures.push(`MISSING        ${file} (react-snap did not write this route)`);
     continue;
@@ -95,7 +95,7 @@ for (const file of REQUIRED_FILES) {
 
 // 2) Route-specific keyword checks --------------------------------------
 for (const [file, needles] of KEYWORD_CHECKS) {
-  const full = resolve(DIST, file);
+  const full = resolve(DIST, flatPath(file));
   if (!existsSync(full)) continue; // already reported above
   const html = readFileSync(full, "utf8");
   const lower = html.toLowerCase();
@@ -126,7 +126,7 @@ function extractOgUrl(html) {
 }
 
 for (const file of REQUIRED_FILES) {
-  const full = resolve(DIST, file);
+  const full = resolve(DIST, flatPath(file));
   if (!existsSync(full)) continue;
   const html = readFileSync(full, "utf8");
   const canonical = extractCanonical(html);
