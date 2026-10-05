@@ -41,6 +41,16 @@ Deno.serve(async (req) => {
 
     // Get the quote data from the request
     const quoteData: QuoteWebhookData = await req.json();
+    {
+      const _b: any = quoteData;
+      const _n = String(_b?.name ?? _b?.first_name ?? _b?.lead?.name ?? '').trim();
+      const _e = String(_b?.email ?? _b?.lead?.email ?? '').trim();
+      const _p = String(_b?.phone ?? _b?.lead?.phone ?? '').trim();
+      if (!_n || (!_e && !_p)) {
+        console.warn('Skipping blank lead webhook');
+        return new Response(JSON.stringify({ skipped: true }), { status: 200, headers: { ...corsHeaders, 'Content-Type': 'application/json' } });
+      }
+    }
     console.log('Received quote data:', quoteData);
 
     // Get the webhook URL from settings
