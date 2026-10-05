@@ -46,3 +46,12 @@ verify_jwt = false
 
 [functions.crm-rpc]
 verify_jwt = false
+
+[functions.archive-login]
+verify_jwt = false
+
+[functions.archive-admin]
+verify_jwt = false
+
+[functions.archive-signed-url]
+verify_jwt = false

@@ -18,6 +18,10 @@ serve(async (req: Request) => {
     const code = url.searchParams.get('code');
     const error = url.searchParams.get('error');
     const errorDescription = url.searchParams.get('error_description');
+    const isArchive = url.searchParams.get('state') === 'archive';
+    const RETURN_BASE = isArchive
+      ? 'https://legacyindustrialcoatings.com/jobberdetails/settings'
+      : 'https://legacyindustrialcoatings.com/sales-presentation';
 
     // Handle OAuth errors
     if (error) {
@@ -25,7 +29,7 @@ serve(async (req: Request) => {
       return new Response(null, {
         status: 302,
         headers: {
-          'Location': `https://legacyindustrialcoatings.com/sales-presentation?error=${encodeURIComponent(errorDescription || error)}`,
+          'Location': `${RETURN_BASE}?error=${encodeURIComponent(errorDescription || error)}`,
         },
       });
     }
@@ -36,7 +40,7 @@ serve(async (req: Request) => {
       return new Response(null, {
         status: 302,
         headers: {
-          'Location': 'https://legacyindustrialcoatings.com/sales-presentation?error=No+authorization+code+received',
+          'Location': `${RETURN_BASE}?error=No+authorization+code+received`,
         },
       });
     }
@@ -50,7 +54,7 @@ serve(async (req: Request) => {
       return new Response(null, {
         status: 302,
         headers: {
-          'Location': 'https://legacyindustrialcoatings.com/sales-presentation?error=Server+configuration+error',
+          'Location': `${RETURN_BASE}?error=Server+configuration+error`,
         },
       });
     }
@@ -78,7 +82,7 @@ serve(async (req: Request) => {
       return new Response(null, {
         status: 302,
         headers: {
-          'Location': `https://legacyindustrialcoatings.com/sales-presentation?error=Token+exchange+failed`,
+          'Location': `${RETURN_BASE}?error=Token+exchange+failed`,
         },
       });
     }
@@ -125,7 +129,7 @@ serve(async (req: Request) => {
       return new Response(null, {
         status: 302,
         headers: {
-          'Location': `https://legacyindustrialcoatings.com/sales-presentation?error=Failed+to+store+credentials`,
+          'Location': `${RETURN_BASE}?error=Failed+to+store+credentials`,
         },
       });
     }
@@ -136,7 +140,7 @@ serve(async (req: Request) => {
     return new Response(null, {
       status: 302,
       headers: {
-        'Location': 'https://legacyindustrialcoatings.com/sales-presentation?connected=true',
+        'Location': `${RETURN_BASE}?connected=true`,
       },
     });
   } catch (error) {
@@ -144,7 +148,7 @@ serve(async (req: Request) => {
     return new Response(null, {
       status: 302,
       headers: {
-        'Location': `https://legacyindustrialcoatings.com/sales-presentation?error=${encodeURIComponent(error.message)}`,
+        'Location': `${RETURN_BASE}?error=${encodeURIComponent(error.message)}`,
       },
     });
   }

@@ -1,0 +1,1 @@
+- Jobber archive (/jobberdetails) access is enforced server-side: edge functions verify JWT + aal2 + active archive_users row via supabase/functions/_shared/archive.ts; the browser never writes archive tables or reads Jobber tokens — keeps the archive safe even if UI checks are bypassed.
