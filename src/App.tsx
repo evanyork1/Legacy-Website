@@ -64,6 +64,10 @@ import EstimateRequestReceived from "./pages/EstimateRequestReceived";
 import Careers from "./pages/Careers";
 import CareerMarketPage from "./pages/CareerMarketPage";
 import PacketsFormat from "./pages/PacketsFormat";
+import { ArchiveSessionProvider } from "./pages/jobberdetails/archiveSession";
+import ArchiveLogin, { SetPassword as ArchiveSetPassword } from "./pages/jobberdetails/ArchiveLogin";
+import ArchiveLayout, { AdminOnly as ArchiveAdminOnly } from "./pages/jobberdetails/ArchiveLayout";
+import { ArchiveDashboard, ArchiveJobberSettings, ArchiveUsers, ArchiveAudit } from "./pages/jobberdetails/ArchivePages";
 
 
 const queryClient = new QueryClient();
@@ -160,6 +164,15 @@ function App() {
               <Route path="/careers" element={<Careers />} />
               <Route path="/careers/:city" element={<CareerMarketPage />} />
               <Route path="/packetsformat" element={<PacketsFormat />} />
+              <Route path="/jobberdetails/set-password" element={<ArchiveSetPassword />} />
+              <Route path="/jobberdetails" element={<ArchiveSessionProvider><ArchiveLogin /></ArchiveSessionProvider>} />
+              <Route path="/jobberdetails/*" element={<ArchiveSessionProvider><ArchiveLayout /></ArchiveSessionProvider>}>
+                <Route path="dashboard" element={<ArchiveDashboard />} />
+                <Route path="settings" element={<ArchiveAdminOnly><ArchiveJobberSettings /></ArchiveAdminOnly>} />
+                <Route path="users" element={<ArchiveAdminOnly><ArchiveUsers /></ArchiveAdminOnly>} />
+                <Route path="audit" element={<ArchiveAdminOnly><ArchiveAudit /></ArchiveAdminOnly>} />
+                <Route path="*" element={<ArchiveDashboard />} />
+              </Route>
               <Route path="*" element={<NotFound />} />
             </Routes>
           </Router>
