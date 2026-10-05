@@ -14,6 +14,96 @@ export type Database = {
   }
   public: {
     Tables: {
+      archive_rate_limits: {
+        Row: {
+          bucket: string
+          created_at: string
+          id: string
+          key: string
+          success: boolean
+        }
+        Insert: {
+          bucket: string
+          created_at?: string
+          id?: string
+          key: string
+          success?: boolean
+        }
+        Update: {
+          bucket?: string
+          created_at?: string
+          id?: string
+          key?: string
+          success?: boolean
+        }
+        Relationships: []
+      }
+      archive_users: {
+        Row: {
+          active: boolean
+          created_at: string
+          email: string
+          invited_by: string | null
+          role: string
+          updated_at: string
+          user_id: string
+        }
+        Insert: {
+          active?: boolean
+          created_at?: string
+          email: string
+          invited_by?: string | null
+          role?: string
+          updated_at?: string
+          user_id: string
+        }
+        Update: {
+          active?: boolean
+          created_at?: string
+          email?: string
+          invited_by?: string | null
+          role?: string
+          updated_at?: string
+          user_id?: string
+        }
+        Relationships: []
+      }
+      audit_log: {
+        Row: {
+          action: string
+          created_at: string
+          id: string
+          ip: string | null
+          metadata: Json | null
+          record_id: string | null
+          record_type: string | null
+          user_email: string | null
+          user_id: string | null
+        }
+        Insert: {
+          action: string
+          created_at?: string
+          id?: string
+          ip?: string | null
+          metadata?: Json | null
+          record_id?: string | null
+          record_type?: string | null
+          user_email?: string | null
+          user_id?: string | null
+        }
+        Update: {
+          action?: string
+          created_at?: string
+          id?: string
+          ip?: string | null
+          metadata?: Json | null
+          record_id?: string | null
+          record_type?: string | null
+          user_email?: string | null
+          user_id?: string | null
+        }
+        Relationships: []
+      }
       blog_posts: {
         Row: {
           author: string | null
@@ -1223,6 +1313,7 @@ export type Database = {
       [_ in never]: never
     }
     Functions: {
+      archive_mfa_ok: { Args: never; Returns: boolean }
       check_duplicate_lead: {
         Args: { check_email: string; check_phone: string }
         Returns: {
@@ -1267,6 +1358,8 @@ export type Database = {
         }
         Returns: boolean
       }
+      is_archive_admin: { Args: never; Returns: boolean }
+      is_archive_user: { Args: never; Returns: boolean }
     }
     Enums: {
       app_role: "admin" | "rep"
