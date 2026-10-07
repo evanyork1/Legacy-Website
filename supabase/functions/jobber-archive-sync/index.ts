@@ -149,10 +149,18 @@ async function saveNotes(run_id: string | null, parent_type: string, parent_id: 
   }
 }
 
+const isVideo = (f: any) => /^video\//i.test(f.contentType || "") || /\.(mp4|mov|m4v|avi|wmv|webm|mkv|3gp|mpe?g)$/i.test(f.fileName || "");
+
 async function saveFile(run_id: string | null, f: any, note_id: string, parent_type: string, parent_id: string, client_id: string | null) {
   const { data: existing } = await sb.from("jobber_attachments").select("downloaded").eq("id", f.id).maybeSingle();
   const base = { id: f.id, note_id, parent_type, parent_id, client_id, file_name: f.fileName, content_type: f.contentType, size_bytes: f.fileSize, raw: { ...f, url: undefined, downloadUrl: undefined, thumbnailUrl: undefined, previewUrl: undefined } };
   if (existing?.downloaded) { await upsert("jobber_attachments", [{ ...base, downloaded: true }]); return; }
+  // Videos are skipped on purpose (too large for storage); recorded but never downloaded.
+  if (isVideo(f)) {
+    await upsert("jobber_attachments", [{ ...base, downloaded: false, raw: { ...base.raw, skipped: "video" } }]);
+    await sb.from("jobber_sync_errors").update({ resolved: true }).eq("entity", "attachment").eq("record_id", f.id).eq("resolved", false);
+    return;
+  }
   await upsert("jobber_attachments", [{ ...base, downloaded: false }]);
   const url = f.downloadUrl || f.url;
   try {
@@ -355,6 +363,8 @@ async function counts() {
   const tables: Record<string, string> = { clients: "jobber_clients", properties: "jobber_properties", requests: "jobber_requests", quotes: "jobber_quotes", jobs: "jobber_jobs", visits: "jobber_visits", invoices: "jobber_invoices", payments: "jobber_payments", notes: "jobber_notes", line_items: "jobber_line_items", attachments: "jobber_attachments" };
   const out: Record<string, number> = {};
   for (const [k, t] of Object.entries(tables)) out[k] = (await sb.from(t).select("id", { count: "exact", head: true })).count ?? 0;
+  out.videos_skipped = (await sb.from("jobber_attachments").select("id", { count: "exact", head: true }).eq("raw->>skipped", "video")).count ?? 0;
+  out.attachments -= out.videos_skipped;
   out.attachments_downloaded = (await sb.from("jobber_attachments").select("id", { count: "exact", head: true }).eq("downloaded", true)).count ?? 0;
   out.open_errors = (await sb.from("jobber_sync_errors").select("id", { count: "exact", head: true }).eq("resolved", false)).count ?? 0;
   return out;
