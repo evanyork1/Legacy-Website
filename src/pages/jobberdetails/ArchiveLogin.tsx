@@ -70,100 +70,11 @@ function PasswordStep() {
   );
 }
 
-function CodeInput({ onSubmit, busy }: { onSubmit: (code: string) => void; busy: boolean }) {
-  const [code, setCode] = useState("");
-  return (
-    <form onSubmit={(e) => { e.preventDefault(); onSubmit(code); }} className="space-y-4">
-      <Input inputMode="numeric" autoComplete="one-time-code" maxLength={6} placeholder="6-digit code" value={code}
-        onChange={(e) => setCode(e.target.value.replace(/\D/g, ""))}
-        className="bg-slate-950 border-slate-700 text-slate-50 text-center text-xl tracking-[0.5em]" autoFocus />
-      <Button type="submit" disabled={busy || code.length !== 6} className="w-full rounded-none">
-        {busy ? <Loader2 className="h-4 w-4 animate-spin" /> : "Verify"}
-      </Button>
-    </form>
-  );
-}
-
-async function logMfa() {
-  await supabase.functions.invoke("archive-login", { body: { action: "log_mfa" } }).catch(() => {});
-}
-
-function EnrollStep() {
-  const { refresh, signOut } = useArchive();
-  const [factor, setFactor] = useState<{ id: string; qr: string; secret: string } | null>(null);
-  const [busy, setBusy] = useState(false);
-  const [err, setErr] = useState<string | null>(null);
-
-  useEffect(() => {
-    (async () => {
-      const { data: list } = await supabase.auth.mfa.listFactors();
-      for (const f of list?.all ?? []) {
-        if (f.status !== "verified") await supabase.auth.mfa.unenroll({ factorId: f.id });
-      }
-      const { data, error } = await supabase.auth.mfa.enroll({ factorType: "totp", friendlyName: `Archive ${Date.now()}` });
-      if (error) { setErr(error.message); return; }
-      setFactor({ id: data.id, qr: data.totp.qr_code, secret: data.totp.secret });
-    })();
-  }, []);
-
-  const verify = async (code: string) => {
-    if (!factor) return;
-    setBusy(true); setErr(null);
-    const { error } = await supabase.auth.mfa.challengeAndVerify({ factorId: factor.id, code });
-    setBusy(false);
-    if (error) { setErr("Code didn't match. Try the newest code."); return; }
-    await logMfa();
-    await refresh();
-  };
-
-  return (
-    <Shell title="Set up authenticator" subtitle="Scan with Google Authenticator, 1Password, Authy or similar. Required for every user.">
-      {factor ? (
-        <div className="space-y-4">
-          <div className="bg-slate-50 p-3 flex justify-center"><img src={factor.qr} alt="Authenticator QR code" className="h-44 w-44" /></div>
-          <p className="text-xs text-slate-400 break-all">Manual key: <span className="font-mono text-slate-300">{factor.secret}</span></p>
-          <CodeInput onSubmit={verify} busy={busy} />
-        </div>
-      ) : !err && <Loader2 className="h-5 w-5 animate-spin text-slate-400" />}
-      {err && <p className="text-sm text-red-400 mt-3">{err}</p>}
-      <button onClick={() => signOut()} className="mt-6 text-xs text-slate-500 hover:text-slate-300">Sign out</button>
-    </Shell>
-  );
-}
-
-function VerifyStep() {
-  const { refresh, signOut } = useArchive();
-  const [busy, setBusy] = useState(false);
-  const [err, setErr] = useState<string | null>(null);
-
-  const verify = async (code: string) => {
-    setBusy(true); setErr(null);
-    const { data } = await supabase.auth.mfa.listFactors();
-    const f = data?.totp?.find((x) => x.status === "verified");
-    if (!f) { setBusy(false); setErr("No authenticator found"); return; }
-    const { error } = await supabase.auth.mfa.challengeAndVerify({ factorId: f.id, code });
-    setBusy(false);
-    if (error) { setErr("Code didn't match. Try the newest code."); return; }
-    await logMfa();
-    await refresh();
-  };
-
-  return (
-    <Shell title="Two-step verification" subtitle="Enter the 6-digit code from your authenticator app.">
-      <CodeInput onSubmit={verify} busy={busy} />
-      {err && <p className="text-sm text-red-400 mt-3">{err}</p>}
-      <button onClick={() => signOut()} className="mt-6 text-xs text-slate-500 hover:text-slate-300">Sign out</button>
-    </Shell>
-  );
-}
-
 export default function ArchiveLogin() {
   useNoIndex();
   const { stage, signOut } = useArchive();
   if (stage === "loading") return <div className="min-h-screen bg-slate-950 flex items-center justify-center"><Loader2 className="h-6 w-6 animate-spin text-slate-400" /></div>;
   if (stage === "ready") return <Navigate to="/jobberdetails/dashboard" replace />;
-  if (stage === "needs_enroll") return <EnrollStep />;
-  if (stage === "needs_verify") return <VerifyStep />;
   if (stage === "denied") return (
     <Shell title="No access" subtitle="This account isn't authorized for the archive. Ask an admin to invite you.">
       <Button onClick={() => signOut()} variant="outline" className="w-full rounded-none">Sign out</Button>
@@ -198,7 +109,7 @@ export function SetPassword() {
     setDone(true);
   };
 
-  if (done) return <Shell title="Password set" subtitle="Sign in to finish setting up your authenticator."><Button asChild className="w-full rounded-none"><a href="/jobberdetails">Go to sign in</a></Button></Shell>;
+  if (done) return <Shell title="Password set" subtitle="You can now sign in."><Button asChild className="w-full rounded-none"><a href="/jobberdetails">Go to sign in</a></Button></Shell>;
   if (hasSession === false) return <Shell title="Link expired" subtitle="Ask an admin to resend your invite." ><span /></Shell>;
 
   return (
