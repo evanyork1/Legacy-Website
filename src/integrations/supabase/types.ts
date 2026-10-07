@@ -644,6 +644,516 @@ export type Database = {
           },
         ]
       }
+      jobber_attachments: {
+        Row: {
+          client_id: string | null
+          content_type: string | null
+          downloaded: boolean
+          file_name: string | null
+          id: string
+          note_id: string | null
+          parent_id: string | null
+          parent_type: string | null
+          raw: Json
+          size_bytes: number | null
+          storage_path: string | null
+          synced_at: string
+        }
+        Insert: {
+          client_id?: string | null
+          content_type?: string | null
+          downloaded?: boolean
+          file_name?: string | null
+          id: string
+          note_id?: string | null
+          parent_id?: string | null
+          parent_type?: string | null
+          raw?: Json
+          size_bytes?: number | null
+          storage_path?: string | null
+          synced_at?: string
+        }
+        Update: {
+          client_id?: string | null
+          content_type?: string | null
+          downloaded?: boolean
+          file_name?: string | null
+          id?: string
+          note_id?: string | null
+          parent_id?: string | null
+          parent_type?: string | null
+          raw?: Json
+          size_bytes?: number | null
+          storage_path?: string | null
+          synced_at?: string
+        }
+        Relationships: []
+      }
+      jobber_clients: {
+        Row: {
+          company_name: string | null
+          created_at_jobber: string | null
+          emails: string | null
+          first_name: string | null
+          id: string
+          is_archived: boolean | null
+          is_lead: boolean | null
+          jobber_url: string | null
+          last_name: string | null
+          name: string | null
+          phones: string | null
+          raw: Json
+          synced_at: string
+          tags: string[] | null
+          updated_at_jobber: string | null
+        }
+        Insert: {
+          company_name?: string | null
+          created_at_jobber?: string | null
+          emails?: string | null
+          first_name?: string | null
+          id: string
+          is_archived?: boolean | null
+          is_lead?: boolean | null
+          jobber_url?: string | null
+          last_name?: string | null
+          name?: string | null
+          phones?: string | null
+          raw?: Json
+          synced_at?: string
+          tags?: string[] | null
+          updated_at_jobber?: string | null
+        }
+        Update: {
+          company_name?: string | null
+          created_at_jobber?: string | null
+          emails?: string | null
+          first_name?: string | null
+          id?: string
+          is_archived?: boolean | null
+          is_lead?: boolean | null
+          jobber_url?: string | null
+          last_name?: string | null
+          name?: string | null
+          phones?: string | null
+          raw?: Json
+          synced_at?: string
+          tags?: string[] | null
+          updated_at_jobber?: string | null
+        }
+        Relationships: []
+      }
+      jobber_financials: {
+        Row: {
+          balance: number | null
+          deposit: number | null
+          raw: Json
+          record_id: string
+          record_type: string
+          subtotal: number | null
+          synced_at: string
+          total: number | null
+        }
+        Insert: {
+          balance?: number | null
+          deposit?: number | null
+          raw?: Json
+          record_id: string
+          record_type: string
+          subtotal?: number | null
+          synced_at?: string
+          total?: number | null
+        }
+        Update: {
+          balance?: number | null
+          deposit?: number | null
+          raw?: Json
+          record_id?: string
+          record_type?: string
+          subtotal?: number | null
+          synced_at?: string
+          total?: number | null
+        }
+        Relationships: []
+      }
+      jobber_invoices: {
+        Row: {
+          client_id: string | null
+          created_at_jobber: string | null
+          due_date: string | null
+          id: string
+          invoice_number: string | null
+          issued_date: string | null
+          job_ids: string[] | null
+          jobber_url: string | null
+          message: string | null
+          raw: Json
+          status: string | null
+          subject: string | null
+          synced_at: string
+        }
+        Insert: {
+          client_id?: string | null
+          created_at_jobber?: string | null
+          due_date?: string | null
+          id: string
+          invoice_number?: string | null
+          issued_date?: string | null
+          job_ids?: string[] | null
+          jobber_url?: string | null
+          message?: string | null
+          raw?: Json
+          status?: string | null
+          subject?: string | null
+          synced_at?: string
+        }
+        Update: {
+          client_id?: string | null
+          created_at_jobber?: string | null
+          due_date?: string | null
+          id?: string
+          invoice_number?: string | null
+          issued_date?: string | null
+          job_ids?: string[] | null
+          jobber_url?: string | null
+          message?: string | null
+          raw?: Json
+          status?: string | null
+          subject?: string | null
+          synced_at?: string
+        }
+        Relationships: []
+      }
+      jobber_jobs: {
+        Row: {
+          client_id: string | null
+          created_at_jobber: string | null
+          end_at: string | null
+          id: string
+          instructions: string | null
+          job_number: string | null
+          jobber_url: string | null
+          property_id: string | null
+          quote_id: string | null
+          raw: Json
+          start_at: string | null
+          status: string | null
+          synced_at: string
+          title: string | null
+        }
+        Insert: {
+          client_id?: string | null
+          created_at_jobber?: string | null
+          end_at?: string | null
+          id: string
+          instructions?: string | null
+          job_number?: string | null
+          jobber_url?: string | null
+          property_id?: string | null
+          quote_id?: string | null
+          raw?: Json
+          start_at?: string | null
+          status?: string | null
+          synced_at?: string
+          title?: string | null
+        }
+        Update: {
+          client_id?: string | null
+          created_at_jobber?: string | null
+          end_at?: string | null
+          id?: string
+          instructions?: string | null
+          job_number?: string | null
+          jobber_url?: string | null
+          property_id?: string | null
+          quote_id?: string | null
+          raw?: Json
+          start_at?: string | null
+          status?: string | null
+          synced_at?: string
+          title?: string | null
+        }
+        Relationships: []
+      }
+      jobber_line_items: {
+        Row: {
+          description: string | null
+          id: string
+          name: string | null
+          parent_id: string
+          parent_type: string
+          quantity: number | null
+          raw: Json
+          synced_at: string
+        }
+        Insert: {
+          description?: string | null
+          id: string
+          name?: string | null
+          parent_id: string
+          parent_type: string
+          quantity?: number | null
+          raw?: Json
+          synced_at?: string
+        }
+        Update: {
+          description?: string | null
+          id?: string
+          name?: string | null
+          parent_id?: string
+          parent_type?: string
+          quantity?: number | null
+          raw?: Json
+          synced_at?: string
+        }
+        Relationships: []
+      }
+      jobber_notes: {
+        Row: {
+          client_id: string | null
+          created_at_jobber: string | null
+          created_by: string | null
+          id: string
+          message: string | null
+          parent_id: string
+          parent_type: string
+          raw: Json
+          synced_at: string
+        }
+        Insert: {
+          client_id?: string | null
+          created_at_jobber?: string | null
+          created_by?: string | null
+          id: string
+          message?: string | null
+          parent_id: string
+          parent_type: string
+          raw?: Json
+          synced_at?: string
+        }
+        Update: {
+          client_id?: string | null
+          created_at_jobber?: string | null
+          created_by?: string | null
+          id?: string
+          message?: string | null
+          parent_id?: string
+          parent_type?: string
+          raw?: Json
+          synced_at?: string
+        }
+        Relationships: []
+      }
+      jobber_payments: {
+        Row: {
+          amount: number | null
+          client_id: string | null
+          id: string
+          invoice_id: string | null
+          paid_at: string | null
+          payment_type: string | null
+          raw: Json
+          synced_at: string
+        }
+        Insert: {
+          amount?: number | null
+          client_id?: string | null
+          id: string
+          invoice_id?: string | null
+          paid_at?: string | null
+          payment_type?: string | null
+          raw?: Json
+          synced_at?: string
+        }
+        Update: {
+          amount?: number | null
+          client_id?: string | null
+          id?: string
+          invoice_id?: string | null
+          paid_at?: string | null
+          payment_type?: string | null
+          raw?: Json
+          synced_at?: string
+        }
+        Relationships: []
+      }
+      jobber_properties: {
+        Row: {
+          address: string | null
+          city: string | null
+          client_id: string | null
+          country: string | null
+          id: string
+          postal_code: string | null
+          province: string | null
+          raw: Json
+          street: string | null
+          synced_at: string
+        }
+        Insert: {
+          address?: string | null
+          city?: string | null
+          client_id?: string | null
+          country?: string | null
+          id: string
+          postal_code?: string | null
+          province?: string | null
+          raw?: Json
+          street?: string | null
+          synced_at?: string
+        }
+        Update: {
+          address?: string | null
+          city?: string | null
+          client_id?: string | null
+          country?: string | null
+          id?: string
+          postal_code?: string | null
+          province?: string | null
+          raw?: Json
+          street?: string | null
+          synced_at?: string
+        }
+        Relationships: []
+      }
+      jobber_quotes: {
+        Row: {
+          client_id: string | null
+          client_message: string | null
+          created_at_jobber: string | null
+          id: string
+          jobber_url: string | null
+          property_id: string | null
+          quote_number: string | null
+          raw: Json
+          request_id: string | null
+          status: string | null
+          synced_at: string
+          title: string | null
+        }
+        Insert: {
+          client_id?: string | null
+          client_message?: string | null
+          created_at_jobber?: string | null
+          id: string
+          jobber_url?: string | null
+          property_id?: string | null
+          quote_number?: string | null
+          raw?: Json
+          request_id?: string | null
+          status?: string | null
+          synced_at?: string
+          title?: string | null
+        }
+        Update: {
+          client_id?: string | null
+          client_message?: string | null
+          created_at_jobber?: string | null
+          id?: string
+          jobber_url?: string | null
+          property_id?: string | null
+          quote_number?: string | null
+          raw?: Json
+          request_id?: string | null
+          status?: string | null
+          synced_at?: string
+          title?: string | null
+        }
+        Relationships: []
+      }
+      jobber_requests: {
+        Row: {
+          client_id: string | null
+          created_at_jobber: string | null
+          id: string
+          jobber_url: string | null
+          property_id: string | null
+          raw: Json
+          status: string | null
+          synced_at: string
+          title: string | null
+        }
+        Insert: {
+          client_id?: string | null
+          created_at_jobber?: string | null
+          id: string
+          jobber_url?: string | null
+          property_id?: string | null
+          raw?: Json
+          status?: string | null
+          synced_at?: string
+          title?: string | null
+        }
+        Update: {
+          client_id?: string | null
+          created_at_jobber?: string | null
+          id?: string
+          jobber_url?: string | null
+          property_id?: string | null
+          raw?: Json
+          status?: string | null
+          synced_at?: string
+          title?: string | null
+        }
+        Relationships: []
+      }
+      jobber_schema_snapshot: {
+        Row: {
+          created_at: string
+          data: Json
+          id: string
+        }
+        Insert: {
+          created_at?: string
+          data: Json
+          id?: string
+        }
+        Update: {
+          created_at?: string
+          data?: Json
+          id?: string
+        }
+        Relationships: []
+      }
+      jobber_sync_errors: {
+        Row: {
+          attempts: number
+          context: Json | null
+          created_at: string
+          entity: string
+          id: string
+          message: string
+          record_id: string | null
+          resolved: boolean
+          run_id: string | null
+          updated_at: string
+        }
+        Insert: {
+          attempts?: number
+          context?: Json | null
+          created_at?: string
+          entity: string
+          id?: string
+          message: string
+          record_id?: string | null
+          resolved?: boolean
+          run_id?: string | null
+          updated_at?: string
+        }
+        Update: {
+          attempts?: number
+          context?: Json | null
+          created_at?: string
+          entity?: string
+          id?: string
+          message?: string
+          record_id?: string | null
+          resolved?: boolean
+          run_id?: string | null
+          updated_at?: string
+        }
+        Relationships: []
+      }
       jobber_sync_failures: {
         Row: {
           context: Json | null
@@ -671,6 +1181,42 @@ export type Database = {
           packet_id?: string | null
           resolved?: boolean
           updated_at?: string
+        }
+        Relationships: []
+      }
+      jobber_sync_runs: {
+        Row: {
+          current_entity: string | null
+          entity_state: Json
+          finished_at: string | null
+          heartbeat_at: string
+          id: string
+          last_error: string | null
+          started_at: string
+          started_by: string | null
+          status: string
+        }
+        Insert: {
+          current_entity?: string | null
+          entity_state?: Json
+          finished_at?: string | null
+          heartbeat_at?: string
+          id?: string
+          last_error?: string | null
+          started_at?: string
+          started_by?: string | null
+          status?: string
+        }
+        Update: {
+          current_entity?: string | null
+          entity_state?: Json
+          finished_at?: string | null
+          heartbeat_at?: string
+          id?: string
+          last_error?: string | null
+          started_at?: string
+          started_by?: string | null
+          status?: string
         }
         Relationships: []
       }
@@ -725,6 +1271,48 @@ export type Database = {
           id?: string
           refresh_token?: string
           updated_at?: string | null
+        }
+        Relationships: []
+      }
+      jobber_visits: {
+        Row: {
+          client_id: string | null
+          end_at: string | null
+          id: string
+          instructions: string | null
+          job_id: string | null
+          property_id: string | null
+          raw: Json
+          start_at: string | null
+          status: string | null
+          synced_at: string
+          title: string | null
+        }
+        Insert: {
+          client_id?: string | null
+          end_at?: string | null
+          id: string
+          instructions?: string | null
+          job_id?: string | null
+          property_id?: string | null
+          raw?: Json
+          start_at?: string | null
+          status?: string | null
+          synced_at?: string
+          title?: string | null
+        }
+        Update: {
+          client_id?: string | null
+          end_at?: string | null
+          id?: string
+          instructions?: string | null
+          job_id?: string | null
+          property_id?: string | null
+          raw?: Json
+          start_at?: string | null
+          status?: string | null
+          synced_at?: string
+          title?: string | null
         }
         Relationships: []
       }

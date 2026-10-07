@@ -55,3 +55,6 @@ verify_jwt = false
 
 [functions.archive-signed-url]
 verify_jwt = false
+
+[functions.jobber-archive-sync]
+verify_jwt = false
