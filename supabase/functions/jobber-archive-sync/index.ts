@@ -48,10 +48,12 @@ async function gql(query: string, variables: Record<string, unknown> = {}): Prom
       headers: { "Content-Type": "application/json", Authorization: `Bearer ${await token()}`, "X-JOBBER-GRAPHQL-VERSION": "2025-01-20" },
       body: JSON.stringify({ query, variables }),
     });
+    if (r.status !== 200) console.log("jobber http", r.status, attempt);
     if (r.status === 429 || r.status >= 500) { await sleep(2000 * 2 ** attempt); continue; }
     const b = await r.json().catch(() => ({}));
     const throttled = b?.errors?.some((e: any) => e?.extensions?.code === "THROTTLED" || /throttl/i.test(e?.message ?? ""));
     const ts = b?.extensions?.cost?.throttleStatus;
+    if (throttled || b?.errors) console.log("jobber resp", JSON.stringify(b?.errors ?? []).slice(0, 400), JSON.stringify(ts ?? {}));
     if (throttled) {
       const need = b?.extensions?.cost?.requestedQueryCost ?? 2000;
       const wait = ts ? Math.max(1, (need - ts.currentlyAvailable) / (ts.restoreRate || 500)) * 1000 : 5000;
@@ -349,6 +351,7 @@ Deno.serve(async (req) => {
   if (body.action === "validate") {
     if ((req.headers.get("Authorization") || "") !== `Bearer ${SERVICE_KEY}`) return json({ error: "Forbidden" }, 403);
     const run = async () => {
+      console.log("validate start");
       const out: Record<string, string> = {};
       try {
         const f = await fragments(); out.fragments = JSON.stringify(f);
