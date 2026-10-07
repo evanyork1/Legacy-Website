@@ -19,6 +19,7 @@ const Body = z.discriminatedUnion("action", [
   z.object({ action: z.literal("stop") }),
   z.object({ action: z.literal("retry_errors"), ids: z.array(z.string().uuid()).max(200).optional() }),
   z.object({ action: z.literal("continue"), run_id: z.string().uuid() }),
+  z.object({ action: z.literal("validate") }),
 ]);
 
 // ---------- Jobber auth + GraphQL with throttling ----------
@@ -345,6 +346,15 @@ Deno.serve(async (req) => {
   if (!parsed.success) return json({ error: "Invalid request" }, 400);
   const body = parsed.data;
 
+  if (body.action === "validate") {
+    if ((req.headers.get("Authorization") || "") !== `Bearer ${SERVICE_KEY}`) return json({ error: "Forbidden" }, 403);
+    const f = await fragments(); const out: Record<string, string> = {};
+    for (const e of ENTITIES) {
+      try { const d = await gql(`{ ${e.root}(first: 1) { totalCount pageInfo { hasNextPage endCursor } nodes { ${e.nodes(f)} } } }`); out[e.key] = `ok total=${d[e.root].totalCount}`; }
+      catch (x) { out[e.key] = (x as Error).message; }
+    }
+    return json(out);
+  }
   if (body.action === "continue") {
     if ((req.headers.get("Authorization") || "") !== `Bearer ${SERVICE_KEY}`) return json({ error: "Forbidden" }, 403);
     // @ts-ignore
