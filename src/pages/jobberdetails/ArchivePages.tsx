@@ -31,7 +31,7 @@ export function ArchiveDashboard() {
       <p className="text-muted-foreground mb-8">Signed in as {email} ({role}).</p>
       <Panel title="Status">
         <p className="text-sm text-muted-foreground">
-          Security and sign-in are live. Data import (Phase 2) and search (Phase 3) haven't been built yet.
+          Security, sign-in and the Jobber data export are live{role === "admin" ? " — run it from the Sync page" : ""}. Search (Phase 3) hasn't been built yet.
         </p>
       </Panel>
     </>

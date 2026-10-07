@@ -68,6 +68,7 @@ import { ArchiveSessionProvider } from "./pages/jobberdetails/archiveSession";
 import ArchiveLogin, { SetPassword as ArchiveSetPassword } from "./pages/jobberdetails/ArchiveLogin";
 import ArchiveLayout, { AdminOnly as ArchiveAdminOnly } from "./pages/jobberdetails/ArchiveLayout";
 import { ArchiveDashboard, ArchiveJobberSettings, ArchiveUsers, ArchiveAudit } from "./pages/jobberdetails/ArchivePages";
+import ArchiveSync from "./pages/jobberdetails/ArchiveSync";
 
 
 const queryClient = new QueryClient();
@@ -171,6 +172,7 @@ function App() {
                 <Route path="settings" element={<ArchiveAdminOnly><ArchiveJobberSettings /></ArchiveAdminOnly>} />
                 <Route path="users" element={<ArchiveAdminOnly><ArchiveUsers /></ArchiveAdminOnly>} />
                 <Route path="audit" element={<ArchiveAdminOnly><ArchiveAudit /></ArchiveAdminOnly>} />
+                <Route path="sync" element={<ArchiveAdminOnly><ArchiveSync /></ArchiveAdminOnly>} />
                 <Route path="*" element={<ArchiveDashboard />} />
               </Route>
               <Route path="*" element={<NotFound />} />

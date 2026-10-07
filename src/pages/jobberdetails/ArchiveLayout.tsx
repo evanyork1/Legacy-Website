@@ -15,6 +15,7 @@ export default function ArchiveLayout() {
     { to: "/jobberdetails/dashboard", label: "Dashboard" },
     ...(role === "admin"
       ? [
+          { to: "/jobberdetails/sync", label: "Sync" },
           { to: "/jobberdetails/settings", label: "Jobber" },
           { to: "/jobberdetails/users", label: "Users" },
           { to: "/jobberdetails/audit", label: "Audit log" },
