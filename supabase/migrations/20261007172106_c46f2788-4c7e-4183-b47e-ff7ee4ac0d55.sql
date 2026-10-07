@@ -1,0 +1,1 @@
+CREATE OR REPLACE FUNCTION public.archive_mfa_ok() RETURNS boolean LANGUAGE sql STABLE SET search_path TO 'public' AS $$ SELECT true $$;
