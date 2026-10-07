@@ -54,6 +54,7 @@ async function gql(query: string, variables: Record<string, unknown> = {}): Prom
     const throttled = b?.errors?.some((e: any) => e?.extensions?.code === "THROTTLED" || /throttl/i.test(e?.message ?? ""));
     const ts = b?.extensions?.cost?.throttleStatus;
     if (throttled || b?.errors) console.log("jobber resp", JSON.stringify(b?.errors ?? []).slice(0, 400), JSON.stringify(ts ?? {}));
+    if (throttled && ts && ts.currentlyAvailable >= ts.maximumAvailable) throw new Error(`Query too expensive for Jobber (cost ${b?.extensions?.cost?.requestedQueryCost ?? "?"})`);
     if (throttled) {
       const need = b?.extensions?.cost?.requestedQueryCost ?? 2000;
       const wait = ts ? Math.max(1, (need - ts.currentlyAvailable) / (ts.restoreRate || 500)) * 1000 : 5000;
@@ -373,7 +374,7 @@ Deno.serve(async (req) => {
       try {
         const f = await fragments(); out.fragments = JSON.stringify(f);
         for (const e of ENTITIES) {
-          try { const d = await gql(`{ ${e.root}(first: 1) { totalCount pageInfo { hasNextPage endCursor } nodes { ${e.nodes(f)} } } }`); out[e.key] = `ok total=${d[e.root].totalCount}`; }
+          try { const d = await gql(`{ ${e.root}(first: ${e.page}) { totalCount pageInfo { hasNextPage endCursor } nodes { ${e.nodes(f)} } } }`); out[e.key] = `ok total=${d[e.root].totalCount} page=${d[e.root].nodes?.length}`; }
           catch (x) { out[e.key] = (x as Error).message; }
           console.log(e.key, out[e.key]);
         }
