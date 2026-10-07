@@ -89,10 +89,12 @@ async function fragments() {
 const customFieldsSel = (f: Record<string, string>) =>
   `customFields { __typename ${["CustomFieldArea", "CustomFieldDropdown", "CustomFieldLink", "CustomFieldNumeric", "CustomFieldText", "CustomFieldTrueFalse"].filter((t) => f[t]).map((t) => `... on ${t} { ${f[t]} }`).join(" ")} }`;
 
-const noteFields = (f: Record<string, string>) =>
-  `id message createdAt pinned createdBy { __typename ... on User { name { full } } } fileAttachments(first: 50) { totalCount nodes { ${f.NoteFileInterface || "id fileName contentType fileSize url"} } }`;
-const notesSel = (f: Record<string, string>, union: string[]) =>
-  `notes(first: 50) { totalCount nodes { __typename ${union.map((u) => `... on ${u} { ${noteFields(f)} }`).join(" ")} } }`;
+const noteFields = (f: Record<string, string>, files: number) =>
+  `id message createdAt pinned createdBy { __typename ... on User { name { full } } } fileAttachments(first: ${files}) { totalCount nodes { ${f.NoteFileInterface || "id fileName contentType fileSize url"} } }`;
+// Kept small so a page stays under Jobber's 10,000-point query cost ceiling; overflow is paged separately.
+const notesSel = (f: Record<string, string>, union: string[], args = "first: 8", files = 15) =>
+  `notes(${args}) { totalCount pageInfo { hasNextPage endCursor } edges { cursor node { __typename ${union.map((u) => `... on ${u} { ${noteFields(f, files)} }`).join(" ")} } } }`;
+const UNIONS: Record<string, string[]> = { client: ["ClientNote"], request: ["RequestNote"], quote: ["QuoteNote"], job: ["JobNote", "ClientNote", "QuoteNote", "RequestNote"] };
 
 // ---------- helpers ----------
 const MONEY = /(amount|total|price|cost|balance|deposit|markup|tax|discount|payment|tip|invoiceNet|jobCosting)/i;
@@ -119,15 +121,30 @@ async function logError(run_id: string | null, entity: string, record_id: string
 }
 
 async function saveNotes(run_id: string | null, parent_type: string, parent_id: string, client_id: string | null, notes: any) {
-  const nodes = (notes?.nodes ?? []).filter((n: any) => n?.id);
-  if (notes?.totalCount > nodes.length) await logError(run_id, "notes_overflow", `${parent_type}:${parent_id}`, `Only ${nodes.length} of ${notes.totalCount} notes fetched`, { parent_type, parent_id });
-  await upsert("jobber_notes", nodes.map((n: any) => ({
-    id: n.id, parent_type, parent_id, client_id, message: n.message, created_by: n.createdBy?.name?.full ?? null, created_at_jobber: n.createdAt, raw: strip({ ...n, fileAttachments: undefined }),
-  })));
-  for (const n of nodes) {
-    const files = n.fileAttachments?.nodes ?? [];
-    if (n.fileAttachments?.totalCount > files.length) await logError(run_id, "files_overflow", n.id, `Only ${files.length} of ${n.fileAttachments.totalCount} files fetched`, { parent_type, parent_id });
-    for (const f of files) await saveFile(run_id, f, n.id, parent_type, parent_id, client_id);
+  let conn = notes;
+  let prevCursor: string | null = null;
+  const f = await fragments();
+  while (conn) {
+    const edges = (conn.edges ?? []).filter((e: any) => e?.node?.id);
+    await upsert("jobber_notes", edges.map(({ node: n }: any) => ({
+      id: n.id, parent_type, parent_id, client_id, message: n.message, created_by: n.createdBy?.name?.full ?? null, created_at_jobber: n.createdAt, raw: strip({ ...n, fileAttachments: undefined }),
+    })));
+    for (const { node: n, cursor } of edges) {
+      let fa = n.fileAttachments;
+      if (fa?.totalCount > (fa?.nodes?.length ?? 0)) {
+        // Re-fetch just this note with a large file page
+        const args = prevCursor ? `first: 1, after: ${JSON.stringify(prevCursor)}` : "first: 1";
+        const d = await gql(`query($id: EncodedId!) { ${parent_type}(id: $id) { ${notesSel(f, UNIONS[parent_type], args, 100)} } }`, { id: parent_id });
+        const one = d?.[parent_type]?.notes?.edges?.[0]?.node;
+        if (one?.id === n.id) fa = one.fileAttachments;
+        if (fa?.totalCount > (fa?.nodes?.length ?? 0)) await logError(run_id, "files_overflow", n.id, `Only ${fa.nodes.length} of ${fa.totalCount} files fetched`, { parent_type, parent_id });
+      }
+      for (const file of fa?.nodes ?? []) await saveFile(run_id, file, n.id, parent_type, parent_id, client_id);
+      prevCursor = cursor;
+    }
+    if (!conn.pageInfo?.hasNextPage) break;
+    const d = await gql(`query($id: EncodedId!) { ${parent_type}(id: $id) { ${notesSel(f, UNIONS[parent_type], `first: 8, after: ${JSON.stringify(conn.pageInfo.endCursor)}`)} } }`, { id: parent_id });
+    conn = d?.[parent_type]?.notes;
   }
 }
 
@@ -158,11 +175,11 @@ type Entity = { key: string; root: string; page: number; nodes: (f: Record<strin
 
 const ENTITIES: Entity[] = [
   {
-    key: "clients", root: "clients", page: 15, byId: "client",
+    key: "clients", root: "clients", page: 5, byId: "client",
     nodes: (f) => `id name firstName lastName companyName title isCompany isLead isArchived leadSource createdAt updatedAt jobberWebUri
       emails { address description primary } phones { number description primary }
       billingAddress { street city province postalCode country }
-      tags(first: 50) { nodes { label } } ${customFieldsSel(f)} ${notesSel(f, ["ClientNote"])}`,
+      tags(first: 20) { nodes { label } } ${customFieldsSel(f)} ${notesSel(f, UNIONS.client)}`,
     save: async (run, nodes) => {
       await upsert("jobber_clients", nodes.map((c) => ({
         id: c.id, name: c.name, company_name: c.companyName, first_name: c.firstName, last_name: c.lastName,
@@ -182,8 +199,8 @@ const ENTITIES: Entity[] = [
     }))),
   },
   {
-    key: "requests", root: "requests", page: 15, byId: "request",
-    nodes: (f) => `id title requestStatus source companyName contactName email phone createdAt updatedAt jobberWebUri client { id } property { id } ${notesSel(f, ["RequestNote"])}`,
+    key: "requests", root: "requests", page: 5, byId: "request",
+    nodes: (f) => `id title requestStatus source companyName contactName email phone createdAt updatedAt jobberWebUri client { id } property { id } ${notesSel(f, UNIONS.request)}`,
     save: async (run, nodes) => {
       await upsert("jobber_requests", nodes.map((q) => ({
         id: q.id, client_id: q.client?.id, property_id: q.property?.id, title: q.title, status: q.requestStatus,
@@ -193,11 +210,11 @@ const ENTITIES: Entity[] = [
     },
   },
   {
-    key: "quotes", root: "quotes", page: 10, byId: "quote",
+    key: "quotes", root: "quotes", page: 4, byId: "quote",
     nodes: (f) => `id quoteNumber title quoteStatus message createdAt jobberWebUri clientHubUri client { id } property { id } request { id }
       amounts { depositAmount discountAmount nonTaxAmount outstandingDepositAmount subtotal taxAmount total }
-      lineItems(first: 100) { totalCount nodes { id name description quantity unitPrice totalPrice unitCost totalCost markup taxable optional textOnly sortOrder createdAt } }
-      ${notesSel(f, ["QuoteNote"])}`,
+      lineItems(first: 60) { totalCount nodes { id name description quantity unitPrice totalPrice unitCost totalCost markup taxable optional textOnly sortOrder createdAt } }
+      ${notesSel(f, UNIONS.quote)}`,
     save: async (run, nodes) => {
       await upsert("jobber_quotes", nodes.map((q) => ({
         id: q.id, client_id: q.client?.id, property_id: q.property?.id, request_id: q.request?.id, quote_number: q.quoteNumber,
@@ -210,11 +227,11 @@ const ENTITIES: Entity[] = [
     },
   },
   {
-    key: "jobs", root: "jobs", page: 10, byId: "job",
+    key: "jobs", root: "jobs", page: 4, byId: "job",
     nodes: (f) => `id jobNumber title jobStatus jobType instructions startAt endAt completedAt createdAt updatedAt jobberWebUri
       total invoicedTotal uninvoicedTotal client { id } property { id } quote { id } request { id } ${customFieldsSel(f)}
-      lineItems(first: 100) { totalCount nodes { id name description quantity unitPrice totalPrice unitCost totalCost taxable createdAt } }
-      ${notesSel(f, ["JobNote", "ClientNote", "QuoteNote", "RequestNote"])}`,
+      lineItems(first: 60) { totalCount nodes { id name description quantity unitPrice totalPrice unitCost totalCost taxable createdAt } }
+      ${notesSel(f, UNIONS.job)}`,
     save: async (run, nodes) => {
       await upsert("jobber_jobs", nodes.map((j) => ({
         id: j.id, client_id: j.client?.id, property_id: j.property?.id, quote_id: j.quote?.id, job_number: String(j.jobNumber),
@@ -235,10 +252,10 @@ const ENTITIES: Entity[] = [
     }))),
   },
   {
-    key: "invoices", root: "invoices", page: 10, byId: "invoice",
+    key: "invoices", root: "invoices", page: 8, byId: "invoice",
     nodes: (f) => `id invoiceNumber subject invoiceStatus message issuedDate dueDate receivedDate createdAt jobberWebUri client { id } jobs(first: 20) { nodes { id } }
       amounts { depositAmount discountAmount invoiceBalance nonTaxAmount paymentsTotal subtotal taxAmount tipsTotal total }
-      lineItems(first: 100) { totalCount nodes { id name description quantity unitPrice totalPrice taxable date createdAt } } ${customFieldsSel(f)}`,
+      lineItems(first: 60) { totalCount nodes { id name description quantity unitPrice totalPrice taxable date createdAt } } ${customFieldsSel(f)}`,
     save: async (run, nodes) => {
       await upsert("jobber_invoices", nodes.map((i) => ({
         id: i.id, client_id: i.client?.id, invoice_number: i.invoiceNumber, subject: i.subject, status: i.invoiceStatus, message: i.message,
