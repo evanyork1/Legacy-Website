@@ -146,6 +146,7 @@ export default function ArchiveSync() {
               ))}
               <TableRow><TableCell>Notes</TableCell><TableCell className="text-right">—</TableCell><TableCell className="text-right tabular-nums">{(c.notes ?? 0).toLocaleString()}</TableCell><TableCell /></TableRow>
               <TableRow><TableCell>Line items</TableCell><TableCell className="text-right">—</TableCell><TableCell className="text-right tabular-nums">{(c.line_items ?? 0).toLocaleString()}</TableCell><TableCell /></TableRow>
+              <TableRow><TableCell>Videos (skipped on purpose)</TableCell><TableCell className="text-right">—</TableCell><TableCell className="text-right tabular-nums">{(c.videos_skipped ?? 0).toLocaleString()}</TableCell><TableCell /></TableRow>
               <TableRow>
                 <TableCell>Photos &amp; files (downloaded / found)</TableCell>
                 <TableCell className="text-right tabular-nums">{(c.attachments ?? 0).toLocaleString()}</TableCell>
