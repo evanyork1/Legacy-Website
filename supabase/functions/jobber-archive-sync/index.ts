@@ -211,7 +211,7 @@ const ENTITIES: Entity[] = [
     },
   },
   {
-    key: "quotes", root: "quotes", page: 4, byId: "quote",
+    key: "quotes", root: "quotes", page: 2, byId: "quote",
     nodes: (f) => `id quoteNumber title quoteStatus message createdAt jobberWebUri clientHubUri client { id } property { id } request { id }
       amounts { depositAmount discountAmount nonTaxAmount outstandingDepositAmount subtotal taxAmount total }
       lineItems(first: 60) { totalCount nodes { id name description quantity unitPrice totalPrice unitCost totalCost markup taxable optional textOnly sortOrder createdAt } }
