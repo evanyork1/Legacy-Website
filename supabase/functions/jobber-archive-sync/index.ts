@@ -348,12 +348,21 @@ Deno.serve(async (req) => {
 
   if (body.action === "validate") {
     if ((req.headers.get("Authorization") || "") !== `Bearer ${SERVICE_KEY}`) return json({ error: "Forbidden" }, 403);
-    const f = await fragments(); const out: Record<string, string> = {};
-    for (const e of ENTITIES) {
-      try { const d = await gql(`{ ${e.root}(first: 1) { totalCount pageInfo { hasNextPage endCursor } nodes { ${e.nodes(f)} } } }`); out[e.key] = `ok total=${d[e.root].totalCount}`; }
-      catch (x) { out[e.key] = (x as Error).message; }
-    }
-    return json(out);
+    const run = async () => {
+      const out: Record<string, string> = {};
+      try {
+        const f = await fragments(); out.fragments = JSON.stringify(f);
+        for (const e of ENTITIES) {
+          try { const d = await gql(`{ ${e.root}(first: 1) { totalCount pageInfo { hasNextPage endCursor } nodes { ${e.nodes(f)} } } }`); out[e.key] = `ok total=${d[e.root].totalCount}`; }
+          catch (x) { out[e.key] = (x as Error).message; }
+          console.log(e.key, out[e.key]);
+        }
+      } catch (x) { out.fatal = (x as Error).message; }
+      await sb.from("jobber_schema_snapshot").insert({ data: { validate: out } });
+    };
+    // @ts-ignore
+    EdgeRuntime.waitUntil(run());
+    return json({ ok: true });
   }
   if (body.action === "continue") {
     if ((req.headers.get("Authorization") || "") !== `Bearer ${SERVICE_KEY}`) return json({ error: "Forbidden" }, 403);
