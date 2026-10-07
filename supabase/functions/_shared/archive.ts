@@ -38,7 +38,7 @@ export interface ArchiveCaller {
   role: "admin" | "viewer";
 }
 
-/** Verifies JWT (signature via auth server), aal2, and active archive membership. */
+/** Verifies JWT (signature via auth server) and active archive membership. */
 export async function requireArchiveUser(
   req: Request,
   needAdmin = false,
@@ -51,8 +51,6 @@ export async function requireArchiveUser(
   const { data: userData, error } = await sb.auth.getUser(token);
   if (error || !userData?.user) return json({ error: "Invalid session" }, 401);
 
-  const payload = decodePayload(token);
-  if (payload?.aal !== "aal2") return json({ error: "MFA required" }, 403);
 
   const { data: row } = await sb
     .from("archive_users")

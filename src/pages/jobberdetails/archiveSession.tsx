@@ -3,7 +3,7 @@ import type { Session } from "@supabase/supabase-js";
 import { supabase } from "@/integrations/supabase/client";
 
 export type ArchiveRole = "admin" | "viewer";
-export type ArchiveStage = "loading" | "signed_out" | "needs_enroll" | "needs_verify" | "denied" | "ready";
+export type ArchiveStage = "loading" | "signed_out" | "denied" | "ready";
 
 interface Ctx {
   stage: ArchiveStage;
@@ -61,13 +61,6 @@ export function ArchiveSessionProvider({ children }: { children: ReactNode }) {
     if (evaluating.current) return;
     evaluating.current = true;
     try {
-      const { data: aal } = await supabase.auth.mfa.getAuthenticatorAssuranceLevel();
-      if (aal?.currentLevel !== "aal2") {
-        const { data: factors } = await supabase.auth.mfa.listFactors();
-        const verified = factors?.totp?.filter((f) => f.status === "verified") ?? [];
-        setStage(verified.length ? "needs_verify" : "needs_enroll");
-        return;
-      }
       try {
         const me = await archiveCall<{ role: ArchiveRole; email: string }>({ action: "whoami" });
         setRole(me.role); setEmail(me.email); setStage("ready");
