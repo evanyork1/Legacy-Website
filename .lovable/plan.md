@@ -1,44 +1,25 @@
-# CompanyCam photo import into the Jobber Archive
+# Remove the authenticator-app step from the Jobber Archive sign-in
 
-Yes, this is doable. CompanyCam's API (v2) lists every project and every photo in it, with the address, GPS location, date, tags, descriptions and who took each photo. We'll copy all of it into the same private archive and match each project to a Jobber client.
+After this change, signing in at /jobberdetails takes only an email and password. No QR code and no 6-digit code.
 
-## What you'll get
-- Every CompanyCam project and photo copied into your private archive storage. The photos then no longer depend on CompanyCam.
-- Each CompanyCam project matched to a Jobber client and property, so the client's page shows their Jobber photos and CompanyCam photos together.
-- Photos can be searched by project name, address, tags, descriptions and comments (search itself arrives with Phase 3).
-- A **CompanyCam** section on the Sync page with the same Start / Resume / Pause buttons, progress bars, a verification table (CompanyCam's count compared with the archive's count for projects and photos) and a list of problems with Retry buttons.
-- A **Matching** list for anything that couldn't be matched automatically. Admins pick the right client from a search box, or mark it "no client".
-- Videos are skipped, the same as with Jobber.
+## What stays the same
+- Sign-in is still invite only, and the account must be an active archive user.
+- Login rate limits stay on: 5 failed tries per email or 20 per network in 15 minutes.
+- Auto sign-out after 30 minutes of inactivity.
+- Prices stay admin-only, photos are only shown through links that expire after 5 minutes, and the audit log keeps running.
 
-## How matching works
-For each CompanyCam project, in this order:
-1. **Address match**: the project's street address and ZIP are compared with Jobber property addresses after cleaning up abbreviations (St/Street, Ste/#, upper/lower case).
-2. **Location match**: if no address matches, we look for a Jobber property within about 50 meters of the project's GPS location, when both have one.
-3. **Name match**: the project name is fuzzy-compared with Jobber client and company names.
-4. If none of these gives one clear answer, the project goes on the Matching list for review. It never gets guessed.
+## Trade-off to be aware of
+Without the second step, anyone who learns a team member's password can get into the archive. Strong, unique passwords become the main protection.
 
-Each match records how it was made (address, location, name or manual) so you can audit it.
-
-## What you'll need to do
-- Create an access token in CompanyCam (Settings, then Integrations / Access Tokens, on an admin account). After you approve this plan, I'll open a secure form to save it. The token stays on the server and the browser never sees it.
-
-## Security (same rules as the rest of the archive)
-- Only active archive users who signed in with their authenticator code can see photos. Photos are shown only through links that expire after 5 minutes.
-- Nothing can be written from the browser; only the server saves data.
-- Viewing photos is recorded in the audit log.
+## Changes
+1. **Sign-in screen:** remove the "Set up authenticator" and "Two-step verification" steps. A correct password takes you straight to the dashboard.
+2. **Server checks:** the archive functions stop requiring the authenticator level on each request. They still verify the session and that the user is an active archive user.
+3. **Database rules:** the read rules on archive tables stop requiring the authenticator level. They still require an active archive user, and admin-only tables still require admin.
+4. Existing authenticator setups are left in place but ignored, so nobody gets prompted for a code anymore.
 
 ## Technical details
-- Secret: `COMPANYCAM_API_TOKEN` (Bearer token, `https://api.companycam.com/v2`).
-- New tables, each read-only to archive users and keeping CompanyCam's full original data:
-  - `companycam_projects` (CompanyCam ID, name, address parts, latitude/longitude, created/updated dates, matched Jobber client and property, match method, match confidence)
-  - `companycam_photos` (CompanyCam ID, project, taken date, creator name, latitude/longitude, description, tags, file name, content type, size, storage path, downloaded)
-  - `companycam_sync_runs`
-  - `companycam_sync_errors` (admin-only)
-- New edge function `companycam-archive-sync`, using the same pattern as the Jobber sync:
-  - works in short time slices, saves its place after each page and continues on its own
-  - re-running updates records instead of duplicating them
-  - pauses and retries when CompanyCam's rate limits kick in
-  - downloads the largest original image size into the private `jobber-archive` bucket under `companycam/<project>/...`
-- Matching runs after the import and can be re-run at any time. The address is normalized in SQL with an indexed key. The location check only compares properties nearby. Manual matches are never overwritten.
-- `archive-signed-url` is extended to accept CompanyCam photo paths. New admin actions are added for the Matching list.
-- This depends on the Jobber sync finishing first, so the Jobber addresses are available to match against.
+- `src/pages/jobberdetails/archiveSession.tsx`: drop the aal check in `evaluate`; go straight to `whoami`. Remove the `needs_enroll` and `needs_verify` stages.
+- `src/pages/jobberdetails/ArchiveLogin.tsx`: remove `EnrollStep`, `VerifyStep` and the `log_mfa` call.
+- `supabase/functions/_shared/archive.ts`: remove the `aal2` check in `requireArchiveUser`. Then redeploy the archive-admin, archive-signed-url and jobber-archive-sync functions.
+- Migration: `CREATE OR REPLACE FUNCTION public.archive_mfa_ok()` to return `true`. This keeps `is_archive_user()` and `is_archive_admin()` and every existing policy working without rewriting them.
+- Update the AGENTS.md archive rule and the project note to drop "aal2".
