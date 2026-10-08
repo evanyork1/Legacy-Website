@@ -9,7 +9,7 @@ const TOKEN_URL = "https://api.getjobber.com/api/oauth/token";
 const SELF = `${Deno.env.get("SUPABASE_URL")}/functions/v1/jobber-archive-sync`;
 const SERVICE_KEY = Deno.env.get("SUPABASE_SERVICE_ROLE_KEY")!;
 const BUCKET = "jobber-archive";
-const BUDGET_MS = 110_000;
+const BUDGET_MS = 50_000;
 const sb = admin();
 
 const Body = z.discriminatedUnion("action", [
@@ -296,9 +296,15 @@ async function saveLines(run: string | null, parent_type: string, nodes: any[]) 
 // ---------- Run loop ----------
 async function kick(run_id: string) {
   // Fire-and-forget continuation (server-to-server, service key never leaves the backend)
-  const p = fetch(SELF, { method: "POST", headers: { Authorization: `Bearer ${SERVICE_KEY}`, "Content-Type": "application/json" }, body: JSON.stringify({ action: "continue", run_id }) }).catch(() => {});
-  // @ts-ignore EdgeRuntime exists in Supabase
-  if (typeof EdgeRuntime !== "undefined") EdgeRuntime.waitUntil(p); else await sleep(200);
+  // Wait for the next slice to be accepted, retrying so a dropped hand-off can't stall the run.
+  for (let i = 0; i < 4; i++) {
+    try {
+      const r = await fetch(SELF, { method: "POST", headers: { Authorization: `Bearer ${SERVICE_KEY}`, "Content-Type": "application/json" }, body: JSON.stringify({ action: "continue", run_id }) });
+      await r.text().catch(() => {});
+      if (r.ok) return;
+    } catch { /* retry */ }
+    await sleep(2000 * (i + 1));
+  }
 }
 
 async function work(run_id: string) {
@@ -311,7 +317,7 @@ async function work(run_id: string) {
     for (const e of ENTITIES) {
       const s = state[e.key] ?? (state[e.key] = { cursor: null, done: false, fetched: 0, total: null });
       if (s.done) continue;
-      while (Date.now() - t0 < BUDGET_MS) {
+      while (Date.now() - t0 < BUDGET_MS - 15_000 || (Date.now() - t0 < BUDGET_MS && s.fetched === 0)) {
         const { data: cur } = await sb.from("jobber_sync_runs").select("status").eq("id", run_id).single();
         if (cur?.status !== "running") return;
         const d = await gql(`query($after: String) { ${e.root}(first: ${e.page}, after: $after) { totalCount pageInfo { hasNextPage endCursor } nodes { ${e.nodes(f)} } } }`, { after: s.cursor });
@@ -319,6 +325,7 @@ async function work(run_id: string) {
         await e.save(run_id, conn.nodes ?? []);
         s.total = conn.totalCount ?? s.total; s.fetched += conn.nodes?.length ?? 0; s.cursor = conn.pageInfo?.endCursor ?? s.cursor;
         if (!conn.pageInfo?.hasNextPage) s.done = true;
+        state._failures = 0;
         await sb.from("jobber_sync_runs").update({ entity_state: state, current_entity: e.key, heartbeat_at: new Date().toISOString(), last_error: null }).eq("id", run_id);
         if (s.done) break;
       }
@@ -328,7 +335,15 @@ async function work(run_id: string) {
   } catch (err) {
     const msg = (err as Error).message;
     await logError(run_id, "sync", run_id, msg);
-    // Transient problems: pause; admin can resume from the same checkpoint.
+    // Transient problems: retry automatically from the checkpoint with backoff; pause only after repeated failures.
+    const fails = (state._failures ?? 0) + 1;
+    state._failures = fails;
+    if (fails <= 6) {
+      await sb.from("jobber_sync_runs").update({ entity_state: state, heartbeat_at: new Date().toISOString(), last_error: `Retrying automatically (${fails}/6): ${msg}` }).eq("id", run_id);
+      await sleep(Math.min(30_000, 5_000 * fails));
+      await kick(run_id);
+      return;
+    }
     await sb.from("jobber_sync_runs").update({ status: "paused", last_error: msg, entity_state: state }).eq("id", run_id);
   }
 }
@@ -409,6 +424,12 @@ Deno.serve(async (req) => {
 
   switch (body.action) {
     case "status": {
+      // Self-heal: a running export with no activity for 90s gets restarted from its checkpoint.
+      if (latest?.status === "running" && Date.now() - new Date(latest.heartbeat_at).getTime() > 90_000) {
+        await sb.from("jobber_sync_runs").update({ heartbeat_at: new Date().toISOString() }).eq("id", latest.id);
+        latest.heartbeat_at = new Date().toISOString();
+        await kick(latest.id);
+      }
       const { data: errors } = await sb.from("jobber_sync_errors").select("*").eq("resolved", false).order("updated_at", { ascending: false }).limit(100);
       return json({ run: latest, alive, counts: await counts(), errors: errors ?? [] });
     }
