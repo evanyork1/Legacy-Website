@@ -112,10 +112,6 @@ export function ArchiveSearch() {
 function Photo({ a }: { a: any }) {
   const [url, setUrl] = useState<string | null>(null);
   const isImg = (a.content_type ?? "").startsWith("image/");
-  useEffect(() => {
-    if (!isImg || !a.storage_path) return;
-    archiveCall<{ url: string }>({ path: a.storage_path, record_id: a.id }).catch(() => null);
-  }, []);
   const open = async () => {
     const { data } = await supabase.functions.invoke("archive-signed-url", { body: { path: a.storage_path, record_id: a.id } });
     if (data?.url) window.open(data.url, "_blank", "noopener");
