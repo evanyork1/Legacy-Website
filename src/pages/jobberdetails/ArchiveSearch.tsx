@@ -67,7 +67,7 @@ export function ArchiveSearch() {
       props.forEach((r: any) => { if (!addr[r.client_id]) addr[r.client_id] = r.address; });
       setWhy(w);
       setClients((data ?? []).map((x: any) => ({ ...x, address: addr[x.id] })).sort((a: any, b: any) => (w[b.id].length - w[a.id].length) || (a.name ?? "").localeCompare(b.name ?? "")));
-      archiveCall({ action: "log", log_action: "archive_search", metadata: { q: term } }).catch(() => {});
+      archiveCall({ action: "log", event: "search", metadata: { q: term } }).catch(() => {});
     } finally { setLoading(false); }
   };
 
@@ -154,7 +154,7 @@ export function ArchiveClient() {
         pays = (await db.from("jobber_payments").select("*").eq("client_id", id).order("paid_at", { ascending: false })).data ?? [];
       }
       setD({ c: c.data, props: props.data ?? [], reqs: reqs.data ?? [], quotes: quotes.data ?? [], jobs: jobs.data ?? [], visits: visits.data ?? [], invs: invs.data ?? [], notes: notes.data ?? [], files: files.data ?? [], lines, fin, pays });
-      archiveCall({ action: "log", log_action: "view_client", record_type: "client", record_id: id }).catch(() => {});
+      archiveCall({ action: "log", event: "view_record", record_type: "client", record_id: id }).catch(() => {});
     })();
   }, [id, role]);
 

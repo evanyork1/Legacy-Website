@@ -12,6 +12,7 @@ export default function ArchiveLayout() {
   if (stage !== "ready") return <Navigate to="/jobberdetails" replace />;
 
   const links = [
+    { to: "/jobberdetails/search", label: "Search" },
     { to: "/jobberdetails/dashboard", label: "Dashboard" },
     ...(role === "admin"
       ? [
