@@ -108,7 +108,9 @@ export default function ArchiveSync() {
                   {run.finished_at && ` Finished ${fmt(run.finished_at)}.`}
                 </p>
               )}
-              {run?.last_error && <p className="text-sm text-destructive mb-4">Stopped: {run.last_error}. Click Resume to continue from the last checkpoint.</p>}
+              {run?.last_error && (run.status === "running"
+                ? <p className="text-sm text-muted-foreground mb-4">{run.last_error}</p>
+                : <p className="text-sm text-destructive mb-4">Stopped: {run.last_error}. Click Resume to continue from the last checkpoint.</p>)}
               <div className="space-y-3">
                 {ENTITIES.map((e) => {
                   const x = st[e.key];
