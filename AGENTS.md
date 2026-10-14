@@ -1,2 +1,5 @@
 - Jobber archive (/jobberdetails) access is enforced server-side: edge functions verify JWT + active archive_users row via supabase/functions/_shared/archive.ts; the browser never writes archive tables or reads Jobber tokens — keeps the archive safe even if UI checks are bypassed.
 - Jobber archive export runs in the jobber-archive-sync edge function: ~110s work slices that checkpoint cursors in jobber_sync_runs and re-invoke themselves with the service key; page sizes stay small because Jobber rejects queries costing over 10,000 points. Money fields are stripped from record raw JSON and stored only in admin-only jobber_financials/jobber_payments.
+
+- Request Information uses commercial_submissions and private Storage uploads; shared footer sections gate internal/confirmation routes and skip routes with in-body inquiry forms to avoid duplicates.
+- Request Information notifications load saved rows and sign only matching submission-folder files; pg_net uses a publishable caller key, while service-role credentials stay exclusively in edge-function environment variables to avoid database credential exposure.

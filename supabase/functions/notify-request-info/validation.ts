@@ -1,0 +1,4 @@
+import { z } from 'npm:zod@3';
+export const bodySchema=z.object({submission_id:z.string().uuid()}).strict();
+export const savedRowSchema=z.object({id:z.string().uuid(),name:z.string().trim().min(1).max(100),email:z.string().email().max(255),phone:z.string().min(7).max(40),company:z.string().max(200).nullable(),square_footage:z.string().nullable(),project_description:z.string().trim().min(1).max(10000),landing_page:z.string().nullable(),referrer:z.string().nullable(),utm_source:z.string().nullable(),utm_medium:z.string().nullable(),utm_campaign:z.string().nullable(),created_at:z.string(),files:z.array(z.object({path:z.string(),name:z.string().min(1).max(255),size:z.number().int().min(0).max(26214400)})).max(10)}).refine(row=>row.files.every(file=>file.path.startsWith(`${row.id}/`)&&new RegExp(`^${row.id}/[A-Za-z0-9_.-]+$`).test(file.path)),{message:'Attachment path must belong to submission'});
+export const SIGNED_URL_SECONDS=7*24*60*60;
