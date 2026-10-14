@@ -373,6 +373,60 @@
       }
     }
   },
+  "/commercial/gallery-polished-warehouse.png": {
+    "width": 1920,
+    "height": 1091,
+    "variants": {
+      "480": {
+        "src": "/commercial/gallery-polished-warehouse-480.webp",
+        "w": 480
+      },
+      "960": {
+        "src": "/commercial/gallery-polished-warehouse-960.webp",
+        "w": 960
+      },
+      "1600": {
+        "src": "/commercial/gallery-polished-warehouse-1600.webp",
+        "w": 1600
+      }
+    }
+  },
+  "/commercial/aloe-vera-polished.png": {
+    "width": 1920,
+    "height": 1091,
+    "variants": {
+      "480": {
+        "src": "/commercial/aloe-vera-polished-480.webp",
+        "w": 480
+      },
+      "960": {
+        "src": "/commercial/aloe-vera-polished-960.webp",
+        "w": 960
+      },
+      "1600": {
+        "src": "/commercial/aloe-vera-polished-1600.webp",
+        "w": 1600
+      }
+    }
+  },
+  "/commercial/gallery-grinding-warehouse.jpg": {
+    "width": 1440,
+    "height": 1920,
+    "variants": {
+      "480": {
+        "src": "/commercial/gallery-grinding-warehouse-480.webp",
+        "w": 480
+      },
+      "960": {
+        "src": "/commercial/gallery-grinding-warehouse-960.webp",
+        "w": 960
+      },
+      "1600": {
+        "src": "/commercial/gallery-grinding-warehouse-1600.webp",
+        "w": 1440
+      }
+    }
+  },
   "/lovable-uploads/d1b328fa-3e30-4126-8266-ae64a33edd79.png": {
     "width": 2000,
     "height": 1335,
