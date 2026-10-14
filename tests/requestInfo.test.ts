@@ -1,5 +1,5 @@
 import { describe, it, expect } from 'bun:test';
-import { acceptsFile, passesBotChecks, requestInfoSchema, showFooterRequestInfo, MAX_FILES } from './requestInfo';
+import { acceptsFile, passesBotChecks, requestInfoSchema, showFooterRequestInfo, MAX_FILES } from '../src/lib/requestInfo';
 describe('Request information rules',()=>{
  it('limits attachments to ten',()=>expect(MAX_FILES).toBe(10));
  it('limits files to 25 MB',()=>{expect(acceptsFile({name:'plan.pdf',type:'application/pdf',size:26214400})).toBe(true);expect(acceptsFile({name:'plan.pdf',type:'application/pdf',size:26214401})).toBe(false);});
