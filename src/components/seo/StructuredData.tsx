@@ -69,6 +69,7 @@ export const StructuredData = ({
         "Commercial flooring",
       ],
       sameAs: [
+        "https://www.linkedin.com/company/legacy-industrial-coatings",
         "https://www.instagram.com/legacyindustrialcoatings/",
         "https://www.facebook.com/legacyindustrialcoatings",
         "https://maps.app.goo.gl/2idbg4BFnZVKvLNK9",
@@ -143,6 +144,7 @@ export const StructuredData = ({
         },
       ],
       sameAs: [
+        "https://www.linkedin.com/company/legacy-industrial-coatings",
         "https://www.instagram.com/legacyindustrialcoatings/",
         "https://www.facebook.com/legacyindustrialcoatings",
       ],

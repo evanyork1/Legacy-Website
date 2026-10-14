@@ -9,6 +9,7 @@ import { BookingModal } from "@/components/landing/BookingModal";
 const FeaturesSection = () => {
   const [showBookingModal, setShowBookingModal] = useState(false);
   const location = useLocation();
+  const isHomepage = location.pathname === "/";
   const navigate = useNavigate();
   const isDFW = location.pathname === '/' || location.pathname === '/dfw' || location.pathname === '/dfwreslanding' || location.pathname === '/gpt';
   const isCommercial = location.pathname === '/dfwcommercial';
@@ -60,10 +61,10 @@ const FeaturesSection = () => {
   const sectionTitle = isCommercial ? "Commercial & Industrial Flooring Solutions" : isDFW ? "Premium Polyurea, Epoxy, and Polished Floors" : "Why Choose Legacy Industrial Coatings?";
   
   return (
-    <section className="py-12 sm:py-16 lg:py-20 bg-gray-50">
-      <div className="container mx-auto px-4 sm:px-6">
+    <section className={isHomepage ? "bg-gray-50 py-12 lg:py-16" : "py-12 sm:py-16 lg:py-20 bg-gray-50"}>
+      <div className={isHomepage ? "container mx-auto " : "container mx-auto px-4 sm:px-6"}>
         <div className="text-center mb-8 sm:mb-12">
-          <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-gray-900 mb-3 sm:mb-4 text-blue-900">
+          <h2 className={isHomepage ? "text-3xl lg:text-4xl font-bold text-gray-900 mb-3 sm:mb-4" : "text-2xl sm:text-3xl lg:text-4xl font-bold text-gray-900 mb-3 sm:mb-4 text-blue-900"}>
             Our Solutions
           </h2>
         </div>

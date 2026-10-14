@@ -1,6 +1,8 @@
+import { useLocation } from "react-router-dom";
 import { Clock, Calendar, DollarSign } from "lucide-react";
 
 export const QuickFeaturesSection = () => {
+  const isHomepage = useLocation().pathname === "/";
   const features = [
     {
       icon: Clock,
@@ -20,8 +22,8 @@ export const QuickFeaturesSection = () => {
   ];
 
   return (
-    <section className="py-8 sm:py-10 lg:py-12 bg-gray-100">
-      <div className="container mx-auto px-4 sm:px-6">
+    <section className={isHomepage ? "bg-gray-100 py-8 lg:py-10" : "py-8 sm:py-10 lg:py-12 bg-gray-100"}>
+      <div className={isHomepage ? "container mx-auto " : "container mx-auto px-4 sm:px-6"}>
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
           {features.map((feature, index) => {
             const IconComponent = feature.icon;

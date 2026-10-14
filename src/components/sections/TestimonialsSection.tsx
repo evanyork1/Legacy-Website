@@ -3,6 +3,7 @@ import { Star } from "lucide-react";
 import { useLocation } from "react-router-dom";
 const TestimonialsSection = () => {
   const location = useLocation();
+  const isHomepage = location.pathname === "/";
   const isProsper = location.pathname === '/epoxy-flooring-prosper';
   const isFrisco = location.pathname === '/epoxy-flooring-frisco';
   const isPHX = location.pathname === '/phx';
@@ -49,12 +50,12 @@ const TestimonialsSection = () => {
     text: "Outstanding work! The team was professional and completed the job quickly. The floor coating has held up perfectly through our hot Arizona summers. Worth every penny!"
   }];
   const testimonials = isPHX ? phxTestimonials : dfwTestimonials;
-  return <section className="py-12 sm:py-16 lg:py-20 bg-gradient-to-br from-white to-slate-50" id="testimonials">
-      <div className="container mx-auto px-4 sm:px-6">
+  return <section className={isHomepage ? "bg-gradient-to-br from-white to-slate-50 py-10 lg:py-14" : "py-12 sm:py-16 lg:py-20 bg-gradient-to-br from-white to-slate-50"} id="testimonials">
+      <div className={isHomepage ? "container mx-auto " : "container mx-auto px-4 sm:px-6"}>
         
         
         {/* Featured Matthew Schultz Review */}
-        <div className="max-w-4xl mx-auto mb-8 sm:mb-12 px-4">
+        <div className={isHomepage ? "max-w-4xl mx-auto mb-8 sm:mb-12" : "max-w-4xl mx-auto mb-8 sm:mb-12 px-4"}>
           <Card className="border border-blue-200 shadow-lg bg-white">
             <CardContent className="p-4 sm:p-6">
               <div className="flex-1">
@@ -65,8 +66,6 @@ const TestimonialsSection = () => {
                   <div className="flex">
                     {[...Array(5)].map((_, i) => <Star key={i} className="h-4 w-4 text-yellow-400 fill-current" />)}
                   </div>
-                  <span className="ml-2 text-xs text-gray-500">6 days ago</span>
-                  <span className="ml-2 bg-green-600 text-white text-xs px-2 py-1 rounded">NEW</span>
                 </div>
                 <p className="text-gray-800 leading-relaxed text-sm">
                   Great communication, friendly service, excellent quality and a beautiful finished product. It is incredible how much better these floors make your garage look and feel. My wife said it made the garage feel like an extension of the house now. The team we interacted with was professional and it went from communication to completion. Easily one of the best (minor) investments we've made in our home.
@@ -76,7 +75,7 @@ const TestimonialsSection = () => {
           </Card>
         </div>
         
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 xl:grid-cols-4 gap-4 sm:gap-6 lg:gap-8 mb-8 sm:mb-12 px-4">
+        <div className={isHomepage ? "grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 xl:grid-cols-4 gap-4 sm:gap-6 lg:gap-8 mb-8 sm:mb-12" : "grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 xl:grid-cols-4 gap-4 sm:gap-6 lg:gap-8 mb-8 sm:mb-12 px-4"}>
           {testimonials.map((testimonial, index) => <Card key={index} className="border-0 shadow-xl hover:shadow-2xl transition-all duration-500 group hover:-translate-y-2 bg-white">
               <CardContent className="p-4 sm:p-6">
                 <div className="flex mb-4">

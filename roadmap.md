@@ -1,0 +1,3 @@
+- [ ] Tighten homepage-only spacing and typography without changing marketing content or photos.
+- [ ] Apply requested navigation, office, metadata, and LinkedIn cleanups.
+- [ ] Verify desktop/mobile page height, hero fit, gutters, CTAs, and protected-page regressions.

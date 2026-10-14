@@ -8,8 +8,6 @@ import TestimonialsSection from "@/components/sections/TestimonialsSection";
 import GalleryPreview from "@/components/sections/GalleryPreview";
 import CommercialLinkSection from "@/components/sections/CommercialLinkSection";
 import CTASection from "@/components/sections/CTASection";
-import { CustomQuoteSection } from "@/components/sections/CustomQuoteSection";
-import HomepageFAQ from "@/components/sections/HomepageFAQ";
 import { QuickFeaturesSection } from "@/components/sections/QuickFeaturesSection";
 import { FloatingEstimateCTA } from "@/components/ui/floating-estimate-cta";
 import { AboutUsSection } from "@/components/sections/AboutUsSection";
@@ -89,14 +87,13 @@ const DFW = () => {
           <AboutUsSection />
           <TestimonialsSection />
           <CommercialLinkSection />
-          <div className="mt-16 sm:mt-20 lg:mt-24">
+          <div>
             <TrustedBrandSection />
           </div>
           <GalleryPreview />
-          <CustomQuoteSection />
 
           {/* Always-visible FAQ for AEO */}
-          <section className="py-16 bg-white" aria-labelledby="dfw-faq-heading">
+          <section className="py-12 lg:py-16 bg-white" aria-labelledby="dfw-faq-heading">
             <div className="container mx-auto px-4 max-w-4xl">
               <div className="text-center mb-10">
                 <h2 id="dfw-faq-heading" className="text-3xl lg:text-4xl font-bold text-gray-900 mb-3">

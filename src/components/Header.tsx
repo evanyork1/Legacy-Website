@@ -10,12 +10,12 @@ const Header = () => {
   const [isAboutOpen, setIsAboutOpen] = useState(false);
   const navigate = useNavigate();
   const location = useLocation();
+  const isHomepage = location.pathname === "/";
 
   // Force DFW context for this header
   const isDFW = true;
 
   // Always use DFW paths
-  const quotePath = '/quotedfw';
   const homePath = '/';
   const navItems = [{
     name: "Home",
@@ -78,10 +78,10 @@ const Header = () => {
   return <>
       <header className="bg-white shadow-sm border-b border-gray-100 sticky top-0 z-50">
       <div className="container mx-auto px-4 sm:px-6">
-        <div className="flex items-center justify-between h-16 sm:h-20 md:h-28">
+        <div className={isHomepage ? "flex items-center justify-between h-16 sm:h-20 md:h-20" : "flex items-center justify-between h-16 sm:h-20 md:h-28"}>
           {/* Logo - Responsive sizing - 20% smaller */}
           <div className="flex items-center cursor-pointer" onClick={() => navigate(homePath)}>
-            <img src="/lovable-uploads/a18e3648-17a6-4222-808b-0a78d3ea50b9.png" alt="Legacy Industrial Coatings" className="h-12 sm:h-16 md:h-19 lg:h-22 w-auto"  loading="eager" decoding="async" />
+            <img src="/lovable-uploads/a18e3648-17a6-4222-808b-0a78d3ea50b9.png" alt="Legacy Industrial Coatings" className={isHomepage ? "h-12 sm:h-16 md:h-12 lg:h-12 w-auto" : "h-12 sm:h-16 md:h-19 lg:h-22 w-auto"}  loading="eager" decoding="async" />
           </div>
 
           {/* Desktop Navigation */}
