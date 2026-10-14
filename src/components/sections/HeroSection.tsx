@@ -77,7 +77,7 @@ const HeroSection = () => {
     return (
       <section className="relative overflow-hidden">
         {/* Hero Container - Fixed Height on Mobile */}
-        <div className={isHomepage ? "h-[70vh] lg:h-auto lg:min-h-[calc(100vh-80px)] relative flex items-center bg-cover bg-center" : "h-[70vh] lg:min-h-screen relative flex items-center bg-cover bg-center"} style={{ backgroundImage: isDFW ? "url('/lovable-uploads/home-hero-hangar-preview.jpg')" : "url('/lovable-uploads/home-hero-preview.jpg')" }}>
+        <div className={isHomepage ? "h-[70vh] lg:h-auto lg:min-h-[calc(88vh-80px)] relative flex items-center bg-cover bg-center" : "h-[70vh] lg:min-h-screen relative flex items-center bg-cover bg-center"} style={{ backgroundImage: isDFW ? "url('/lovable-uploads/home-hero-hangar-preview.jpg')" : "url('/lovable-uploads/home-hero-preview.jpg')" }}>
         {/* A tiny preview fills the hero immediately; the priority image replaces it as it loads. */}
         {/* All slides stay mounted so each one cross-fades instead of popping in/out. */}
         {galleryImages.map((image, index) => (
