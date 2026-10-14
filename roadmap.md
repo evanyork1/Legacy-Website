@@ -1,3 +1,6 @@
+- [ ] Add Request Information form, private uploads, and notification trigger.
+- [ ] Replace public forms and add footer/header placement with route exclusions.
+- [ ] Verify real PDF submission, stored row/file, Zapier status, and preview checks.
 - [x] Tighten homepage-only spacing and typography without changing marketing content or photos.
 - [x] Apply requested navigation, office, metadata, and LinkedIn cleanups.
 - [x] Verify desktop/mobile page height, hero fit, gutters, CTAs, and protected-page regressions; retained requested section padding and original tall About photos despite remaining spacious boundaries.
