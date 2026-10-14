@@ -130,7 +130,7 @@ const Commercial = () => {
         <meta property="og:type" content="website" />
         <meta property="og:title" content="Commercial Epoxy Flooring DFW | Legacy Industrial Coatings" />
         <meta property="og:description" content="Large-scale commercial epoxy flooring in Dallas-Fort Worth. Warehouses, dealerships, industrial facilities. Heavy-duty floor systems built to last." />
-        <meta property="og:image" content="/lovable-uploads/171b7f71-4aa3-4b54-8c96-5f7143dddebf.png" />
+        <meta property="og:image" content="https://legacyindustrialcoatings.com/lovable-uploads/171b7f71-4aa3-4b54-8c96-5f7143dddebf.png" />
         
         {/* Additional SEO */}
         <meta name="robots" content="index, follow" />

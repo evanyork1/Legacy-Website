@@ -54,7 +54,7 @@ const ResidentialGarageFloors = () => {
         
         <meta property="og:title" content="Residential Garage Floor Coatings - Polyurea Flake Floors | Legacy Industrial Coatings" />
         <meta property="og:description" content="Transform your residential garage with premium polyurea flake floor coatings. Lifetime warranty, one-day installation, and beautiful custom designs." />
-        <meta property="og:image" content="/lovable-uploads/8865d0d1-af13-4849-b194-a2611de34a0b.png" />
+        <meta property="og:image" content="https://legacyindustrialcoatings.com/lovable-uploads/8865d0d1-af13-4849-b194-a2611de34a0b.png" />
         
         <meta name="robots" content="index, follow" />
         <link rel="canonical" href="https://legacyindustrialcoatings.com/garagefloors" />

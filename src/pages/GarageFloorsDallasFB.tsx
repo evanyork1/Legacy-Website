@@ -84,7 +84,7 @@ const GarageFloorsDallasFB = () => {
         
         <meta property="og:title" content="Professional Garage Floor Coating Dallas | Same Day Estimates" />
         <meta property="og:description" content="Transform your Dallas garage with premium polyurea floor coating. Lifetime warranty, one-day installation, and over 3,000 satisfied customers." />
-        <meta property="og:image" content="/lovable-uploads/b4732a11-b0eb-48f7-9950-d9c8e186ab97.png" />
+        <meta property="og:image" content="https://legacyindustrialcoatings.com/lovable-uploads/b4732a11-b0eb-48f7-9950-d9c8e186ab97.png" />
         <meta property="og:type" content="website" />
         
         <meta name="robots" content="index, follow" />

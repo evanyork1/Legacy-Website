@@ -76,7 +76,7 @@ const IndustrialEpoxy = () => {
         
         <meta property="og:title" content="Industrial Epoxy Flooring Dallas-Fort Worth | Legacy Industrial Coatings" />
         <meta property="og:description" content="Heavy-duty industrial epoxy floor coatings for warehouses, manufacturing, and high-traffic facilities across DFW." />
-        <meta property="og:image" content="/lovable-uploads/7a412198-403e-4444-bc3d-56e2e28ac9fd.png" />
+        <meta property="og:image" content="https://legacyindustrialcoatings.com/lovable-uploads/7a412198-403e-4444-bc3d-56e2e28ac9fd.png" />
         
         <meta name="robots" content="index, follow" />
         <link rel="canonical" href="https://legacyindustrialcoatings.com/industrial-epoxy" />
