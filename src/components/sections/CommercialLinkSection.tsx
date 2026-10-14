@@ -1,3 +1,4 @@
+import { responsiveImage, largestVariant } from "@/lib/responsiveImage";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Building, ArrowRight } from "lucide-react";

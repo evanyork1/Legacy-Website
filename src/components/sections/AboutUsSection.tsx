@@ -1,3 +1,4 @@
+import { responsiveImage, largestVariant } from "@/lib/responsiveImage";
 export const AboutUsSection = () => {
   return (
     <>
