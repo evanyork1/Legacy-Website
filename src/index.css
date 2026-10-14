@@ -2,6 +2,19 @@
 @tailwind components;
 @tailwind utilities;
 
+/* Scoped inquiry palette preserves all existing marketing colors. */
+.request-info-theme {
+ --background: 0 0% 100%; --foreground: 221 73% 22%;
+ --card: 0 0% 100%; --card-foreground: 221 73% 22%;
+ --primary: 221 83% 53%; --primary-foreground: 0 0% 100%;
+ --muted: 210 40% 96%; --muted-foreground: 215 16% 42%;
+ --accent: 214 95% 96%; --accent-foreground: 221 73% 22%;
+ --border: 214 32% 89%; --input: 214 32% 86%; --ring: 221 83% 53%;
+ font-family: Inter, sans-serif; letter-spacing: 0;
+}
+.request-info-theme progress { accent-color: hsl(var(--primary)); }
+
+
 /* Definition of the design system. All colors, gradients, fonts, etc should be defined here. */
 
 @layer base {

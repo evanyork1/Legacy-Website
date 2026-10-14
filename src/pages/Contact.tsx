@@ -2,7 +2,7 @@ import { Helmet } from "react-helmet-async";
 import { PageBreadcrumbs } from "@/components/seo/PageBreadcrumbs";
 import HeaderGeneric from "@/components/HeaderGeneric";
 import Footer from "@/components/Footer";
-import { LeadForm } from "@/components/landing/LeadForm";
+import { RequestInfoForm } from "@/components/forms/RequestInfoForm";
 import { Phone, Mail } from "lucide-react";
 const Contact = () => {
   return <>
@@ -34,8 +34,8 @@ const Contact = () => {
                   </p>
                 </div>
 
-                <div className="bg-white rounded-xl shadow-lg p-8 mb-12">
-                  <LeadForm />
+                <div className="mb-12">
+                  <RequestInfoForm id="request-info" />
                 </div>
 
                 {/* Contact Information - Offices */}

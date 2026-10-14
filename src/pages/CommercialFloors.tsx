@@ -1,3 +1,4 @@
+import { RequestInfoSection } from "@/components/sections/RequestInfoSection";
 import { useState, useEffect, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X, Clock, MapPin, Shield, Award, Wrench, CheckCircle, ArrowLeft, Phone } from "lucide-react";
@@ -477,6 +478,7 @@ const CommercialFloors = () => {
       </section>
 
       {/* ─── Footer ─── */}
+      <RequestInfoSection id="request-info" />
       <footer className="py-16 bg-[hsl(0,0%,8%)] border-t border-white/10">
         <div className="container mx-auto px-6">
           <div className="flex flex-col md:flex-row items-center justify-between gap-6">

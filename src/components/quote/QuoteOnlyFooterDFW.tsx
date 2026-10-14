@@ -1,3 +1,4 @@
+import { RequestInfoSection } from "@/components/sections/RequestInfoSection";
 
 import { Mail, Phone, MapPin } from "lucide-react";
 
@@ -10,7 +11,7 @@ export const QuoteOnlyFooterDFW = () => {
   };
 
   return (
-    <footer className="bg-gray-900 text-white py-16 sm:py-20 lg:py-24">
+    <><RequestInfoSection id="request-info" /><footer className="bg-gray-900 text-white py-16 sm:py-20 lg:py-24">
       <div className="container mx-auto px-4 sm:px-6">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12 sm:gap-14 lg:gap-16 mb-12 sm:mb-14 lg:mb-16">
           {/* Company Info */}
@@ -46,6 +47,6 @@ export const QuoteOnlyFooterDFW = () => {
           </div>
         </div>
       </div>
-    </footer>
+    </footer></>
   );
 };
