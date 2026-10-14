@@ -145,42 +145,54 @@ export type Database = {
       }
       commercial_submissions: {
         Row: {
+          company: string | null
           created_at: string
           email: string
+          files: Json
           id: string
           landing_page: string | null
           name: string
           phone: string
           project_description: string
           referrer: string | null
+          source: string
+          square_footage: string | null
           status: string
           utm_campaign: string | null
           utm_medium: string | null
           utm_source: string | null
         }
         Insert: {
+          company?: string | null
           created_at?: string
           email: string
+          files?: Json
           id?: string
           landing_page?: string | null
           name: string
           phone: string
           project_description: string
           referrer?: string | null
+          source?: string
+          square_footage?: string | null
           status?: string
           utm_campaign?: string | null
           utm_medium?: string | null
           utm_source?: string | null
         }
         Update: {
+          company?: string | null
           created_at?: string
           email?: string
+          files?: Json
           id?: string
           landing_page?: string | null
           name?: string
           phone?: string
           project_description?: string
           referrer?: string | null
+          source?: string
+          square_footage?: string | null
           status?: string
           utm_campaign?: string | null
           utm_medium?: string | null

@@ -5,7 +5,7 @@ import Footer from "@/components/Footer";
 import EpoxyVsPolyureaSection from "@/components/sections/EpoxyVsPolyureaSection";
 import ProcessSection from "@/components/sections/ProcessSection";
 import TestimonialsSection from "@/components/sections/TestimonialsSection";
-import { LeadForm } from "@/components/landing/LeadForm";
+import { RequestInfoForm } from "@/components/forms/RequestInfoForm";
 import { BookingModal } from "@/components/landing/BookingModal";
 import garageLandingHero from "@/assets/garage-landing-hero.jpg";
 const GarageLandingForm = () => {
@@ -67,7 +67,7 @@ const GarageLandingForm = () => {
 
                 {/* Right Column - Lead Form */}
                 <div className="w-full">
-                  <LeadForm />
+                  <RequestInfoForm />
                 </div>
               </div>
             </div>
@@ -222,7 +222,7 @@ const GarageLandingForm = () => {
                 </p>
               </div>
               <div className="max-w-2xl mx-auto">
-                <LeadForm />
+                <RequestInfoForm />
               </div>
             </div>
           </div>

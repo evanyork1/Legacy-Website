@@ -1,3 +1,4 @@
+import { RequestInfoSection } from "@/components/sections/RequestInfoSection";
 
 const QuoteOnlyFooterPHX = () => {
   const handlePhoneClick = () => {
@@ -12,7 +13,7 @@ const QuoteOnlyFooterPHX = () => {
   };
 
   return (
-    <footer className="bg-slate-800 text-white py-12 mt-16">
+    <><RequestInfoSection id="request-info" /><footer className="bg-slate-800 text-white py-12 mt-16">
       <div className="container mx-auto px-4 sm:px-6">
         <div className="max-w-4xl mx-auto text-center space-y-6">
           <div className="space-y-2">
@@ -47,7 +48,7 @@ const QuoteOnlyFooterPHX = () => {
           </div>
         </div>
       </div>
-    </footer>
+    </footer></>
   );
 };
 

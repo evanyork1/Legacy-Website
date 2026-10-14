@@ -1,3 +1,4 @@
+import { RequestInfoSection } from "@/components/sections/RequestInfoSection";
 import { Mail, Phone, MapPin, Instagram } from "lucide-react";
 
 export const LandingMinimalFooter = () => {
@@ -14,7 +15,7 @@ export const LandingMinimalFooter = () => {
   };
 
   return (
-    <footer className="bg-gray-900 text-white py-12 sm:py-16 lg:py-20">
+    <><RequestInfoSection id="request-info" /><footer className="bg-gray-900 text-white py-12 sm:py-16 lg:py-20">
       <div className="container mx-auto px-4 sm:px-6">
         <div className="max-w-3xl mx-auto">
           {/* Company Info */}
@@ -55,6 +56,6 @@ export const LandingMinimalFooter = () => {
           </div>
         </div>
       </div>
-    </footer>
+    </footer></>
   );
 };

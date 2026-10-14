@@ -1,3 +1,4 @@
+import { RequestInfoSection } from "@/components/sections/RequestInfoSection";
 import { Mail, Phone, MapPin, Instagram, Facebook, Linkedin, MapIcon } from "lucide-react";
 import { useLocation } from "react-router-dom";
 import { SERVICE_AREA_CITIES } from "@/data/serviceAreaCities";
@@ -31,7 +32,7 @@ const Footer = () => {
   ];
 
   const cities = SERVICE_AREA_CITIES;
-  return <footer className={isHomepage ? "bg-slate-800 text-white pt-10 lg:pt-14 pb-6" : "bg-slate-800 text-white pt-16 sm:pt-20 lg:pt-24 pb-2"}>
+  return <><RequestInfoSection id="request-info" /><footer className={isHomepage ? "bg-slate-800 text-white pt-10 lg:pt-14 pb-6" : "bg-slate-800 text-white pt-16 sm:pt-20 lg:pt-24 pb-2"}>
       <div className="container mx-auto px-4 sm:px-6">
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-6 gap-8 lg:gap-12 mb-12">
           
@@ -149,6 +150,6 @@ const Footer = () => {
           </div>
         </div>
       </div>
-    </footer>;
+    </footer></>;
 };
 export default Footer;

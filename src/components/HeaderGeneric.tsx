@@ -1,3 +1,4 @@
+import { scrollToRequestInfo } from "@/lib/requestInfo";
 
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
@@ -129,6 +130,7 @@ const residentialItems = [
                 {item.name}
               </a>
             ))}
+            <Button asChild variant="outline" className="request-info-theme rounded-none border-primary text-primary"><a href="#request-info" onClick={scrollToRequestInfo}>Request Info</a></Button>
           </nav>
 
           {/* Mobile Menu Button */}
@@ -147,6 +149,7 @@ const residentialItems = [
                 </a>
               ))}
               
+              <Button asChild variant="outline" className="request-info-theme mx-4 rounded-none border-primary text-primary"><a href="#request-info" onClick={e => { scrollToRequestInfo(e); setIsMenuOpen(false); }}>Request Info</a></Button>
               {/* Mobile Commercial Section */}
               <div className="px-4">
                 <div className="text-gray-800 font-semibold text-base mb-2">Commercial</div>

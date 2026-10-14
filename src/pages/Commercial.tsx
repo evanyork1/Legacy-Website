@@ -11,7 +11,7 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 
 import { BookingModal } from "@/components/landing/BookingModal";
-import { LeadForm } from "@/components/landing/LeadForm";
+import { RequestInfoForm } from "@/components/forms/RequestInfoForm";
 import { Building, Factory, Car, Plane, Dog, Church, Store, School, Utensils, ArrowRight, Phone, Calendar } from "lucide-react";
 
 const HERO_SIZES = "(min-width: 1024px) 50vw, 100vw";
@@ -317,8 +317,8 @@ const Commercial = () => {
                   Tell us about your project and our team will follow up with pricing and next steps.
                 </p>
               </div>
-              <div className="bg-white rounded-xl shadow-md border border-slate-200 p-4 sm:p-6">
-                <LeadForm />
+              <div>
+                <RequestInfoForm id="request-info" />
               </div>
             </div>
           </div>

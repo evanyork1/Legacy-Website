@@ -1,3 +1,4 @@
+import { RequestInfoSection } from "@/components/sections/RequestInfoSection";
 import { motion } from "framer-motion";
 import { ArrowLeft, Award, Shield, MapPin, Users } from "lucide-react";
 import { useNavigate } from "react-router-dom";
@@ -112,6 +113,7 @@ const AboutCommercial = () => {
       </section>
 
       {/* ─── Footer ─── */}
+      <RequestInfoSection id="request-info" />
       <footer className="py-16 border-t border-white/10">
         <div className="container mx-auto px-6">
           <div className="flex flex-col md:flex-row items-center justify-between gap-6">

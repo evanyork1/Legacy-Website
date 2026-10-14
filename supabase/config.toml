@@ -58,3 +58,6 @@ verify_jwt = false
 
 [functions.jobber-archive-sync]
 verify_jwt = false
+
+[functions.notify-request-info]
+verify_jwt = false
