@@ -45,10 +45,16 @@ const HeroSection = () => {
   // Gallery images for rotating background - memoized for performance
   const galleryImages = useMemo(() => [
     isDFW ? '/lovable-uploads/701db69b-4439-4779-9115-583d175298af-1600.webp' : '/lovable-uploads/85530262-ab7f-4339-af86-ed63ee721679.webp',
-    '/lovable-uploads/259c870a-cc78-430c-867f-54d087457e73.webp',
-    '/lovable-uploads/4118a438-beef-487b-949a-0e4db42b6da7.webp',
-    isDFW ? '/lovable-uploads/85530262-ab7f-4339-af86-ed63ee721679.webp' : '/lovable-uploads/f8190725-62df-42e7-9d92-285d2f3f78e3.webp'
-  ], [isDFW]);
+    isHomepage ? '/commercial/gallery-polished-warehouse-1600.webp' : '/lovable-uploads/259c870a-cc78-430c-867f-54d087457e73.webp',
+    isHomepage ? '/commercial/aloe-vera-polished-1600.webp' : '/lovable-uploads/4118a438-beef-487b-949a-0e4db42b6da7.webp',
+    isHomepage ? '/commercial/gallery-grinding-warehouse-1600.webp' : (isDFW ? '/lovable-uploads/85530262-ab7f-4339-af86-ed63ee721679.webp' : '/lovable-uploads/f8190725-62df-42e7-9d92-285d2f3f78e3.webp')
+  ], [isDFW, isHomepage]);
+  const homepageSlideAlts = [
+    'Polished concrete floor in a DFW aircraft hangar installed by Legacy Industrial Coatings',
+    'Polished concrete floor in a commercial warehouse',
+    'Polished concrete at the Aloe Vera commercial facility',
+    'Concrete floor grinding inside a commercial warehouse',
+  ];
 
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
   // Slides 2-4 wait until slide 1 has loaded (or 1.5s) so they don't compete with first paint.
@@ -71,22 +77,22 @@ const HeroSection = () => {
     return (
       <section className="relative overflow-hidden">
         {/* Hero Container - Fixed Height on Mobile */}
-        <div className={isHomepage ? "h-auto min-h-[520px] lg:min-h-[600px] relative flex items-center bg-cover bg-center" : "h-[70vh] lg:min-h-screen relative flex items-center bg-cover bg-center"} style={{ backgroundImage: isDFW ? "url('/lovable-uploads/home-hero-hangar-preview.jpg')" : "url('/lovable-uploads/home-hero-preview.jpg')" }}>
+        <div className={isHomepage ? "h-[70vh] lg:h-auto lg:min-h-[calc(100vh-80px)] relative flex items-center bg-cover bg-center" : "h-[70vh] lg:min-h-screen relative flex items-center bg-cover bg-center"} style={{ backgroundImage: isDFW ? "url('/lovable-uploads/home-hero-hangar-preview.jpg')" : "url('/lovable-uploads/home-hero-preview.jpg')" }}>
         {/* A tiny preview fills the hero immediately; the priority image replaces it as it loads. */}
         {/* All slides stay mounted so each one cross-fades instead of popping in/out. */}
         {galleryImages.map((image, index) => (
           <img
             key={image}
             src={index === 0 || restSlidesReady ? image : undefined}
-            srcSet={isDFW && index === 0 ? '/lovable-uploads/701db69b-4439-4779-9115-583d175298af-960.webp 960w, /lovable-uploads/701db69b-4439-4779-9115-583d175298af-1600.webp 1600w' : undefined}
-            sizes={isDFW && index === 0 ? '100vw' : undefined}
-            alt={isDFW && index === 0 ? 'Polished concrete floor in a DFW aircraft hangar installed by Legacy Industrial Coatings' : ''}
+            srcSet={isHomepage && (index === 0 || restSlidesReady) ? `${image.replace('-1600.webp', '-960.webp')} 960w, ${image} ${index === 3 ? 1440 : 1600}w` : (isDFW && index === 0 ? '/lovable-uploads/701db69b-4439-4779-9115-583d175298af-960.webp 960w, /lovable-uploads/701db69b-4439-4779-9115-583d175298af-1600.webp 1600w' : undefined)}
+            sizes={isHomepage || (isDFW && index === 0) ? '100vw' : undefined}
+            alt={isHomepage ? homepageSlideAlts[index] : (isDFW && index === 0 ? 'Polished concrete floor in a DFW aircraft hangar installed by Legacy Industrial Coatings' : '')}
             aria-hidden={isDFW && index === 0 ? undefined : true}
             loading={index === 0 ? 'eager' : 'lazy'}
             onLoad={index === 0 ? () => setRestSlidesReady(true) : undefined}
             decoding="async"
             fetchPriority={index === 0 ? 'high' : 'low'}
-            className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-1000 ease-in-out ${index === currentImageIndex ? 'opacity-100' : 'opacity-0'}`}
+            className={`absolute inset-0 w-full h-full object-cover ${isHomepage ? 'object-center ' : ''}transition-opacity duration-1000 ease-in-out ${index === currentImageIndex ? 'opacity-100' : 'opacity-0'}`}
           />
         ))}
         <div className="absolute inset-0 bg-black/60" aria-hidden="true" />
@@ -97,7 +103,7 @@ const HeroSection = () => {
           <div className="lg:hidden">
             <div className="flex flex-col">
               {/* Hero content - takes up more space with larger text */}
-              <div className={isHomepage ? "h-[60vh] max-h-[640px] min-h-[520px] flex items-center justify-center pt-8" : "h-[60vh] flex items-center justify-center pt-8"}>
+              <div className={isHomepage ? "h-[70vh] flex items-center justify-center" : "h-[60vh] flex items-center justify-center pt-8"}>
                 <div className="max-w-2xl space-y-6 sm:space-y-8 text-center">
                   {/* Google Reviews Badge - positioned above title */}
                   <div className="flex justify-center mb-6">
@@ -173,7 +179,7 @@ const HeroSection = () => {
           </div>
 
           {/* Desktop Layout - Centered single column */}
-          <div className="hidden lg:flex items-center justify-center pt-16 pb-12">
+          <div className={isHomepage ? "hidden lg:flex items-center justify-center py-14" : "hidden lg:flex items-center justify-center pt-16 pb-12"}>
             <div className="max-w-4xl space-y-6 text-center">
               {/* Google Reviews Badge - positioned above title */}
               <div className="flex justify-center mb-4">

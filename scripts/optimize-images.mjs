@@ -52,6 +52,10 @@ const PHOTOS = [
   "/lovable-uploads/85530262-ab7f-4339-af86-ed63ee721679.png",
   "/lovable-uploads/57f768f2-8d88-45f9-9d4e-a4c13cf1ed0b.png",
   HERO, // Homepage opening slide: commercial helicopter hangar (1920 x 1280)
+  // Homepage commercial carousel slides 2–4
+  "/commercial/gallery-polished-warehouse.png",
+  "/commercial/aloe-vera-polished.png",
+  "/commercial/gallery-grinding-warehouse.jpg",
   "/lovable-uploads/d1b328fa-3e30-4126-8266-ae64a33edd79.png",
   "/lovable-uploads/36244d7f-fc1a-4402-928c-de98a796b0d7.png",
   "/lovable-uploads/79ce02fc-d147-4c75-b50f-753c518a0483.png",
