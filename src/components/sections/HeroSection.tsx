@@ -52,6 +52,12 @@ const HeroSection = () => {
 
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
   const [scrolledPastHero, setScrolledPastHero] = useState(false);
+  // Slides 2-4 wait until slide 1 has loaded (or 1.5s) so they don't compete with first paint.
+  const [restSlidesReady, setRestSlidesReady] = useState(false);
+  useEffect(() => {
+    const t = setTimeout(() => setRestSlidesReady(true), 1500);
+    return () => clearTimeout(t);
+  }, []);
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -82,10 +88,11 @@ const HeroSection = () => {
         {galleryImages.map((image, index) => (
           <img
             key={image}
-            src={image}
+            src={index === 0 || restSlidesReady ? image : undefined}
             alt=""
             aria-hidden="true"
-            loading="eager"
+            loading={index === 0 ? 'eager' : 'lazy'}
+            onLoad={index === 0 ? () => setRestSlidesReady(true) : undefined}
             decoding="async"
             fetchPriority={index === 0 ? 'high' : 'low'}
             className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-1000 ease-in-out ${index === currentImageIndex ? 'opacity-100' : 'opacity-0'}`}
@@ -103,7 +110,7 @@ const HeroSection = () => {
                 <div className="max-w-2xl space-y-6 sm:space-y-8 text-center">
                   {/* Google Reviews Badge - positioned above title */}
                   <div className="flex justify-center mb-6">
-                    <div className="flex items-center">
+                    <a href="https://maps.app.goo.gl/2idbg4BFnZVKvLNK9" target="_blank" rel="noopener" className="flex items-center">
                       <div className="flex items-center">
                         <span className="font-bold text-blue-500">G</span>
                         <span className="font-bold text-red-500">o</span>
@@ -117,7 +124,7 @@ const HeroSection = () => {
                         <span className="ml-1 text-white font-medium text-sm">200+</span>
                         <span className="ml-1 text-white text-sm">reviews</span>
                       </div>
-                    </div>
+                    </a>
                   </div>
                   
                   <h1 className="text-5xl sm:text-6xl font-bold text-white leading-tight">
@@ -179,7 +186,7 @@ const HeroSection = () => {
             <div className="max-w-4xl space-y-6 text-center">
               {/* Google Reviews Badge - positioned above title */}
               <div className="flex justify-center mb-4">
-              <div className="flex items-center text-sm">
+              <a href="https://maps.app.goo.gl/2idbg4BFnZVKvLNK9" target="_blank" rel="noopener" className="flex items-center text-sm">
                 <div className="flex items-center">
                   <span className="font-bold text-blue-500">G</span>
                   <span className="font-bold text-red-500">o</span>
@@ -193,7 +200,7 @@ const HeroSection = () => {
                   <span className="ml-1 text-white font-medium">200+ reviews</span>
                   <span className="ml-1 text-gray-400">›</span>
                 </div>
-                </div>
+                </a>
               </div>
               
               <h1 className="text-4xl sm:text-5xl lg:text-6xl xl:text-7xl font-bold text-white leading-tight">

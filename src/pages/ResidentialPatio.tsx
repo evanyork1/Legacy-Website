@@ -40,7 +40,7 @@ const ResidentialPatio = () => {
         
         <meta property="og:title" content="Polyurea Patio Floors - Premium Outdoor Patio Coatings | Legacy Industrial Coatings" />
         <meta property="og:description" content="Transform your outdoor patio with our premium polyurea flake floors. Lifetime warranty, weather-resistant, and endless customization options." />
-        <meta property="og:image" content="/lovable-uploads/7b59a18f-94c1-45aa-88f1-9bc7c3277305.png" />
+        <meta property="og:image" content="https://legacyindustrialcoatings.com/lovable-uploads/7b59a18f-94c1-45aa-88f1-9bc7c3277305.png" />
         
         <meta name="robots" content="index, follow" />
         <link rel="canonical" href="https://legacyindustrialcoatings.com/residential-patio" />

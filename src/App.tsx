@@ -1,4 +1,5 @@
 
+import { lazy, Suspense } from "react";
 import { BrowserRouter as Router, Routes, Route, Navigate } from "react-router-dom";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { HelmetProvider } from "react-helmet-async";
@@ -19,11 +20,11 @@ import Gallery from "./pages/Gallery";
 
 import IndustrialEpoxy from "./pages/IndustrialEpoxy";
 import NotFound from "./pages/NotFound";
-import PackagePresentation from "./pages/PackagePresentation";
+const PackagePresentation = lazy(() => import("./pages/PackagePresentation"));
 import PrivacyPolicy from "./pages/PrivacyPolicy";
 
 import Quote from "./pages/Quote";
-import QuoteDFW from "./pages/QuoteDFW";
+const QuoteDFW = lazy(() => import("./pages/QuoteDFW"));
 import ResidentialGarageFloors from "./pages/ResidentialGarageFloors";
 import ResidentialPatio from "./pages/ResidentialPatio";
 import ServiceAreas from "./pages/ServiceAreas";
@@ -31,23 +32,23 @@ import EpoxyFlooringCity from "./pages/EpoxyFlooringCity";
 import TermsAndConditions from "./pages/TermsAndConditions";
 import Warranty from "./pages/Warranty";
 import DFW from "./pages/DFW";
-import GPT from "./pages/GPT";
+const GPT = lazy(() => import("./pages/GPT"));
 import DFWResLanding from "./pages/DFWResLanding";
-import LandingVisual from "./pages/LandingVisual";
-import Auth from "./pages/Auth";
-import SalesDashboard from "./pages/SalesDashboard";
-import FlakeFloorTemplate from "./pages/FlakeFloorTemplate";
+const LandingVisual = lazy(() => import("./pages/LandingVisual"));
+const Auth = lazy(() => import("./pages/Auth"));
+const SalesDashboard = lazy(() => import("./pages/SalesDashboard"));
+const FlakeFloorTemplate = lazy(() => import("./pages/FlakeFloorTemplate"));
 
-import GarageLandingForm from "./pages/GarageLandingForm";
-import GoogleGaragePage from "./pages/GoogleGaragePage";
-import GaragePacketPage from "./pages/GaragePacketPage";
-import GaragePacketResults from "./pages/GaragePacketResults";
-import GarageLandingInstant from "./pages/GarageLandingInstant";
-import GarageFloorsDallasFB from "./pages/GarageFloorsDallasFB";
-import FloorVisualizer from "./pages/FloorVisualizer";
-import CRM from "./pages/CRM";
-import SalesPresentation from "./pages/SalesPresentation";
-import CustomerPresentationPage from "./pages/CustomerPresentationPage";
+const GarageLandingForm = lazy(() => import("./pages/GarageLandingForm"));
+const GoogleGaragePage = lazy(() => import("./pages/GoogleGaragePage"));
+const GaragePacketPage = lazy(() => import("./pages/GaragePacketPage"));
+const GaragePacketResults = lazy(() => import("./pages/GaragePacketResults"));
+const GarageLandingInstant = lazy(() => import("./pages/GarageLandingInstant"));
+const GarageFloorsDallasFB = lazy(() => import("./pages/GarageFloorsDallasFB"));
+const FloorVisualizer = lazy(() => import("./pages/FloorVisualizer"));
+const CRM = lazy(() => import("./pages/CRM"));
+const SalesPresentation = lazy(() => import("./pages/SalesPresentation"));
+const CustomerPresentationPage = lazy(() => import("./pages/CustomerPresentationPage"));
 import SplashSelect from "./pages/SplashSelect";
 import CommercialFloors from "./pages/CommercialFloors";
 import CommercialMaintenance from "./pages/CommercialMaintenance";
@@ -63,16 +64,26 @@ import ScrollToTop from "./components/ScrollToTop";
 import EstimateRequestReceived from "./pages/EstimateRequestReceived";
 import Careers from "./pages/Careers";
 import CareerMarketPage from "./pages/CareerMarketPage";
-import PacketsFormat from "./pages/PacketsFormat";
-import { ArchiveSessionProvider } from "./pages/jobberdetails/archiveSession";
-import ArchiveLogin, { SetPassword as ArchiveSetPassword } from "./pages/jobberdetails/ArchiveLogin";
-import ArchiveLayout, { AdminOnly as ArchiveAdminOnly } from "./pages/jobberdetails/ArchiveLayout";
-import { ArchiveDashboard, ArchiveJobberSettings, ArchiveUsers, ArchiveAudit } from "./pages/jobberdetails/ArchivePages";
-import ArchiveSync from "./pages/jobberdetails/ArchiveSync";
-import { ArchiveSearch, ArchiveClient } from "./pages/jobberdetails/ArchiveSearch";
+const PacketsFormat = lazy(() => import("./pages/PacketsFormat"));
+const ArchiveSessionProvider = lazy(() => import("./pages/jobberdetails/archiveSession").then((m) => ({ default: m.ArchiveSessionProvider })));
+const ArchiveLogin = lazy(() => import("./pages/jobberdetails/ArchiveLogin"));
+const ArchiveSetPassword = lazy(() => import("./pages/jobberdetails/ArchiveLogin").then((m) => ({ default: m.SetPassword })));
+const ArchiveLayout = lazy(() => import("./pages/jobberdetails/ArchiveLayout"));
+const ArchiveAdminOnly = lazy(() => import("./pages/jobberdetails/ArchiveLayout").then((m) => ({ default: m.AdminOnly })));
+const ArchiveDashboard = lazy(() => import("./pages/jobberdetails/ArchivePages").then((m) => ({ default: m.ArchiveDashboard })));
+const ArchiveJobberSettings = lazy(() => import("./pages/jobberdetails/ArchivePages").then((m) => ({ default: m.ArchiveJobberSettings })));
+const ArchiveUsers = lazy(() => import("./pages/jobberdetails/ArchivePages").then((m) => ({ default: m.ArchiveUsers })));
+const ArchiveAudit = lazy(() => import("./pages/jobberdetails/ArchivePages").then((m) => ({ default: m.ArchiveAudit })));
+const ArchiveSync = lazy(() => import("./pages/jobberdetails/ArchiveSync"));
+const ArchiveSearch = lazy(() => import("./pages/jobberdetails/ArchiveSearch").then((m) => ({ default: m.ArchiveSearch })));
+const ArchiveClient = lazy(() => import("./pages/jobberdetails/ArchiveSearch").then((m) => ({ default: m.ArchiveClient })));
 
 
 const queryClient = new QueryClient();
+
+const RouteLoading = () => (
+  <div style={{ minHeight: "60vh", display: "flex", alignItems: "center", justifyContent: "center" }}>Loading…</div>
+);
 
 function App() {
   return (
@@ -81,6 +92,7 @@ function App() {
         <AuthProvider>
           <Router>
             <ScrollToTop />
+            <Suspense fallback={<RouteLoading />}>
             <Routes>
               <Route path="/" element={<DFW />} />
               <Route path="/gpt" element={<GPT />} />
@@ -180,6 +192,7 @@ function App() {
               </Route>
               <Route path="*" element={<NotFound />} />
             </Routes>
+            </Suspense>
           </Router>
           <Toaster />
         </AuthProvider>

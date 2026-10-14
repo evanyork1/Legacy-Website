@@ -57,7 +57,7 @@ const FlakeFloors = () => {
         
         <meta property="og:title" content="Flake Epoxy Floor Coating DFW | Legacy Industrial Coatings" />
         <meta property="og:description" content="Commercial and residential flake epoxy flooring in Dallas-Fort Worth. Durable, decorative floors for garages, shops, and commercial spaces." />
-        <meta property="og:image" content="/lovable-uploads/8865d0d1-af13-4849-b194-a2611de34a0b.png" />
+        <meta property="og:image" content="https://legacyindustrialcoatings.com/lovable-uploads/8865d0d1-af13-4849-b194-a2611de34a0b.png" />
         
         <meta name="robots" content="index, follow" />
         <link rel="canonical" href="https://legacyindustrialcoatings.com/flake-floors" />

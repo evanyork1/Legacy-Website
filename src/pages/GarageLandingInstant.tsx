@@ -53,7 +53,7 @@ const GarageLandingInstant = () => {
         
         <meta property="og:title" content="Instant Quote - Garage Floor Coating | Legacy Industrial Coatings" />
         <meta property="og:description" content="Get an instant quote for premium polyurea garage floor coating with lifetime warranty." />
-        <meta property="og:image" content="/lovable-uploads/b4732a11-b0eb-48f7-9950-d9c8e186ab97.png" />
+        <meta property="og:image" content="https://legacyindustrialcoatings.com/lovable-uploads/b4732a11-b0eb-48f7-9950-d9c8e186ab97.png" />
         
         <meta name="robots" content="index, follow" />
         <link rel="canonical" href="https://legacyindustrialcoatings.com/garagelandinginstant" />

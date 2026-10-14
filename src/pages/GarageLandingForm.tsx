@@ -17,7 +17,7 @@ const GarageLandingForm = () => {
         <meta name="keywords" content="garage floor coating, polyurea floors, garage renovation, Dallas Fort Worth" />
         <meta property="og:title" content="Professional Garage Floor Coating | Legacy Industrial Coatings" />
         <meta property="og:description" content="Transform your garage with premium polyurea flake floor coating. Lifetime warranty and professional installation." />
-        <meta property="og:image" content="/lovable-uploads/b4732a11-b0eb-48f7-9950-d9c8e186ab97.png" />
+        <meta property="og:image" content="https://legacyindustrialcoatings.com/lovable-uploads/b4732a11-b0eb-48f7-9950-d9c8e186ab97.png" />
         <meta name="robots" content="index, follow" />
         <link rel="canonical" href="https://legacyindustrialcoatings.com/garagelandingform" />
         <meta property="og:url" content="https://legacyindustrialcoatings.com/garagelandingform" />

@@ -96,7 +96,7 @@ const ConcretePolishing = () => {
 
         <meta property="og:title" content="Concrete Polishing Dallas-Fort Worth | Legacy Industrial Coatings" />
         <meta property="og:description" content="Professional concrete polishing for commercial and industrial spaces across DFW. Durable, low-maintenance polished floors." />
-        <meta property="og:image" content="/lovable-uploads/14a68967-8843-4c6d-b339-dd48a8e278ae.png" />
+        <meta property="og:image" content="https://legacyindustrialcoatings.com/lovable-uploads/14a68967-8843-4c6d-b339-dd48a8e278ae.png" />
 
         <meta name="robots" content="index, follow" />
         <link rel="canonical" href="https://legacyindustrialcoatings.com/concrete-polishing" />
