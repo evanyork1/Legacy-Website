@@ -12,10 +12,13 @@ Deno.serve(async req=>{
   if(!url||!serviceKey||!hook)return json({error:'Notification configuration unavailable'},503);
   // The database uses the publishable caller key, never the service-role key.
   // Only saved records can be sent; a unique notification claim prevents replay.
-  const expectedKey=Deno.env.get('SUPABASE_ANON_KEY');
+  const expectedKey=Deno.env.get('REQUEST_INFO_CALLER_KEY');
   const authorization=req.headers.get('Authorization');
   if(!expectedKey||authorization!==`Bearer ${expectedKey}`)return json({error:'Unauthorized'},401);
   const admin=createClient(url,serviceKey);
+  // Keep the bucket allowlist aligned through the Storage API (not storage SQL).
+  const {error:bucketError}=await admin.storage.updateBucket('request-info-uploads',{public:false,fileSizeLimit:26214400,allowedMimeTypes:['application/pdf','image/jpeg','image/png','image/webp','image/heic','application/acad','image/vnd.dwg','application/dxf','application/zip','application/msword','application/vnd.openxmlformats-officedocument.wordprocessingml.document','application/vnd.ms-excel','application/vnd.openxmlformats-officedocument.spreadsheetml.sheet']});
+  if(bucketError)throw new Error('Unable to configure upload allowlist');
   const {data,error}=await admin.from('commercial_submissions').select('*').eq('id',parsed.data.submission_id).maybeSingle();
   if(error)throw new Error('Unable to load submission');
   if(!data)return json({error:'Submission not found'},404);
