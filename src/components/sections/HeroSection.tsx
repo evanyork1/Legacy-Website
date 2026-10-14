@@ -44,11 +44,11 @@ const HeroSection = () => {
 
   // Gallery images for rotating background - memoized for performance
   const galleryImages = useMemo(() => [
-    '/lovable-uploads/85530262-ab7f-4339-af86-ed63ee721679.webp',
+    isDFW ? '/lovable-uploads/701db69b-4439-4779-9115-583d175298af-1600.webp' : '/lovable-uploads/85530262-ab7f-4339-af86-ed63ee721679.webp',
     '/lovable-uploads/259c870a-cc78-430c-867f-54d087457e73.webp',
     '/lovable-uploads/4118a438-beef-487b-949a-0e4db42b6da7.webp',
-    '/lovable-uploads/f8190725-62df-42e7-9d92-285d2f3f78e3.webp'
-  ], []);
+    isDFW ? '/lovable-uploads/85530262-ab7f-4339-af86-ed63ee721679.webp' : '/lovable-uploads/f8190725-62df-42e7-9d92-285d2f3f78e3.webp'
+  ], [isDFW]);
 
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
   const [scrolledPastHero, setScrolledPastHero] = useState(false);
@@ -82,15 +82,17 @@ const HeroSection = () => {
     return (
       <section className="relative overflow-hidden">
         {/* Hero Container - Fixed Height on Mobile */}
-        <div className="h-[70vh] lg:min-h-screen relative flex items-center bg-cover bg-center" style={{ backgroundImage: "url('/lovable-uploads/home-hero-preview.jpg')" }}>
+        <div className="h-[70vh] lg:min-h-screen relative flex items-center bg-cover bg-center" style={{ backgroundImage: isDFW ? "url('/lovable-uploads/home-hero-hangar-preview.jpg')" : "url('/lovable-uploads/home-hero-preview.jpg')" }}>
         {/* A tiny preview fills the hero immediately; the priority image replaces it as it loads. */}
         {/* All slides stay mounted so each one cross-fades instead of popping in/out. */}
         {galleryImages.map((image, index) => (
           <img
             key={image}
             src={index === 0 || restSlidesReady ? image : undefined}
-            alt=""
-            aria-hidden="true"
+            srcSet={isDFW && index === 0 ? '/lovable-uploads/701db69b-4439-4779-9115-583d175298af-960.webp 960w, /lovable-uploads/701db69b-4439-4779-9115-583d175298af-1600.webp 1600w' : undefined}
+            sizes={isDFW && index === 0 ? '100vw' : undefined}
+            alt={isDFW && index === 0 ? 'Polished concrete floor in a DFW aircraft hangar installed by Legacy Industrial Coatings' : ''}
+            aria-hidden={isDFW && index === 0 ? undefined : true}
             loading={index === 0 ? 'eager' : 'lazy'}
             onLoad={index === 0 ? () => setRestSlidesReady(true) : undefined}
             decoding="async"
