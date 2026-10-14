@@ -84,6 +84,7 @@
     "netlify-plugin-cache": "^1.0.3",
     "postcss": "^8.4.47",
     "puppeteer": "^25.2.1",
+    "sharp": "^0.35.5",
     "tailwindcss": "^3.4.11",
     "typescript": "^5.5.3",
     "typescript-eslint": "^8.0.1",
