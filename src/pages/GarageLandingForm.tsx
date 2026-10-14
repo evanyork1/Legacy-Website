@@ -67,7 +67,7 @@ const GarageLandingForm = () => {
 
                 {/* Right Column - Lead Form */}
                 <div className="w-full">
-                  <RequestInfoForm id="request-info" />
+                  <RequestInfoForm />
                 </div>
               </div>
             </div>
