@@ -3,10 +3,11 @@ import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { CTAButton } from "@/components/ui/cta-button";
 import { ArrowRight, Calendar, X } from "lucide-react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
 import { useState } from "react";
 import { BookingModal } from "@/components/landing/BookingModal";
 export const GalleryPreview = () => {
+  const isHomepage = useLocation().pathname === "/";
   const [selectedImage, setSelectedImage] = useState<string | null>(null);
   const [showBookingModal, setShowBookingModal] = useState(false);
   const navigate = useNavigate();
@@ -43,10 +44,10 @@ export const GalleryPreview = () => {
   const closeImage = () => {
     setSelectedImage(null);
   };
-  return <section className="py-12 sm:py-16 lg:py-20 bg-gradient-to-br from-white to-slate-50">
-      <div className="container mx-auto px-4 sm:px-6">
+  return <section className={isHomepage ? "bg-gradient-to-br from-white to-slate-50 py-12 lg:py-16" : "py-12 sm:py-16 lg:py-20 bg-gradient-to-br from-white to-slate-50"}>
+      <div className={isHomepage ? "container mx-auto " : "container mx-auto px-4 sm:px-6"}>
         <div className="text-center mb-8 sm:mb-12 lg:mb-16">
-          <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-gray-900 mb-3 sm:mb-4 text-blue-900">
+          <h2 className={isHomepage ? "text-3xl lg:text-4xl font-bold text-gray-900 mb-3 sm:mb-4 text-blue-900" : "text-2xl sm:text-3xl lg:text-4xl font-bold text-gray-900 mb-3 sm:mb-4 text-blue-900"}>
             See Our Latest Work
           </h2>
           <p className="text-base sm:text-lg text-gray-600 max-w-2xl mx-auto px-4">

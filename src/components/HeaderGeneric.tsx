@@ -14,7 +14,7 @@ const HeaderGeneric = () => {
   const location = useLocation();
   
   // Default to DFW home for logo clicks on generic pages
-  const homePath = '/dfw';
+  const homePath = '/';
   
   const navItems = [{
     name: "Home",

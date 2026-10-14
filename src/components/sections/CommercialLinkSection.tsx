@@ -2,14 +2,15 @@ import { responsiveImage, largestVariant } from "@/lib/responsiveImage";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Building, ArrowRight } from "lucide-react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
 const CommercialLinkSection = () => {
+  const isHomepage = useLocation().pathname === "/";
   const navigate = useNavigate();
-  return <section className="py-20 bg-gradient-to-br from-slate-50 via-white to-blue-50/30">
-      <div className="container mx-auto px-4">
+  return <section className={isHomepage ? "bg-gradient-to-br from-slate-50 via-white to-blue-50/30 py-12 lg:py-16" : "py-20 bg-gradient-to-br from-slate-50 via-white to-blue-50/30"}>
+      <div className={isHomepage ? "container mx-auto " : "container mx-auto px-4"}>
         <div className="max-w-4xl mx-auto">
           <Card className="bg-white/80 backdrop-blur-sm border border-gray-200/50 shadow-lg hover:shadow-xl transition-all duration-300 group">
-            <CardContent className="p-12 text-center">
+            <CardContent className={isHomepage ? "p-8 lg:p-10 text-center" : "p-12 text-center"}>
               <div className="mb-8">
                 <img {...responsiveImage("/lovable-uploads/fa247baa-ccf6-438b-b7b1-47d07ae07d74.png", "(min-width: 1024px) 40vw, 75vw")} alt="Commercial floor solution" className="w-3/4 h-56 object-cover rounded-lg shadow-lg mb-6 mx-auto"  loading="lazy" decoding="async" />
               </div>

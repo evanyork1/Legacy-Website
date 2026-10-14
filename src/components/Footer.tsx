@@ -3,6 +3,7 @@ import { useLocation } from "react-router-dom";
 import { SERVICE_AREA_CITIES } from "@/data/serviceAreaCities";
 const Footer = () => {
   const location = useLocation();
+  const isHomepage = location.pathname === "/";
   const handlePhoneClick = () => {
     // Call the Google Ads conversion tracking function
     if (typeof window !== 'undefined' && (window as any).gtag_report_conversion) {
@@ -30,7 +31,7 @@ const Footer = () => {
   ];
 
   const cities = SERVICE_AREA_CITIES;
-  return <footer className="bg-slate-800 text-white pt-16 sm:pt-20 lg:pt-24 pb-2">
+  return <footer className={isHomepage ? "bg-slate-800 text-white pt-10 lg:pt-14 pb-6" : "bg-slate-800 text-white pt-16 sm:pt-20 lg:pt-24 pb-2"}>
       <div className="container mx-auto px-4 sm:px-6">
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-6 gap-8 lg:gap-12 mb-12">
           
@@ -72,17 +73,6 @@ const Footer = () => {
                 </div>
               </div>
 
-              {/* Fort Worth Office */}
-              <div>
-                <h4 className="text-white font-semibold mb-2">Fort Worth Office</h4>
-                <div className="text-gray-300 text-sm space-y-1">
-                  <p>1300 Summit Ave, #520</p>
-                  <p>Fort Worth, TX 76102</p>
-                  <a href="tel:214-305-6516" onClick={handlePhoneClick} className="text-gray-300 hover:text-blue-400 transition-colors block">
-                    (214) 305-6516
-                  </a>
-                </div>
-              </div>
             </div>
           </div>
 

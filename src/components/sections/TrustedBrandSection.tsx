@@ -3,6 +3,7 @@ import { Star, Users, Sparkles, Zap, Heart, Award } from "lucide-react";
 import { useLocation } from "react-router-dom";
 const TrustedBrandSection = () => {
   const location = useLocation();
+  const isHomepage = location.pathname === "/";
   const isCommercial = location.pathname === '/dfwcommercial';
   const isDFW = location.pathname === '/' || location.pathname === '/dfw' || location.pathname === '/dfwreslanding' || location.pathname === '/gpt';
   const services = isCommercial ? [{
@@ -46,10 +47,10 @@ const TrustedBrandSection = () => {
   const imageSource = isCommercial ? "/lovable-uploads/4b72df6d-f315-4d63-876c-76d1b5d22e80.png" : "/lovable-uploads/81d99e2b-0038-4ac2-8f7d-2f89d32a8560.png";
   const imageAlt = isCommercial ? "Professional commercial warehouse floor with polished concrete finish" : "Premium garage floor with luxury car";
   
-  return <section className="bg-gradient-to-br from-white to-slate-50 py-6 sm:py-8 lg:py-[31px]">
-      <div className="container mx-auto px-4 sm:px-6">
+  return <section className={isHomepage ? "bg-gradient-to-br from-white to-slate-50 py-12 lg:py-16" : "bg-gradient-to-br from-white to-slate-50 py-6 sm:py-8 lg:py-[31px]"}>
+      <div className={isHomepage ? "container mx-auto " : "container mx-auto px-4 sm:px-6"}>
         <div className="text-center mb-8 sm:mb-12 lg:mb-16">
-          <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-gray-900 mb-3 sm:mb-4 text-blue-900">
+          <h2 className={isHomepage ? "text-3xl lg:text-4xl font-bold text-gray-900 mb-3 sm:mb-4 text-blue-900" : "text-2xl sm:text-3xl lg:text-4xl font-bold text-gray-900 mb-3 sm:mb-4 text-blue-900"}>
             {sectionTitle}
           </h2>
         </div>

@@ -9,6 +9,7 @@ import { OptimizedImage } from "@/components/OptimizedImage";
 const HeroSection = () => {
   const navigate = useNavigate();
   const location = useLocation();
+  const isHomepage = location.pathname === "/";
   const [showBookingModal, setShowBookingModal] = useState(false);
 
   // Determine quote path and content based on current location
@@ -24,7 +25,6 @@ const HeroSection = () => {
   const subtext = isCommercial ? "Industrial Concrete Polishing & Epoxy Solutions" : (isPHX ? "Commercial & Residential Floors That Last" : (isDFW ? "Commercial & Residential Floors That Last" : (isProsper ? "Fast, durable, and stunning garage floors for Prosper homeowners." : (isFrisco ? "Beautiful garage floors installed fast — proudly serving Frisco homeowners." : "Elite Installers. Unmatched Quality. A Reputation Built on Results"))));
   
   const phoneNumber = isPHX ? "602-560-0974" : "214-305-6516";
-  const quotePath = isPHX ? "/quotephx" : "/quotedfw";
   
   const handlePhoneClick = () => {
     if (typeof window !== 'undefined') {
@@ -51,7 +51,6 @@ const HeroSection = () => {
   ], [isDFW]);
 
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
-  const [scrolledPastHero, setScrolledPastHero] = useState(false);
   // Slides 2-4 wait until slide 1 has loaded (or 1.5s) so they don't compete with first paint.
   const [restSlidesReady, setRestSlidesReady] = useState(false);
   useEffect(() => {
@@ -67,22 +66,12 @@ const HeroSection = () => {
     return () => clearInterval(interval);
   }, [galleryImages.length]);
 
-  useEffect(() => {
-    const handleScroll = () => {
-      const heroHeight = window.innerHeight * 0.7; // 70vh hero height
-      setScrolledPastHero(window.scrollY > heroHeight);
-    };
-
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
-
   // For DFW, PHX, DFW Res Landing, Prosper, and Frisco pages, use the new design
   if (isDFW || isPHX || isProsper || isFrisco) {
     return (
       <section className="relative overflow-hidden">
         {/* Hero Container - Fixed Height on Mobile */}
-        <div className="h-[70vh] lg:min-h-screen relative flex items-center bg-cover bg-center" style={{ backgroundImage: isDFW ? "url('/lovable-uploads/home-hero-hangar-preview.jpg')" : "url('/lovable-uploads/home-hero-preview.jpg')" }}>
+        <div className={isHomepage ? "h-auto min-h-[520px] lg:min-h-[600px] relative flex items-center bg-cover bg-center" : "h-[70vh] lg:min-h-screen relative flex items-center bg-cover bg-center"} style={{ backgroundImage: isDFW ? "url('/lovable-uploads/home-hero-hangar-preview.jpg')" : "url('/lovable-uploads/home-hero-preview.jpg')" }}>
         {/* A tiny preview fills the hero immediately; the priority image replaces it as it loads. */}
         {/* All slides stay mounted so each one cross-fades instead of popping in/out. */}
         {galleryImages.map((image, index) => (
@@ -108,7 +97,7 @@ const HeroSection = () => {
           <div className="lg:hidden">
             <div className="flex flex-col">
               {/* Hero content - takes up more space with larger text */}
-              <div className="h-[60vh] flex items-center justify-center pt-8">
+              <div className={isHomepage ? "h-[60vh] max-h-[640px] min-h-[520px] flex items-center justify-center pt-8" : "h-[60vh] flex items-center justify-center pt-8"}>
                 <div className="max-w-2xl space-y-6 sm:space-y-8 text-center">
                   {/* Google Reviews Badge - positioned above title */}
                   <div className="flex justify-center mb-6">
@@ -129,7 +118,7 @@ const HeroSection = () => {
                     </a>
                   </div>
                   
-                  <h1 className="text-5xl sm:text-6xl font-bold text-white leading-tight">
+                  <h1 className={isHomepage ? "text-4xl sm:text-5xl font-bold text-white leading-tight" : "text-5xl sm:text-6xl font-bold text-white leading-tight"}>
                     {title}
                     {showExpertsSuffix && (
                       <>
@@ -205,7 +194,7 @@ const HeroSection = () => {
                 </a>
               </div>
               
-              <h1 className="text-4xl sm:text-5xl lg:text-6xl xl:text-7xl font-bold text-white leading-tight">
+              <h1 className={isHomepage ? "text-4xl sm:text-5xl lg:text-5xl xl:text-6xl font-bold text-white leading-tight" : "text-4xl sm:text-5xl lg:text-6xl xl:text-7xl font-bold text-white leading-tight"}>
                 {title}
                 {showExpertsSuffix && (
                   <>
@@ -218,7 +207,7 @@ const HeroSection = () => {
               </h1>
               
               <div className="text-center">
-                <div className="text-xl sm:text-2xl lg:text-3xl xl:text-4xl text-white leading-snug">
+                <div className={isHomepage ? "text-xl sm:text-2xl lg:text-2xl text-white leading-snug" : "text-xl sm:text-2xl lg:text-3xl xl:text-4xl text-white leading-snug"}>
                   {isProsper || isFrisco ? subtext : "Commercial & Residential Floors That Last"}
                 </div>
               </div>

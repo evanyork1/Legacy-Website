@@ -10,21 +10,21 @@ const CTASection = () => {
   const [showBookingModal, setShowBookingModal] = useState(false);
   const navigate = useNavigate();
   const location = useLocation();
+  const isHomepage = location.pathname === "/";
   
   // Determine quote path based on current location
   const isCommercial = location.pathname === '/dfwcommercial';
   const isProsper = location.pathname === '/epoxy-flooring-prosper';
   const isFrisco = location.pathname === '/epoxy-flooring-frisco';
-  const quotePath = '/contact';
 
   return (
-    <section className="py-12 sm:py-16 lg:py-20 bg-blue-900 relative overflow-hidden">
+    <section className={isHomepage ? "bg-blue-900 relative overflow-hidden py-12 lg:py-16" : "py-12 sm:py-16 lg:py-20 bg-blue-900 relative overflow-hidden"}>
       <div className="absolute inset-0 bg-blue-900/90"></div>
-      <div className="container mx-auto px-4 sm:px-6 text-center relative">
-        <h2 className="text-2xl sm:text-3xl lg:text-4xl xl:text-5xl font-bold text-white mb-4 sm:mb-6">
+      <div className={isHomepage ? "container mx-auto text-center relative" : "container mx-auto px-4 sm:px-6 text-center relative"}>
+        <h2 className={isHomepage ? "text-2xl sm:text-3xl lg:text-4xl font-bold text-white mb-4 sm:mb-6" : "text-2xl sm:text-3xl lg:text-4xl xl:text-5xl font-bold text-white mb-4 sm:mb-6"}>
           {isCommercial ? "Ready for your commercial flooring project?" : (isProsper ? "Ready To Transform Your Floor in Prosper?" : (isFrisco ? "Ready To Transform Your Floor in Frisco?" : "Ready to discover your new floor?"))}
         </h2>
-        <p className="text-lg sm:text-xl text-blue-100 mb-6 sm:mb-8 max-w-2xl mx-auto px-4">
+        <p className={isHomepage ? "text-lg sm:text-xl text-blue-100 mb-6 sm:mb-8 max-w-2xl mx-auto" : "text-lg sm:text-xl text-blue-100 mb-6 sm:mb-8 max-w-2xl mx-auto px-4"}>
           {isCommercial 
             ? "Contact our commercial specialists for a professional consultation and project assessment"
             : "Get your free instant quote and experience Legacy's full-service approach"

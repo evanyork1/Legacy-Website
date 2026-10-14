@@ -1,12 +1,14 @@
+import { useLocation } from "react-router-dom";
 import { responsiveImage, largestVariant } from "@/lib/responsiveImage";
 export const AboutUsSection = () => {
+  const isHomepage = useLocation().pathname === "/";
   return (
     <>
       {/* Craftsmanship Section */}
-      <section className="py-12 sm:py-16 lg:py-20 bg-slate-50">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+      <section className={isHomepage ? "py-10 lg:py-14 bg-slate-50" : "py-12 sm:py-16 lg:py-20 bg-slate-50"}>
+        <div className={isHomepage ? "container mx-auto lg:px-8" : "container mx-auto px-4 sm:px-6 lg:px-8"}>
           <div className="max-w-3xl mx-auto text-center mb-12 sm:mb-16">
-            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-gray-900 mb-4 sm:mb-6">
+            <h2 className={isHomepage ? "text-3xl lg:text-4xl font-bold text-gray-900 mb-4 sm:mb-6" : "text-3xl sm:text-4xl lg:text-5xl font-bold text-gray-900 mb-4 sm:mb-6"}>
               Skilled Workmanship You Can See
             </h2>
             <p className="text-lg sm:text-xl text-gray-600">
@@ -49,11 +51,11 @@ export const AboutUsSection = () => {
       </section>
 
       {/* Large Project Showcase */}
-      <section className="py-12 sm:py-16 lg:py-20 bg-white">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+      <section className={isHomepage ? "pb-10 lg:pb-14 pt-0 bg-white" : "py-12 sm:py-16 lg:py-20 bg-white"}>
+        <div className={isHomepage ? "container mx-auto lg:px-8" : "container mx-auto px-4 sm:px-6 lg:px-8"}>
           <div className="grid lg:grid-cols-2 gap-8 sm:gap-12 lg:gap-16 items-center">
-            <div>
-                <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-gray-900 mb-4 sm:mb-6">
+            <div className={isHomepage ? "max-w-prose" : undefined}>
+                <h2 className={isHomepage ? "text-3xl lg:text-4xl font-bold text-gray-900 mb-4 sm:mb-6" : "text-3xl sm:text-4xl lg:text-5xl font-bold text-gray-900 mb-4 sm:mb-6"}>
                   Complex Commercial Projects
                 </h2>
                 <p className="text-base sm:text-lg text-gray-600 mb-4 sm:mb-6 leading-relaxed">
@@ -94,10 +96,10 @@ export const AboutUsSection = () => {
       </section>
 
       {/* What Makes Us Different */}
-      <section className="py-12 sm:py-16 lg:py-20 bg-slate-50">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <section className={isHomepage ? "py-10 lg:py-14 bg-slate-50" : "py-12 sm:py-16 lg:py-20 bg-slate-50"}>
+        <div className={isHomepage ? "container mx-auto lg:px-8 text-center" : "container mx-auto px-4 sm:px-6 lg:px-8 text-center"}>
           <div className="max-w-3xl mx-auto">
-            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-gray-900 mb-4 sm:mb-6">
+            <h2 className={isHomepage ? "text-3xl lg:text-4xl font-bold text-gray-900 mb-4 sm:mb-6" : "text-3xl sm:text-4xl lg:text-5xl font-bold text-gray-900 mb-4 sm:mb-6"}>
               What Makes Legacy Different
             </h2>
             <p className="text-lg sm:text-xl text-gray-600 mb-8 sm:mb-12 leading-relaxed">
