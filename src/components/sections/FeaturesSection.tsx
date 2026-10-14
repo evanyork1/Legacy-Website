@@ -1,3 +1,4 @@
+import { responsiveImage, largestVariant } from "@/lib/responsiveImage";
 import { Card, CardContent } from "@/components/ui/card";
 import { CTAButton } from "@/components/ui/cta-button";
 import { Layers, Building, Sparkles, Users, Shield, Headphones, ArrowRight, Calendar } from "lucide-react";
@@ -84,10 +85,10 @@ const FeaturesSection = () => {
                   {feature.image && (
                     <div className="mt-4 w-full">
                       <img 
-                        src={feature.image} 
+                        {...responsiveImage(feature.image, "(min-width: 1024px) 33vw, (min-width: 768px) 50vw, 100vw")}
                         alt={feature.title}
                         className="w-full h-48 object-cover rounded-lg"
-                       loading="eager" decoding="async" />
+                       loading="lazy" decoding="async" />
                       <div className="mt-4 text-center w-full">
                         <button 
                           onClick={() => {

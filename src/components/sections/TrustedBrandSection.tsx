@@ -1,3 +1,4 @@
+import { responsiveImage, largestVariant } from "@/lib/responsiveImage";
 import { Star, Users, Sparkles, Zap, Heart, Award } from "lucide-react";
 import { useLocation } from "react-router-dom";
 const TrustedBrandSection = () => {
@@ -60,8 +61,8 @@ const TrustedBrandSection = () => {
             <img 
               alt={imageAlt} 
               className="relative w-full h-auto rounded-xl shadow-2xl" 
-              src={imageSource} 
-              loading="eager"
+              {...responsiveImage(imageSource, "(min-width: 1024px) 576px, 100vw")}
+              loading="lazy"
               decoding="async"
               fetchPriority="low"
             />

@@ -1,3 +1,4 @@
+import { responsiveImage, largestVariant } from "@/lib/responsiveImage";
 import { Helmet } from "react-helmet-async";
 import { PageBreadcrumbs } from "@/components/seo/PageBreadcrumbs";
 import StructuredData from "@/components/seo/StructuredData";
@@ -12,6 +13,9 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { BookingModal } from "@/components/landing/BookingModal";
 import { LeadForm } from "@/components/landing/LeadForm";
 import { Building, Factory, Car, Plane, Dog, Church, Store, School, Utensils, ArrowRight, Phone, Calendar } from "lucide-react";
+
+const HERO_SIZES = "(min-width: 1024px) 50vw, 100vw";
+const HERO_IMG = responsiveImage("/lovable-uploads/171b7f71-4aa3-4b54-8c96-5f7143dddebf.png", HERO_SIZES);
 
 const COMMERCIAL_FAQS = [
   {
@@ -137,6 +141,7 @@ const Commercial = () => {
         <meta name="theme-color" content="#2563eb" />
         <link rel="canonical" href="https://legacyindustrialcoatings.com/commercial" />
         <meta property="og:url" content="https://legacyindustrialcoatings.com/commercial" />
+        <link rel="preload" as="image" href={HERO_IMG.src} imageSrcSet={HERO_IMG.srcSet} imageSizes={HERO_SIZES} fetchPriority="high" />
       </Helmet>
 
       <StructuredData
@@ -183,7 +188,7 @@ const Commercial = () => {
 
               </div>
               <div className="relative">
-                <img src="/lovable-uploads/171b7f71-4aa3-4b54-8c96-5f7143dddebf.png" alt="Professional commercial flooring installation" className="relative w-full h-96 object-cover rounded-xl shadow-xl" loading="eager" decoding="async" fetchPriority="high" />
+                <img {...responsiveImage("/lovable-uploads/171b7f71-4aa3-4b54-8c96-5f7143dddebf.png", HERO_SIZES)} alt="Professional commercial flooring installation" className="relative w-full h-96 object-cover rounded-xl shadow-xl" loading="eager" decoding="async" fetchPriority="high" />
               </div>
             </div>
           </div>
@@ -220,7 +225,7 @@ const Commercial = () => {
               
               <div className="relative">
                 <div className="relative bg-white rounded-xl overflow-hidden shadow-xl aspect-[3/2]">
-                  <img src="/lovable-uploads/171b7f71-4aa3-4b54-8c96-5f7143dddebf.png" alt="Commercial flooring installation" className="w-full h-full object-cover"  loading="eager" decoding="async" />
+                  <img {...responsiveImage("/lovable-uploads/171b7f71-4aa3-4b54-8c96-5f7143dddebf.png", "(min-width: 1024px) 50vw, 100vw")} alt="Commercial flooring installation" className="w-full h-full object-cover"  loading="lazy" decoding="async" />
                 </div>
               </div>
             </div>
@@ -253,7 +258,7 @@ const Commercial = () => {
             <div className="grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
               {commercialImages.map((image, index) => <div key={index} className="relative">
                   <div className="relative bg-white rounded-xl aspect-[3/2] overflow-hidden border border-slate-200 shadow-sm hover:shadow-md transition-all duration-300 group">
-                    <img src={image.src} alt={image.alt} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"  loading="eager" decoding="async" />
+                    <img {...responsiveImage(image.src, "(min-width: 1280px) 25vw, (min-width: 1024px) 33vw, (min-width: 768px) 50vw, 100vw")} alt={image.alt} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"  loading="lazy" decoding="async" />
                   </div>
                 </div>)}
             </div>
