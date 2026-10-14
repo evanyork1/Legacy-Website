@@ -83,7 +83,7 @@
         var TARGET = 'book an estimate';
         function openCalendar() {
           if (typeof window.openEstimateCalendar === 'function') window.openEstimateCalendar();
-          else window.open('https://cal.com/legacyindustrialcoatings/on-site-estimate', '_blank', 'noopener,noreferrer');
+          else { window.dataLayer = window.dataLayer || []; window.dataLayer.push({event: 'cal_booking_opened'}); window.open('https://cal.com/legacyindustrialcoatings/on-site-estimate', '_blank', 'noopener,noreferrer'); }
         }
 
         function matches(el) {

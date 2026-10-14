@@ -11,11 +11,37 @@ declare global {
   interface Window {
     Cal?: CalFunction;
     openEstimateCalendar?: () => void;
+    dataLayer?: unknown[];
   }
 }
 
 const NAMESPACE = "on-site-estimate";
 const SCRIPT_URL = "https://app.cal.com/embed/embed.js";
+
+const pushDataLayer = (payload: Record<string, unknown>) => {
+  try {
+    window.dataLayer = window.dataLayer || [];
+    window.dataLayer.push(payload);
+  } catch { /* tracking must never block booking */ }
+};
+
+let listenersAttached = false;
+const attachCalListeners = () => {
+  if (listenersAttached) return;
+  try {
+    const api = window.Cal?.ns?.[NAMESPACE];
+    if (!api) return;
+    api("on", {
+      action: "bookingSuccessful",
+      callback: (e: { detail?: { data?: Record<string, any> } }) => {
+        const d = e?.detail?.data || {};
+        const slug = d.eventType?.slug ?? d.booking?.eventType?.slug ?? d.eventTypeSlug;
+        pushDataLayer({ event: "cal_booking_success", cal_event_type: slug });
+      },
+    });
+    listenersAttached = true;
+  } catch { /* ignore */ }
+};
 
 /** Load Cal's official embed on demand, without delaying the first page paint. */
 const initializeCal = () => {
@@ -29,7 +55,7 @@ const initializeCal = () => {
       current.q = current.q || [];
       const script = document.createElement("script");
       script.src = SCRIPT_URL;
-      script.onerror = () => { window.location.href = buildBookingUrl(); };
+      script.onerror = () => { pushDataLayer({ event: "cal_booking_opened" }); window.location.href = buildBookingUrl(); };
       document.head.appendChild(script);
       current.loaded = true;
     }
@@ -56,6 +82,8 @@ const initializeCal = () => {
 
 export const openCalBooking = () => {
   initializeCal();
+  attachCalListeners();
+  pushDataLayer({ event: "cal_booking_opened" });
   const bookingUrl = new URL(buildBookingUrl(
     window.location.pathname === "/gpt"
       ? "https://cal.com/legacyindustrialcoatings/on-site-estimate?utm_source=chatgpt"
