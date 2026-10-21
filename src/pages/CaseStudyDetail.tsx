@@ -5,7 +5,7 @@ import HeaderGeneric from "@/components/HeaderGeneric";
 import Footer from "@/components/Footer";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
-import { ArrowLeft, Calendar, Phone, MapPin, Wrench, Ruler, Clock, CheckCircle2 } from "lucide-react";
+import { ArrowLeft, Calendar, Phone, MapPin, Wrench, Ruler, Clock, CheckCircle2, X } from "lucide-react";
 import { BookingModal } from "@/components/landing/BookingModal";
 import { getCaseStudyBySlug } from "@/data/caseStudies";
 
@@ -97,7 +97,7 @@ const CaseStudyDetail = () => {
 
       <HeaderGeneric />
 
-      <main className="pt-24">
+      <main className="pt-0 md:pt-24">
         {/* Back link above hero */}
         <div className="container mx-auto px-4 max-w-6xl pt-6 pb-4">
           <button
@@ -253,6 +253,7 @@ const CaseStudyDetail = () => {
           onClick={() => setLightbox(null)}
           className="fixed inset-0 z-[100] bg-black/90 flex items-center justify-center p-4 cursor-zoom-out"
         >
+          <Button variant="ghost" size="icon" aria-label="Close photo" onClick={() => setLightbox(null)} className="absolute right-4 top-[calc(1rem+env(safe-area-inset-top,0px))] z-10 md:hidden text-primary-foreground"><X /></Button>
           <img
             src={lightbox.src}
             alt={lightbox.alt}

@@ -109,7 +109,7 @@ const CommercialFloors = () => {
   const galleryRef = useRef<HTMLDivElement>(null);
 
   return (
-    <div className="min-h-screen bg-[hsl(0,0%,5%)] text-white">
+    <div className="commercial-mobile-page min-h-screen bg-[hsl(0,0%,5%)] text-white">
       <Seo
         title="Commercial Concrete Polishing & Industrial Flooring | Legacy Industrial Coatings"
         description="Spec-grade commercial concrete polishing, polishable overlays, grind & seal, and industrial epoxy systems. Texas-based crews, ASCC/ACI/ICRI standards, night and weekend mobilization."
@@ -175,13 +175,13 @@ const CommercialFloors = () => {
       </header>
 
       {/* ─── Hero ─── */}
-      <section className="relative min-h-screen flex items-center overflow-hidden">
+      <section className="relative min-h-[100dvh] md:min-h-screen flex items-center overflow-hidden">
         <div className="absolute inset-0">
           <img src={heroImage} alt="Polished commercial concrete floor" className="w-full h-full object-cover"  loading="eager" decoding="async" />
           <div className="absolute inset-0 bg-gradient-to-r from-[hsl(0,0%,5%)]/70 via-[hsl(0,0%,5%)]/40 to-transparent" />
         </div>
 
-        <div className="relative z-10 container mx-auto px-6 py-32">
+        <div className="relative z-10 container mx-auto px-6 py-24 md:py-32">
           <div className="max-w-3xl">
             <motion.div initial={{ opacity: 0, x: -40 }} animate={{ opacity: 1, x: 0 }} transition={{ duration: 0.8, delay: 0.2 }}>
               <div className="w-16 h-[2px] bg-blue-500 mb-8" />
@@ -190,7 +190,7 @@ const CommercialFloors = () => {
               </p>
             </motion.div>
 
-            <motion.h1 initial={{ opacity: 0, y: 40 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8, delay: 0.4 }} className="text-5xl md:text-7xl lg:text-8xl font-bold leading-[0.95] tracking-tight">
+            <motion.h1 initial={{ opacity: 0, y: 40 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8, delay: 0.4 }} className="text-[40px] md:text-7xl lg:text-8xl font-bold leading-[0.95] tracking-tight">
               PRECISION
               <br />
               <span className="text-blue-900">COMMERCIAL</span>

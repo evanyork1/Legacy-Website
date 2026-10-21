@@ -369,9 +369,8 @@ const ResidentialGarageFloors = () => {
 
 
         <BookingModal isOpen={showBookingModal} onClose={() => setShowBookingModal(false)} />
-        <StickyMobileCTA />
-
         <Footer />
+        <StickyMobileCTA />
       </div>
     </>;
 };
