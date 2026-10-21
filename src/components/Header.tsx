@@ -81,6 +81,7 @@ const Header = () => {
     path: "/commercial-case-studies"
   }];
   return <>
+      {isMenuOpen && <div aria-hidden="true" className="h-16 sm:h-20 md:hidden" />}
       <header className={`bg-white shadow-sm border-b border-gray-100 sticky top-0 z-50${isMenuOpen ? " mobile-menu-panel" : ""}`}>
       <div className={`container mx-auto px-4 sm:px-6${isMenuOpen ? " mobile-menu-layout" : ""}`}>
         <div className={isHomepage ? "flex shrink-0 items-center justify-between h-16 sm:h-20 md:h-20" : "flex shrink-0 items-center justify-between h-16 sm:h-20 md:h-28"}>
