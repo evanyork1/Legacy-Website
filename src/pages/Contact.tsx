@@ -18,12 +18,12 @@ const Contact = () => {
       <div className="min-h-screen bg-white">
         <HeaderGeneric />
         
-        <main className="pt-20">
-          <section className="py-16 bg-gradient-to-br from-slate-50 via-blue-50/30 to-white">
+        <main className="pt-0 md:pt-20">
+          <section className="py-10 md:py-16 bg-gradient-to-br from-slate-50 via-blue-50/30 to-white">
             <div className="container mx-auto px-6">
               <div className="max-w-4xl mx-auto">
                 <div className="text-center mb-12">
-                  <h1 className="text-4xl sm:text-5xl font-bold text-gray-900 mb-4">
+                  <h1 className="text-3xl sm:text-5xl font-bold text-gray-900 mb-4">
                     Contact{" "}
                     <span className="text-blue-900">
                       Legacy Industrial Coatings
@@ -104,7 +104,7 @@ const Contact = () => {
                 <div className="text-center">
                   <p className="text-gray-600">
                     <Mail className="inline h-4 w-4 mr-2" />
-                    <a href="mailto:support@legacyindustrialcoatings.com" className="text-blue-600 hover:underline">
+                    <a href="mailto:support@legacyindustrialcoatings.com" className="max-md:inline-flex max-md:items-center max-md:min-h-11 max-md:break-all text-blue-600 hover:underline">
                       support@legacyindustrialcoatings.com
                     </a>
                   </p>

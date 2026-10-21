@@ -68,7 +68,7 @@ const ResidentialGarageFloors = () => {
 
       <PageBreadcrumbs items={[{ name: "Home", url: "/" }, { name: "Residential", url: "/garagefloors" }, { name: "Garage Floors", url: "/garagefloors" }]} />
 
-      <div className="min-h-screen bg-white">
+      <div className="garage-mobile-page min-h-screen bg-white">
         <Header />
         
         {/* Hero Section */}
@@ -369,9 +369,8 @@ const ResidentialGarageFloors = () => {
 
 
         <BookingModal isOpen={showBookingModal} onClose={() => setShowBookingModal(false)} />
-        <StickyMobileCTA />
-
         <Footer />
+        <StickyMobileCTA />
       </div>
     </>;
 };

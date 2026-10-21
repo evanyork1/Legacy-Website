@@ -41,6 +41,72 @@
 }
 .request-info-theme progress { accent-color: hsl(var(--primary)); }
 
+/* Mobile usability overrides are scoped to public forms and footers. */
+@media (max-width: 767px) {
+  .request-info-theme :is(input:not([type="checkbox"]):not([type="file"]), textarea, select),
+  .commercial-mobile-page :is(input, textarea, select),
+  .mobile-scroll-dialog :is(input, textarea, select) {
+    font-size: 16px;
+  }
+  .request-info-theme button,
+  .commercial-mobile-page button,
+  .mobile-scroll-dialog button,
+  .garage-mobile-page button {
+    min-height: 44px;
+    min-width: 44px;
+  }
+  .garage-mobile-page a.h-9 { min-height: 44px; }
+  .request-info-theme a {
+    display: inline-flex;
+    align-items: center;
+    min-height: 44px;
+    overflow-wrap: anywhere;
+  }
+  .request-info-theme label[for$="consent"] {
+    font-size: 12px;
+    line-height: 1.5;
+    min-width: 0;
+  }
+  .request-info-theme button[role="checkbox"] {
+    flex-shrink: 0;
+  }
+  .public-mobile-footer a {
+    display: inline-flex;
+    align-items: center;
+    min-height: 44px;
+    overflow-wrap: anywhere;
+  }
+  .public-mobile-footer ul > li + li { margin-top: 0; }
+  .public-mobile-footer .mobile-footer-email { margin-left: 0; }
+  .mobile-footer-email a { min-width: 0; }
+  .public-mobile-footer .mobile-social-links a { justify-content: center; }
+  .mobile-scroll-dialog {
+    width: calc(100% - 2rem);
+    max-height: calc(100vh - 2rem);
+    max-height: calc(100dvh - 2rem - env(safe-area-inset-top, 0px) - env(safe-area-inset-bottom, 0px));
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+    overscroll-behavior: contain;
+    scroll-padding-block: 3rem;
+  }
+  .commercial-mobile-page {
+    /* Contain horizontal entrance animations, not the swipeable gallery. */
+    overflow-x: clip;
+  }
+  .commercial-mobile-page .grid > * { min-width: 0; }
+  .commercial-mobile-page #contact .flex { flex-wrap: wrap; }
+  .commercial-mobile-page #contact .flex > span { overflow-wrap: anywhere; }
+  .commercial-mobile-page footer .flex { flex-wrap: wrap; }
+  .commercial-mobile-page #industries .group p {
+    opacity: 1;
+    transform: none;
+  }
+  .commercial-mobile-page #industries .group > div:last-child { padding: 1rem; }
+  .commercial-mobile-page #casestudy .grid-cols-2 > div { padding: 1rem; }
+  .commercial-mobile-page #casestudy .text-3xl { font-size: 26px; }
+  .commercial-mobile-page a { overflow-wrap: anywhere; }
+}
+
 
 /* Definition of the design system. All colors, gradients, fonts, etc should be defined here. */
 

@@ -4,3 +4,4 @@
 - Request Information uses commercial_submissions and private Storage uploads; shared footer sections gate internal/confirmation routes and skip routes with in-body inquiry forms to avoid duplicates.
 - Request Information notifications load saved rows and sign only matching submission-folder files; pg_net uses a publishable caller key, while service-role credentials stay exclusively in edge-function environment variables to avoid database credential exposure.
 - Public headers share mobile-menu scroll locking with fixed-body position restoration; open panels use a pinned row and a dynamic-viewport scroll area so iOS navigation remains reachable without moving the background page.
+- Public mobile usability overrides stay scoped to phone breakpoints and public forms, footers, or page hooks; fixed bottom actions reserve safe-area-aware space after content so desktop layouts and the final links remain unaffected.

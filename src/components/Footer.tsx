@@ -32,7 +32,7 @@ const Footer = () => {
   ];
 
   const cities = SERVICE_AREA_CITIES;
-  return <><RequestInfoSection id="request-info" /><footer className={isHomepage ? "bg-slate-800 text-white pt-10 lg:pt-14 pb-6" : "bg-slate-800 text-white pt-16 sm:pt-20 lg:pt-24 pb-2"}>
+  return <><RequestInfoSection id="request-info" /><footer className={isHomepage ? "public-mobile-footer bg-slate-800 text-white pt-10 lg:pt-14 pb-6" : "public-mobile-footer bg-slate-800 text-white pt-16 sm:pt-20 lg:pt-24 pb-2"}>
       <div className="container mx-auto px-4 sm:px-6">
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-6 gap-8 lg:gap-12 mb-12">
           
@@ -110,7 +110,7 @@ const Footer = () => {
             <h3 className="text-lg sm:text-xl font-bold text-white tracking-wider">FOLLOW</h3>
             
             {/* Social Media Icons */}
-            <div className="flex space-x-3">
+            <div className="mobile-social-links flex space-x-3">
               <a href="https://www.instagram.com/legacyindustrialcoatings/" target="_blank" rel="noopener noreferrer" className="bg-blue-600 p-2 rounded hover:bg-blue-700 transition-colors">
                 <Instagram className="h-5 w-5 text-white" />
               </a>
@@ -131,7 +131,7 @@ const Footer = () => {
                 
                 
               </div>
-              <div className="flex items-start space-x-2 -ml-10">
+              <div className="mobile-footer-email flex items-start space-x-2 -ml-10">
                 <Mail className="h-4 w-4 text-blue-400 flex-shrink-0 mt-0.5" />
                 <a href="mailto:support@legacyindustrialcoatings.com" className="text-gray-300 hover:text-blue-400 transition-colors text-sm">
                   support@legacyindustrialcoatings.com
