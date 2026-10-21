@@ -1,5 +1,7 @@
 import { scrollToRequestInfo } from "@/lib/requestInfo";
-import { useState } from "react";
+import { useCallback, useState } from "react";
+import { flushSync } from "react-dom";
+import { useMobileMenuScrollLock } from "@/hooks/useMobileMenuScrollLock";
 import { Button } from "@/components/ui/button";
 import { Menu, X, Phone, ChevronDown } from "lucide-react";
 import { useNavigate, useLocation } from "react-router-dom";
@@ -11,6 +13,8 @@ const Header = () => {
   const [isAboutOpen, setIsAboutOpen] = useState(false);
   const navigate = useNavigate();
   const location = useLocation();
+  const closeMenu = useCallback(() => setIsMenuOpen(false), []);
+  useMobileMenuScrollLock(isMenuOpen, closeMenu, location.key);
   const isHomepage = location.pathname === "/";
 
   // Force DFW context for this header
@@ -77,9 +81,10 @@ const Header = () => {
     path: "/commercial-case-studies"
   }];
   return <>
-      <header className="bg-white shadow-sm border-b border-gray-100 sticky top-0 z-50">
-      <div className="container mx-auto px-4 sm:px-6">
-        <div className={isHomepage ? "flex items-center justify-between h-16 sm:h-20 md:h-20" : "flex items-center justify-between h-16 sm:h-20 md:h-28"}>
+      {isMenuOpen && <div aria-hidden="true" className="h-16 sm:h-20 md:hidden" />}
+      <header className={`bg-white shadow-sm border-b border-gray-100 sticky top-0 z-50${isMenuOpen ? " mobile-menu-panel" : ""}`}>
+      <div className={`container mx-auto px-4 sm:px-6${isMenuOpen ? " mobile-menu-layout" : ""}`}>
+        <div className={isHomepage ? "flex shrink-0 items-center justify-between h-16 sm:h-20 md:h-20" : "flex shrink-0 items-center justify-between h-16 sm:h-20 md:h-28"}>
           {/* Logo - Responsive sizing - 20% smaller */}
           <div className="flex items-center cursor-pointer" onClick={() => navigate(homePath)}>
             <img src="/lovable-uploads/a18e3648-17a6-4222-808b-0a78d3ea50b9.png" alt="Legacy Industrial Coatings" className={isHomepage ? "h-12 sm:h-16 md:h-12 lg:h-12 w-auto" : "h-12 sm:h-16 md:h-16 lg:h-16 w-auto"}  loading="eager" decoding="async" />
@@ -134,19 +139,19 @@ const Header = () => {
           </nav>
 
           {/* Mobile Menu Button */}
-          <button className="md:hidden p-2 rounded-lg hover:bg-gray-100 transition-colors" onClick={() => setIsMenuOpen(!isMenuOpen)}>
+          <button aria-label={isMenuOpen ? "Close menu" : "Open menu"} aria-expanded={isMenuOpen} aria-controls="mobile-navigation" className="md:hidden p-2 rounded-lg hover:bg-gray-100 transition-colors" onClick={() => setIsMenuOpen(!isMenuOpen)}>
             {isMenuOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
           </button>
         </div>
 
         {/* Mobile Navigation */}
-        {isMenuOpen && <div className="md:hidden border-t border-gray-100 py-4 bg-white">
+        {isMenuOpen && <div id="mobile-navigation" className="mobile-menu-scroll md:hidden border-t border-gray-100 py-4 bg-white">
             <nav className="flex flex-col space-y-4">
               {navItems.map(item => <a key={item.name} href={item.path} className="text-gray-600 hover:text-blue-600 transition-colors duration-200 font-medium px-4 py-3 text-base rounded-lg hover:bg-gray-50" onClick={() => setIsMenuOpen(false)}>
                   {item.name}
                 </a>)}
               
-              <Button asChild variant="outline" className="request-info-theme mx-4 rounded-none border-primary text-primary"><a href="#request-info" onClick={e => { scrollToRequestInfo(e); setIsMenuOpen(false); }}>Request Info</a></Button>
+              <Button asChild variant="outline" className="request-info-theme mx-4 rounded-none border-primary text-primary"><a href="#request-info" onClick={e => { flushSync(closeMenu); scrollToRequestInfo(e); }}>Request Info</a></Button>
               {/* Mobile Commercial Section */}
               <div className="px-4">
                 <div className="text-gray-800 font-semibold text-base mb-2">Commercial</div>
