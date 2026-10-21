@@ -1,4 +1,6 @@
 - [x] Add Request Information form, private uploads, and notification trigger.
+- [ ] Audit public pages at 375px and 390px and fix mobile-only usability issues without changing desktop or content.
+- [ ] Verify audited pages have no horizontal overflow or runtime errors and preserve mobile menu behavior.
 - [x] Replace public forms and add footer/header placement with route exclusions.
 - [x] Verify real PDF submission, stored row/file, automatic Zapier 200, and preview checks (13 rule tests passed).
 - [x] Tighten homepage-only spacing and typography without changing marketing content or photos.
