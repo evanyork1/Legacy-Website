@@ -20,7 +20,7 @@ const faqs = [
   },
   {
     q: "Do you stripe parking lots and coated garages?",
-    a: "Yes. We handle new layouts and restriping, ADA stalls and access aisles, fire lanes, arrows, stencils and wheel stops. Garage striping is selected for compatibility with the installed traffic coating, including Auto-Gard systems.",
+    a: "Yes. We handle new layouts and restriping, ADA stalls and access aisles, fire lanes, arrows, stencils and wheel stops. Garage striping is selected for compatibility with the installed traffic coating, including Legacy High Traffic Urethane systems.",
   },
   {
     q: "Can markings be temporary while we test a layout?",
@@ -185,7 +185,7 @@ export default function LineStriping() {
               </p>
               <p>
                 In garages, material compatibility comes first. We select
-                striping compatible with Auto-Gard traffic coatings and confirm
+                striping compatible with Legacy High Traffic Urethane traffic coatings and confirm
                 preparation, application windows and cure requirements with the
                 specified coating system.
               </p>

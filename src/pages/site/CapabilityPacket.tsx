@@ -31,7 +31,7 @@ const sections = [
   {
     title: "Manufacturers",
     items: [
-      "Neogard (a Hempel company), Sherwin-Williams, Sika, Polymer Nation and Floor Guard.",
+      "Spec-grade resinous, polished concrete and resilient flooring materials from major U.S. manufacturers, with manufacturer product data and warranties in every submittal.",
       "We install to the basis-of-design product or approved equal. Product selection is confirmed through the project submittal.",
     ],
   },

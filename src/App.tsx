@@ -48,7 +48,6 @@ import AquaTotsFlooring from "./pages/AquaTotsFlooring";
 import CaseStudies from "./pages/CaseStudies";
 import CaseStudyDetail from "./pages/CaseStudyDetail";
 import CaseStudiesHub from "./pages/CaseStudiesHub";
-import CommercialSystemPage from "./pages/CommercialSystemPage";
 import SiteHome from "./pages/site/Home";
 import SiteAbout from "./pages/site/About";
 import OurProcess from "./pages/site/OurProcess";
@@ -161,12 +160,7 @@ function App() {
                   element={<SiteSystemPage path={s.path} />}
                 />
               ))}
-
-              {/* Legacy system page without a new-template entry */}
-              <Route
-                path="/specialty-floor-systems"
-                element={<CommercialSystemPage slug="specialty-systems" />}
-              />
+              <Route path="/specialty-floor-systems" element={<Navigate to="/materials" replace />} />
 
               {/* Keyword URL redirects to existing pages */}
               <Route path="/garage-floor-coating" element={<Navigate to="/garagefloors" replace />} />

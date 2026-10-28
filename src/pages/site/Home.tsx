@@ -32,7 +32,6 @@ import {
   CapabilityPacketBand,
 } from "@/components/site/sections";
 import { StructuredData } from "@/components/seo/StructuredData";
-import { openCalBooking } from "@/lib/calBooking";
 import { scrollToRequestInfo } from "@/lib/requestInfo";
 import { ALL_INDUSTRIES, BUSINESS } from "@/data/site/nav";
 import { INDUSTRY_PAGES } from "@/data/site/industries";
@@ -228,14 +227,14 @@ const Home = () => {
                   based in DFW, delivering multi-site programs nationwide.
                 </p>
                 <div className="flex flex-wrap gap-4">
-                  <button
-                    type="button"
-                    onClick={openCalBooking}
+                  <a
+                    href="#request-info"
+                    onClick={scrollToRequestInfo}
                     className="group inline-flex items-center gap-3 bg-background text-foreground border border-background px-6 py-3 md:px-8 md:py-4 font-heading text-[11px] md:text-[12px] font-medium tracking-[0.2em] uppercase hover:bg-transparent hover:text-background transition-all duration-500 flex-shrink-0"
                   >
                     Request an Estimate
                     <ArrowRight size={14} className="transition-transform group-hover:translate-x-1" />
-                  </button>
+                  </a>
                   <a
                     href={BUSINESS.phoneHref}
                     className="inline-flex items-center gap-3 border border-background/30 text-background px-6 py-3 md:px-8 md:py-4 font-heading text-[11px] md:text-[12px] font-medium tracking-[0.2em] uppercase hover:bg-background hover:text-foreground transition-all duration-500 flex-shrink-0"
@@ -462,7 +461,7 @@ const Home = () => {
                       onClick={scrollToRequestInfo}
                       className="group inline-flex items-center gap-3 bg-foreground text-background border border-foreground px-8 py-4 font-heading text-[12px] font-medium tracking-[0.2em] uppercase hover:bg-foreground/90 transition-all duration-500"
                     >
-                      Request a Bid
+                      Request an Estimate
                     </a>
                   </div>
                 </div>

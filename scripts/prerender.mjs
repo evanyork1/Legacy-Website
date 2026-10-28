@@ -65,6 +65,8 @@ const STATIC_ROUTES = [
   "/roof-deck-waterproofing",
   "/epoxy-cove-base",
   "/resilient-flooring",
+  "/commercial-carpet-tile",
+  "/commercial-lvt-flooring",
   "/novolac-epoxy-flooring",
   "/mma-flooring",
   "/materials",

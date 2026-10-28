@@ -59,7 +59,7 @@ export const DEFAULT_CLOSING_CTA: Required<ClosingCta> = {
  * first with a page-specific heading; the navy footer below carries links and
  * contact details only. Plano is the only office.
  */
-const SiteFooter = ({ cta }: { cta?: ClosingCta }) => {
+const SiteFooter = ({ cta, requestInfo = true }: { cta?: ClosingCta; requestInfo?: boolean }) => {
   const handlePhoneClick = () => {
     if (typeof window !== "undefined" && (window as any).gtag_report_conversion) {
       (window as any).gtag_report_conversion(BUSINESS.phoneHref);
@@ -68,7 +68,7 @@ const SiteFooter = ({ cta }: { cta?: ClosingCta }) => {
 
   return (
     <div className="lcf">
-      <RequestInfoSection id="request-info" title={cta?.title ?? DEFAULT_CLOSING_CTA.title} text={cta?.text ?? DEFAULT_CLOSING_CTA.text} />
+      {requestInfo && <RequestInfoSection id="request-info" title={cta?.title ?? DEFAULT_CLOSING_CTA.title} text={cta?.text ?? DEFAULT_CLOSING_CTA.text} />}
       <footer id="contact" className="public-mobile-footer">
         {/* Navy footer */}
         <div className="bg-foreground text-background">
@@ -116,7 +116,10 @@ const SiteFooter = ({ cta }: { cta?: ClosingCta }) => {
 
               <Column title="Systems" links={FOOTER_SYSTEMS} />
               <Column title="Industries" links={ALL_INDUSTRIES.slice(0, 10)} />
-              <Column title="Service Areas" links={SERVICE_AREAS} />
+              <div className="space-y-6">
+                <Column title="Service Areas" links={SERVICE_AREAS} />
+                <Column title="Residential" links={[{ label: "Garage Floors", path: "/garagefloors" }]} />
+              </div>
               <Column title="Company" links={COMPANY_LINKS.slice(0, 7)} />
             </div>
           </div>
@@ -127,7 +130,6 @@ const SiteFooter = ({ cta }: { cta?: ClosingCta }) => {
               <a href="/privacy" className="hover:text-background transition-colors">Privacy Policy</a>
               <a href="/terms" className="hover:text-background transition-colors">Terms of Service</a>
               <a href="/warranty" className="hover:text-background transition-colors">Warranty</a>
-              <a href="/garagefloors" className="hover:text-background transition-colors">Garage Floors</a>
             </div>
           </div>
         </div>

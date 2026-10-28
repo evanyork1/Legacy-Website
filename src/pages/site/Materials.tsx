@@ -32,7 +32,7 @@ const Materials = () => {
     itemListElement: CATALOG.map((s, i) => ({
       "@type": "ListItem",
       position: i + 1,
-      name: `${s.maker} ${s.name}`,
+      name: s.name,
       url: `${SITE_URL}${catalogHref(s)}`,
     })),
   };
@@ -41,7 +41,7 @@ const Materials = () => {
     <div className="lcf min-h-screen bg-background">
       <Seo
         title="Flooring Materials Library | Legacy Industrial Coatings"
-        description="Every Neogard and Sherwin-Williams system we install — chemistry, nominal thickness, coat-by-coat build-up and published properties. Headquartered in Dallas-Fort Worth, working nationwide."
+        description="Every Legacy flooring system we install — chemistry, nominal thickness, coat-by-coat build-up and published properties. Headquartered in Dallas-Fort Worth, working nationwide."
         path="/materials"
         ogImage={imgHero}
       />
@@ -54,7 +54,7 @@ const Materials = () => {
       <PageHero
         eyebrow="Materials"
         title="Systems Library"
-        subhead="Every system we install, named, with its chemistry, nominal thickness, coat-by-coat build-up and published properties. Built on Neogard (a Hempel company), with Sherwin-Williams where noted."
+        subhead="Every Legacy system we install, with its chemistry, nominal thickness, coat-by-coat build-up and published properties. Built on spec-grade, manufacturer-warranted materials; manufacturer data is in every submittal."
         image={imgHero}
         imageAlt="Resinous flooring systems in a manufacturing facility"
         crumbs={crumbs}
@@ -88,7 +88,7 @@ const Materials = () => {
               <article key={`${s.page}-${s.id}`} className="bg-background p-6 flex flex-col">
                 <div className="flex items-start justify-between gap-4 mb-4">
                   <div>
-                    <p className="font-heading text-[10px] uppercase tracking-[0.2em] text-muted-foreground">{s.maker} · {s.family}</p>
+                    <p className="font-heading text-[10px] uppercase tracking-[0.2em] text-muted-foreground">{s.family}</p>
                     <h2 className="font-heading font-bold text-[18px] text-foreground mt-1">{s.name}</h2>
                   </div>
                   {s.layers && <LayerStack layers={s.layers} compact />}
@@ -102,7 +102,7 @@ const Materials = () => {
                   <a href={catalogHref(s)} className="inline-flex items-center gap-2 font-heading text-[11px] tracking-[0.2em] uppercase text-foreground hover:underline">
                     View system <ArrowRight size={12} />
                   </a>
-                  <SubmittalButton systemName={`${s.maker} ${s.name}`} className="!px-4 !py-3 !text-[10px] !tracking-[0.12em]" />
+                  <SubmittalButton systemName={s.name} className="!px-4 !py-3 !text-[10px] !tracking-[0.12em]" />
                 </div>
               </article>
             ))}

@@ -107,6 +107,8 @@ export const SYSTEM_GROUPS: NavGroup[] = [
     title: "Safety, Resilient & Care",
     items: [
       { label: "Line Striping & Floor Marking", path: "/line-striping" },
+      { label: "Commercial Carpet Tile", path: "/commercial-carpet-tile" },
+      { label: "Commercial LVT & LVP", path: "/commercial-lvt-flooring" },
       { label: "Resilient Flooring", path: "/resilient-flooring" },
       { label: "Maintenance Programs", path: "/commercial-floor-maintenance" },
       { label: "Materials Library", path: "/materials" },

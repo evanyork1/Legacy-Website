@@ -277,7 +277,7 @@ export const INDUSTRY_PAGES: IndustryPageData[] = [
     "h1": "Aerospace & Hangars Flooring in Dallas–Fort Worth",
     "heroImage": "/lovable-uploads/701db69b-4439-4779-9115-583d175298af-1600.webp",
     "heroAlt": "Aerospace hangar floor coating for aircraft service in Dallas–Fort Worth",
-    "intro": "Hangar flooring is part of the maintenance environment: technicians need to see dropped hardware, move tooling and clean aviation fluids without losing usable aircraft positions. Legacy Industrial Coatings specifies aerospace floors for hangars, MRO shops and FBOs across DFW. We balance bright white light-reflective finishes for FOD control with tug traffic, tire loading and the exact hydraulic fluids used on site. Skydrol- and jet-fuel-resistant urethane topcoats are options when the selected system’s published resistance supports those exposures. Sherwin-Williams Resuflor Skydrol-resistant aerospace systems can be considered without assuming every urethane offers equivalent protection. Our scope follows aircraft movement, maintenance access and cure requirements rather than a generic commercial coating schedule.",
+    "intro": "Hangar flooring is part of the maintenance environment: technicians need to see dropped hardware, move tooling and clean aviation fluids without losing usable aircraft positions. Legacy Industrial Coatings specifies aerospace floors for hangars, MRO shops and FBOs across DFW. We balance bright white light-reflective finishes for FOD control with tug traffic, tire loading and the exact hydraulic fluids used on site. Skydrol- and jet-fuel-resistant urethane topcoats are options when the selected system’s published resistance supports those exposures. Skydrol-resistant aerospace topcoats can be considered without assuming every urethane offers equivalent protection. Our scope follows aircraft movement, maintenance access and cure requirements rather than a generic commercial coating schedule.",
     "demands": [
       "Dropped fasteners disappear against a dark or damaged hangar floor.",
       "Hydraulic fluid and jet fuel are staining the aircraft service positions.",
@@ -330,7 +330,7 @@ export const INDUSTRY_PAGES: IndustryPageData[] = [
     "faqs": [
       {
         "q": "Are all urethane topcoats resistant to Skydrol?",
-        "a": "No. Phosphate-ester hydraulic fluid resistance must be confirmed for the specific topcoat and complete floor assembly. We can evaluate Sherwin-Williams Resuflor Skydrol-resistant aerospace systems as an option, alongside the basis-of-design specification. Product selection also considers fuel, cleaners, dwell times and required cure before exposure; the word urethane alone is not sufficient evidence."
+        "a": "No. Phosphate-ester hydraulic fluid resistance must be confirmed for the specific topcoat and complete floor assembly. We can evaluate Skydrol-resistant aerospace topcoats as an option, alongside the basis-of-design specification. Product selection also considers fuel, cleaners, dwell times and required cure before exposure; the word urethane alone is not sufficient evidence."
       },
       {
         "q": "Why specify a bright white hangar floor?",
@@ -655,16 +655,16 @@ export const INDUSTRY_PAGES: IndustryPageData[] = [
     "areas": [
       {
         "name": "Elevated breezeways and walkways",
-        "text": "Use a pedestrian waterproof traffic system where the assembly calls for waterproofing above occupied or vulnerable space. Neogard Peda-Gard is an option with a published standard total of 32 dry mils, subject to the approved specification. Inspect cracks, penetrations, edges and drain details before defining the coating scope. Water must be directed to a functioning outlet; a membrane cannot create drainage by itself. Coordinate door clearances and accessible thresholds with the project team before adding a traffic assembly to an existing elevated walkway.",
+        "text": "Use a pedestrian waterproof traffic system where the assembly calls for waterproofing above occupied or vulnerable space. Legacy Pedestrian Deck is an option with a published standard total of 32 dry mils, subject to the approved specification. Inspect cracks, penetrations, edges and drain details before defining the coating scope. Water must be directed to a functioning outlet; a membrane cannot create drainage by itself. Coordinate door clearances and accessible thresholds with the project team before adding a traffic assembly to an existing elevated walkway.",
         "system": "Pedestrian waterproof traffic coating",
-        "thickness": "Peda-Gard standard: 32 dry mils",
+        "thickness": "Legacy Pedestrian Deck standard: 32 dry mils",
         "link": "/deck-coatings"
       },
       {
         "name": "Parking decks and garage ramps",
-        "text": "Garage floors see tire wear, turning loads, oils and water carried in by vehicles. A vehicular traffic coating must be selected for the structure and exposure, not substituted with decorative epoxy merely because both products are called coatings. Neogard Auto-Gard standard and heavy-duty assemblies have published totals of 40 and 52 dry mils excluding primer and aggregate. Ramps and turns may need the heavier assembly. Establish vehicle relocation and re-entry timing before mobilization so uncured work is not exposed to resident traffic.",
+        "text": "Garage floors see tire wear, turning loads, oils and water carried in by vehicles. A vehicular traffic coating must be selected for the structure and exposure, not substituted with decorative epoxy merely because both products are called coatings. Legacy High Traffic Urethane standard and heavy-duty assemblies have published totals of 40 and 52 dry mils excluding primer and aggregate. Ramps and turns may need the heavier assembly. Establish vehicle relocation and re-entry timing before mobilization so uncured work is not exposed to resident traffic.",
         "system": "Vehicular waterproof traffic coating",
-        "thickness": "Auto-Gard: 40 or 52 dry mils",
+        "thickness": "Legacy High Traffic Urethane: 40 or 52 dry mils",
         "link": "/deck-coatings"
       },
       {
@@ -1224,7 +1224,7 @@ export const INDUSTRY_PAGES: IndustryPageData[] = [
       "800-grit polished concrete at the Dallas pharmaceutical manufacturing project",
     answer: "Pharmaceutical flooring is selected room by room, usually seamless quartz or epoxy with a chemical-resistant urethane topcoat, or polished concrete in dry areas. It is used in manufacturing suites, packaging, warehousing and support spaces that follow documented cleaning protocols.",
     intro:
-      "Pharmaceutical flooring decisions should begin with room function, not a single building-wide finish. A dry manufacturing corridor, a controlled production room and a chemical cleaning station impose different requirements on the substrate and wearing surface. Legacy Industrial Coatings separates those exposures, then documents the proposed assembly and installation sequence for facility review. At a 21,000 SF Dallas pharmaceutical plant, our scope combined 800-grit polished concrete with polyurea crack repair across three to four overnight shifts, with zero downtime. That project demonstrates a scheduling approach for its particular operating conditions, not a universal promise for every controlled space. Where a seamless chemical-resistant surface is required, we also specify NeoQuartz double-broadcast flooring with CRU and an anti-microbial topcoat matched to the cleaning program.",
+      "Pharmaceutical flooring decisions should begin with room function, not a single building-wide finish. A dry manufacturing corridor, a controlled production room and a chemical cleaning station impose different requirements on the substrate and wearing surface. Legacy Industrial Coatings separates those exposures, then documents the proposed assembly and installation sequence for facility review. At a 21,000 SF Dallas pharmaceutical plant, our scope combined 800-grit polished concrete with polyurea crack repair across three to four overnight shifts, with zero downtime. That project demonstrates a scheduling approach for its particular operating conditions, not a universal promise for every controlled space. Where a seamless chemical-resistant surface is required, we also specify Legacy Quartz double-broadcast flooring with CRU and an anti-microbial topcoat matched to the cleaning program.",
     demands: [
       "We need a floor recommendation tied to each room's cleaning chemistry, not a generic claim of chemical resistance.",
       "Production cannot absorb an open-ended shutdown or a return-to-service decision based only on surface dryness.",
@@ -1243,15 +1243,15 @@ export const INDUSTRY_PAGES: IndustryPageData[] = [
       {
         name: "Seamless production rooms",
         text:
-          "NeoQuartz double-broadcast plus CRU provides a resinous option where the room calls for a continuous, cleanable surface. The specified anti-microbial topcoat has a JIS Z 2801 pass. Confirm the tested product, finish texture and complete assembly in the submittal rather than treating all quartz floors or all topcoats as interchangeable.",
-        system: "NeoQuartz double-broadcast + CRU with anti-microbial topcoat",
+          "Legacy Quartz double-broadcast plus CRU provides a resinous option where the room calls for a continuous, cleanable surface. The specified anti-microbial topcoat has a JIS Z 2801 pass. Confirm the tested product, finish texture and complete assembly in the submittal rather than treating all quartz floors or all topcoats as interchangeable.",
+        system: "Legacy Quartz double-broadcast + CRU with anti-microbial topcoat",
         thickness: "Complete system thickness confirmed in manufacturer submittal",
         link: "/quartz-flooring",
       },
       {
         name: "Cleaning and chemical exposure areas",
         text:
-          "Build the resistance review around IPA, quats, sporicides, CIP detergents and passivation acids. The NeoQuartz and CRU assembly is selected to withstand the specified exposure profile, with manufacturer confirmation of concentrations, temperatures and dwell times. Concentrated storage or prolonged pooling may require a different lining than routine cleaning.",
+          "Build the resistance review around IPA, quats, sporicides, CIP detergents and passivation acids. The Legacy Quartz and CRU assembly is selected to withstand the specified exposure profile, with manufacturer confirmation of concentrations, temperatures and dwell times. Concentrated storage or prolonged pooling may require a different lining than routine cleaning.",
         system: "Chemical-resistant resinous flooring",
         thickness: "Exposure-dependent build per approved product data",
         link: "/resinous-flooring",
@@ -1295,7 +1295,7 @@ export const INDUSTRY_PAGES: IndustryPageData[] = [
       {
         q: "Will the quartz system withstand our disinfectants and process chemicals?",
         a:
-          "The NeoQuartz double-broadcast and CRU system with anti-microbial topcoat is selected for resistance to the specified IPA, quats, sporicides, CIP detergents and passivation acids. Approval still depends on the actual chemical schedule. Provide product names, dilution, temperature, frequency and dwell time, including accidental concentrated exposure. We request manufacturer review where needed and identify any exposure that calls for a different assembly or operating limitation.",
+          "The Legacy Quartz double-broadcast and CRU system with anti-microbial topcoat is selected for resistance to the specified IPA, quats, sporicides, CIP detergents and passivation acids. Approval still depends on the actual chemical schedule. Provide product names, dilution, temperature, frequency and dwell time, including accidental concentrated exposure. We request manufacturer review where needed and identify any exposure that calls for a different assembly or operating limitation.",
       },
       {
         q: "Should every pharmaceutical room receive polished concrete?",
@@ -1679,14 +1679,14 @@ export const INDUSTRY_PAGES: IndustryPageData[] = [
     metaTitle:
       "Parking Garage Coatings DFW | Legacy Industrial Coatings",
     metaDescription:
-      "DFW parking garage coatings with Neogard Auto-Gard vehicular systems, Peda-Gard pedestrian protection, coordinated repairs and compatible striping.",
+      "DFW parking garage coatings with Legacy High Traffic Urethane vehicular systems, Legacy Pedestrian Deck pedestrian protection, coordinated repairs and compatible striping.",
     h1: "Parking Structures Flooring in Dallas–Fort Worth",
     heroImage: iw1,
     heroAlt:
       "Industrial concrete floor reference image, not a completed parking-deck coating installation",
-    answer: "Parking structure coatings are fluid-applied traffic membranes such as Neogard Auto-Gard for vehicles and Peda-Gard for pedestrian areas, typically 32 to 52 dry mils. They are used on elevated decks, ramps, stair towers and plaza levels to waterproof the slab and resist wear.",
+    answer: "Parking structure coatings are fluid-applied traffic membranes such as Legacy High Traffic Urethane for vehicles and Legacy Pedestrian Deck for pedestrian areas, typically 32 to 52 dry mils. They are used on elevated decks, ramps, stair towers and plaza levels to waterproof the slab and resist wear.",
     intro:
-      "A parking structure coating is a coordinated traffic and waterproofing assembly, not simply colored paint over concrete. Vehicle turns, ramps, pedestrian routes and exposed transitions place different demands on the deck. Legacy Industrial Coatings specifies Neogard Auto-Gard for vehicular traffic and Peda-Gard for appropriate pedestrian stairs and plazas, then coordinates repairs, joint details and compatible striping around those systems. We identify standard and heavy-duty areas before pricing so concentrated wear zones receive the intended build-up. The installation plan also accounts for access to occupied buildings, drainage, weather exposure and the curing conditions needed before vehicles return. Existing structural distress requires separate evaluation; a traffic coating must not be used to hide unresolved concrete deterioration.",
+      "A parking structure coating is a coordinated traffic and waterproofing assembly, not simply colored paint over concrete. Vehicle turns, ramps, pedestrian routes and exposed transitions place different demands on the deck. Legacy Industrial Coatings specifies Legacy High Traffic Urethane for vehicular traffic and Legacy Pedestrian Deck for appropriate pedestrian stairs and plazas, then coordinates repairs, joint details and compatible striping around those systems. We identify standard and heavy-duty areas before pricing so concentrated wear zones receive the intended build-up. The installation plan also accounts for access to occupied buildings, drainage, weather exposure and the curing conditions needed before vehicles return. Existing structural distress requires separate evaluation; a traffic coating must not be used to hide unresolved concrete deterioration.",
     demands: [
       "Leaks and worn coatings keep returning because joints, cracks and drain interfaces are not being treated as part of one scope.",
       "Ramps and tight turns wear faster than ordinary parking bays, but previous bids used one build everywhere.",
@@ -1698,32 +1698,32 @@ export const INDUSTRY_PAGES: IndustryPageData[] = [
       {
         name: "General vehicular decks",
         text:
-          "Neogard Auto-Gard standard vehicular construction totals 40 dry mils, excluding primer and aggregate. Its base, wear coat and topcoat serve different functions and must be installed as the approved assembly. Identify drains, penetrations and changes in plane before field application so continuity does not depend on improvised finishing details.",
-        system: "Neogard Auto-Gard standard vehicular coating",
+          "Legacy High Traffic Urethane standard vehicular construction totals 40 dry mils, excluding primer and aggregate. Its base, wear coat and topcoat serve different functions and must be installed as the approved assembly. Identify drains, penetrations and changes in plane before field application so continuity does not depend on improvised finishing details.",
+        system: "Legacy High Traffic Urethane standard vehicular coating",
         thickness: "40 dry mils, excluding primer and aggregate",
         link: "/deck-coatings",
       },
       {
         name: "Ramps, turns and concentrated wear",
         text:
-          "Use the heavy-duty Auto-Gard build at designated turns, ramps and other concentrated traffic locations. The additional wear layer raises the specified total to 52 dry mils, excluding primer and aggregate. Mark these zones on the plan so the installed reinforcement can be documented before later coats conceal the change in build.",
-        system: "Neogard Auto-Gard heavy-duty vehicular coating",
+          "Use the heavy-duty Legacy High Traffic Urethane build at designated turns, ramps and other concentrated traffic locations. The additional wear layer raises the specified total to 52 dry mils, excluding primer and aggregate. Mark these zones on the plan so the installed reinforcement can be documented before later coats conceal the change in build.",
+        system: "Legacy High Traffic Urethane heavy-duty vehicular coating",
         thickness: "52 dry mils, excluding primer and aggregate",
         link: "/deck-coatings",
       },
       {
         name: "Fast-cure reopening zones",
         text:
-          "Auto-Gard FC and integrally textured Auto-Gard FC T provide fast-cure options where the access plan justifies them. Their published traffic window is 24–36 hours under applicable manufacturer conditions. Confirm the selected variant, temperature limits and UV exposure requirements; a fast-cure designation does not remove preparation or environmental constraints.",
-        system: "Neogard Auto-Gard FC or FC T",
+          "Legacy High Traffic Urethane FC and integrally textured Legacy High Traffic Urethane FC Textured provide fast-cure options where the access plan justifies them. Their published traffic window is 24–36 hours under applicable manufacturer conditions. Confirm the selected variant, temperature limits and UV exposure requirements; a fast-cure designation does not remove preparation or environmental constraints.",
+        system: "Legacy High Traffic Urethane FC or FC Textured",
         thickness: "40 dry mils standard; 52 dry mils heavy-duty",
         link: "/deck-coatings",
       },
       {
         name: "Pedestrian stairs and plazas",
         text:
-          "Peda-Gard is the pedestrian system for suitable stairs, landings and plazas rather than a substitute for vehicular Auto-Gard. The standard assembly totals 32 dry mils. Coordinate stair edges, vertical transitions and adjoining waterproofing, with texture selected for the intended use and compatible cleaning rather than appearance alone.",
-        system: "Neogard Peda-Gard pedestrian coating",
+          "Legacy Pedestrian Deck is the pedestrian system for suitable stairs, landings and plazas rather than a substitute for vehicular Legacy High Traffic Urethane. The standard assembly totals 32 dry mils. Coordinate stair edges, vertical transitions and adjoining waterproofing, with texture selected for the intended use and compatible cleaning rather than appearance alone.",
+        system: "Legacy Pedestrian Deck pedestrian coating",
         thickness: "32 dry mils",
         link: "/deck-coatings",
       },
@@ -1745,22 +1745,22 @@ export const INDUSTRY_PAGES: IndustryPageData[] = [
       },
     ],
     standards: [
-      "Published Auto-Gard standard and heavy-duty totals are 40 and 52 dry mils, excluding primer and aggregate; confirm the final build-up on the manufacturer submittal.",
-      "Standard Auto-Gard opens to traffic after 72 hours at 75°F and 50% relative humidity; actual release depends on approved conditions and system requirements.",
-      "Standard Peda-Gard totals 32 dry mils with a published 48-hour pedestrian traffic window under the manufacturer's stated application conditions.",
-      "Verify substrate soundness, preparation, moisture limitations and environmental conditions against the selected Neogard system instructions before installation.",
+      "Published Legacy High Traffic Urethane standard and heavy-duty totals are 40 and 52 dry mils, excluding primer and aggregate; confirm the final build-up on the manufacturer submittal.",
+      "Standard Legacy High Traffic Urethane opens to traffic after 72 hours at 75°F and 50% relative humidity; actual release depends on approved conditions and system requirements.",
+      "Standard Legacy Pedestrian Deck totals 32 dry mils with a published 48-hour pedestrian traffic window under the manufacturer's stated application conditions.",
+      "Verify substrate soundness, preparation, moisture limitations and environmental conditions against the selected system's installation instructions before installation.",
       "Coordinate accessibility, fire-lane and circulation markings with approved plans and applicable requirements; coating installation does not independently establish layout compliance.",
     ],
     faqs: [
       {
-        q: "What is the difference between Auto-Gard and Peda-Gard?",
+        q: "What is the difference between Legacy High Traffic Urethane and Legacy Pedestrian Deck?",
         a:
-          "Auto-Gard is the vehicular traffic family, while Peda-Gard serves appropriate pedestrian applications. They have different assemblies and service expectations, so the pedestrian product should not be substituted into a vehicle route. We map the boundaries at stairs, plazas and deck connections, then coordinate compatible terminations. The final submittal identifies the exact system variant rather than relying on the manufacturer name alone.",
+          "Legacy High Traffic Urethane is the vehicular traffic family, while Legacy Pedestrian Deck serves appropriate pedestrian applications. They have different assemblies and service expectations, so the pedestrian product should not be substituted into a vehicle route. We map the boundaries at stairs, plazas and deck connections, then coordinate compatible terminations. The final submittal identifies the exact system variant rather than relying on the manufacturer name alone.",
       },
       {
         q: "How soon can vehicles return after coating?",
         a:
-          "The published standard Auto-Gard window is 72 hours at 75°F and 50% relative humidity. Auto-Gard FC and FC T offer published 24–36-hour traffic windows subject to their applicable conditions. These are not unconditional calendar promises. Temperature, humidity, substrate conditions and the exact approved assembly affect planning, and preparation or repairs occur before that final cure period begins.",
+          "The published standard Legacy High Traffic Urethane window is 72 hours at 75°F and 50% relative humidity. Legacy High Traffic Urethane FC and FC Textured offer published 24–36-hour traffic windows subject to their applicable conditions. These are not unconditional calendar promises. Temperature, humidity, substrate conditions and the exact approved assembly affect planning, and preparation or repairs occur before that final cure period begins.",
       },
       {
         q: "Can a traffic coating stop every parking-garage leak?",
@@ -1777,7 +1777,7 @@ export const INDUSTRY_PAGES: IndustryPageData[] = [
       {
         src: iw1,
         alt:
-          "Industrial warehouse concrete floor used as reference photography, not an Auto-Gard installation",
+          "Industrial warehouse concrete floor used as reference photography, not a Legacy High Traffic Urethane installation",
       },
       {
         src: iw2,

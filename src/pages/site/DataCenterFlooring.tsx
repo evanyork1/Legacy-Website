@@ -57,7 +57,7 @@ const HOTSPOTS: Hotspot[] = [
     label: "Battery / UPS Rooms",
     x: 470, y: 20, w: 150, h: 80,
     lines: "Acid-resistant floor with integral cove and coated curbs that hold a spill; code-required spill control for lead-acid batteries.",
-    system: "Neogard Novolac 32 / 125",
+    system: "Legacy Novolac 32 / 125",
     link: "/novolac-epoxy-flooring",
   },
   {
@@ -105,7 +105,7 @@ const HOTSPOTS: Hotspot[] = [
     label: "Roof",
     x: 470, y: 250, w: 150, h: 90,
     lines: "Fluid-applied waterproofing and pedestrian traffic coatings for roofs, stairs, mezzanines and elevated slabs.",
-    system: "Neogard roof & deck systems",
+    system: "Legacy roof & deck systems",
     link: "/roof-deck-waterproofing",
   },
 ];
@@ -130,7 +130,7 @@ const SCOPE_CARDS = [
   {
     name: "3. Battery rooms (lead-acid or lithium)",
     text: "Acid-resistant floor with integral cove and coated curbs that hold a spill; building and fire codes require spill control for lead-acid batteries.",
-    system: "Neogard Novolac 32 / 125 acid-resistant epoxy",
+    system: "Legacy Novolac 32 / 125 acid-resistant epoxy",
     links: [
       { label: "Novolac epoxy flooring", path: "/novolac-epoxy-flooring" },
       { label: "Battery room flooring", path: "/battery-room-flooring" },
@@ -187,7 +187,7 @@ const SCOPE_CARDS = [
   {
     name: "10. Roofs, stairs, mezzanines, elevated slabs",
     text: "Fluid-applied waterproofing and pedestrian traffic coatings that protect the structure below.",
-    system: "Neogard fluid-applied systems",
+    system: "Legacy fluid-applied systems",
     links: [
       { label: "Roof & deck waterproofing", path: "/roof-deck-waterproofing" },
       { label: "Deck coatings", path: "/deck-coatings" },

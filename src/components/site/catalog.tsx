@@ -1,7 +1,7 @@
 import { ArrowRight, Star } from "lucide-react";
 import { BTN, Eyebrow } from "@/components/site/sections";
 import { openRequestInfoWith, submittalPrefill } from "@/lib/requestInfo";
-import { catalogNote, type CatalogSystem } from "@/data/site/catalog";
+import { CATALOG_NOTE, type CatalogSystem } from "@/data/site/catalog";
 import { BUSINESS, CLIENTS } from "@/data/site/nav";
 
 /** Replaces every manufacturer data-sheet link: prefills the request form. */
@@ -66,21 +66,34 @@ export const SystemBlock = ({ s }: { s: CatalogSystem }) => (
         {s.tag && <p className="font-heading text-[10px] uppercase tracking-[0.2em] text-muted-foreground mb-1">{s.tag}</p>}
         <h3 className="font-heading font-bold text-[20px] text-foreground">{s.name}</h3>
       </div>
-      <span className="font-heading text-[11px] uppercase tracking-[0.2em] text-muted-foreground">{s.maker}</span>
     </header>
     <div className="px-6 md:px-8 py-6">
       <dl className="grid sm:grid-cols-2 gap-4 mb-6">
         <Meta label="Chemistry" value={s.chemistry} />
         <Meta label="Nominal thickness" value={s.thickness} />
+        <Meta label="Return to service" value={s.returnToService} />
       </dl>
       {s.layers && (
         <div className="grid lg:grid-cols-[1fr_auto] gap-6 items-start">
-          <div className="overflow-x-auto border border-border">
-            <table className="w-full min-w-[520px] text-[13px]">
+          <ol className="md:hidden border border-border divide-y divide-border">
+            {s.layers.map((l, i) => (
+              <li key={i} className="px-4 py-3">
+                <p className="font-heading font-semibold text-[13px] text-foreground">{l.coat}</p>
+                <p className="text-[13px] text-muted-foreground leading-[1.6] mt-1">{l.product}</p>
+                {(l.coverage || l.dft) && (
+                  <p className="text-[12px] text-muted-foreground mt-1">
+                    {[l.coverage, l.dft ? (/^[\d–-]+$/.test(l.dft) ? `${l.dft} mils DFT` : `DFT ${l.dft}`) : undefined].filter(Boolean).join(" · ")}
+                  </p>
+                )}
+              </li>
+            ))}
+          </ol>
+          <div className="hidden md:block overflow-x-auto border border-border">
+            <table className="w-full text-[13px]">
               <thead>
                 <tr className="text-left font-heading text-[10px] uppercase tracking-[0.2em] text-muted-foreground border-b border-border bg-secondary">
                   <th className="px-4 py-3 font-medium">Coat</th>
-                  <th className="px-4 py-3 font-medium">Product</th>
+                  <th className="px-4 py-3 font-medium">Material</th>
                   <th className="px-4 py-3 font-medium">Coverage</th>
                   <th className="px-4 py-3 font-medium">DFT mils</th>
                 </tr>
@@ -102,7 +115,7 @@ export const SystemBlock = ({ s }: { s: CatalogSystem }) => (
           </div>
         </div>
       )}
-      {s.layers && <p className="text-[12px] text-muted-foreground mt-3">{catalogNote(s.maker)}</p>}
+      {s.layers && <p className="text-[12px] text-muted-foreground mt-3">{CATALOG_NOTE}</p>}
       {s.summary && <p className="text-[14px] text-muted-foreground leading-[1.7]">{s.summary}</p>}
       {s.bestFor && (
         <p className="text-[14px] text-foreground leading-[1.7] mt-5">
@@ -120,7 +133,7 @@ export const SystemBlock = ({ s }: { s: CatalogSystem }) => (
           </ul>
         </div>
       )}
-      <SubmittalButton systemName={`${s.maker} ${s.name}`} className="mt-6" />
+      <SubmittalButton systemName={s.name} className="mt-6" />
     </div>
   </article>
 );
@@ -128,7 +141,7 @@ export const SystemBlock = ({ s }: { s: CatalogSystem }) => (
 /** Compact card for systems listed without layer tables. */
 export const SystemCard = ({ s }: { s: CatalogSystem }) => (
   <div id={s.id} className="scroll-mt-32 bg-background p-6 flex flex-col">
-    <p className="font-heading text-[10px] uppercase tracking-[0.2em] text-muted-foreground mb-2">{s.maker}</p>
+    <p className="font-heading text-[10px] uppercase tracking-[0.2em] text-muted-foreground mb-2">{s.family}</p>
     <h3 className="font-heading font-semibold text-[15px] text-foreground mb-2">{s.name}</h3>
     {s.summary && <p className="text-[13px] text-muted-foreground leading-[1.6]">{s.summary}</p>}
     {s.thickness && <p className="text-[12px] text-muted-foreground mt-2">{s.thickness}</p>}
@@ -141,7 +154,6 @@ export const CatalogSection = ({ systems, title = "Systems We Install" }: { syst
   const blocks = systems.filter((s) => s.layers);
   const cards = systems.filter((s) => !s.layers);
   const groups = Array.from(new Set(cards.map((c) => c.group ?? "More systems")));
-  const anyNeogard = systems.some((s) => s.maker === "Neogard");
   return (
     <section className="lcf py-24 md:py-32 bg-secondary" id="systems">
       <div className="max-w-7xl mx-auto px-6 md:px-8 lg:px-12">
@@ -165,7 +177,7 @@ export const CatalogSection = ({ systems, title = "Systems We Install" }: { syst
         {cards.length > 0 && (
           <div className="mt-8 flex flex-col sm:flex-row sm:items-center gap-4">
             <p className="text-[13px] text-muted-foreground">
-              {anyNeogard ? "Build-ups for these systems are confirmed in our submittal." : ""}
+              Build-ups for these systems are confirmed in our submittal.
             </p>
             <SubmittalButton systemName={cards.map((c) => c.name).slice(0, 3).join(", ") + (cards.length > 3 ? " and related systems" : "")} />
           </div>

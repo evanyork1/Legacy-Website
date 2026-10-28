@@ -46,7 +46,7 @@ const WHY = [
   "Night, weekend and phased work in occupied buildings",
   "In-house diamond grinding, shot blasting, crack and joint repair",
   "General liability and workers' comp on every job; OSHA-compliant crews",
-  "Neogard and Sherwin-Williams systems installed to the basis of design",
+  "Spec-grade, manufacturer-warranted Legacy systems, installed to the basis of design",
   "Site walk within 1–3 business days; full bid within 24 hours of receiving plans",
 ];
 
@@ -176,7 +176,7 @@ const EpoxyFlooringCity = () => {
           <h2 className={H2}>What We Install in {city.name}</h2>
           <p className={`${P} max-w-3xl`}>
             Every floor starts with testing the slab. From there we recommend the system that fits how the space is used,
-            built on Neogard and Sherwin-Williams products.
+            built on spec-grade, manufacturer-warranted materials.
           </p>
           <LinkCards items={services} />
         </div>

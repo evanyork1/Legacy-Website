@@ -37,7 +37,7 @@ const SPACES = [
   {
     label: "Restaurants & commercial kitchens",
     url: "/restaurant-kitchen-flooring",
-    text: "Slip-resistant, sanitary floors with integral cove. Urethane cement or KitchenGard where hot water, grease and thermal shock would break down standard epoxy.",
+    text: "Slip-resistant, sanitary floors with integral cove. Urethane cement or Legacy Kitchen Slurry where hot water, grease and thermal shock would break down standard epoxy.",
   },
   {
     label: "Offices & lobbies",
@@ -70,7 +70,7 @@ const SYSTEMS = [
   {
     label: "Industrial epoxy flooring",
     url: "/industrial-epoxy",
-    text: "Neogard CG Series epoxy from a 16-mil thin film to a 1/4\" troweled mortar: the workhorse for warehouses, back-of-house and production floors.",
+    text: "Legacy Epoxy Series epoxy from a 16-mil thin film to a 1/4\" troweled mortar: the workhorse for warehouses, back-of-house and production floors.",
   },
   {
     label: "Decorative flake floors",
@@ -80,12 +80,12 @@ const SYSTEMS = [
   {
     label: "Quartz flooring",
     url: "/quartz-flooring",
-    text: "NeoQuartz broadcast and trowel systems: textured, colorful and slip-resistant for restrooms, kitchens and corridors.",
+    text: "Legacy Quartz broadcast and trowel systems: textured, colorful and slip-resistant for restrooms, kitchens and corridors.",
   },
   {
     label: "Urethane cement flooring",
     url: "/urethane-cement-flooring",
-    text: "Neocrete for kitchens, food production, washdown and freezer areas where heat and thermal shock are part of the job.",
+    text: "Legacy Urethane Cement for kitchens, food production, washdown and freezer areas where heat and thermal shock are part of the job.",
   },
   {
     label: "MMA flooring",
@@ -98,9 +98,14 @@ const SYSTEMS = [
     text: "Commercial concrete polishing that turns the existing slab into a durable, low-maintenance finished floor.",
   },
   {
-    label: "Carpet tile, LVT & resilient",
-    url: "/resilient-flooring",
-    text: "Carpet tile, LVP/LVT, VCT and sheet vinyl from the same contractor, so one crew covers every finish in the building.",
+    label: "Commercial carpet tile",
+    url: "/commercial-carpet-tile",
+    text: "Carpet tile and planks for offices, schools, healthcare and hotels, with removal, floor prep and after-hours installs.",
+  },
+  {
+    label: "Commercial LVT & LVP",
+    url: "/commercial-lvt-flooring",
+    text: "Glue-down and rigid-core luxury vinyl tile and plank, plus sheet vinyl and VCT, from the same crew.",
   },
   {
     label: "Systems library",
@@ -228,7 +233,7 @@ const Commercial = () => {
           <Eyebrow>Systems</Eyebrow>
           <h2 className={H2}>Commercial Epoxy Flooring Systems We Install</h2>
           <p className={`${P} max-w-3xl`}>
-            We build on Neogard and Sherwin-Williams systems and install to the basis-of-design product or an approved
+            Every Legacy system is built on spec-grade, manufacturer-warranted materials, and we install to the basis-of-design product or an approved
             equal. Every system page lists its coat-by-coat build-up.
           </p>
           <LinkCards items={SYSTEMS} />

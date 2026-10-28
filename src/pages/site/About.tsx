@@ -143,21 +143,24 @@ const About = () => (
         <div className="container mx-auto px-4 max-w-5xl grid md:grid-cols-2 gap-12">
           <div>
             <h2 className="text-2xl md:text-[32px] font-bold text-foreground tracking-tight mb-5">
-              Manufacturer relationships
+              Legacy systems
             </h2>
             <p className="text-muted-foreground leading-relaxed mb-5">
-              We install to the basis-of-design product or approved equal. Our crews are trained on
-              systems from:
+              Every floor we install is a named Legacy system, built on spec-grade, manufacturer-warranted
+              materials and installed to the basis-of-design product or an approved equal:
             </p>
             <ul className="space-y-2">
-              {["Neogard (a Hempel company)", "Sherwin-Williams", "Sika", "Polymer Nation", "Floor Guard"].map(
-                (m) => (
-                  <li key={m} className="flex gap-3 text-muted-foreground">
-                    <span className="mt-2.5 h-1.5 w-1.5 rounded-full bg-foreground shrink-0" />
-                    <span className="font-medium">{m}</span>
-                  </li>
-                ),
-              )}
+              {[
+                "Coat-by-coat build-ups published on our systems library",
+                "Manufacturer product data, safety data and guide specs in every submittal",
+                "Manufacturer warranties available on qualifying systems",
+                "Crews trained on resinous, urethane cement, MMA, polished concrete and resilient installs",
+              ].map((m) => (
+                <li key={m} className="flex gap-3 text-muted-foreground">
+                  <span className="mt-2.5 h-1.5 w-1.5 rounded-full bg-foreground shrink-0" />
+                  <span className="font-medium">{m}</span>
+                </li>
+              ))}
             </ul>
           </div>
           <div>

@@ -39,6 +39,8 @@ export type SystemPageData = {
   serviceName?: string;
   /** Extra content blocks. Links are internal only — never a manufacturer site. */
   sections?: {
+    /** Optional anchor id for deep links (e.g. "oil-containment-pits"). */
+    id?: string;
     title: string;
     paragraphs: string[];
     link?: { label: string; url: string };
@@ -74,7 +76,7 @@ export const SYSTEM_PAGES: SystemPageData[] = [
       "Urethane cement is a cementitious urethane mortar installed at a nominal 3/16 to 1/4 inch that resists thermal shock, hot oil, steam cleaning and aggressive chemicals. It is used in commercial kitchens, food and beverage plants, washdown areas and heavy industrial spaces where thin-film epoxy will not hold up.",
     whatItIs: [
       "Urethane cement (cementitious urethane) is a trowel- or self-leveling-applied mortar that bonds tenaciously to concrete and shrugs off thermal shock, hot oil, steam cleaning and aggressive chemicals.",
-      "We build on Neogard Neocrete, a self-priming, thermal-shock-resistant cementitious polyurethane installed from 1/8\" to 3/8\", and Hybri-Gard, which pairs a Neocrete base with an epoxy, polyaspartic or MMA topcoat. Neocrete tolerates moisture vapor up to 25 lb MVER (calcium chloride test). Sherwin-Williams Polycrete SL is available where it is specified.",
+      "We install Legacy Urethane Cement, a self-priming, thermal-shock-resistant cementitious polyurethane installed from 1/8\" to 3/8\", and Legacy Hybrid Urethane, which pairs a urethane cement base with an epoxy, polyaspartic or MMA topcoat. Legacy Urethane Cement tolerates moisture vapor up to 25 lb MVER (ASTM F1869 calcium chloride test).",
     ],
     whereUsed: [
       { label: "Food & beverage processing", path: "/food-processing-flooring" },
@@ -280,25 +282,25 @@ SYSTEM_PAGES.push(
     path: "/industrial-epoxy",
     name: "Industrial Epoxy Flooring",
     metaTitle: "Industrial Epoxy Flooring Dallas-Fort Worth | Legacy Industrial Coatings",
-    metaDescription: "Industrial epoxy flooring and floor coatings for warehouses, manufacturing, food and aerospace facilities. Neogard CG Series from 16 mils to 1/4\". DFW based, nationwide. Bids in 24 hours.",
+    metaDescription: "Industrial epoxy flooring and floor coatings for warehouses, manufacturing, food and aerospace facilities. Legacy Epoxy Series from 16 mils to 1/4\". DFW based, nationwide. Bids in 24 hours.",
     h1: "Industrial Epoxy Flooring & Floor Coatings",
     overviewTitle: "What Industrial Epoxy Flooring Is",
     serviceName: "Industrial Epoxy Flooring",
-    intro: "Industrial epoxy is a 100% solids resin floor installed from a thin film up to a 1/4\" troweled mortar, built for forklifts, foot traffic and production work. We install Neogard's CG Series, choosing the build-up by traffic and impact, with a Sherwin-Williams option where it is specified.",
+    intro: "Industrial epoxy is a 100% solids resin floor installed from a thin film up to a 1/4\" troweled mortar, built for forklifts, foot traffic and production work. We install the Legacy Epoxy Series, choosing the build-up by traffic and impact, with a low-odor option for occupied buildings.",
     comparison: {
-      title: "Choose a CG Series System",
+      title: "Choose a Legacy Epoxy System",
       columns: ["Typical service"],
       rows: [
-        { label: "CG-16", values: ["Light traffic, recoats"] },
-        { label: "CG-32", values: ["General commercial / light industrial"] },
-        { label: "CG-65", values: ["Textured, heavier traffic"] },
-        { label: "CG-125", values: ["Heavy forklift and production"] },
-        { label: "CG-250 Trowel", values: ["Heaviest impact, 1/4\" mortar"] },
+        { label: "Legacy Epoxy 16", values: ["Light traffic, recoats"] },
+        { label: "Legacy Epoxy 32", values: ["General commercial / light industrial"] },
+        { label: "Legacy Epoxy 65", values: ["Textured, heavier traffic"] },
+        { label: "Legacy Epoxy 125", values: ["Heavy forklift and production"] },
+        { label: "Legacy Epoxy Mortar 250", values: ["Heaviest impact, 1/4\" mortar"] },
       ],
     },
     whatItIs: [
       "We install self-leveling epoxy, high-build epoxy mortar and decorative broadcast systems. Mechanical preparation, concrete repair and moisture evaluation establish the bond before the finish is selected.",
-      "Neogard's CG Series runs from CG-16 for light traffic and recoats to CG-250 Trowel for the heaviest impact. An optional 70817/70818 CRU topcoat adds chemical and UV resistance, and Neogrip Spheres add texture. Sherwin-Williams Resuflor Performance HPS is a low-odor, low-VOC option for occupied buildings, subject to ventilation and work-area controls.",
+      "The Legacy Epoxy Series runs from Legacy Epoxy 16 for light traffic and recoats to Legacy Epoxy Mortar 250 for the heaviest impact; the number is the system's nominal thickness in mils. An optional chemical- and UV-resistant urethane (CRU) topcoat adds chemical and UV resistance, and anti-slip spheres add texture. Legacy Low-Odor Epoxy is a low-odor, low-VOC option for occupied buildings, subject to ventilation and work-area controls.",
       "Colors, traction aggregate, safety zoning and integral cove are specified around the operation. We distinguish routine cleaning exposure from immersion or aggressive chemical service rather than treating every epoxy as interchangeable.",
     ],
     whereUsed: [industryLinks.warehouse, industryLinks.manufacturing, industryLinks.aerospace, industryLinks.pharmacy, industryLinks.auto],
@@ -306,8 +308,8 @@ SYSTEM_PAGES.push(
     cure: "Confirm walking, equipment and chemical-service release separately against the approved product data and actual site conditions.",
     performance: [
       "Seamless, cleanable finish with a project-specific wear surface.",
-      "70714/70715 epoxy compressive strength: 25,300 psi (ASTM D695).",
-      "Resuflor Performance HPS offers a low-odor, low-VOC occupied-building option.",
+      "Body epoxy compressive strength: 25,300 psi (ASTM D695).",
+      "Legacy Low-Odor Epoxy offers a low-odor, low-VOC occupied-building option.",
     ],
     chemicalResistance: [
       "Select the resin and topcoat against the actual oils, cleaners and process chemicals.",
@@ -320,11 +322,11 @@ SYSTEM_PAGES.push(
           "Industrial epoxy flooring is the right answer for most warehouses and production floors, but not every one. Heat, hot washdown, aggressive chemicals and tight shutdown windows each call for a different chemistry. We install the full range and match the system to the floor's actual service instead of forcing one product onto every slab.",
         ],
         links: [
-          { label: "CG Series industrial epoxy", url: "/industrial-epoxy", text: "100% solids epoxy from a 16-mil thin film to a 1/4\" troweled mortar for forklifts, carts and foot traffic." },
+          { label: "Legacy Epoxy Series", url: "/industrial-epoxy", text: "100% solids epoxy from a 16-mil thin film to a 1/4\" troweled mortar for forklifts, carts and foot traffic." },
           { label: "Novolac epoxy flooring", url: "/novolac-epoxy-flooring", text: "Higher chemical and temperature resistance for battery rooms, chemical storage and containment." },
-          { label: "Urethane cement flooring", url: "/urethane-cement-flooring", text: "Neocrete for hot washdown, thermal shock, freezers and food and beverage production." },
-          { label: "MMA flooring", url: "/mma-flooring", text: "Fast-cure FTS MMA systems for facilities that can only shut down overnight or over a weekend." },
-          { label: "Aircraft hangar flooring", url: "/aerospace-hangar-flooring", text: "SkyGard epoxy/urethane systems built to resist Skydrol and reflect light in hangars." },
+          { label: "Urethane cement flooring", url: "/urethane-cement-flooring", text: "Legacy Urethane Cement for hot washdown, thermal shock, freezers and food and beverage production." },
+          { label: "MMA flooring", url: "/mma-flooring", text: "Fast-cure Legacy MMA systems for facilities that can only shut down overnight or over a weekend." },
+          { label: "Aircraft hangar flooring", url: "/aerospace-hangar-flooring", text: "Legacy Hangar epoxy/urethane systems built to resist Skydrol and reflect light in hangars." },
           { label: "Polished concrete", url: "/concrete-polishing", text: "When the slab itself can be the floor: ground, densified and polished, with no coating to wear through." },
         ],
       },
@@ -335,7 +337,7 @@ SYSTEM_PAGES.push(
         ],
         links: [
           { label: "Warehouses & distribution", url: "/warehouse-flooring", text: "Abrasion-resistant epoxy or polished concrete, joint repair and aisle striping, phased around live racking and shipping schedules." },
-          { label: "Manufacturing", url: "/manufacturing-floor-coating", text: "Impact- and chemical-resistant builds such as CG-65 and CG-125, with cove and safety zoning around production lines." },
+          { label: "Manufacturing", url: "/manufacturing-floor-coating", text: "Impact- and chemical-resistant builds such as Legacy Epoxy 65 and Legacy Epoxy 125, with cove and safety zoning around production lines." },
           { label: "Food & beverage processing", url: "/food-processing-flooring", text: "Sanitary, slip-resistant floors; urethane cement where hot water and thermal shock rule out standard epoxy." },
           { label: "Aerospace & hangars", url: "/aerospace-hangar-flooring", text: "Skydrol-resistant, light-reflective hangar systems from 16 to 56 mils." },
           { label: "Data centers", url: "/data-center-flooring", text: "Epoxy for support spaces, static-control floors for electrical rooms and novolac in battery rooms." },
@@ -353,7 +355,7 @@ SYSTEM_PAGES.push(
           "Surface preparation: shot-blast or diamond-grind to the concrete surface profile (CSP) the system requires, with dust control.",
           "Repairs: cracks, spalls and joints filled or rebuilt so they don't telegraph through the new floor.",
           "Primer: the standard epoxy primer, or a moisture-mitigating primer when testing calls for it.",
-          "Body and topcoat: the specified CG Series build (or other approved system), with traction aggregate where needed and a chemical/UV-resistant urethane topcoat where specified.",
+          "Body and topcoat: the specified Legacy Epoxy build (or other approved system), with traction aggregate where needed and a chemical/UV-resistant urethane topcoat where specified.",
           "Details: integral cove base, transitions, safety zones and line striping in the same mobilization.",
           "Punch walk and closeout: walk-through, touch-ups, cure and return-to-service instructions, and the full photo log.",
         ],
@@ -379,14 +381,14 @@ SYSTEM_PAGES.push(
         title: "What Industrial Epoxy Flooring Costs",
         paragraphs: [
           "Industrial epoxy pricing is driven far more by the slab and the schedule than by the resin. Two 50,000 SF warehouses can price very differently once preparation, moisture and phasing are accounted for. These are the factors that move the number:",
-          // TODO Evan: add typical $/SF ranges for CG-32, CG-65 and CG-125 here.
+          // TODO Evan: add typical $/SF ranges for Legacy Epoxy 32, Legacy Epoxy 65 and Legacy Epoxy 125 here.
           "Send drawings or request a site walk and we return a full bid within 24 hours of receiving plans, with the system, thickness and phasing spelled out line by line.",
         ],
         items: [
           "Square footage and layout (open floor vs. many small rooms)",
           "Removal of existing coatings, adhesives or sealers",
           "Moisture test results and whether a moisture-mitigating primer is required",
-          "System thickness, from a CG-16 thin film to a CG-250 troweled mortar",
+          "System thickness, from a Legacy Epoxy 16 thin film to a Legacy Epoxy Mortar 250 troweled mortar",
           "Crack, joint and spall repair",
           "Cove base, striping and safety zoning",
           "Phasing, night and weekend work around a running operation",
@@ -408,9 +410,9 @@ SYSTEM_PAGES.push(
       },
     ],
     faqs: [
-      { q: "What is the best industrial floor coating?", a: "There is no single best coating; the right one depends on traffic, chemicals, heat and downtime. For most warehouses and production floors, a 100% solids epoxy such as Neogard's CG Series is the workhorse. Novolac epoxy handles harsher chemicals, urethane cement handles hot washdown and thermal shock, and MMA handles the tightest shutdown windows." },
-      { q: "How long does industrial epoxy flooring last?", a: "Service life depends on the system thickness, the traffic and how the floor is maintained. Thicker builds such as CG-65 and CG-125 hold up longer under forklifts, and renewing the topcoat in high-wear areas extends the life of the whole floor. We recommend a build based on your traffic so the floor isn't under-specified." },
-      { q: "Can forklifts drive on an epoxy floor?", a: "Yes. Industrial epoxy is designed for forklift and cart traffic, provided the system thickness matches the load and wheel type. Heavier traffic calls for thicker, aggregate-filled builds like CG-65 or CG-125 rather than a thin-film coating." },
+      { q: "What is the best industrial floor coating?", a: "There is no single best coating; the right one depends on traffic, chemicals, heat and downtime. For most warehouses and production floors, a 100% solids epoxy such as the Legacy Epoxy Series is the workhorse. Novolac epoxy handles harsher chemicals, urethane cement handles hot washdown and thermal shock, and MMA handles the tightest shutdown windows." },
+      { q: "How long does industrial epoxy flooring last?", a: "Service life depends on the system thickness, the traffic and how the floor is maintained. Thicker builds such as Legacy Epoxy 65 and Legacy Epoxy 125 hold up longer under forklifts, and renewing the topcoat in high-wear areas extends the life of the whole floor. We recommend a build based on your traffic so the floor isn't under-specified." },
+      { q: "Can forklifts drive on an epoxy floor?", a: "Yes. Industrial epoxy is designed for forklift and cart traffic, provided the system thickness matches the load and wheel type. Heavier traffic calls for thicker, aggregate-filled builds like Legacy Epoxy 65 or Legacy Epoxy 125 rather than a thin-film coating." },
       { q: "How long does installation take, and how much downtime is there?", a: "It depends on square footage, preparation and the system. We phase large floors zone by zone so the rest of the building keeps running, and we confirm walking, equipment and vehicle return-to-service times against the product data before the schedule is set. When downtime has to be measured in hours, we look at MMA." },
       { q: "Epoxy or polished concrete for a warehouse?", a: "Polished concrete works well on sound slabs in distribution space and needs no cure time. Epoxy is better when you need color, safety zoning, chemical resistance or a cleanable sealed surface, or when the slab is too damaged to polish well. We often see both in the same building." },
       { q: "Do you work nights and weekends in operating facilities?", a: "Yes. Most of our industrial work happens around live operations, with night and weekend crews, zone-by-zone phasing, dust control and coordination with your operations team." },
@@ -429,15 +431,15 @@ SYSTEM_PAGES.push(
       title: "What Is Resinous Flooring? Choose by Chemistry",
       columns: ["Best for", "Return to service", "Thickness range", "System page"],
       rows: [
-        { label: "Epoxy (CG Series)", values: ["Warehouses, production, offices, common areas", "Standard", "Thin film to 1/4\"", "/industrial-epoxy"] },
+        { label: "Epoxy (Legacy Epoxy Series)", values: ["Warehouses, production, offices, common areas", "Standard", "Thin film to 1/4\"", "/industrial-epoxy"] },
         { label: "Novolac epoxy", values: ["Chemical storage, battery rooms, containment", "Standard", "Novolac 32 to Novolac 125", "/novolac-epoxy-flooring"] },
-        { label: "Urethane cement (Neocrete)", values: ["Kitchens, food processing, freezers, thermal cycling", "Standard", "1/8\" to 3/8\"", "/urethane-cement-flooring"] },
-        { label: "Hybrid urethane cement (Hybri-Gard)", values: ["Food and beverage, cold storage, schools, healthcare", "Standard to fast (by topcoat series)", "1/8\" or 3/16\" base", "/urethane-cement-flooring#hybri-gard"] },
-        { label: "MMA (FTS)", values: ["Overnight or weekend shutdown windows", "Same day", "1/8\" to 3/8\"", "/mma-flooring"] },
-        { label: "Polyaspartic (RTS systems)", values: ["Fast turnarounds, sunlit spaces", "Fast", "By system", "/flake-floors#neoflake-rts-series-2"] },
-        { label: "Decorative flake (Neoflake)", values: ["Showrooms, retail, locker rooms, break areas", "Standard to fast", "By system", "/flake-floors"] },
-        { label: "Decorative quartz (NeoQuartz)", values: ["Restrooms, kitchens, corridors, concourses", "Standard to fast", "By system", "/quartz-flooring"] },
-        { label: "ESD (Sherwin-Williams)", values: ["Electronics, electrical and UPS rooms", "Standard", "35 mils nominal (Topcoat SDE)", "/esd-static-control-flooring"] },
+        { label: "Urethane cement (Legacy Urethane Cement)", values: ["Kitchens, food processing, freezers, thermal cycling", "Standard", "1/8\" to 3/8\"", "/urethane-cement-flooring"] },
+        { label: "Hybrid urethane cement (Legacy Hybrid Urethane)", values: ["Food and beverage, cold storage, schools, healthcare", "Standard to fast (by topcoat series)", "1/8\" or 3/16\" base", "/urethane-cement-flooring#legacy-hybrid-urethane"] },
+        { label: "MMA (Legacy MMA)", values: ["Overnight or weekend shutdown windows", "Same day", "1/8\" to 3/8\"", "/mma-flooring"] },
+        { label: "Polyaspartic (fast-cure systems)", values: ["Fast turnarounds, sunlit spaces", "Fast", "By system", "/flake-floors#legacy-flake-one-day"] },
+        { label: "Decorative flake (Legacy Flake)", values: ["Showrooms, retail, locker rooms, break areas", "Standard to fast", "By system", "/flake-floors"] },
+        { label: "Decorative quartz (Legacy Quartz)", values: ["Restrooms, kitchens, corridors, concourses", "Standard to fast", "By system", "/quartz-flooring"] },
+        { label: "ESD (Legacy ESD)", values: ["Electronics, electrical and UPS rooms", "Standard", "35 mils nominal (Legacy ESD 35)", "/esd-static-control-flooring"] },
       ],
     },
     sections: [
@@ -477,17 +479,17 @@ SYSTEM_PAGES.push(
     path: "/quartz-flooring",
     name: "Quartz Flooring",
     ...legacyMetadata("quartz-flooring"),
-    intro: "Quartz flooring broadcasts or trowels colored quartz into a 100% solids epoxy or polyaspartic binder for a durable, sanitary, textured surface. We install Neogard NeoQuartz in four build-ups, from a broadcast floor to a troweled mortar and an all-polyaspartic fast-return system.",
+    intro: "Quartz flooring broadcasts or trowels colored quartz into a 100% solids epoxy or polyaspartic binder for a durable, sanitary, textured surface. We install Legacy Quartz in four build-ups, from a broadcast floor to a troweled mortar and an all-polyaspartic fast-return system.",
     whatItIs: [
       "Colored quartz is broadcast into successive resin coats and sealed to create a decorative, continuous floor. The aggregate blend and finish texture are selected together so the surface supports both traction and practical cleaning.",
-      "NeoQuartz Broadcast, NeoQuartz HD, NeoQuartz Trowel and NeoQuartz Broadcast RTS cover interior and exterior use, heavier impact and fast return to service. Integral cove and detailed transitions extend the cleanable assembly to the room perimeter.",
+      "Legacy Quartz Broadcast, Legacy Quartz HD, Legacy Quartz Trowel and Legacy Quartz Fast-Cure cover interior and exterior use, heavier impact and fast return to service. Integral cove and detailed transitions extend the cleanable assembly to the room perimeter.",
     ],
     whereUsed: [industryLinks.pharma, industryLinks.pharmacy, industryLinks.healthcare, industryLinks.kitchen, industryLinks.food],
     buildups: [],
-    cure: "Release times depend on the selected NeoQuartz build-up and site conditions and are confirmed in the submittal.",
+    cure: "Release times depend on the selected Legacy Quartz build-up and site conditions and are confirmed in the submittal.",
     performance: [
       "70734/70735 epoxy compressive strength: 11,000 psi (ASTM D695).",
-      "70817/70818 CRU: Taber abrasion 23 mg; 57051 polyaspartic: Taber 55 mg/1,000 cycles CS-17.",
+      "Urethane topcoat: Taber abrasion 23 mg; polyaspartic: Taber abrasion 55 mg per 1,000 cycles, CS-17 wheel (ASTM D4060).",
       "CRU and polyaspartic seals pass JIS Z 2801-2010 anti-microbial testing; this is not a substitute for facility sanitation.",
     ],
     chemicalResistance: [
@@ -495,7 +497,7 @@ SYSTEM_PAGES.push(
       "Confirm concentration, contact time, temperature and rinse practices before approving the cleaning protocol.",
     ],
     faqs: [
-      { q: "What does double broadcast mean?", a: "Quartz is broadcast into two successive base coats before the floor receives its seal coats, as in NeoQuartz Broadcast." },
+      { q: "What does double broadcast mean?", a: "Quartz is broadcast into two successive base coats before the floor receives its seal coats, as in Legacy Quartz Broadcast." },
       { q: "Is the surface slip resistant?", a: "Quartz provides texture, but the selected aggregate and seal schedule must balance traction with cleanability. Review a sample for the actual use." },
       { q: "What does the antimicrobial result establish?", a: "The specified CRU topcoat has a published JIS Z 2801 pass. It does not replace cleaning, disinfection or infection-control procedures." },
       { q: "Can quartz continue into cove base?", a: "We coordinate the floor with compatible integral cove and transitions so the perimeter remains cleanable." },
@@ -507,10 +509,10 @@ SYSTEM_PAGES.push(
     path: "/esd-static-control-flooring",
     name: "ESD / Static-Control Flooring",
     ...legacyMetadata("static-control-flooring"),
-    intro: "Static-control flooring is a grounded epoxy floor that bleeds static charge away from people and equipment before it can damage sensitive electronics. We install Sherwin-Williams Resuflor ESD systems — Neogard does not make an ESD floor — and test resistance on site before turnover.",
+    intro: "Static-control flooring is a grounded epoxy floor that bleeds static charge away from people and equipment before it can damage sensitive electronics. We install Legacy ESD systems and test resistance on site before turnover.",
     whatItIs: [
-      "Resuflor Topcoat SDE is a nominal 35-mil electrostatic-dissipative epoxy system: a three-component, high-solids epoxy topcoat with conductive filler, applied at 15–20 mils over an electrically insulating epoxy coat. Published floor resistance is 1×10^5 to 1×10^9 ohms, with body voltage generation under 100 volts, referenced to ANSI/ESD S20.20-2014.",
-      "Resuflor Topcoat SD is a stipple-finish epoxy topcoat. Over Resuflor Aqua 3424 conductive primer it forms a conductive floor; over a standard epoxy primer (Resuprime 3579) it forms a static-dissipative floor.",
+      "Legacy ESD 35 is a nominal 35-mil electrostatic-dissipative epoxy system: a three-component, high-solids epoxy topcoat with conductive filler, applied at 15–20 mils over an electrically insulating epoxy coat. Published floor resistance is 1×10^5 to 1×10^9 ohms, with body voltage generation under 100 volts, referenced to ANSI/ESD S20.20-2014.",
+      "Legacy ESD Stipple is a stipple-finish epoxy topcoat. Over a conductive primer it forms a conductive floor; over a standard epoxy primer it forms a static-dissipative floor.",
       "We test resistance on site to the project's ESD specification before turnover. Cleaning products and later recoats must preserve the floor's electrical characteristics.",
     ],
     whereUsed: [industryLinks.electronics, industryLinks.data, industryLinks.aerospace, industryLinks.pharma, industryLinks.pharmacy],
@@ -522,13 +524,13 @@ SYSTEM_PAGES.push(
       "Documented grounding coordination and maintainable surface finish.",
     ],
     chemicalResistance: [
-      "Confirm process chemicals and ESD-safe cleaning agents against the selected Resuflor system.",
+      "Confirm process chemicals and ESD-safe cleaning agents against the selected Legacy ESD system.",
       "Do not apply ordinary waxes, sealers or topcoats without confirming electrical compatibility.",
     ],
     prep: [...standardPrep, "Coordinate grounding provisions with the electrical scope and document the specified acceptance-test locations."],
     faqs: [
       { q: "Does an ESD floor make a facility compliant with ANSI/ESD S20.20?", a: "No. Flooring is one component of an ESD-control program that also addresses personnel grounding, procedures and verification." },
-      { q: "Can you provide a conductive system?", a: "Yes. Resuflor Topcoat SD over Resuflor Aqua 3424 conductive primer forms a conductive floor, subject to the approved electrical and flooring requirements." },
+      { q: "Can you provide a conductive system?", a: "Yes. Legacy ESD Stipple over a conductive primer forms a conductive floor, subject to the approved electrical and flooring requirements." },
       { q: "How do you verify the floor before turnover?", a: "We test resistance on site to the project's ESD specification before turnover." },
       { q: "Do all data halls require ESD resin flooring?", a: "No. The owner and design team establish the requirement according to equipment, operations and the facility's ESD-control strategy." },
       { q: "Can normal floor wax be used?", a: "Only if the manufacturer confirms compatibility. An insulating maintenance film can compromise the intended electrical performance." },
@@ -547,32 +549,63 @@ SYSTEM_PAGES.push(
     intro: "A commercial flake floor is a resin system with decorative vinyl flakes broadcast into the body coat and sealed under a clear topcoat. It gives a durable, textured, color-blended finish for showrooms, dealerships, retail, schools, restaurants and service areas.",
     whatItIs: [
       "The resin body and clear topcoat carry the protection; the flake blend sets the color and adds texture underfoot. Because the finish is seamless, there are no grout lines to trap dirt in high-traffic commercial spaces.",
-      "We install Neogard's Neoflake family — epoxy, epoxy with polyaspartic seals, and all polyaspartic — plus Sherwin-Williams Resuflor Deco Flake BC where an epoxy flake with urethane topcoat is specified.",
+      "We install flake floors at every level, from a standard epoxy flake to polyurea and polyaspartic one-day systems and heavy-duty builds with a urethane topcoat or a 3/16\" urethane cement body.",
     ],
     sections: [
       {
-        title: "Neogard Neoflake Systems",
+        title: "Flake Floor Levels: From Standard to Heavy-Duty",
         paragraphs: [
-          "Neoflake is Neogard's epoxy flake floor; Neoflake RTS Series 1 keeps the epoxy base and adds polyaspartic seals, and Neoflake RTS Series 2 is all polyaspartic for the fastest return to service. Build-ups for all three are listed below.",
+          "Not every flake floor is the same floor. The resin under the flake and the topcoat over it decide how the floor handles traffic, chemicals, sunlight and downtime. Here is how our flake systems step up, from the most economical to the most substantial.",
+        ],
+        table: {
+          columns: ["System", "What it is", "Best for"],
+          rows: [
+            { label: "1 · Standard", values: ["Legacy Flake Epoxy", "Epoxy primer and body, full flake broadcast, two clear seal coats", "Break rooms, locker rooms, back-of-house on a normal schedule"] },
+            { label: "2 · Fast return", values: ["Legacy Flake Fast-Cure", "Epoxy body with UV-stable polyaspartic seal coats", "Retail and showrooms that need to reopen sooner or get sunlight"] },
+            { label: "3 · One-day polyurea", values: ["Legacy Flake Polyurea", "Polyurea base coat, full flake broadcast, polyaspartic topcoat", "Wet areas, entries and tight one-day shutdowns"] },
+            { label: "3 · One-day polyaspartic", values: ["Legacy Flake One-Day", "All-polyaspartic base and seals", "The shortest shutdown windows, sunlit spaces"] },
+            { label: "4 · Heavy-duty", values: ["Legacy Flake UT", "High-solids epoxy primer, recoatable epoxy body broadcast to rejection, low-odor aliphatic urethane topcoat", "Schools, healthcare corridors and restaurants that clean hard every day"] },
+            { label: "5 · Most substantial", values: ["Legacy Urethane Cement Flake", "3/16\" urethane cement body with decorative flake and a urethane or polyaspartic topcoat", "Commercial kitchens and food areas with hot water and thermal shock"] },
+            { label: "Overnight", values: ["Legacy MMA Flake", "Self-leveling MMA with flake, one-hour cure", "Facilities that can only close for a night"] },
+          ],
+        },
+        links: [
+          { label: "Polyurea flake case study", url: "/commercial-case-studies/swim-school-flake-floor-multi-location", text: "Six swim school locations: mold-trapping VCT removed, polyurea flake floor with heavy grip installed." },
+          { label: "Urethane cement flooring", url: "/urethane-cement-flooring", text: "The heaviest flake option, for kitchens and thermal shock." },
+          { label: "MMA flooring", url: "/mma-flooring", text: "Flake and quartz floors that cure in about an hour." },
+        ],
+      },
+      {
+        title: "Polyurea and Polyaspartic Flake Floors",
+        paragraphs: [
+          "Polyurea and polyaspartic are fast-curing coatings. A polyurea base coat penetrates and bonds aggressively to properly ground concrete and stays slightly flexible, and a polyaspartic topcoat is UV-stable, so it will not yellow in sunlit showrooms and storefronts. Together they let us grind, coat, broadcast and seal a floor in a single day in many spaces.",
+          "Fast cure also means a short working time, so these floors need experienced crews and careful slab preparation. We grind to the specified profile, repair cracks and joints, and test moisture first; flake systems are not recommended above 80% RH (ASTM F2170) without a moisture-mitigating primer.",
+          "Grip matters. Wet entries, pool decks, locker rooms and service drives get extra anti-slip aggregate in the topcoat, and we confirm the texture on a sample before installation.",
+        ],
+      },
+      {
+        title: "Legacy Flake Systems",
+        paragraphs: [
+          "Legacy Flake Epoxy is our epoxy flake floor; Legacy Flake Fast-Cure keeps the epoxy base and adds polyaspartic seals, Legacy Flake One-Day is all polyaspartic, and Legacy Flake Polyurea pairs a polyurea base with a polyaspartic topcoat for the fastest return to service. Build-ups are listed below.",
           "Polyaspartic seals are UV-stable, so they suit sunlit showrooms and storefronts. Flake systems are not recommended above 80% RH without a moisture-mitigating primer.",
         ],
       },
       {
-        title: "Sherwin-Williams Resuflor Deco Flake BC",
+        title: "Legacy Flake UT",
         paragraphs: [
-          "Resuflor Deco Flake BC (formerly called Decorative Mosaic) is an epoxy flake system specified under CSI 09 67 23 resinous flooring. Vinyl chips are broadcast into a clear or pigmented epoxy and sealed with a clear urethane finish.",
+          "Legacy Flake UT is an epoxy flake system specified under CSI 09 67 23 resinous flooring. Vinyl chips are broadcast into a clear or pigmented epoxy and sealed with a clear urethane finish.",
           "The epoxy base gives the floor its chemical-resistant protection, while the urethane topcoat stands up to foot traffic, carts and routine cleaning.",
         ],
       },
     ],
     comparison: {
       title: "Compare Commercial Flake Systems",
-      columns: ["Neoflake (epoxy)", "Neoflake RTS Series 1", "Neoflake RTS Series 2", "Sherwin-Williams Resuflor Deco Flake BC"],
+      columns: ["Legacy Flake (epoxy)", "Legacy Flake Fast-Cure", "Legacy Flake Polyurea", "Legacy Flake One-Day", "Legacy Flake UT"],
       rows: [
-        { label: "Chemistry", values: ["Epoxy base and seals", "Epoxy base, polyaspartic seals", "All polyaspartic", "Epoxy base, urethane topcoat"] },
-        { label: "Return to service", values: ["Standard", "Fast", "Fastest", "Standard"] },
-        { label: "UV-stable topcoat option", values: ["CRU or urethane seal", "Polyaspartic", "Polyaspartic", "Urethane topcoat"] },
-        { label: "Best for", values: ["Interiors on a standard schedule", "Faster reopening over an epoxy base", "Shortest shutdown windows", "Chemical-resistant interiors"] },
+        { label: "Chemistry", values: ["Epoxy base and seals", "Epoxy base, polyaspartic seals", "Polyurea base, polyaspartic topcoat", "All polyaspartic", "Epoxy base, urethane topcoat"] },
+        { label: "Return to service", values: ["Standard", "Fast", "Fastest", "Fastest", "Standard"] },
+        { label: "UV-stable topcoat option", values: ["CRU or urethane seal", "Polyaspartic", "Polyaspartic", "Polyaspartic", "Urethane topcoat"] },
+        { label: "Best for", values: ["Interiors on a standard schedule", "Faster reopening over an epoxy base", "Wet areas and one-day installs", "Shortest shutdown windows", "Chemical-resistant interiors"] },
       ],
     },
     whereUsed: [
@@ -584,19 +617,20 @@ SYSTEM_PAGES.push(
       { label: "Multifamily amenity spaces", path: "/multifamily-flooring" },
     ],
     buildups: [],
-    cure: "Return-to-service times are confirmed in the submittal for the selected system; the RTS polyaspartic systems reopen faster than epoxy.",
+    cure: "Return-to-service times are confirmed in the submittal for the selected system; the polyaspartic systems reopen faster than epoxy.",
     performance: [
       "Seamless, color-blended finish with no grout lines.",
       "Texture and topcoat selected for the facility's traction and cleaning needs.",
       "Integral cove and transition details available within the approved assembly.",
     ],
     chemicalResistance: [
-      "The epoxy body provides chemical-resistant protection in Neoflake and Resuflor Deco Flake BC.",
+      "The epoxy body provides chemical-resistant protection in Legacy Flake Epoxy and Legacy Flake UT.",
       "Cleaners, vehicle fluids and disinfectants are reviewed against the selected topcoat's resistance data.",
     ],
     faqs: [
-      { q: "Epoxy vs polyaspartic flake — which is right for my facility?", a: "Epoxy flake (Neoflake) suits interiors that can allow a standard cure. Neoflake RTS Series 1 and 2 suit spaces that must reopen quickly or see direct sunlight, because the polyaspartic seals are UV-stable. We recommend a system after reviewing traffic, chemicals, schedule and slab conditions." },
-      { q: "How fast can a commercial flake floor go back into service?", a: "Neoflake RTS Series 2 is the fastest, Series 1 is fast, and epoxy Neoflake follows a standard cure. Exact walk-on and equipment release times are confirmed in your submittal." },
+      { q: "Epoxy vs polyaspartic flake — which is right for my facility?", a: "Epoxy flake (Legacy Flake Epoxy) suits interiors that can allow a standard cure. Legacy Flake Fast-Cure and Legacy Flake One-Day suit spaces that must reopen quickly or see direct sunlight, because the polyaspartic seals are UV-stable. We recommend a system after reviewing traffic, chemicals, schedule and slab conditions." },
+      { q: "What is the difference between polyurea, polyaspartic and epoxy flake floors?", a: "Epoxy is the standard: strong, chemical resistant and economical, with a normal cure. Polyurea cures very fast and bonds aggressively to ground concrete with some flexibility, so it is often used as the base coat on one-day floors. Polyaspartic is a fast-curing, UV-stable topcoat that will not yellow in sunlight. Many of our fastest flake floors use a polyurea base under a polyaspartic topcoat." },
+      { q: "How fast can a commercial flake floor go back into service?", a: "Legacy Flake One-Day is the fastest, Legacy Flake Fast-Cure is fast, and Legacy Flake Epoxy follows a standard cure. Exact walk-on and equipment release times are confirmed in your submittal." },
       { q: "Can flake floors handle forklifts, carts or vehicle traffic?", a: "Flake floors handle foot traffic, carts and vehicle traffic in showrooms and service drives when the assembly is specified for it. Heavy forklift traffic usually calls for a higher-build epoxy or urethane cement system, which we can recommend instead." },
       { q: "How slip-resistant is a flake floor, and can texture be added?", a: "The flake broadcast adds some texture on its own, and an aggregate can be added to the topcoat where more traction is needed — for example at entries, wet areas and service drives. We confirm the texture on a sample before installation." },
       { q: "Can you install over an existing coating or VCT?", a: "VCT and failed coatings are removed so the new system bonds to sound, prepared concrete. A sound existing coating may accept a compatible system after testing and mechanical preparation." },
@@ -762,12 +796,12 @@ SYSTEM_PAGES.push(
     intro: "Sealed and densified concrete is a lithium-silicate densifier with a penetrating or film-forming sealer applied to the existing slab, with no added coating thickness. It is used in warehouses, back-of-house areas and parking levels that need easier cleaning and less surface dust without a full polished-concrete process.",
     whatItIs: [
       "A densifier reacts within the concrete surface; a sealer or coating provides a separate form of protection. We select those treatments according to slab condition, cleaning practices and expected exposure.",
-      "ArmorSeal 1K is a single-component high-performance floor coating and a specified sealed-concrete finish option. It is not interchangeable with a penetrating densifier, and the approved scope should state which treatment is being installed.",
+      "Legacy Sealed Concrete 1K is a single-component high-performance floor coating and a specified sealed-concrete finish option. It is not interchangeable with a penetrating densifier, and the approved scope should state which treatment is being installed.",
     ],
     whereUsed: [industryLinks.warehouse, industryLinks.data, industryLinks.retail, industryLinks.office, industryLinks.manufacturing],
     buildups: [{
-      title: "Sherwin-Williams ArmorSeal 1K — sealed-concrete finish option",
-      layers: [{ layer: "Finish", product: "ArmorSeal 1K single-component high-performance floor coating" }],
+      title: "Legacy Sealed Concrete 1K — sealed-concrete finish option",
+      layers: [{ layer: "Finish", product: "Single-component high-performance floor coating" }],
     }],
     cure: "Follow the selected densifier, sealer or coating instructions. Release criteria differ between penetrating treatments and film-forming finishes.",
     performance: [
@@ -781,7 +815,7 @@ SYSTEM_PAGES.push(
     ],
     faqs: [
       { q: "Are densifier and sealer the same material?", a: "No. A densifier reacts with the concrete; a sealer or coating provides a different protective function." },
-      { q: "Is ArmorSeal 1K a penetrating densifier?", a: "No. It is a single-component high-performance floor coating offered as a sealed-concrete finish option." },
+      { q: "Is Legacy Sealed Concrete 1K a penetrating densifier?", a: "No. It is a single-component high-performance floor coating offered as a sealed-concrete finish option." },
       { q: "Can you finish an existing warehouse slab?", a: "Yes, subject to contamination removal, repairs and compatibility checks. Existing finishes may need removal before treatment." },
       { q: "Will sealed concrete look like polished concrete?", a: "Not necessarily. Sealing does not include the progressive mechanical refinement that establishes a polished finish." },
     ],
@@ -795,15 +829,15 @@ SYSTEM_PAGES.push(
     intro: "Traffic-bearing deck coatings protect elevated concrete while providing the wearing surface for vehicles or pedestrians. We detail the membrane, wear zones and transitions as a complete assembly.",
     whatItIs: [
       "Vehicular systems must address tire wear, turning forces, ramps and weather exposure. Pedestrian systems balance waterproofing, traction, appearance and maintenance in walkways, balconies and plazas.",
-      "For pedestrian decks we install Neogard's Peda-Gard family — standard, aliphatic, fast cure, plywood, mechanical-room, decorative and moisture-containment versions — plus RTS Pedestrian for fast cure. TrafficTuff and Epoxy Broadcast Overlay are textured, non-waterproof options. Vehicular Auto-Gard systems are covered on the parking structures page.",
+      "For pedestrian decks we install the Legacy Pedestrian Deck family — standard, aliphatic, fast cure, plywood, mechanical-room, decorative and moisture-containment versions — plus Legacy PMMA Pedestrian for fast cure. Legacy Textured Traffic Overlay and Legacy Epoxy Broadcast Overlay are textured, non-waterproof options. Legacy High Traffic Urethane vehicular systems are covered on the parking structures page.",
       "Drain interfaces, cracks, expansion joints and terminations are as important as the field coating. Heavy-duty wear areas are identified on the layout rather than left to an unspecified field adjustment.",
     ],
     whereUsed: [industryLinks.parking, industryLinks.multifamily, industryLinks.hotel, industryLinks.auto, industryLinks.office],
     buildups: [],
-    cure: "Auto-Gard: traffic at 72 hrs at 75°F/50% RH. Auto-Gard FC and FC T: 24–36 hrs. Peda-Gard: 48 hrs. RTS PMMA/PUMA vehicular: 1-hour return to service. Confirm the applicable assembly and actual conditions before release.",
+    cure: "Legacy High Traffic Urethane: traffic at 72 hrs at 75°F/50% RH. Legacy High Traffic Urethane FC and FC Textured: 24–36 hrs. Legacy Pedestrian Deck: 48 hrs. Legacy PMMA Vehicular: 1-hour return to service. Confirm the applicable assembly and actual conditions before release.",
     performance: [
       "Standard and heavy-duty vehicular assemblies address different wear demands.",
-      "Auto-Gard FC T provides integral texture without broadcast aggregate.",
+      "Legacy High Traffic Urethane FC Textured provides integral texture without broadcast aggregate.",
       "UV-exposed work requires the specified exterior-compatible finish.",
       "Traffic-bearing coatings require maintained details, drains and wear surfaces.",
     ],
@@ -820,7 +854,7 @@ SYSTEM_PAGES.push(
     faqs: [
       { q: "Can pedestrian coating be used on a parking ramp?", a: "Only if specifically approved for that use. Vehicular turning and ramp loads require the appropriate traffic-bearing assembly." },
       { q: "Where is heavy-duty wear protection needed?", a: "Typical candidates include turns, ramps and ticket-spitter areas. The approved layout establishes where additional wear layers apply." },
-      { q: "Does FC T need broadcast aggregate?", a: "The verified Auto-Gard FC T assembly is integrally textured and does not use broadcast aggregate." },
+      { q: "Does the FC Textured system need broadcast aggregate?", a: "The verified Legacy High Traffic Urethane FC Textured assembly is integrally textured and does not use broadcast aggregate." },
       { q: "Can an existing deck coating be recoated?", a: "Potentially. We assess adhesion, moisture, deterioration and compatibility before deciding whether to retain or remove it." },
       { q: "What controls reopening?", a: "The selected system, site conditions and completed detail work control release. Fast-cure and conventional assemblies have different schedules." },
     ],
@@ -866,33 +900,132 @@ SYSTEM_PAGES.push(
 
   makeSystem({
     path: "/secondary-containment-coatings",
-    name: "Secondary Containment Coatings",
-    metaDescription: "Secondary containment linings for DFW fuel dikes, chemical areas, battery curbs and transformer oil pits. Detailed substrate, membrane and spill-control scopes.",
-    intro: "Containment requires a continuous lining across the floor, walls, curbs and penetrations. We coordinate the coating with the engineer's containment design and the specific liquid being retained.",
+    name: "Transformer Oil & Secondary Containment Coatings",
+    crumbName: "Secondary Containment",
+    serviceName: "Transformer Oil Containment Coatings",
+    metaTitle: "Transformer Oil Containment & Secondary Containment Coatings | Legacy Industrial Coatings",
+    metaDescription: "Coatings and linings for transformer oil containment pits, curbs and basins at substations, power plants and data centers, plus generator fuel and chemical containment. Crack repair, joint detailing and inspection-ready linings.",
+    h1: "Transformer Oil Containment & Secondary Containment Coatings",
+    overviewTitle: "What Transformer Oil Containment Is",
+    intro: "Transformer oil containment is the concrete pit, curb or basin under an oil-filled transformer that catches the insulating oil if the tank leaks or ruptures, so it can't reach soil, storm drains or nearby equipment. We line those structures with crack-bridging, oil-resistant coatings at substations, power plants and data center campuses, and line generator fuel and chemical containment the same way.",
     whatItIs: [
-      "Fuel tank dikes and berms may form part of an EPA SPCC plan; chemical containment and battery curbs present different exposure requirements. The coating protects the substrate, while the design team establishes capacity, drainage and regulatory obligations.",
-      "Oil containment pits: transformer pits need an oil- and water-resistant lining carried continuously through corners, penetrations and termination details. Confirm usable containment capacity and drainage controls with the electrical and civil design teams.",
-      "Our containment build-ups are Neogard Novolac 32 and Novolac 125. Chemical resistance is checked against Neogard's novolac chemical resistance chart for the specific chemicals being stored.",
+      "A large power transformer is filled with insulating oil that cools the windings. Depending on its size, a single unit can hold hundreds to many thousands of gallons, typically mineral oil or a natural ester fluid. A slow leak, a failed gasket or a tank rupture during an electrical fault can release that oil quickly, along with any water used to fight a fire.",
+      "Containment is the plan for that day. The structure under the transformer — a concrete pit, often filled with washed stone, a curbed pad or a basin draining to a collection system — has to hold the oil until it is cleaned up. Bare concrete is not enough on its own: concrete cracks, shrinks and has joints and penetrations, and oil and water find every one of them. A properly detailed lining seals the floor, walls, joints and penetrations into one continuous, inspectable surface.",
+    ],
+    sections: [
+      {
+        id: "oil-containment-pits",
+        title: "Transformer Oil Containment Pits, Curbs and Basins",
+        paragraphs: [
+          "We line the containment structures that sit under and around oil-filled transformers, reactors and other oil-filled electrical equipment:",
+        ],
+        items: [
+          "Below-grade concrete pits and moats, including pits that are backfilled with washed stone for fire quenching",
+          "Curbed transformer pads and perimeter curbs with curb-and-trench collection",
+          "Shared collection basins and sumps fed by multiple transformers",
+          "Indoor transformer vaults and curbed rooms that need a liquid confinement area",
+          "Penetrations for conduit, grounding and drains, and the interface with oil-stop valves, separators and pumps",
+        ],
+      },
+      {
+        title: "Where Transformer Containment Is Needed",
+        paragraphs: [
+          "Utility substations and switchyards, power generation plants, solar and battery energy storage interconnections, and the on-site substations and transformer yards that feed data center campuses. Data center campuses usually have two containment needs side by side: transformer oil and the diesel fuel that runs the backup generators.",
+        ],
+        links: [
+          { label: "Data center flooring", url: "/data-center-flooring", text: "Transformer yards, generator fuel containment and the white space inside." },
+          { label: "Battery room flooring", url: "/battery-room-flooring", text: "Acid-resistant floors and curbs for lead-acid and other battery rooms." },
+          { label: "Novolac epoxy flooring", url: "/novolac-epoxy-flooring", text: "Chemical-resistant linings for indoor chemical and fuel containment." },
+        ],
+      },
+      {
+        title: "The Rules Behind Containment (In Plain English)",
+        paragraphs: [
+          "Containment is designed by the owner's engineer and documented in the facility's spill plan. Our job is to make the structure hold oil. These are the references that usually shape the design:",
+        ],
+        table: {
+          columns: ["What it covers", "What it means for the lining"],
+          rows: [
+            { label: "EPA SPCC (40 CFR 112)", values: ["Facilities with more than 1,320 gallons of aboveground oil storage that could reach waters of the U.S. Transformers are 'oil-filled operational equipment'; fuel tanks are bulk storage.", "The containment system, walls and floor, must be capable of containing oil until cleanup. Cracked concrete and coatings are inspection items."] },
+            { label: "IEEE 980", values: ["The industry guide for containment and control of oil spills in substations: pit, curb and basin designs, stone fill and drainage.", "Sets the design intent the engineer sizes to; the lining must keep the pit oil-tight for that design."] },
+            { label: "FM Global Data Sheet 5-4", values: ["Insurer guidance for transformers: when containment is needed for fire protection, how far it extends and removal of rainwater.", "Often drives curb extents and fire-water capacity at insured facilities."] },
+            { label: "NFPA 70 (NEC) 450.27", values: ["Outdoor oil-insulated transformers near combustible buildings; oil enclosures may be fire-resistant dikes, curbed areas or basins.", "The enclosure has to be continuous and durable outdoors."] },
+            { label: "Generator fuel (SPCC 112.8)", values: ["Bulk fuel containment sized for the largest tank plus freeboard for precipitation, set by the certifying engineer.", "Diked areas must be sufficiently impervious to the stored fuel."] },
+          ],
+        },
+      },
+      {
+        title: "What the Lining Has to Do",
+        paragraphs: [
+          "A transformer pit is outdoors, wet much of the time, exposed to sun and temperature swings, and may sit for years before it ever sees a spill. The lining has to be ready on that day:",
+        ],
+        items: [
+          "Resist the insulating fluid on site: mineral oil or natural ester. We require the manufacturer's chemical-resistance data for the specific fluid, including immersion",
+          "Bridge cracks and move with the concrete. Rigid coatings can crack along with the slab; outdoor pits usually call for a flexible, crack-bridging membrane over a primer",
+          "Stand up to UV and weather where exposed, with a UV-stable topcoat on curbs and walls",
+          "Seal joints, corners, cold joints and every penetration as part of the same continuous lining",
+          "Stay inspectable: a light, uniform surface makes cracks, oil staining and damage easy to spot on routine SPCC inspections",
+          "Stay bonded under standing rainwater and the weight and abrasion of stone fill",
+        ],
+      },
+      {
+        title: "Legacy Containment Systems",
+        paragraphs: [
+          "Legacy Containment Membrane 42 is a flexible, waterproof polyurethane membrane, 42 dry mils excluding primer and aggregate, finished with two coats of a chemical-resistant aliphatic urethane. The flexible body bridges hairline cracks and moves with the concrete, and the aliphatic finish holds up to sun on exposed curbs and walls.",
+          "Where the floor also has to resist harsher chemicals, the Legacy Containment Rider puts a crack-bridging urethane membrane under a novolac or epoxy floor of at least 32 dry mils, so the top resists chemicals and the membrane below keeps the room liquid-tight if the slab cracks.",
+          "In the manufacturer's published 7-day spot tests, the novolac and chemical-resistant urethane topcoats show no effect from motor oil, diesel, gasoline or jet fuel. Transformer fluids are confirmed for the specific mineral oil or natural ester on site before we select the system. Full build-ups are listed below.",
+        ],
+      },
+      {
+        title: "How We Line a Containment Pit",
+        paragraphs: [],
+        ordered: true,
+        items: [
+          "Review the containment drawings, fluid type, drainage and any oil-stop valves, separators or pumps",
+          "Remove stone if present, pump out water and clean oil-contaminated concrete; contaminated concrete is removed where cleaning cannot restore adhesion",
+          "Prepare the concrete to the coating manufacturer's profile per SSPC-SP 13/NACE No. 6 and ICRI 310.2R",
+          "Repair spalls and cracks, rout and fill active cracks, and detail joints and penetrations with compatible sealants and reinforcement",
+          "Apply primer, the crack-bridging lining at the specified thickness, and a UV-stable topcoat where exposed",
+          "Verify thickness, inspect for pinholes and holidays, and run any specified flood or hydrostatic test before stone goes back in",
+          "Closeout photos and documentation for the facility's SPCC records",
+        ],
+      },
+      {
+        title: "Fuel and Chemical Containment",
+        paragraphs: [
+          "The same discipline applies to generator day tanks and fuel storage dikes, chemical storage curbs and process containment. Indoors, where chemicals are aggressive or temperatures are higher, we use Legacy Novolac 32 or Legacy Novolac 125 Broadcast, alone or over the Legacy Containment Rider, checked against the manufacturer's chemical-resistance chart for each stored chemical.",
+        ],
+        link: { label: "Novolac epoxy flooring", url: "/novolac-epoxy-flooring" },
+      },
     ],
     whereUsed: [industryLinks.data, industryLinks.manufacturing, industryLinks.electronics, industryLinks.aerospace],
     buildups: [],
-    sections: [{ title: "Novolac Epoxy for Containment", paragraphs: ["Novolac has a higher operating temperature and chemical resistance than standard epoxy. See the full novolac page for both build-ups and published properties."], link: { label: "Novolac epoxy flooring", url: "/novolac-epoxy-flooring" } }],
-    cure: "Do not introduce stored liquids until the approved lining has reached its specified chemical-service cure and inspection requirements are complete.",
+    cure: "No oil, fuel or chemical goes into the containment until the lining reaches its specified chemical-service cure and any specified inspection or flood test is complete. Stone fill goes back only after the lining passes inspection.",
     performance: [
-      "Continuous lining details across slabs, curbs, walls and penetrations.",
-      "70704/70705 novolac: compressive strength 10,000 psi (ASTM D695); Shore D 84.",
+      "Continuous lining across pit floors, walls, curbs, joints and penetrations.",
+      "Crack-bridging membrane options for outdoor pits that see weather and movement.",
+      "UV-stable topcoats for exposed curbs and walls.",
+      "Novolac epoxy for indoor chemical containment: compressive strength 10,000 psi (ASTM D695); Shore D 84.",
     ],
     chemicalResistance: [
-      "Confirm transformer oil, diesel, battery electrolyte or process chemicals individually, including immersion conditions.",
-      "Require written compatibility for the complete lining assembly; thickness alone does not establish resistance.",
+      "Mineral oil and natural ester transformer fluids, diesel fuel, battery electrolyte and process chemicals are each confirmed individually against the manufacturer's resistance data, including immersion.",
+      "Written compatibility is required for the complete lining assembly; thickness alone does not establish resistance.",
     ],
-    prep: [...standardPrep, "Evaluate oil penetration and contaminated concrete; detail joints, corners, curbs and penetrations before field application.", "Coordinate lining inspections and any specified flood testing before concealment or service."],
+    prep: [
+      "Plan ASTM F2170 / F1869 moisture testing where the lining will be applied over interior slabs.",
+      "Clean and assess oil-contaminated concrete; remove contaminated concrete where cleaning cannot restore adhesion.",
+      "Prepare concrete per SSPC-SP 13/NACE No. 6 to the manufacturer's ICRI CSP profile.",
+      "Detail joints, cold joints, corners, curbs and penetrations before the field lining.",
+      "Coordinate inspections and any specified flood testing before stone fill, concealment or service.",
+    ],
     faqs: [
-      { q: "Does a lining establish SPCC compliance?", a: "No. The lining supports a containment design, but the owner's engineer and SPCC plan establish capacity, drainage and other requirements." },
-      { q: "Can you line transformer oil pits?", a: "Yes, subject to an approved oil- and water-resistant assembly, substrate condition and coordinated details." },
-      { q: "Which novolac build-up do you use?", a: "Novolac 32 for most curbs and dikes and Novolac 125, a double sand broadcast, where the lining needs more body. Both are checked against the stored chemicals." },
-      { q: "Can you coat oil-contaminated concrete?", a: "Only after assessment and appropriate remediation. Surface cleaning alone may not remove contamination that would compromise adhesion." },
-      { q: "Can curbs and penetrations be included?", a: "Yes. They should be detailed within the same containment scope rather than treated as incidental finish work." },
+      { q: "Does a coating make my facility SPCC compliant?", a: "No coating does that on its own. Compliance comes from the facility's SPCC plan and the containment design certified by the engineer. The lining makes the containment structure capable of holding oil, which is what the plan relies on." },
+      { q: "Does SPCC require 110% containment for transformers?", a: "Not for transformers. EPA treats transformers as oil-filled operational equipment under the general containment rule, sized for the most likely discharge, or the alternative inspection-and-contingency approach. The 110%-style sizing people quote comes from bulk storage tanks such as generator fuel. The engineer sets the volume." },
+      { q: "Why isn't bare concrete good enough for a transformer pit?", a: "Concrete cracks, shrinks and has joints and penetrations. Oil and water move through them, and EPA lists cracked concrete as an inspection item. A continuous, crack-bridging lining keeps the pit oil-tight." },
+      { q: "Can you line a pit that already has stone and old oil in it?", a: "Yes. We remove the stone, pump out water, clean or remove oil-contaminated concrete, repair cracks, line the pit and verify it before the stone goes back." },
+      { q: "Do you line containment for natural ester (FR3-type) fluids?", a: "Yes. Natural ester fluids behave differently from mineral oil and can harden into a film over time, so we confirm the lining's resistance data for the specific fluid before selecting a system." },
+      { q: "Can you work in an energized substation or an operating data center?", a: "We work under the owner's safety program, outage plan and escort requirements, and schedule pits and curbs around outages and access windows set by the owner." },
+      { q: "Do you also coat generator fuel containment and battery rooms?", a: "Yes. Generator day tank and fuel dikes, battery room floors and curbs, and chemical containment are all part of our containment work." },
     ],
     photos: photoSets.data,
   }),
@@ -903,7 +1036,7 @@ SYSTEM_PAGES.push(
     metaDescription: "Acid-resistant flooring for DFW UPS, BESS and battery rooms, with novolac options, integral cove, coated curbs and coordinated spill-control details.",
     intro: "Battery-room flooring should follow the battery chemistry and spill-control design. We coordinate resistant resin, integral cove and coated curbs for UPS, BESS and charging environments.",
     whatItIs: [
-      "Lead-acid battery areas typically get Neogard Novolac 32 or Novolac 125, carried continuously through cove and curb details. The floor is selected for the electrolyte and expected contact conditions, not simply labeled industrial epoxy.",
+      "Lead-acid battery areas typically get Legacy Novolac 32 or Legacy Novolac 125 Broadcast, carried continuously through cove and curb details. The floor is selected for the electrolyte and expected contact conditions, not simply labeled industrial epoxy.",
       "Lithium-based BESS rooms have a different hazard profile. Flooring does not replace fire protection, ventilation or electrical safeguards. Where an ESD option is specified, electrical performance must be coordinated with chemical resistance and the room's safety requirements.",
     ],
     whereUsed: [industryLinks.data, industryLinks.warehouse, industryLinks.manufacturing, industryLinks.electronics],
@@ -967,12 +1100,12 @@ SYSTEM_PAGES.push(
     intro: "Moisture mitigation starts with documented slab conditions. We test, compare results with the proposed finish and select an approved mitigation assembly before the finished floor is installed.",
     whatItIs: [
       "ASTM F2170 in-situ RH and ASTM F1869 MVER testing describe different aspects of slab moisture conditions. Results must be reviewed with the receiving floor system's requirements rather than treated as interchangeable pass-or-fail numbers.",
-      "Neogard epoxy, novolac, flake, quartz and hangar systems are limited by high moisture vapor transmission, so we install them over a Neogard moisture-mitigating primer when testing calls for it. Neocrete urethane cement tolerates up to 25 lb MVER (calcium chloride test) and is often the better choice on a damp slab.",
+      "Epoxy, novolac, flake, quartz and hangar systems are limited by high moisture vapor transmission, so we install them over a moisture-mitigating epoxy primer when testing calls for it. Legacy Urethane Cement tolerates up to 25 lb MVER (calcium chloride test) and is often the better choice on a damp slab.",
       "Other projects require a full vapor-barrier system coordinated with patching, adhesive and finish materials. Neither approach is a repair for active leaks or unresolved hydrostatic pressure.",
     ],
     whereUsed: [industryLinks.warehouse, industryLinks.healthcare, industryLinks.school, industryLinks.office, industryLinks.manufacturing],
     buildups: [{
-      title: "Neogard moisture-mitigating epoxy primer",
+      title: "Legacy Moisture Barrier Primer",
       layers: [
         { layer: "Alternate primer", product: "Moisture-mitigating epoxy primer", dft: "25 mils" },
       ],
@@ -1001,19 +1134,19 @@ SYSTEM_PAGES.push(
   makeSystem({
     path: "/roof-deck-waterproofing",
     name: "Roof & Deck Waterproofing",
-    metaDescription: "DFW fluid-applied roof coatings and deck waterproofing for equipment platforms, walkways, plazas and balconies, including Neogard membrane and pedestrian options.",
+    metaDescription: "DFW fluid-applied roof coatings and deck waterproofing for equipment platforms, walkways, plazas and balconies, including Legacy membrane and pedestrian options.",
     intro: "Roof and deck waterproofing must address drainage, movement and penetrations as well as the field membrane. We separate roof-coating scopes from pedestrian wearing surfaces and buried waterproofing.",
     whatItIs: [
-      "We organize Neogard roof systems by roof type: built-up and modified bitumen, concrete, metal, single-ply and spray polyurethane foam, each with Elasta-Gard, Elastacryl or silicone options. Rooftop equipment platforms and walkways get compatible protection rather than assuming the roof membrane can take unrestricted traffic.",
-      "Perma-Gard III is a cold fluid-applied membrane for below-tile or buried waterproofing. Peda-Gard provides a pedestrian traffic-bearing assembly for appropriate exposed decks. Plazas and balconies require details that coordinate the selected membrane with drains, thresholds and adjoining construction.",
+      "We organize Legacy roof systems by roof type: built-up and modified bitumen, concrete, metal, single-ply and spray polyurethane foam, each with aliphatic urethane, acrylic or silicone options. Rooftop equipment platforms and walkways get compatible protection rather than assuming the roof membrane can take unrestricted traffic.",
+      "Legacy Cold Fluid-Applied Membrane 60 is a cold fluid-applied membrane for below-tile or buried waterproofing. Legacy Pedestrian Deck provides a pedestrian traffic-bearing assembly for appropriate exposed decks. Plazas and balconies require details that coordinate the selected membrane with drains, thresholds and adjoining construction.",
     ],
     whereUsed: [industryLinks.data, industryLinks.office, industryLinks.hotel, industryLinks.multifamily, industryLinks.parking],
     buildups: [],
     sections: [{ title: "Data Center Roofs", paragraphs: ["Data center roofs carry chillers, condensers and cable trays that need protected walkways and coatings matched to the existing roof type. We coordinate roof work with the floor and containment scopes inside the building."], link: { label: "Data center solutions", url: "/data-center-flooring" } }],
-    cure: "Peda-Gard: traffic at 48 hrs. Coordinate Perma-Gard III cure, ASTM D5957 flood testing and protection before concealment against the approved application requirements.",
+    cure: "Legacy Pedestrian Deck: traffic at 48 hrs. Coordinate membrane cure, ASTM D5957 flood testing and protection before concealment against the approved application requirements.",
     performance: [
-      "Perma-Gard III membrane: 60 dry mils; flood-tested per ASTM D5957.",
-      "Peda-Gard pedestrian assembly: 32 dry mils.",
+      "Cold fluid-applied membrane: 60 dry mils; flood-tested per ASTM D5957.",
+      "Legacy Pedestrian Deck assembly: 32 dry mils.",
       "Separate selection for roof coatings, exposed traffic and buried waterproofing.",
     ],
     chemicalResistance: [
@@ -1028,7 +1161,7 @@ SYSTEM_PAGES.push(
     ],
     faqs: [
       { q: "Are roof coating and traffic coating the same?", a: "No. Roof coatings and pedestrian wearing surfaces have different service requirements and must be selected accordingly." },
-      { q: "Where is Perma-Gard III used?", a: "The verified assembly is intended for below-tile or buried waterproofing, with the specified protection and testing." },
+      { q: "Where is the cold fluid-applied membrane used?", a: "The verified assembly is intended for below-tile or buried waterproofing, with the specified protection and testing." },
       { q: "Can you waterproof rooftop equipment walkways?", a: "Yes, through a compatible assembly coordinated with the roof membrane, equipment access and expected traffic." },
       { q: "Does coating solve poor drainage?", a: "Not by itself. Drainage and ponding conditions must be reviewed before the membrane is selected." },
     ],
@@ -1038,11 +1171,11 @@ SYSTEM_PAGES.push(
   makeSystem({
     path: "/epoxy-cove-base",
     name: "Integral Epoxy Cove Base",
-    metaDescription: "Integral epoxy cove base for DFW kitchens, cleanrooms and processing facilities. Monolithic floor-to-wall transitions with verified Neogard Cove Base UV data.",
+    metaDescription: "Integral epoxy cove base for DFW kitchens, cleanrooms and processing facilities. Monolithic floor-to-wall transitions with verified Legacy Epoxy Cove data.",
     intro: "Integral cove removes the sharp floor-to-wall corner that traps residue and complicates cleaning. We connect the floor and perimeter with a trowel-applied, monolithic resin detail.",
     whatItIs: [
       "A sanitary cove curves the floor finish up the wall or curb using compatible resin mortar. It can address a deficient base detail identified during a health inspection, but acceptance depends on the applicable requirements and the complete installation.",
-      "Neogard Epoxy Cove Base UV is troweled 1/8\" thick and 4\" high (adjustable) over drywall, green board, concrete or CMU, with a novolac, epoxy, CRU or polyaspartic topcoat. Neocrete V (urethane cement) and FTS MMA cove bases match those floor systems.",
+      "Legacy Epoxy Cove is troweled 1/8\" thick and 4\" high (adjustable) over drywall, green board, concrete or CMU, with a novolac, epoxy, CRU or polyaspartic topcoat. Legacy Urethane Cement Cove and Legacy MMA Cove match those floor systems.",
     ],
     whereUsed: [industryLinks.kitchen, industryLinks.food, industryLinks.pharma, industryLinks.pharmacy, industryLinks.healthcare],
     buildups: [],
@@ -1075,7 +1208,17 @@ SYSTEM_PAGES.push(
     path: "/resilient-flooring",
     name: "Resilient & Soft-Surface Flooring",
     metaDescription: "Commercial carpet tile, LVP/LVT, heat-welded sheet vinyl, rubber and VCT for DFW facilities, with substrate preparation and compatible maintenance planning.",
-    intro: "Commercial interiors often need more than resinous flooring. We coordinate resilient and soft-surface finishes with substrate preparation, transitions and the maintenance program.",
+    intro: "Commercial resilient flooring covers carpet tile, LVT and LVP, sheet vinyl, rubber and VCT. We remove the old floor, prepare and test the slab, and install the finish that fits each room, alongside our resinous and polished concrete floors.",
+    sections: [
+      {
+        title: "Commercial Carpet Tile and LVT Installation",
+        paragraphs: ["Our two most-requested resilient floors each have their own page with specs, installation details and FAQs:"],
+        links: [
+          { label: "Commercial carpet tile installation", url: "/commercial-carpet-tile", text: "Modular carpet for offices, schools, healthcare, hotels and multifamily, including removal, floor prep and after-hours installs." },
+          { label: "Commercial LVT & LVP flooring", url: "/commercial-lvt-flooring", text: "Glue-down and rigid-core luxury vinyl tile and plank for healthcare, offices, schools, retail, hotels and multifamily." },
+        ],
+      },
+    ],
     whatItIs: [
       "Carpet tile supports replaceable modular soft-surface layouts in offices and hospitality spaces. LVP/LVT provides modular resilient finishes, while rubber can address specific circulation, comfort and use requirements.",
       "Heat-welded sheet vinyl can provide coordinated seams and coved details where the selected system and facility protocols require them. VCT is a separate finish strategy, commonly paired with an approved maintenance-film program.",
@@ -1111,12 +1254,12 @@ SYSTEM_PAGES.push(
     path: "/novolac-epoxy-flooring",
     name: "Novolac Epoxy Flooring",
     metaTitle: "Novolac Epoxy Flooring | DFW & Nationwide | Legacy Industrial Coatings",
-    metaDescription: "Neogard Novolac 32 and Novolac 125 chemical-resistant epoxy floors for chemical storage, battery rooms, containment and food plants. Headquartered in Dallas-Fort Worth, working nationwide.",
+    metaDescription: "Legacy Novolac 32 and 125 chemical-resistant epoxy floors for chemical storage, battery rooms, containment and food plants. Headquartered in Dallas-Fort Worth, working nationwide.",
     h1: "Novolac Epoxy Flooring for Chemical Resistance",
-    intro: "Novolac epoxy is a more heavily cross-linked epoxy that resists stronger chemicals and higher operating temperatures than standard epoxy. We install Neogard Novolac 32 and Novolac 125 in chemical storage, battery charging rooms, secondary containment and food plants.",
+    intro: "Novolac epoxy is a more heavily cross-linked epoxy that resists stronger chemicals and higher operating temperatures than standard epoxy. We install Legacy Novolac 32 and Legacy Novolac 125 Broadcast in chemical storage, battery charging rooms, secondary containment and food plants.",
     whatItIs: [
-      "Novolac 32 is a primed, two-coat novolac floor; Novolac 125 builds two sand-broadcast base coats before two novolac seals for more body and texture. Both use Neogard 70704/70705 novolac, with a published compressive strength of 10,000 psi and Shore D 84.",
-      "Chemical resistance is checked against Neogard's novolac chemical resistance chart for your specific chemicals, concentrations and contact times before we recommend a build-up.",
+      "Legacy Novolac 32 is a primed, two-coat novolac floor; Legacy Novolac 125 Broadcast builds two sand-broadcast base coats before two novolac seals for more body and texture. Both use a novolac epoxy with a published compressive strength of 10,000 psi and Shore D 84.",
+      "Chemical resistance is checked against the manufacturer's novolac chemical resistance chart for your specific chemicals, concentrations and contact times before we recommend a build-up.",
     ],
     whereUsed: [
       { label: "Secondary containment", path: "/secondary-containment-coatings" },
@@ -1127,11 +1270,11 @@ SYSTEM_PAGES.push(
     ],
     cure: "Chemical-service release is confirmed in the submittal for the selected build-up and site conditions.",
     performance: [
-      "70704/70705 novolac: compressive strength 10,000 psi (ASTM D695); Shore D 84.",
+      "Novolac epoxy: compressive strength 10,000 psi (ASTM D695); Shore D 84.",
       "Higher operating temperature than standard epoxies; suited around ovens and constant-heat areas.",
     ],
     chemicalResistance: [
-      "Checked against Neogard's novolac chemical resistance chart for your specific chemicals.",
+      "Checked against the manufacturer's novolac chemical resistance chart for your specific chemicals.",
       "Confirm concentration, temperature and contact duration, including spills of neutralizing agents.",
     ],
     faqs: [
@@ -1147,28 +1290,300 @@ SYSTEM_PAGES.push(
     path: "/mma-flooring",
     name: "MMA Flooring",
     metaTitle: "MMA Flooring (Fast-Cure Methyl Methacrylate) | DFW & Nationwide | Legacy Industrial Coatings",
-    metaDescription: "Neogard FTS MMA floors cure in about an hour — for kitchens, food plants, pharmaceutical and any overnight shutdown. Headquartered in Dallas-Fort Worth, working nationwide.",
+    metaDescription: "Legacy MMA floors cure in about an hour — for kitchens, food plants, pharmaceutical and any overnight shutdown. Headquartered in Dallas-Fort Worth, working nationwide.",
     h1: "MMA Flooring — Back in Service the Same Day",
-    intro: "MMA (methyl methacrylate) flooring is an acrylic resin floor installed 1/8\" to 3/8\" thick that cures in about one hour. We install Neogard FTS MMA systems when a facility can only give us an overnight or weekend shutdown.",
+    intro: "MMA (methyl methacrylate) flooring is an acrylic resin floor installed 1/8\" to 3/8\" thick that cures in about one hour. We install Legacy MMA systems when a facility can only give us an overnight or weekend shutdown.",
     whatItIs: [
-      "FTS systems are non-porous and waterproof, UV stable for indoor or outdoor use, and can be installed over quarry tile and across a wide range of temperatures. Matching seamless cove base is available, and the floor needs no waxing.",
-      "Every FTS system starts with FTS 100/FTS 101 primer and adhesion promoter, then an FTS 200 (flex) or FTS 300 body resin and an FTS 400 or FTS 450 topcoat. The systems meet South Coast AQMD VOC requirements and have a published tensile strength of 3,850 psi (ASTM D638).",
+      "Legacy MMA systems are non-porous and waterproof, UV stable for indoor or outdoor use, and can be installed over quarry tile and across a wide range of temperatures. Matching seamless cove base is available, and the floor needs no waxing.",
+      "Every Legacy MMA system starts with an MMA primer and adhesion promoter, then a flexible or standard MMA body resin and an MMA topcoat. The systems meet South Coast AQMD VOC requirements and have a published tensile strength of 3,850 psi (ASTM D638).",
     ],
     whereUsed: [industryLinks.kitchen, industryLinks.food, industryLinks.pharma, industryLinks.hotel, industryLinks.data],
-    cure: "One-hour cure; final release is confirmed in the submittal for site temperature and the selected FTS system.",
+    cure: "One-hour cure; final release is confirmed in the submittal for site temperature and the selected Legacy MMA system.",
     performance: [
       "Tensile strength 3,850 psi (ASTM D638).",
       "Non-porous, waterproof and UV stable.",
       "Meets South Coast AQMD VOC requirements.",
     ],
-    chemicalResistance: ["Confirm process chemicals and cleaners against the selected FTS topcoat."],
+    chemicalResistance: ["Confirm process chemicals and cleaners against the selected MMA topcoat."],
     faqs: [
-      { q: "How fast can an MMA floor go back into service?", a: "FTS systems cure in about one hour, so a kitchen or production line can usually reopen the same day." },
-      { q: "Can MMA go over quarry tile?", a: "Yes. FTS systems can be installed over quarry tile after preparation, which avoids demolition in many kitchens." },
+      { q: "How fast can an MMA floor go back into service?", a: "Each MMA coat cures in about an hour, even in cold rooms, so the whole floor can be installed in one overnight or weekend shutdown. The return-to-traffic time depends on the system and temperature and is confirmed in your submittal." },
+      { q: "Can MMA go over quarry tile?", a: "Yes. Legacy MMA systems can be installed over quarry tile after preparation, which avoids demolition in many kitchens." },
       { q: "Is MMA odorous during install?", a: "MMA has a strong odor while curing, so we plan ventilation and schedule work in shutdown windows." },
-      { q: "Is there a matching cove base?", a: "Yes. Solid color, Neoflake and NeoQuartz FTS cove bases match the floor." },
+      { q: "Is there a matching cove base?", a: "Yes. Solid-color, flake and quartz Legacy MMA cove bases match the floor." },
     ],
     photos: photoSets.industrial,
+  }),
+);
+
+/* ------------------------------------------------------------------ */
+/* Commercial carpet tile and commercial LVT/LVP — dedicated search and */
+/* ad landing pages. /resilient-flooring stays the overview hub.        */
+/* ------------------------------------------------------------------ */
+SYSTEM_PAGES.push(
+  makeSystem({
+    path: "/commercial-carpet-tile",
+    name: "Commercial Carpet Tile Installation",
+    crumbName: "Commercial Carpet Tile",
+    serviceName: "Commercial Carpet Tile Installation",
+    metaTitle: "Commercial Carpet Tile Installation | Legacy Industrial Coatings",
+    metaDescription:
+      "Commercial carpet tile installation for offices, schools, healthcare, hotels and multifamily. Old flooring removal, floor prep, moisture testing, furniture moves and after-hours installs. Bids in 24 hours.",
+    h1: "Commercial Carpet Tile Installation",
+    overviewTitle: "What Commercial Carpet Tile Is",
+    intro:
+      "Commercial carpet tile is modular carpet, usually 24\" × 24\" squares or planks, glued down with a releasable adhesive so damaged tiles can be swapped instead of replacing the whole floor. We remove the old floor, prepare and test the slab, and install carpet tile for offices, schools, healthcare, hotels and multifamily, often at night or over a weekend so the building stays open.",
+    whatItIs: [
+      "Carpet tile is the default soft floor for commercial interiors because it is easy to replace, easy to lay around furniture and access floors, and comes in patterns that hide wear. A broadloom carpet is one continuous roll; carpet tile breaks the floor into units that can be rotated, replaced from attic stock, or lifted to reach cabling under access floor.",
+      "Most of the work that decides how long a carpet tile floor lasts happens before the first tile goes down: removing the old flooring and adhesive, patching and leveling the slab, testing moisture and pH, and choosing the adhesive the manufacturer requires. We handle all of it, so the floor carries the manufacturer's warranty.",
+    ],
+    sections: [
+      {
+        title: "Carpet Tile Installation We Handle",
+        paragraphs: ["One crew, start to finish, so there is no gap between the demo contractor, the floor prep and the installer."],
+        items: [
+          "Removal of existing carpet, carpet tile, VCT, LVT or sheet goods, including old adhesive",
+          "Floor prep: grinding, crack repair, skim coat and self-leveling underlayment to the manufacturer's flatness requirement",
+          "Moisture and pH testing (ASTM F2170 relative humidity, ASTM F1869 calcium chloride, surface pH) before adhesive goes down",
+          "Carpet tile, carpet planks and broadloom, installed to the manufacturer's layout (monolithic, quarter-turn, ashlar, brick or herringbone)",
+          "Releasable pressure-sensitive adhesive or adhesive-free installation systems where the product allows",
+          "Rubber wall base, transitions and reducers to LVT, polished concrete or resinous floors",
+          "Furniture lifts and moves, phased installs in occupied offices, and night and weekend work",
+          "Attic stock left on site per the specification, plus care and maintenance guidance at closeout",
+        ],
+      },
+      {
+        title: "Where We Install Carpet Tile",
+        paragraphs: ["Carpet tile shows up in most commercial buildings. The spec changes with how the room is used:"],
+        links: [
+          { label: "Offices & corporate", url: "/office-flooring", text: "Open office, private offices and conference rooms, including installs over raised access floor." },
+          { label: "Schools & universities", url: "/school-flooring", text: "Classrooms, libraries and admin areas, scheduled around the academic calendar." },
+          { label: "Healthcare & clinics", url: "/healthcare-flooring", text: "Waiting rooms, offices and corridors where the facility allows soft flooring." },
+          { label: "Hotels & hospitality", url: "/hotel-flooring", text: "Corridors, meeting rooms and amenity spaces, phased floor by floor." },
+          { label: "Multifamily", url: "/multifamily-flooring", text: "Corridors, leasing offices and amenity spaces, with unit turns coordinated around residents." },
+          { label: "Retail", url: "/retail-flooring", text: "Back offices, fitting rooms and branded retail spaces." },
+        ],
+      },
+      {
+        title: "What the Spec Should Cover",
+        paragraphs: [
+          "For GCs, architects and facility managers, these are the items that decide whether a carpet tile floor performs. We confirm each one in the submittal:",
+        ],
+        table: {
+          columns: ["What it means", "Typical reference"],
+          rows: [
+            { label: "Installation standard", values: ["How the carpet is installed, from substrate to seams", "CRI 104 and the carpet manufacturer's installation guide"] },
+            { label: "Substrate moisture", values: ["Moisture in the slab is the No. 1 cause of adhesive failure", "ASTM F2170 (in-situ RH) and ASTM F1869 (MVER), against the adhesive's limits"] },
+            { label: "Flammability", values: ["Commercial carpet must meet fire codes for the occupancy", "ASTM E648 critical radiant flux (Class I or II) and the DOC FF 1-70 pill test"] },
+            { label: "Static", values: ["Matters in offices with electronics", "AATCC 134 body voltage, per the product data"] },
+            { label: "Acoustics", values: ["Carpet tile reduces impact noise between floors", "Impact insulation (IIC) ratings per ASTM E492/E989 where the design requires them"] },
+            { label: "Section", values: ["Where carpet tile lives in the project manual", "CSI 09 68 13 Tile Carpeting"] },
+          ],
+        },
+      },
+      {
+        title: "How a Commercial Carpet Tile Project Runs",
+        paragraphs: [],
+        ordered: true,
+        items: [
+          "Site walk within 1–3 business days: measure, check the existing floor and slab, note furniture and phasing",
+          "Full bid within 24 hours of receiving plans, with removal, prep, product, adhesive and phasing as separate lines",
+          "Submittals: product data, adhesive, installation method and attic stock quantity",
+          "Moisture and pH testing, then floor prep to the manufacturer's flatness requirement",
+          "Install by zone, with furniture lifts and moves as needed, and transitions to adjacent floors",
+          "Punch walk, closeout photos, attic stock and maintenance guidance",
+        ],
+      },
+      {
+        title: "Commercial Carpet Tile Installation in Dallas–Fort Worth",
+        keepLocal: true,
+        paragraphs: [
+          "Our office is in Plano, and our crews install commercial carpet tile across Dallas–Fort Worth, from corporate offices in Plano, Frisco and Dallas to schools, clinics and multifamily properties throughout the Metroplex. We also take on multi-site programs nationwide.",
+        ],
+        links: [
+          { label: "Dallas", url: "/epoxy-flooring/dallas", text: "Commercial flooring in Dallas." },
+          { label: "Plano", url: "/epoxy-flooring/plano", text: "Our home office market." },
+          { label: "Fort Worth", url: "/epoxy-flooring/fort-worth", text: "Commercial flooring in Fort Worth." },
+        ],
+      },
+    ],
+    comparison: {
+      title: "Carpet Tile vs. Broadloom vs. LVT",
+      columns: ["Carpet tile", "Broadloom carpet", "LVT / LVP"],
+      rows: [
+        { label: "Replace a damaged area", values: ["Swap individual tiles", "Patch or replace the roll", "Replace individual planks or tiles"] },
+        { label: "Acoustics", values: ["Excellent", "Excellent", "Needs an acoustic underlayment or backing"] },
+        { label: "Spills and wet cleaning", values: ["Fair", "Fair", "Excellent"] },
+        { label: "Best for", values: ["Offices, classrooms, corridors", "Hotels, executive suites", "Lobbies, break rooms, healthcare, retail"] },
+        { label: "Learn more", values: ["—", "—", "/commercial-lvt-flooring"] },
+      ],
+    },
+    whereUsed: [industryLinks.office, industryLinks.school, industryLinks.healthcare, industryLinks.hotel, industryLinks.multifamily, industryLinks.retail],
+    cure: "Most carpet tile adhesives need a short tack time before tiles go down, and the floor can usually take foot traffic the same day. Rolling loads and furniture follow the adhesive manufacturer's timing.",
+    performance: [
+      "Modular replacement from attic stock instead of re-carpeting a whole room.",
+      "Strong acoustic performance for offices, classrooms and multi-story buildings.",
+      "Patterns and installation methods that hide wear and soiling in high-traffic paths.",
+      "Manufacturer warranty protected by documented testing, prep and approved adhesive.",
+    ],
+    chemicalResistance: [
+      "Carpet tile is not a fit for wet process areas, kitchens or chemical exposure; those rooms get resilient or resinous floors.",
+      "Spot cleaners and extraction chemistry follow the carpet manufacturer's maintenance guide.",
+    ],
+    prep: [
+      "Remove existing flooring and adhesive to a clean, sound substrate.",
+      "Test moisture (ASTM F2170 / ASTM F1869) and surface pH against the adhesive's published limits.",
+      "Patch, skim and level to the carpet manufacturer's flatness requirement.",
+      "Acclimate product and keep the space within the manufacturer's temperature and humidity range.",
+    ],
+    faqs: [
+      { q: "How long does commercial carpet tile last?", a: "It depends on the product, the traffic and maintenance. Commercial carpet tile in a well-maintained office commonly lasts many years, and because it is modular, worn or stained tiles can be replaced from attic stock without redoing the room." },
+      { q: "Can you install carpet tile over existing VCT or carpet?", a: "Carpet must come out. Carpet tile can sometimes go over well-bonded VCT if the carpet manufacturer allows it and the old adhesive won't react with the new one. Most of the time we remove it, prep the slab and test moisture so the warranty is protected." },
+      { q: "Can you install carpet tile in an occupied office?", a: "Yes. We work nights and weekends, move or lift furniture in zones, and phase the floor so the office keeps working." },
+      { q: "Do you install carpet tile on raised access floors?", a: "Yes. Carpet tile is the usual finish over access floor because tiles can be lifted with the panels for cabling access. We set the layout so tile seams and panel joints work together." },
+      { q: "Do you test the slab before installing carpet tile?", a: "Yes. Moisture and alkalinity are the most common causes of adhesive failure, so we test relative humidity (ASTM F2170), moisture emission (ASTM F1869) and pH before any adhesive goes down, and recommend a mitigation primer when results are over the adhesive's limits." },
+      { q: "What is attic stock?", a: "Extra carpet tiles from the same dye lot left with the owner so damaged tiles can be replaced with an exact match later. The quantity is set by the specification." },
+      { q: "Do you also install the wall base and transitions?", a: "Yes. Rubber wall base, reducers and transitions to LVT, tile, polished concrete or resinous floors are part of our scope." },
+      { q: "How much does commercial carpet tile installation cost?", a: "It depends on the product, square footage, removal of the existing floor, how much floor prep the slab needs, furniture moves and after-hours work. Send plans or request a site walk and we will return a full bid within 24 hours of receiving plans." },
+    ],
+    photos: photoSets.office,
+    closing: {
+      title: "Get a bid on your carpet tile project",
+      text: "Send plans or a scope. Site walk within 1–3 business days; full bid within 24 hours of receiving plans.",
+    },
+  }),
+
+  makeSystem({
+    path: "/commercial-lvt-flooring",
+    name: "Commercial LVT & LVP Flooring",
+    crumbName: "Commercial LVT & LVP",
+    serviceName: "Commercial LVT & LVP Flooring Installation",
+    metaTitle: "Commercial LVT & LVP Flooring Installation | Legacy Industrial Coatings",
+    metaDescription:
+      "Commercial luxury vinyl tile (LVT) and luxury vinyl plank (LVP) installation for offices, healthcare, schools, retail, hotels and multifamily. Glue-down and rigid core, floor prep and moisture testing. Bids in 24 hours.",
+    h1: "Commercial LVT & LVP Flooring Installation",
+    overviewTitle: "What Commercial LVT and LVP Are",
+    intro:
+      "Commercial LVT (luxury vinyl tile) and LVP (luxury vinyl plank) are layered vinyl floors with a printed design and a clear wear layer, made to look like wood or stone while standing up to commercial traffic and wet cleaning. We remove the old floor, prepare and test the slab, and install glue-down and rigid-core LVT and LVP for offices, healthcare, schools, retail, hotels and multifamily.",
+    whatItIs: [
+      "LVT and LVP are the same family of product; LVT usually means square or rectangular tiles and LVP means wood-look planks. Commercial products have thicker wear layers and are installed differently from what you see in a home: most commercial LVT is glued down so it holds up to rolling loads, carts and furniture, while rigid-core click products are used where a floating floor is allowed.",
+      "The wear layer is the clear top film that takes the traffic, measured in mils. Commercial specs commonly call for heavier wear layers than residential products, and the adhesive, substrate flatness and moisture limits come from the flooring manufacturer. We follow them so the floor keeps its warranty.",
+    ],
+    sections: [
+      {
+        title: "LVT and LVP Installation We Handle",
+        paragraphs: ["One crew handles removal, prep, installation and trim, so the schedule doesn't depend on three trades."],
+        items: [
+          "Removal of existing carpet, VCT, sheet vinyl, ceramic tile or old LVT and adhesive",
+          "Floor prep: grinding, crack and joint repair, skim coat and self-leveling underlayment to the manufacturer's flatness tolerance",
+          "Moisture and pH testing (ASTM F2170, ASTM F1869, surface pH) and moisture-mitigation primers when results call for them",
+          "Glue-down LVT and LVP with pressure-sensitive, wet-set or two-part adhesives chosen for traffic and rolling loads",
+          "Rigid-core (SPC/WPC) click LVP where a floating installation is approved",
+          "Patterns: herringbone, chevron, ashlar, mixed-width plank and inlaid borders",
+          "Rubber wall base, stair treads and nosings, transitions to carpet tile, polished concrete and resinous floors",
+          "Night, weekend and phased installs in occupied buildings; unit turns in multifamily",
+        ],
+      },
+      {
+        title: "Glue-Down vs. Rigid-Core (Click) LVP",
+        paragraphs: [
+          "Both are luxury vinyl, but they are installed differently and belong in different places. We recommend one after looking at traffic, rolling loads, the slab and the schedule.",
+        ],
+        table: {
+          columns: ["Glue-down LVT / LVP", "Rigid-core click LVP"],
+          rows: [
+            { label: "How it's installed", values: ["Fully adhered to the prepared substrate", "Floats over the substrate on a click joint"] },
+            { label: "Rolling loads and carts", values: ["Best choice", "Check the product's rolling-load rating"] },
+            { label: "Large open areas", values: ["Best choice", "Needs expansion space and transitions"] },
+            { label: "Subfloor tolerance", values: ["Needs a flat, smooth slab", "More forgiving of minor irregularities"] },
+            { label: "Typical use", values: ["Healthcare, schools, retail, corridors, lobbies", "Multifamily units, smaller offices, fast renovations"] },
+          ],
+        },
+      },
+      {
+        title: "Where We Install Commercial LVT and LVP",
+        paragraphs: ["Luxury vinyl is the most common hard-surface floor in commercial interiors. Where it fits best:"],
+        links: [
+          { label: "Healthcare & clinics", url: "/healthcare-flooring", text: "Exam rooms, corridors and waiting areas that need easy wet cleaning." },
+          { label: "Offices & corporate", url: "/office-flooring", text: "Break rooms, lobbies and open office alongside carpet tile." },
+          { label: "Schools & universities", url: "/school-flooring", text: "Corridors, classrooms and cafeterias, installed over breaks." },
+          { label: "Retail", url: "/retail-flooring", text: "Wood- and stone-look sales floors installed overnight to hit opening dates." },
+          { label: "Hotels & hospitality", url: "/hotel-flooring", text: "Guest rooms, corridors and amenity spaces." },
+          { label: "Multifamily", url: "/multifamily-flooring", text: "Unit turns, clubhouses and leasing offices." },
+        ],
+      },
+      {
+        title: "What the Spec Should Cover",
+        paragraphs: ["These items decide whether an LVT floor performs and keeps its warranty. We confirm each one in the submittal:"],
+        table: {
+          columns: ["What it means", "Typical reference"],
+          rows: [
+            { label: "Product standard", values: ["Defines construction and performance of the vinyl", "ASTM F1700 (solid vinyl tile); ASTM F3261 (rigid core)"] },
+            { label: "Wear layer", values: ["Clear top layer that takes the traffic, in mils", "Per the specification and the product data"] },
+            { label: "Substrate prep", values: ["Flatness, smoothness and soundness of the slab", "ASTM F710 and the manufacturer's flatness tolerance"] },
+            { label: "Moisture and pH", values: ["Controls adhesive bond and prevents failures", "ASTM F2170 and ASTM F1869, against the adhesive's limits"] },
+            { label: "Fire", values: ["Required for corridors and exits by code", "ASTM E648 critical radiant flux classification"] },
+            { label: "Slip resistance", values: ["Traction for the space and cleaning method", "Per the product data, commonly ASTM D2047"] },
+            { label: "Section", values: ["Where LVT lives in the project manual", "CSI 09 65 19 Resilient Tile Flooring"] },
+          ],
+        },
+      },
+      {
+        title: "Commercial LVT and LVP Installation in Dallas–Fort Worth",
+        keepLocal: true,
+        paragraphs: [
+          "Our office is in Plano, and our crews install commercial LVT and LVP across Dallas–Fort Worth for offices, clinics, schools, retail, hotels and multifamily, and on multi-site programs nationwide.",
+        ],
+        links: [
+          { label: "Dallas", url: "/epoxy-flooring/dallas", text: "Commercial flooring in Dallas." },
+          { label: "Plano", url: "/epoxy-flooring/plano", text: "Our home office market." },
+          { label: "Frisco", url: "/epoxy-flooring/frisco", text: "Fast tenant-improvement work in Frisco." },
+        ],
+      },
+    ],
+    comparison: {
+      title: "LVT vs. VCT vs. Sheet Vinyl",
+      columns: ["LVT / LVP", "VCT", "Sheet vinyl"],
+      rows: [
+        { label: "Look", values: ["Wood and stone visuals", "Solid and speckled colors", "Solid, speckled or wood visuals"] },
+        { label: "Maintenance", values: ["Typically no wax", "Strip, wax and buff program", "Typically no wax; seams heat welded"] },
+        { label: "Seams", values: ["Tight-fitting planks or tiles", "Many seams", "Few seams, welded where specified"] },
+        { label: "Best for", values: ["Offices, retail, hotels, multifamily, healthcare", "Budget back-of-house, schools", "Healthcare and labs that need welded seams"] },
+        { label: "Learn more", values: ["—", "/resilient-flooring", "/resilient-flooring"] },
+      ],
+    },
+    whereUsed: [industryLinks.healthcare, industryLinks.office, industryLinks.school, industryLinks.retail, industryLinks.hotel, industryLinks.multifamily],
+    cure: "Glue-down floors are usually open to foot traffic the same day; heavy rolling loads and furniture wait for the adhesive manufacturer's timing. Floating floors are walkable immediately.",
+    performance: [
+      "Wood and stone looks with a wear layer built for commercial traffic.",
+      "Wet cleanable and typically no wax, which lowers maintenance costs compared with VCT.",
+      "Individual planks or tiles can be replaced if damaged.",
+      "Manufacturer warranty protected by documented testing, prep and approved adhesive.",
+    ],
+    chemicalResistance: [
+      "Confirm disinfectants and cleaners against the LVT manufacturer's maintenance guide, especially in healthcare.",
+      "Process chemicals, hot water and heavy industrial traffic call for resinous floors instead.",
+    ],
+    prep: [
+      "Remove existing flooring and adhesive to a clean, sound substrate.",
+      "Test moisture (ASTM F2170 / ASTM F1869) and pH; apply a mitigation primer when results exceed the adhesive's limits.",
+      "Patch and level to the manufacturer's flatness tolerance per ASTM F710.",
+      "Acclimate product and keep the space within the manufacturer's temperature range before, during and after install.",
+    ],
+    faqs: [
+      { q: "What is the difference between LVT and LVP?", a: "They are the same type of floor. LVT (luxury vinyl tile) usually refers to square or rectangular stone- and tile-look pieces; LVP (luxury vinyl plank) refers to wood-look planks." },
+      { q: "Is glue-down or click LVP better for a commercial building?", a: "Glue-down is the standard for commercial spaces with rolling loads, carts, large open areas and heavy traffic. Rigid-core click LVP works well in multifamily units and smaller spaces where a floating floor is approved." },
+      { q: "What wear layer do I need for commercial LVT?", a: "Commercial specifications commonly call for a heavier wear layer than residential products. We match the wear layer to your traffic and the specification, and confirm it in the submittal." },
+      { q: "Can LVT go over existing tile or VCT?", a: "Sometimes. Well-bonded VCT or tile can be acceptable if it is flat and the manufacturer allows it, often with a skim coat. Otherwise we remove it and prep the slab." },
+      { q: "Why do LVT floors fail?", a: "Most failures come from moisture in the slab, high pH, the wrong adhesive or an uneven substrate, not from the vinyl itself. That is why we test moisture and pH and prep to the manufacturer's tolerance before installing." },
+      { q: "Can you install LVT in an occupied building?", a: "Yes. We phase the work, run nights and weekends, and move furniture by zone so the building keeps operating." },
+      { q: "Does LVT need waxing?", a: "Most commercial LVT does not need wax. It is cleaned with a neutral cleaner and an auto-scrubber; some products accept an optional factory-approved finish. We provide the manufacturer's maintenance guide at closeout." },
+      { q: "How much does commercial LVT installation cost?", a: "It depends on the product, square footage, removal of the existing floor, floor prep, the installation method and after-hours work. Send plans or request a site walk and we will return a full bid within 24 hours of receiving plans." },
+    ],
+    photos: photoSets.office,
+    closing: {
+      title: "Get a bid on your LVT or LVP project",
+      text: "Send plans or a scope. Site walk within 1–3 business days; full bid within 24 hours of receiving plans.",
+    },
   }),
 );
 

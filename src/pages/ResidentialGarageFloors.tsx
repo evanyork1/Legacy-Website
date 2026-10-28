@@ -1,377 +1,312 @@
-import { Helmet } from "react-helmet-async";
-import { PageBreadcrumbs } from "@/components/seo/PageBreadcrumbs";
+import { ArrowRight, Calendar } from "lucide-react";
+import SiteHeader from "@/components/site/SiteHeader";
+import SiteFooter from "@/components/site/SiteFooter";
+import { BTN, DataTable, Eyebrow, FaqBlock, PageHero, StarRating } from "@/components/site/sections";
+import { Seo } from "@/components/seo/Seo";
 import { StructuredData } from "@/components/seo/StructuredData";
-import Header from "@/components/Header";
-import Footer from "@/components/Footer";
-import { Button } from "@/components/ui/button";
-import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
-import { QuickFeaturesSection } from "@/components/sections/QuickFeaturesSection";
-import WhyChooseSection from "@/components/sections/WhyChooseSection";
-import EpoxyVsPolyureaSection from "@/components/sections/EpoxyVsPolyureaSection";
-import TestimonialsSection from "@/components/sections/TestimonialsSection";
-import ProcessSection from "@/components/sections/ProcessSection";
+import { openCalBooking } from "@/lib/calBooking";
+import { BUSINESS } from "@/data/site/nav";
 
-import { Shield, Clock, Palette, Wrench, CheckCircle, Calendar, Phone, ArrowRight } from "lucide-react";
-import { useState } from "react";
-import { useNavigate } from "react-router-dom";
-import { BookingModal } from "@/components/landing/BookingModal";
-import { StickyMobileCTA } from "@/components/StickyMobileCTA";
-const garageFaqs = [
-  { question: "How long does the garage floor installation take at my home?", answer: "Most residential garage floors are completed in just one day. You can park your cars back in the garage within 24–48 hours." },
-  { question: "What does a residential garage floor coating cost?", answer: "For a typical 2-3 car residential garage using our premium polyurea flake system, pricing ranges from $2,800–$4,500. This investment adds significant value to your home while providing a lifetime of beauty and durability." },
-  { question: "Will my garage floor coating handle daily home use?", answer: "Absolutely! Our residential garage floors are designed to handle everything from hot tires and oil drips to kids' bikes and home storage. The coating won't chip, peel, or stain under normal home use." },
-  { question: "How do I maintain my garage floor?", answer: "Maintenance is incredibly easy! Simply sweep as needed and mop occasionally with any household cleaner. No special products or treatments required." },
-  { question: "Does my residential garage floor come with a warranty?", answer: "Yes! Your residential garage floor comes with our limited lifetime warranty against peeling, discoloration, and cracking under normal home use." },
-  { question: "Do you offer financing?", answer: "Yes. Get started for as low as $99 down with 0% financing." },
-  { question: "How fast can I schedule?", answer: "We often provide estimates the same day you contact us." },
+/**
+ * /garagefloors — the one residential page (footer: Residential → Garage
+ * Floors). Homeowners book an in-person estimate through Cal.com only; the
+ * commercial Request Information form is not shown here.
+ */
+
+const PATH = "/garagefloors";
+const TITLE = "Garage Floor Coatings in Dallas–Fort Worth | Polyurea Flake | Legacy Industrial Coatings";
+const DESCRIPTION =
+  "Polyurea and polyaspartic flake garage floor coatings in Dallas–Fort Worth. Diamond-ground prep, one-day install, park in 24–48 hours, lifetime warranty. Set up an in-person estimate.";
+const U = (id: string) => `/lovable-uploads/${id}-960.webp`;
+const HERO = U("b4732a11-b0eb-48f7-9950-d9c8e186ab97");
+
+const H2 = "font-heading text-3xl md:text-[2.5rem] font-bold text-foreground leading-[1.1] mb-8 text-balance";
+const P = "text-muted-foreground font-body text-[16px] leading-[1.85] mb-6";
+const A = "text-foreground underline underline-offset-4 decoration-border hover:decoration-foreground";
+
+const EstimateCalButton = ({ light = false, label = "Set Up an In-Person Estimate" }: { light?: boolean; label?: string }) => (
+  <button
+    type="button"
+    onClick={openCalBooking}
+    className={`${BTN} ${
+      light
+        ? "bg-background text-foreground border border-background hover:bg-transparent hover:text-background"
+        : "bg-foreground text-background border border-foreground hover:bg-foreground/90"
+    }`}
+  >
+    <Calendar size={14} />
+    {label}
+    <ArrowRight size={14} className="transition-transform group-hover:translate-x-1" />
+  </button>
+);
+
+const PROOF = [
+  { v: "5.0 ★", l: "201+ Google reviews" },
+  { v: "1 day", l: "Typical install" },
+  { v: "24–48 hrs", l: "Park on it" },
+  { v: "Lifetime", l: "Limited warranty" },
 ];
 
-const ResidentialGarageFloors = () => {
-  const navigate = useNavigate();
-  const [showBookingModal, setShowBookingModal] = useState(false);
-  const benefits = [{
-    icon: <Shield className="h-8 w-8 text-blue-600" />,
-    title: "Lifetime Warranty",
-    description: "Our residential garage floor coatings come with an industry-leading lifetime warranty, protecting your home investment for years to come."
-  }, {
-    icon: <Clock className="h-8 w-8 text-blue-600" />,
-    title: "One-Day Installation",
-    description: "Transform your garage in just one day! Most residential garages are completed in a single day with minimal disruption to your routine."
-  }, {
-    icon: <Palette className="h-8 w-8 text-blue-600" />,
-    title: "Custom Design Options",
-    description: "Choose from dozens of flake colors and patterns to create a garage floor that perfectly complements your home's style."
-  }, {
-    icon: <Wrench className="h-8 w-8 text-blue-600" />,
-    title: "Easy Home Maintenance",
-    description: "Keep your garage floor looking pristine with simple sweeping and occasional mopping - no special cleaners required."
-  }];
-  return <>
-      <Helmet>
-        <title>Residential Garage Floor Coatings - Polyurea Flake Floors | Legacy Industrial Coatings</title>
-        <meta name="description" content="Transform your residential garage with premium polyurea flake floor coatings. Lifetime warranty, one-day installation, and beautiful custom designs. Perfect for homeowners seeking durable garage floors." />
-        <meta name="keywords" content="residential garage floors, garage floor coating, home garage renovation, polyurea garage floors, decorative garage flooring, garage makeover" />
-        
-        <meta property="og:title" content="Residential Garage Floor Coatings - Polyurea Flake Floors | Legacy Industrial Coatings" />
-        <meta property="og:description" content="Transform your residential garage with premium polyurea flake floor coatings. Lifetime warranty, one-day installation, and beautiful custom designs." />
-        <meta property="og:image" content="https://legacyindustrialcoatings.com/lovable-uploads/8865d0d1-af13-4849-b194-a2611de34a0b.png" />
-        
-        <meta name="robots" content="index, follow" />
-        <link rel="canonical" href="https://legacyindustrialcoatings.com/garagefloors" />
-        <meta property="og:url" content="https://legacyindustrialcoatings.com/garagefloors" />
-      </Helmet>
+const STEPS = [
+  { t: "In-person estimate", d: "We measure the garage, check the slab for cracks, pitting, oil and moisture, show you flake samples and give you a written price." },
+  { t: "Diamond grinding", d: "Dust-controlled diamond grinders open up the concrete so the coating bonds into it instead of sitting on top. This step is why our floors don't peel." },
+  { t: "Crack and pit repair", d: "Cracks, spalls and pitting are filled and ground flush so they don't telegraph through the finished floor." },
+  { t: "Polyurea base coat", d: "A fast-curing polyurea base coat soaks into the ground concrete and locks on, with a little flexibility for Texas temperature swings." },
+  { t: "Full flake broadcast", d: "Decorative flake is broadcast to full coverage while the base is wet, then the excess is scraped and vacuumed for a uniform texture." },
+  { t: "Polyaspartic topcoat", d: "A clear, UV-stable polyaspartic topcoat seals the flake. It won't yellow in the sun and resists hot tires, oil, salt and household chemicals." },
+];
 
+const COMPARE = {
+  columns: ["Polyurea + polyaspartic (ours)", "DIY epoxy kit / garage floor paint"],
+  rows: [
+    { label: "Surface prep", values: ["Diamond-ground concrete", "Acid etch or scrub only"] },
+    { label: "Install time", values: ["Usually one day", "Several days with cure time"] },
+    { label: "Hot tire pickup", values: ["Built to resist it", "Common in Texas summers"] },
+    { label: "Sunlight", values: ["UV-stable, won't yellow", "Yellows and fades"] },
+    { label: "Thickness", values: ["Full-broadcast, multi-coat system", "One or two thin coats"] },
+    { label: "Warranty", values: ["Limited lifetime", "Usually none"] },
+  ],
+};
+
+const GALLERY = [
+  { before: "64f61c96-ce73-4ef1-adb6-6e3d1644de30", after: "303d5679-dcda-4e82-b1da-4e309d1fb5dd", title: "From stained to finished", text: "A stained, cracked two-car garage ground, repaired and coated with a full-broadcast polyurea flake floor." },
+  { before: "f57a3511-7157-4235-ba23-509e1df21d59", after: "002da108-5855-41da-aaea-3e1d1a9de98e", title: "Complete garage makeover", text: "An ordinary concrete floor turned into a seamless, easy-clean flake finish." },
+  { before: "c499e5d5-764f-4feb-b2be-635e5b67ea69", after: "e98aa310-42f2-46db-ac00-8502f2d71097", title: "Large garage and workshop", text: "Bigger garages and shops get the same grind, repair and polyurea system." },
+  { before: "1e76caef-6851-4869-9f2e-df3b59bf64ef", after: "ef50769f-f8f0-4bd8-9f4c-5238689c933b", title: "Prep you can see", text: "Every floor starts with diamond grinding and repair, which is what keeps it from peeling." },
+];
+
+const CITIES = ["Dallas", "Plano", "Frisco", "McKinney", "Allen", "Prosper", "Celina", "Little Elm", "The Colony", "Lewisville", "Flower Mound", "Coppell", "Carrollton", "Richardson", "Fort Worth", "Argyle"];
+
+const FAQS = [
+  { q: "How long does a garage floor coating take?", a: "Most residential garages are ground, repaired and coated in one day. You can walk on the floor that evening in most cases and park on it in 24–48 hours." },
+  { q: "How much does a garage floor coating cost in Dallas–Fort Worth?", a: "A typical 2–3 car garage with our polyurea flake system runs $2,800–$4,500. Size, crack and pit repair, removal of an old coating and options like stem walls or extra grip change the price, so we give you an exact written number at the in-person estimate." },
+  { q: "Is polyurea better than epoxy for a garage floor?", a: "For most Texas garages, yes. Polyurea cures fast and bonds deep into diamond-ground concrete, and a polyaspartic topcoat is UV-stable, so it won't yellow or soften the way many epoxy kits do in summer heat. Epoxy still has a place, but DIY epoxy and garage floor paint are the floors we most often tear out." },
+  { q: "Will hot tires lift the coating?", a: "Hot tire pickup happens when a thin coating is rolled onto poorly prepared concrete. Our floors are diamond ground and built as a full multi-coat system, which is designed to resist hot tires." },
+  { q: "Is a flake garage floor slippery?", a: "The flake gives the surface texture on its own. If you want more grip near the door or where cars drip water, we add anti-slip aggregate to the topcoat and show you a sample first." },
+  { q: "Can you coat over my existing epoxy or painted floor?", a: "Failed coatings are ground off so the new system bonds to clean concrete. That is included in your estimate if your garage needs it." },
+  { q: "How do I clean and maintain it?", a: "Sweep as needed and mop with a mild household cleaner. No waxing or special products." },
+  { q: "Do you offer a warranty and financing?", a: "Yes. Residential garage floors come with our limited lifetime warranty against peeling, discoloration and cracking under normal home use, and financing is available with as little as $99 down and 0% options." },
+];
+
+const GarageFloors = () => {
+  const crumbs = [
+    { name: "Home", url: "/" },
+    { name: "Residential", url: PATH },
+    { name: "Garage Floors", url: PATH },
+  ];
+
+  return (
+    <div className="lcf min-h-screen bg-background">
+      <Seo title={TITLE} description={DESCRIPTION} path={PATH} ogImage={HERO} />
       <StructuredData
-        services={[{ name: "Residential Garage Floor Coatings", description: "Premium polyurea flake garage floor coatings for homeowners — installed in one day with a lifetime warranty across Dallas-Fort Worth.", url: "/garagefloors" }]}
-        faqs={garageFaqs}
+        services={[
+          {
+            name: "Garage Floor Coatings",
+            description:
+              "Polyurea and polyaspartic flake garage floor coatings for homes across Dallas–Fort Worth: diamond-ground prep, one-day install, limited lifetime warranty.",
+            url: PATH,
+          },
+        ]}
+        faqs={FAQS.map((f) => ({ question: f.q, answer: f.a }))}
+        breadcrumbs={crumbs}
+      />
+      <SiteHeader />
+
+      <PageHero
+        eyebrow="Residential · Dallas–Fort Worth"
+        title="Garage Floor Coatings in Dallas–Fort Worth"
+        subhead="Polyurea and polyaspartic flake garage floors, diamond-ground and installed in one day. Park on it in 24–48 hours, backed by a limited lifetime warranty."
+        image={HERO}
+        imageAlt="Finished polyurea flake garage floor coating in a Dallas–Fort Worth home"
+        rating
+        action={<EstimateCalButton light />}
       />
 
-      <PageBreadcrumbs items={[{ name: "Home", url: "/" }, { name: "Residential", url: "/garagefloors" }, { name: "Garage Floors", url: "/garagefloors" }]} />
-
-      <div className="garage-mobile-page min-h-screen bg-white">
-        <Header />
-        
-        {/* Hero Section */}
-        <section className="pt-24 md:pt-32 pb-10 md:pb-20 bg-slate-50">
-          <div className="container mx-auto px-5 w-full">
-            <div className="grid lg:grid-cols-2 gap-10 lg:gap-12 items-center">
-              <div className="text-center lg:text-left">
-                {/* Reviews Badge */}
-                <div className="flex justify-center lg:justify-start mb-5">
-                  <div className="inline-flex items-center gap-2 bg-white border border-gray-200 rounded-full px-3 py-1.5 shadow-sm">
-                    <span className="text-yellow-400 text-sm tracking-tight">★★★★★</span>
-                    <span className="text-xs sm:text-sm font-medium text-gray-700">200+ Google reviews</span>
-                  </div>
-                </div>
-                <h1 className="text-[2.5rem] leading-[1.05] sm:text-5xl lg:text-7xl font-bold text-gray-900 mb-4 md:mb-6 tracking-tight">
-                  Premium <span className="text-blue-900">Garage Floors</span> in One Day
-                </h1>
-                <p className="text-base sm:text-xl text-gray-600 mb-6 md:mb-8 leading-relaxed max-w-md mx-auto lg:mx-0 lg:max-w-none">
-                  Transform your garage with premium polyurea flake coatings — beautiful, durable, and backed by a lifetime warranty.
-                </p>
-                <div className="flex flex-col sm:flex-row gap-2.5 sm:gap-3 justify-center lg:justify-start">
-                  <Button onClick={() => setShowBookingModal(true)} className="bg-blue-900 hover:bg-blue-950 text-white min-h-0 h-9 sm:h-12 px-3.5 sm:px-6 rounded-md text-sm sm:text-base font-semibold shadow-sm">
-                    <Calendar className="mr-2 h-3.5 w-3.5 sm:h-4 sm:w-4" />
-                    Book My Free Estimate
-                  </Button>
-                  <Button asChild variant="outline" className="border-gray-300 text-gray-900 hover:bg-gray-50 min-h-0 h-9 sm:h-12 px-3.5 sm:px-6 rounded-md text-sm sm:text-base font-semibold">
-                    <a href="tel:214-305-6516">
-                      <Phone className="mr-2 h-3.5 w-3.5 sm:h-4 sm:w-4" />
-                      214-305-6516
-                    </a>
-                  </Button>
-                </div>
+      <section className="bg-background border-b border-border">
+        <div className="max-w-7xl mx-auto px-6 md:px-8 lg:px-12">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-px bg-border">
+            {PROOF.map((s) => (
+              <div key={s.l} className="bg-background py-8 px-4 text-center">
+                <div className="font-heading text-2xl md:text-3xl font-bold text-foreground">{s.v}</div>
+                <div className="font-heading text-[11px] uppercase tracking-[0.2em] text-muted-foreground mt-2">{s.l}</div>
               </div>
-              <div className="relative mt-6 lg:mt-0">
-                <div className="relative h-[260px] sm:h-[350px] md:h-[400px] lg:h-[450px] overflow-hidden rounded-2xl shadow-lg">
-                  <div className="grid grid-cols-2 h-full gap-1">
-                    <div className="relative overflow-hidden">
-                      <img src="/lovable-uploads/69253a31-4762-4988-897d-8bc135fd43bd.png" alt="Before: concrete garage floor" className="w-full h-full object-cover" loading="eager" decoding="async" fetchPriority="high" />
-                      <div className="absolute top-3 left-3">
-                        <span className="bg-black/70 backdrop-blur text-white px-2.5 py-1 rounded-full text-[11px] font-semibold tracking-wide">BEFORE</span>
-                      </div>
-                    </div>
-                    <div className="relative overflow-hidden">
-                      <img src="/lovable-uploads/b4732a11-b0eb-48f7-9950-d9c8e186ab97.png" alt="After: polyurea flake garage floor" className="w-full h-full object-cover" loading="eager" decoding="async" />
-                      <div className="absolute top-3 left-3">
-                        <span className="bg-white text-blue-900 px-2.5 py-1 rounded-full text-[11px] font-semibold tracking-wide shadow-sm">AFTER</span>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
+            ))}
           </div>
-        </section>
+        </div>
+      </section>
 
-        
-        {/* Video Showcase Section */}
-        <section className="py-10 md:py-20 bg-white">
-          <div className="container mx-auto px-5">
-            <div className="max-w-4xl mx-auto">
-              <div className="relative rounded-2xl overflow-hidden shadow-lg bg-black aspect-video">
-                <iframe
-                  className="w-full h-full"
-                  src="https://www.youtube.com/embed/LIHMnK4rbyc?si=uNfk1Jr8mpHX-RUS"
-                  title="YouTube video player"
-                  frameBorder="0"
-                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                  referrerPolicy="strict-origin-when-cross-origin"
-                  allowFullScreen
-                ></iframe>
-              </div>
-
-              <div className="flex justify-center mt-6 md:mt-8">
-                <Button
-                  onClick={() => setShowBookingModal(true)}
-                  className="bg-blue-900 hover:bg-blue-950 text-white min-h-0 h-9 sm:h-12 px-3.5 sm:px-6 rounded-md text-sm sm:text-base font-semibold shadow-sm"
-                >
-                  <Calendar className="mr-2 h-3.5 w-3.5 sm:h-4 sm:w-4" />
-                  Book A Free Estimate
-                </Button>
-              </div>
-            </div>
+      <section className="py-20 md:py-28">
+        <div className="max-w-4xl mx-auto px-6 md:px-8 lg:px-12">
+          <Eyebrow>Garage Floors</Eyebrow>
+          <h2 className={H2}>A Garage Floor Coating Built for Texas</h2>
+          <p className={P}>
+            A garage floor coating is a resin system bonded to your concrete that seals out oil, water and road grime and
+            turns a dusty, stained slab into a clean, finished floor. Ours is a full-broadcast polyurea flake system with a
+            polyaspartic topcoat: the same fast-curing chemistry we use in commercial showrooms and service drives, sized
+            for your home.
+          </p>
+          <p className={P}>
+            Dallas–Fort Worth garages see 100°F summers, hot tires, freezes and humid swings. Thin epoxy kits and garage
+            floor paint can peel, yellow and lift under those conditions. A diamond-ground, multi-coat polyurea and
+            polyaspartic floor is built to hold up to them, and it goes in fast: most garages are done in a day.
+          </p>
+          <div className="mt-8">
+            <EstimateCalButton />
           </div>
-        </section>
+        </div>
+      </section>
 
-        
-        <section className="py-12 md:py-20 bg-slate-50">
-          <div className="container mx-auto px-5">
-            <div className="grid lg:grid-cols-2 gap-8 lg:gap-16 items-center">
-              <div className="order-2 lg:order-1">
-                <div className="inline-flex items-center gap-3 bg-white border border-gray-200 shadow-sm px-4 py-2 rounded-full mb-5">
-                  <span className="text-xl font-bold text-blue-900">80%</span>
-                  <span className="text-xs sm:text-sm text-gray-700">of reviews mention our service</span>
+      <section className="py-20 md:py-28 bg-secondary border-y border-border">
+        <div className="max-w-6xl mx-auto px-6 md:px-8 lg:px-12">
+          <Eyebrow>Process</Eyebrow>
+          <h2 className={H2}>How We Install Your Garage Floor</h2>
+          <ol className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
+            {STEPS.map((s, i) => (
+              <li key={s.t} className="border border-border bg-background p-6">
+                <p className="font-heading text-[11px] uppercase tracking-[0.2em] text-muted-foreground mb-2">Step {i + 1}</p>
+                <h3 className="font-heading font-semibold text-[17px] text-foreground mb-2">{s.t}</h3>
+                <p className="text-[14px] text-muted-foreground leading-[1.7]">{s.d}</p>
+              </li>
+            ))}
+          </ol>
+        </div>
+      </section>
+
+      <section className="py-20 md:py-28">
+        <div className="max-w-4xl mx-auto px-6 md:px-8 lg:px-12">
+          <Eyebrow>Compare</Eyebrow>
+          <h2 className={H2}>Polyurea vs. Epoxy Garage Floors and Garage Floor Paint</h2>
+          <p className={P}>
+            Many of the garages we coat start with tearing out a failed epoxy kit or peeling garage floor paint. The
+            difference is mostly preparation and chemistry:
+          </p>
+          <DataTable columns={COMPARE.columns} rows={COMPARE.rows} labelHeader="Feature" />
+          <p className={P}>
+            Want the details? Read{" "}
+            <a href="/blog/epoxy-vs-polyaspartic-garage-coatings-dfw" className={A}>epoxy vs. polyaspartic garage coatings</a> and{" "}
+            <a href="/blog/best-garage-floor-coatings-texas-heat-dfw-guide" className={A}>the best garage floor coatings for Texas heat</a>.
+          </p>
+        </div>
+      </section>
+
+      <section className="py-20 md:py-28 bg-secondary border-y border-border">
+        <div className="max-w-7xl mx-auto px-6 md:px-8 lg:px-12">
+          <Eyebrow>Before & After</Eyebrow>
+          <h2 className={H2}>Real Dallas–Fort Worth Garage Floors</h2>
+          <div className="grid md:grid-cols-2 gap-8">
+            {GALLERY.map((g) => (
+              <figure key={g.title} className="bg-background border border-border">
+                <div className="grid grid-cols-2 gap-px bg-border">
+                  {[
+                    { id: g.before, tag: "Before" },
+                    { id: g.after, tag: "After" },
+                  ].map((p) => (
+                    <div key={p.id} className="relative aspect-[3/4] overflow-hidden bg-muted">
+                      <img
+                        src={U(p.id)}
+                        alt={`${p.tag}: ${g.title.toLowerCase()} — garage floor coating`}
+                        loading="lazy"
+                        decoding="async"
+                        width={720}
+                        height={960}
+                        className="w-full h-full object-cover"
+                      />
+                      <span className="absolute top-3 left-3 bg-foreground/80 text-background px-2 py-1 font-heading text-[10px] uppercase tracking-[0.2em]">
+                        {p.tag}
+                      </span>
+                    </div>
+                  ))}
                 </div>
-                <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-gray-900 mb-4 md:mb-6 leading-tight tracking-tight">
-                  The <span className="text-blue-900">Legacy Service</span> Experience
-                </h2>
-                <p className="text-base sm:text-lg text-gray-600 leading-relaxed">
-                  Over 80% of our Google reviews don't just talk about the floors — they talk about the experience. What truly sets Legacy apart is how we take care of you from start to finish.
-                </p>
-              </div>
-              <div className="order-1 lg:order-2 relative">
-                <img src="/lovable-uploads/72eecda8-16d0-46b7-910a-0f72bee32409.png" alt="Legacy Industrial Coatings team member preparing garage floor" className="w-full h-64 sm:h-80 md:h-96 object-cover rounded-2xl shadow-lg" loading="eager" decoding="async" />
-              </div>
-            </div>
+                <figcaption className="p-5">
+                  <p className="font-heading font-semibold text-[16px] text-foreground">{g.title}</p>
+                  <p className="text-[14px] text-muted-foreground leading-[1.7] mt-1">{g.text}</p>
+                </figcaption>
+              </figure>
+            ))}
           </div>
-        </section>
+          <p className="mt-8 text-[15px] text-muted-foreground">
+            More projects:{" "}
+            <a href="/residential-case-studies" className={A}>residential case studies</a>.
+          </p>
+        </div>
+      </section>
 
-        
-        <EpoxyVsPolyureaSection />
-        
-        <WhyChooseSection />
-        
-        <ProcessSection />
-
-        {/* Before & After Showcase Section */}
-        <section className="py-12 md:py-20 bg-white">
-          <div className="container mx-auto px-4">
-            <div className="text-center mb-8 md:mb-16">
-              <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-gray-900 mb-4">
-                Real Garage <span className="text-blue-900">Transformations</span>
-              </h2>
-              <p className="text-base sm:text-lg text-gray-600 max-w-2xl mx-auto px-4">
-                See how we transform ordinary concrete floors into stunning, durable surfaces that homeowners love
-              </p>
-            </div>
-            
-            <div className="grid gap-8 lg:gap-12">
-              {/* Transformation 1 */}
-              <div className="grid lg:grid-cols-2 gap-6 lg:gap-8 items-center">
-                <div className="grid grid-cols-2 gap-2 h-64 sm:h-80 lg:h-96">
-                  <div className="relative overflow-hidden rounded-lg">
-                    <img src="/lovable-uploads/64f61c96-ce73-4ef1-adb6-6e3d1644de30.png" alt="Before garage floor transformation" className="w-full h-full object-cover"  loading="eager" decoding="async" />
-                    <div className="absolute top-2 sm:top-3 left-2 sm:left-3">
-                      <span className="bg-blue-600 text-white px-2 py-1 rounded text-xs font-semibold">
-                        BEFORE
-                      </span>
-                    </div>
-                  </div>
-                  <div className="relative overflow-hidden rounded-lg">
-                    <img src="/lovable-uploads/303d5679-dcda-4e82-b1da-4e309d1fb5dd.png" alt="After garage floor transformation with flake coating" className="w-full h-full object-cover"  loading="eager" decoding="async" />
-                    <div className="absolute top-2 sm:top-3 left-2 sm:left-3">
-                      <span className="bg-white text-blue-600 px-2 py-1 rounded text-xs font-semibold border border-blue-600">
-                        AFTER
-                      </span>
-                    </div>
-                  </div>
-                </div>
-                <div className="lg:pl-8 px-4 lg:px-0">
-                  <h3 className="text-xl sm:text-2xl font-bold text-gray-900 mb-3 sm:mb-4">From Stained to Stunning</h3>
-                  <p className="text-gray-600 leading-relaxed text-sm sm:text-base">
-                    This homeowner's garage went from a stained, cracked concrete floor to a beautiful flake system that completely transformed the space. The durable polyurea coating not only looks amazing but provides decades of protection.
-                  </p>
-                </div>
-              </div>
-
-              {/* Transformation 2 */}
-              <div className="grid lg:grid-cols-2 gap-6 lg:gap-8 items-center">
-                <div className="order-2 lg:order-1 lg:pr-8 px-4 lg:px-0">
-                  <h3 className="text-xl sm:text-2xl font-bold text-gray-900 mb-3 sm:mb-4">Complete Garage Makeover</h3>
-                  <p className="text-gray-600 leading-relaxed text-sm sm:text-base">
-                    A typical residential garage transformation showing how our flake floor coating system turns an ordinary concrete floor into a showroom-quality surface that adds value to the home.
-                  </p>
-                </div>
-                <div className="order-1 lg:order-2 grid grid-cols-2 gap-2 h-64 sm:h-80 lg:h-96">
-                  <div className="relative overflow-hidden rounded-lg">
-                    <img src="/lovable-uploads/f57a3511-7157-4235-ba23-509e1df21d59.png" alt="Before garage floor coating" className="w-full h-full object-cover"  loading="eager" decoding="async" />
-                    <div className="absolute top-2 sm:top-3 left-2 sm:left-3">
-                      <span className="bg-blue-600 text-white px-2 py-1 rounded text-xs font-semibold">
-                        BEFORE
-                      </span>
-                    </div>
-                  </div>
-                  <div className="relative overflow-hidden rounded-lg">
-                    <img src="/lovable-uploads/002da108-5855-41da-aaea-3e1d1a9de98e.png" alt="After garage floor with beautiful flake finish" className="w-full h-full object-cover"  loading="eager" decoding="async" />
-                    <div className="absolute top-2 sm:top-3 left-2 sm:left-3">
-                      <span className="bg-white text-blue-600 px-2 py-1 rounded text-xs font-semibold border border-blue-600">
-                        AFTER
-                      </span>
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-              {/* Transformation 3 - Large Space */}
-              <div className="grid lg:grid-cols-2 gap-6 lg:gap-8 items-center">
-                <div className="grid grid-cols-2 gap-2 h-64 sm:h-80 lg:h-96">
-                  <div className="relative overflow-hidden rounded-lg">
-                    <img src="/lovable-uploads/c499e5d5-764f-4feb-b2be-635e5b67ea69.png" alt="Before large garage space concrete floor" className="w-full h-full object-cover"  loading="eager" decoding="async" />
-                    <div className="absolute top-2 sm:top-3 left-2 sm:left-3">
-                      <span className="bg-blue-600 text-white px-2 py-1 rounded text-xs font-semibold">
-                        BEFORE
-                      </span>
-                    </div>
-                  </div>
-                  <div className="relative overflow-hidden rounded-lg">
-                    <img src="/lovable-uploads/e98aa310-42f2-46db-ac00-8502f2d71097.png" alt="After large garage space with premium flake coating" className="w-full h-full object-cover"  loading="eager" decoding="async" />
-                    <div className="absolute top-3 left-3">
-                      <span className="bg-white text-blue-600 px-2 py-1 rounded text-xs font-semibold border border-blue-600">
-                        AFTER
-                      </span>
-                    </div>
-                  </div>
-                </div>
-                <div className="lg:pl-8">
-                  <h3 className="text-2xl font-bold text-gray-900 mb-4">Large Space Transformation</h3>
-                  <p className="text-gray-600 leading-relaxed">
-                    Even larger garage spaces benefit tremendously from our coating systems. This transformation shows how our flake floors can completely change the look and feel of any size garage space.
-                  </p>
-                </div>
-              </div>
-
-              {/* Transformation 4 */}
-              <div className="grid lg:grid-cols-2 gap-8 items-center">
-                <div className="order-2 lg:order-1 lg:pr-8">
-                  <h3 className="text-2xl font-bold text-gray-900 mb-4">Professional Results Every Time</h3>
-                  <p className="text-gray-600 leading-relaxed">
-                    Our process consistently delivers beautiful results. From preparation to final topcoat, every step is performed with precision to ensure your garage floor looks perfect and lasts for decades.
-                  </p>
-                </div>
-                <div className="order-1 lg:order-2 grid grid-cols-2 gap-2 h-80 lg:h-96">
-                  <div className="relative overflow-hidden rounded-lg">
-                    <img src="/lovable-uploads/1e76caef-6851-4869-9f2e-df3b59bf64ef.png" alt="Before garage floor concrete surface" className="w-full h-full object-cover"  loading="eager" decoding="async" />
-                    <div className="absolute top-3 left-3">
-                      <span className="bg-blue-600 text-white px-2 py-1 rounded text-xs font-semibold">
-                        BEFORE
-                      </span>
-                    </div>
-                  </div>
-                  <div className="relative overflow-hidden rounded-lg">
-                    <img src="/lovable-uploads/ef50769f-f8f0-4bd8-9f4c-5238689c933b.png" alt="After professional garage floor coating installation" className="w-full h-full object-cover"  loading="eager" decoding="async" />
-                    <div className="absolute top-3 left-3">
-                      <span className="bg-white text-blue-600 px-2 py-1 rounded text-xs font-semibold border border-blue-600">
-                        AFTER
-                      </span>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
+      <section className="py-20 md:py-28">
+        <div className="max-w-4xl mx-auto px-6 md:px-8 lg:px-12">
+          <Eyebrow>Video</Eyebrow>
+          <h2 className={H2}>See a Garage Floor Install</h2>
+          <div className="relative aspect-video bg-foreground">
+            <iframe
+              className="absolute inset-0 w-full h-full"
+              src="https://www.youtube-nocookie.com/embed/LIHMnK4rbyc"
+              title="Legacy Industrial Coatings garage floor coating installation"
+              loading="lazy"
+              allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+              referrerPolicy="strict-origin-when-cross-origin"
+              allowFullScreen
+            />
           </div>
-        </section>
+        </div>
+      </section>
 
+      <section className="py-20 md:py-28 bg-secondary border-y border-border">
+        <div className="max-w-4xl mx-auto px-6 md:px-8 lg:px-12">
+          <Eyebrow>Cost</Eyebrow>
+          <h2 className={H2}>What a Garage Floor Coating Costs</h2>
+          <p className={P}>
+            A typical 2–3 car garage with our polyurea flake system runs $2,800–$4,500. What moves the price:
+          </p>
+          <ul className="list-disc pl-6 space-y-3 mb-8 text-muted-foreground font-body text-[16px] leading-[1.75]">
+            <li>Garage size, including storage rooms, workshops and stem walls</li>
+            <li>Cracks, pitting and spalling that need repair</li>
+            <li>Removing an old epoxy or painted coating</li>
+            <li>Flake blend and any added anti-slip texture</li>
+          </ul>
+          <p className={P}>
+            You get an exact written price at the in-person estimate, and financing is available with as little as $99 down
+            and 0% options.
+          </p>
+          <EstimateCalButton />
+        </div>
+      </section>
 
-        {/* FAQ Section */}
-        <section className="py-14 md:py-20 bg-white">
-          <div className="container mx-auto px-5">
-            <div className="max-w-3xl mx-auto">
-              <div className="text-center mb-8 md:mb-12">
-                <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-gray-900 mb-3 tracking-tight">
-                  Homeowner Questions
-                </h2>
-                <p className="text-base sm:text-lg text-gray-600">
-                  Common questions about our garage floor coatings
-                </p>
-              </div>
-
-              <Accordion type="single" collapsible className="space-y-3">
-                {garageFaqs.map((faq, i) => (
-                  <AccordionItem key={i} value={`item-${i+1}`} className="border border-gray-200 rounded-xl px-5 sm:px-6 bg-white">
-                    <AccordionTrigger className="text-left font-semibold text-gray-900 hover:text-blue-900 text-sm sm:text-base py-4">
-                      {faq.question}
-                    </AccordionTrigger>
-                    <AccordionContent className="text-gray-600 leading-relaxed text-sm sm:text-base">
-                      {faq.answer}
-                    </AccordionContent>
-                  </AccordionItem>
-                ))}
-              </Accordion>
-            </div>
+      <section className="py-20 md:py-24">
+        <div className="max-w-4xl mx-auto px-6 md:px-8 lg:px-12">
+          <Eyebrow>Service Area</Eyebrow>
+          <h2 className={H2}>Garage Floor Coatings Across Dallas–Fort Worth</h2>
+          <p className={P}>
+            Our crews work out of our Plano office at {BUSINESS.address1} and install residential garage floors across the
+            Metroplex, including {CITIES.slice(0, -1).join(", ")} and {CITIES[CITIES.length - 1]}.
+          </p>
+          <div className="flex items-center gap-4">
+            <StarRating light={false} />
           </div>
-        </section>
+        </div>
+      </section>
 
-        {/* CTA Section */}
-        <section className="py-14 md:py-20 bg-blue-900 text-white">
-          <div className="container mx-auto px-5 text-center">
-            <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold mb-4 md:mb-6 tracking-tight">
-              Ready to Transform Your Garage?
-            </h2>
-            <p className="text-base sm:text-xl mb-6 md:mb-8 opacity-90 max-w-2xl mx-auto">
-              Get a free estimate on your residential garage floor coating.
-            </p>
-            <div className="flex flex-col sm:flex-row gap-2.5 sm:gap-3 justify-center max-w-md mx-auto sm:max-w-none">
-              <Button onClick={() => setShowBookingModal(true)} className="bg-white hover:bg-gray-100 text-blue-900 min-h-0 h-9 sm:h-12 px-3.5 sm:px-6 rounded-md text-sm sm:text-base font-semibold">
-                <Calendar className="mr-2 h-3.5 w-3.5 sm:h-4 sm:w-4" />
-                Book My Free Estimate
-              </Button>
-              <Button asChild variant="outline" className="border-white/40 text-white hover:bg-white hover:text-blue-900 min-h-0 h-9 sm:h-12 px-3.5 sm:px-6 rounded-md text-sm sm:text-base font-semibold bg-transparent">
-                <a href="tel:214-305-6516">
-                  <Phone className="mr-2 h-3.5 w-3.5 sm:h-4 sm:w-4" />
-                  214-305-6516
-                </a>
-              </Button>
-            </div>
-          </div>
-        </section>
+      <FaqBlock heading="Garage Floor Coating Questions" faqs={FAQS} />
 
+      <section className="lcf py-24 md:py-32 bg-foreground text-background">
+        <div className="max-w-4xl mx-auto px-6 md:px-8 lg:px-12 text-center">
+          <h2 className="font-heading text-3xl md:text-[2.5rem] font-bold leading-[1.15] mb-6 text-balance text-background">
+            Ready for a New Garage Floor?
+          </h2>
+          <p className="text-background/70 font-body text-[16px] leading-[1.8] mb-10 max-w-2xl mx-auto">
+            Pick a time that works for you. We'll come out, look at your slab, show you colors and give you a written price.
+          </p>
+          <EstimateCalButton light />
+          <a
+            href={BUSINESS.phoneHref}
+            className="block mt-8 font-heading text-[12px] tracking-[0.2em] uppercase text-background/70 hover:text-background"
+          >
+            {BUSINESS.phoneDisplay}
+          </a>
+        </div>
+      </section>
 
-
-        <BookingModal isOpen={showBookingModal} onClose={() => setShowBookingModal(false)} />
-        <Footer />
-        <StickyMobileCTA />
-      </div>
-    </>;
+      <SiteFooter requestInfo={false} />
+    </div>
+  );
 };
-export default ResidentialGarageFloors;
+
+export default GarageFloors;

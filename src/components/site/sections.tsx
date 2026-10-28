@@ -1,7 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import { caseStudies } from "@/data/caseStudies";
 import { ArrowRight, Star } from "lucide-react";
-import { openCalBooking } from "@/lib/calBooking";
 import { scrollToRequestInfo } from "@/lib/requestInfo";
 import { CLIENT_LOGOS } from "@/data/site/clientLogos";
 import {
@@ -53,10 +52,11 @@ export const SectionHeading = ({
 );
 
 /* ------------------------------------------------------------------ */
-/* Primary CTAs: Book a Site Walk (Cal.com) / Request a Bid (form)     */
+/* Primary CTA: Request an Estimate → the Request Information form.  */
+/* Cal.com site walks are offered once, in the closing form section.   */
 /* ------------------------------------------------------------------ */
 
-export const SiteWalkButton = ({
+export const EstimateButton = ({
   label = "Request an Estimate",
   className = "",
   light = false,
@@ -65,9 +65,9 @@ export const SiteWalkButton = ({
   className?: string;
   light?: boolean;
 }) => (
-  <button
-    type="button"
-    onClick={openCalBooking}
+  <a
+    href="#request-info"
+    onClick={scrollToRequestInfo}
     className={`${BTN} ${
       light
         ? "bg-background text-foreground border border-background hover:bg-transparent hover:text-background"
@@ -76,28 +76,6 @@ export const SiteWalkButton = ({
   >
     {label}
     <ArrowRight size={14} className="transition-transform group-hover:translate-x-1" />
-  </button>
-);
-
-export const RequestBidButton = ({
-  label = "Request a Bid",
-  className = "",
-  dark = false,
-}: {
-  label?: string;
-  className?: string;
-  dark?: boolean;
-}) => (
-  <a
-    href="#request-info"
-    onClick={scrollToRequestInfo}
-    className={`${BTN} border ${
-      dark
-        ? "border-background/30 text-background hover:bg-background hover:text-foreground"
-        : "border-foreground text-foreground hover:bg-foreground hover:text-background"
-    } ${className}`}
-  >
-    {label}
   </a>
 );
 
@@ -114,7 +92,7 @@ export const PhoneLink = ({ dark = false }: { dark?: boolean }) => (
   </a>
 );
 
-/** Phone + Book a Site Walk pair shown between homepage sections. */
+/** Phone + Request an Estimate pair shown between homepage sections. */
 export const InlineBookCTA = () => (
   <div className="max-w-7xl mx-auto px-6 md:px-8 lg:px-12 py-12 md:py-16">
     <div className="flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-4">
@@ -124,14 +102,7 @@ export const InlineBookCTA = () => (
       >
         {BUSINESS.phoneDisplay}
       </a>
-      <button
-        type="button"
-        onClick={openCalBooking}
-        className="group inline-flex items-center justify-center gap-3 bg-foreground text-background border border-foreground px-7 py-3 font-heading text-[11px] font-medium tracking-[0.2em] uppercase hover:bg-foreground/90 transition-all duration-500"
-      >
-        Request an Estimate
-        <ArrowRight size={14} className="transition-transform group-hover:translate-x-1" />
-      </button>
+      <EstimateButton className="px-7 py-3 md:px-7 md:py-3 text-[11px] md:text-[11px]" />
     </div>
   </div>
 );
@@ -167,7 +138,9 @@ export const PageHero = ({
   compact = false,
   crumbs,
   meta,
+  action,
 }: {
+  action?: React.ReactNode;
   eyebrow: string;
   title: string;
   subhead?: string;
@@ -197,28 +170,28 @@ export const PageHero = ({
       </div>
     )}
     <div className="relative max-w-7xl mx-auto px-6 md:px-8 lg:px-12 w-full">
-      {crumbs && crumbs.length > 0 && (
-        <nav aria-label="Breadcrumb" className="mb-8">
-          <ol className="flex flex-wrap items-center gap-2 font-heading text-[11px] tracking-[0.2em] uppercase text-background/60">
-            {crumbs.map((c, i) => (
+      {/* One small line above the H1: the parent trail when there is one
+          (never repeating the current page, which is the H1), otherwise the
+          eyebrow. BreadcrumbList schema still carries the full trail. */}
+      {crumbs && crumbs.length > 2 ? (
+        <nav aria-label="Breadcrumb" className="mb-4">
+          <ol className="flex flex-wrap items-center gap-2 font-heading text-[12px] tracking-[0.3em] uppercase text-background/70">
+            {crumbs.slice(0, -1).map((c, i) => (
               <li key={c.url} className="flex items-center gap-2">
                 {i > 0 && <span aria-hidden="true">/</span>}
-                {i === crumbs.length - 1 ? (
-                  <span className="text-background/90">{c.name}</span>
-                ) : (
-                  <a href={c.url} className="hover:text-background transition-colors">{c.name}</a>
-                )}
+                <a href={c.url} className="hover:text-background transition-colors">{c.name}</a>
               </li>
             ))}
           </ol>
         </nav>
+      ) : (
+        <Eyebrow light>{eyebrow}</Eyebrow>
       )}
-      <Eyebrow light>{eyebrow}</Eyebrow>
       <h1 className="font-heading text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-background leading-[1.05] mb-6 max-w-4xl text-balance">
         {title}
       </h1>
       {meta && (
-        <p className="-mt-2 mb-6 font-heading text-[11px] tracking-[0.15em] uppercase text-background/60">{meta}</p>
+        <p className="-mt-2 mb-6 font-body text-[13px] text-background/60">{meta}</p>
       )}
       {rating && (
         <div className="mb-6">
@@ -229,8 +202,7 @@ export const PageHero = ({
         <p className="text-background/70 text-base md:text-lg font-body max-w-2xl leading-relaxed">{subhead}</p>
       )}
       <div className="flex flex-col sm:flex-row items-start sm:items-center gap-4 mt-8">
-        <SiteWalkButton light />
-        <RequestBidButton dark />
+        {action ?? <EstimateButton light />}
       </div>
     </div>
   </section>
@@ -451,8 +423,7 @@ export const CtaBand = ({
       <h2 className="font-heading text-3xl md:text-[2.5rem] font-bold leading-[1.15] mb-6 text-balance text-background">{title}</h2>
       <p className="text-background/60 font-body text-[16px] leading-[1.8] mb-10 max-w-2xl mx-auto">{text}</p>
       <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
-        <SiteWalkButton light />
-        <RequestBidButton dark />
+        <EstimateButton light />
       </div>
       <a
         href={BUSINESS.phoneHref}
@@ -625,4 +596,63 @@ export const CapabilityPacketBand = () => (
       </a>
     </div>
   </section>
+);
+
+/* ------------------------------------------------------------------ */
+/* Responsive data table: a real table from md up, stacked cards on    */
+/* phones so nothing scrolls sideways.                                 */
+/* ------------------------------------------------------------------ */
+
+export const DataTable = ({
+  columns,
+  rows,
+  labelHeader = "Item",
+  renderCell = (v: string) => v,
+}: {
+  columns: string[];
+  rows: { label: string; values: string[] }[];
+  labelHeader?: string;
+  renderCell?: (v: string) => React.ReactNode;
+}) => (
+  <>
+    <div className="hidden md:block border border-border mb-8 bg-background">
+      <table className="w-full text-left text-[14px]">
+        <thead className="bg-secondary">
+          <tr>
+            <th scope="col" className="p-4 font-heading text-[12px] uppercase tracking-[0.12em] text-foreground">
+              <span className="sr-only">{labelHeader}</span>
+            </th>
+            {columns.map((c) => (
+              <th key={c} scope="col" className="p-4 font-heading text-[12px] uppercase tracking-[0.12em] text-foreground">{c}</th>
+            ))}
+          </tr>
+        </thead>
+        <tbody>
+          {rows.map((r) => (
+            <tr key={r.label} className="border-t border-border">
+              <th scope="row" className="p-4 font-heading font-semibold text-foreground align-top">{r.label}</th>
+              {r.values.map((v, i) => (
+                <td key={i} className="p-4 text-muted-foreground leading-[1.7] align-top">{renderCell(v)}</td>
+              ))}
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
+    <div className="md:hidden space-y-3 mb-8">
+      {rows.map((r) => (
+        <div key={r.label} className="border border-border bg-background p-4">
+          <p className="font-heading font-semibold text-[15px] text-foreground mb-3">{r.label}</p>
+          <dl className="space-y-2">
+            {r.values.map((v, i) => (
+              <div key={i}>
+                <dt className="font-heading text-[10px] uppercase tracking-[0.15em] text-muted-foreground">{columns[i]}</dt>
+                <dd className="text-[14px] text-muted-foreground leading-[1.6]">{renderCell(v)}</dd>
+              </div>
+            ))}
+          </dl>
+        </div>
+      ))}
+    </div>
+  </>
 );

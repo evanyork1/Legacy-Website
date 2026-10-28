@@ -9,7 +9,7 @@ export type ClosingCta = { title?: string; text?: string };
 /**
  * The single closing call-to-action on every public page: page-specific
  * heading + one line, the Request Information form (with plan upload) and a
- * secondary Cal.com "Request an Estimate" button.
+ * Cal.com "Schedule a site walk" button for visitors who want to meet ASAP.
  */
 export const RequestInfoSection = ({ id = 'request-info', title, text }: { id?: string } & ClosingCta) => {
   const { pathname } = useLocation();
@@ -27,7 +27,7 @@ export const RequestInfoSection = ({ id = 'request-info', title, text }: { id?: 
                 onClick={openCalBooking}
                 className="group mt-6 inline-flex items-center gap-3 border border-foreground text-foreground px-7 py-3 font-heading text-[11px] font-medium tracking-[0.2em] uppercase hover:bg-foreground hover:text-background transition-all duration-500"
               >
-                Prefer to talk? Request an Estimate
+                Want to meet ASAP? Schedule a site walk
                 <ArrowRight size={14} className="transition-transform group-hover:translate-x-1" />
               </button>
             </div>

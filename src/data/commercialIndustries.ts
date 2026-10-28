@@ -291,11 +291,11 @@ export const industries: Industry[] = [
     ],
     systems: [
       { name: "Decorative Flake Epoxy", desc: "Colored flake for breezeways, trash rooms, and amenity areas." },
-      { name: "Neogard Deck Coatings", desc: "Waterproof pedestrian deck coatings for elevated walkways." },
+      { name: "Legacy Pedestrian Deck", desc: "Waterproof pedestrian deck coatings for elevated walkways." },
       { name: "High-Build Garage Epoxy", desc: "Wheel- and oil-resistant epoxy for parking structures." },
     ],
     faqs: [
-      { q: "Can you seal an elevated breezeway or walkway?", a: "Yes. We install Neogard and Hempel waterproof deck coating systems for elevated pedestrian decks and walkways." },
+      { q: "Can you seal an elevated breezeway or walkway?", a: "Yes. We install waterproof pedestrian deck coating systems for elevated pedestrian decks and walkways." },
       { q: "Will residents smell the install?", a: "We use low-VOC, low-odor systems and work by zone with clear notices posted, so daily life keeps moving." },
     ],
   },

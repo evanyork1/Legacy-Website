@@ -75,6 +75,8 @@ const staticUrls: UrlEntry[] = [
   { loc: "/moisture-mitigation", changefreq: "monthly", priority: "0.8", lastmod: today },
   { loc: "/roof-deck-waterproofing", changefreq: "monthly", priority: "0.8", lastmod: today },
   { loc: "/epoxy-cove-base", changefreq: "monthly", priority: "0.8", lastmod: today },
+  { loc: "/commercial-carpet-tile", changefreq: "monthly", priority: "0.8", lastmod: today },
+  { loc: "/commercial-lvt-flooring", changefreq: "monthly", priority: "0.8", lastmod: today },
   { loc: "/resilient-flooring", changefreq: "monthly", priority: "0.8", lastmod: today },
   { loc: "/novolac-epoxy-flooring", changefreq: "monthly", priority: "0.8", lastmod: today },
   { loc: "/mma-flooring", changefreq: "monthly", priority: "0.8", lastmod: today },

@@ -3,7 +3,7 @@ import SiteHeader from "@/components/site/SiteHeader";
 import SiteFooter from "@/components/site/SiteFooter";
 import { Seo } from "@/components/seo/Seo";
 import { StructuredData } from "@/components/seo/StructuredData";
-import { Eyebrow, FaqBlock, PageHero, SpecTable } from "@/components/site/sections";
+import { DataTable, Eyebrow, FaqBlock, PageHero, SpecTable } from "@/components/site/sections";
 import { CatalogSection, HQ_LINE, SubmittalButton, TrustStrip } from "@/components/site/catalog";
 import { ALL_INDUSTRIES, ALL_SYSTEMS } from "@/data/site/nav";
 import NotFound from "@/pages/NotFound";
@@ -110,34 +110,13 @@ const SystemTemplate = ({ system }: { system?: SystemPageData }) => {
           <div className="max-w-6xl mx-auto px-6 md:px-8 lg:px-12">
             <Eyebrow>Selector</Eyebrow>
             <h2 className="font-heading text-3xl md:text-[2.5rem] font-bold text-foreground leading-[1.1] mb-8">{system.comparison.title}</h2>
-            <div className="overflow-x-auto border border-border">
-              <table className="w-full min-w-[560px] text-left text-[14px]">
-                <thead className="bg-secondary">
-                  <tr>
-                    <th scope="col" className="p-4 font-heading text-[12px] uppercase tracking-[0.12em] text-foreground"><span className="sr-only">System</span></th>
-                    {system.comparison.columns.map((c) => (
-                      <th key={c} scope="col" className="p-4 font-heading text-[12px] uppercase tracking-[0.12em] text-foreground">{c}</th>
-                    ))}
-                  </tr>
-                </thead>
-                <tbody>
-                  {system.comparison.rows.map((r) => (
-                    <tr key={r.label} className="border-t border-border">
-                      <th scope="row" className="p-4 font-heading font-semibold text-foreground align-top">{r.label}</th>
-                      {r.values.map((v, i) => (
-                        <td key={i} className="p-4 text-muted-foreground leading-[1.7] align-top"><Cell v={v} /></td>
-                      ))}
-                    </tr>
-                  ))}
-                </tbody>
-              </table>
-            </div>
+            <DataTable columns={system.comparison.columns} rows={system.comparison.rows} labelHeader="System" renderCell={(v) => <Cell v={v} />} />
           </div>
         </section>
       )}
 
       {system.sections?.map((sec, idx) => (
-        <section key={sec.title} className={`py-20 md:py-24 ${idx % 2 === 0 ? "bg-secondary" : ""}`}>
+        <section key={sec.title} id={sec.id} className={`py-20 md:py-24 scroll-mt-24 ${idx % 2 === 0 ? "bg-secondary" : ""}`}>
           <div className="max-w-4xl mx-auto px-6 md:px-8 lg:px-12">
             <h2 className="font-heading text-3xl md:text-[2.5rem] font-bold text-foreground leading-[1.1] mb-8 text-balance">{sec.title}</h2>
             {sec.paragraphs.map((p) => (
@@ -154,28 +133,7 @@ const SystemTemplate = ({ system }: { system?: SystemPageData }) => {
               );
             })()}
             {sec.table && (
-              <div className="overflow-x-auto border border-border mb-8 bg-background">
-                <table className="w-full min-w-[560px] text-left text-[14px]">
-                  <thead className="bg-secondary">
-                    <tr>
-                      <th scope="col" className="p-4 font-heading text-[12px] uppercase tracking-[0.12em] text-foreground"><span className="sr-only">Item</span></th>
-                      {sec.table.columns.map((c) => (
-                        <th key={c} scope="col" className="p-4 font-heading text-[12px] uppercase tracking-[0.12em] text-foreground">{c}</th>
-                      ))}
-                    </tr>
-                  </thead>
-                  <tbody>
-                    {sec.table.rows.map((r) => (
-                      <tr key={r.label} className="border-t border-border">
-                        <th scope="row" className="p-4 font-heading font-semibold text-foreground align-top">{r.label}</th>
-                        {r.values.map((v, i) => (
-                          <td key={i} className="p-4 text-muted-foreground leading-[1.7] align-top"><Cell v={v} /></td>
-                        ))}
-                      </tr>
-                    ))}
-                  </tbody>
-                </table>
-              </div>
+              <DataTable columns={sec.table.columns} rows={sec.table.rows} renderCell={(v) => <Cell v={v} />} />
             )}
             {sec.links && (
               <div className="grid sm:grid-cols-2 gap-4 mb-8">
