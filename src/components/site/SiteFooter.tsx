@@ -19,6 +19,17 @@ const SERVICE_AREAS = [
   { label: "All Service Areas", path: "/service-areas" },
 ];
 
+/** Money pages lead the Systems column with their exact target anchors. */
+const MONEY_PAGES = [
+  { label: "Commercial Epoxy Flooring", path: "/commercial" },
+  { label: "Industrial Epoxy Flooring", path: "/industrial-epoxy" },
+  { label: "Polished Concrete", path: "/concrete-polishing" },
+];
+const FOOTER_SYSTEMS = [
+  ...MONEY_PAGES,
+  ...ALL_SYSTEMS.filter((s) => !MONEY_PAGES.some((m) => m.path === s.path)),
+].slice(0, 10);
+
 const HEAD = "font-heading text-[11px] font-semibold tracking-[0.15em] uppercase text-background/70 mb-3";
 const LINK = "text-[12px] text-background/75 hover:text-background transition-colors";
 
@@ -103,7 +114,7 @@ const SiteFooter = ({ cta }: { cta?: ClosingCta }) => {
                 </div>
               </div>
 
-              <Column title="Systems" links={ALL_SYSTEMS.slice(0, 10)} />
+              <Column title="Systems" links={FOOTER_SYSTEMS} />
               <Column title="Industries" links={ALL_INDUSTRIES.slice(0, 10)} />
               <Column title="Service Areas" links={SERVICE_AREAS} />
               <Column title="Company" links={COMPANY_LINKS.slice(0, 7)} />
@@ -116,6 +127,7 @@ const SiteFooter = ({ cta }: { cta?: ClosingCta }) => {
               <a href="/privacy" className="hover:text-background transition-colors">Privacy Policy</a>
               <a href="/terms" className="hover:text-background transition-colors">Terms of Service</a>
               <a href="/warranty" className="hover:text-background transition-colors">Warranty</a>
+              <a href="/garagefloors" className="hover:text-background transition-colors">Garage Floors</a>
             </div>
           </div>
         </div>

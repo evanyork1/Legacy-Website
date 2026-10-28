@@ -78,7 +78,7 @@ const SystemTemplate = ({ system }: { system?: SystemPageData }) => {
         <div className="max-w-7xl mx-auto px-6 md:px-8 lg:px-12 grid lg:grid-cols-12 gap-12 lg:gap-20">
           <div className="lg:col-span-7">
             <Eyebrow>Overview</Eyebrow>
-            <h2 className="font-heading text-3xl md:text-[2.5rem] font-bold text-foreground leading-[1.1] mb-8">What It Is</h2>
+            <h2 className="font-heading text-3xl md:text-[2.5rem] font-bold text-foreground leading-[1.1] mb-8">{system.overviewTitle ?? "What It Is"}</h2>
             {system.whatItIs.map((p) => (
               <p key={p.slice(0, 40)} className="text-muted-foreground font-body text-[16px] leading-[1.85] mb-6">
                 {p}
@@ -143,6 +143,53 @@ const SystemTemplate = ({ system }: { system?: SystemPageData }) => {
             {sec.paragraphs.map((p) => (
               <p key={p.slice(0, 40)} className="text-muted-foreground font-body text-[16px] leading-[1.85] mb-6">{p}</p>
             ))}
+            {sec.items && (() => {
+              const ListTag = sec.ordered ? "ol" : "ul";
+              return (
+                <ListTag className={`${sec.ordered ? "list-decimal" : "list-disc"} pl-6 space-y-3 mb-8 text-muted-foreground font-body text-[16px] leading-[1.75]`}>
+                  {sec.items.map((it) => (
+                    <li key={it.slice(0, 40)}>{it}</li>
+                  ))}
+                </ListTag>
+              );
+            })()}
+            {sec.table && (
+              <div className="overflow-x-auto border border-border mb-8 bg-background">
+                <table className="w-full min-w-[560px] text-left text-[14px]">
+                  <thead className="bg-secondary">
+                    <tr>
+                      <th scope="col" className="p-4 font-heading text-[12px] uppercase tracking-[0.12em] text-foreground"><span className="sr-only">Item</span></th>
+                      {sec.table.columns.map((c) => (
+                        <th key={c} scope="col" className="p-4 font-heading text-[12px] uppercase tracking-[0.12em] text-foreground">{c}</th>
+                      ))}
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {sec.table.rows.map((r) => (
+                      <tr key={r.label} className="border-t border-border">
+                        <th scope="row" className="p-4 font-heading font-semibold text-foreground align-top">{r.label}</th>
+                        {r.values.map((v, i) => (
+                          <td key={i} className="p-4 text-muted-foreground leading-[1.7] align-top"><Cell v={v} /></td>
+                        ))}
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+              </div>
+            )}
+            {sec.links && (
+              <div className="grid sm:grid-cols-2 gap-4 mb-8">
+                {sec.links.filter((l) => l.url.startsWith("/")).map((l) => (
+                  <a key={l.url + l.label} href={l.url} className="group block border border-border bg-background p-6 hover:border-foreground transition-colors">
+                    <span className="flex items-center justify-between gap-3 font-heading font-semibold text-[15px] text-foreground">
+                      {l.label}
+                      <ArrowRight size={14} className="text-muted-foreground transition-transform group-hover:translate-x-1" />
+                    </span>
+                    {l.text && <span className="block mt-2 text-[14px] text-muted-foreground leading-[1.7]">{l.text}</span>}
+                  </a>
+                ))}
+              </div>
+            )}
             {sec.link && sec.link.url.startsWith("/") && (
               <a
                 href={sec.link.url}

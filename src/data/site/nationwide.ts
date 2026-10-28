@@ -87,6 +87,8 @@ const walk = (v: unknown, skip: Set<string>): unknown => {
   if (typeof v === "string") return nationalBody(v);
   if (Array.isArray(v)) return v.map((x) => walk(x, skip));
   if (v && typeof v === "object") {
+    // Sections flagged keepLocal intentionally talk about DFW (local SEO).
+    if ((v as { keepLocal?: boolean }).keepLocal) return v;
     const out: Record<string, unknown> = {};
     for (const [k, val] of Object.entries(v)) out[k] = skip.has(k) ? val : walk(val, skip);
     return out;

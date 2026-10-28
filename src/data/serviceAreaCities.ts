@@ -1,5 +1,5 @@
 // City landing page data for /epoxy-flooring/:city pages.
-// Commercial-first content — residential is secondary.
+// Commercial content only. residentialAngle is retained in the data but no longer rendered.
 
 export interface CityFaq {
   q: string;
@@ -29,14 +29,14 @@ const FAQ_OSHA = (city: string): CityFaq => ({
   a: `Yes — we carry full general liability and workers' comp, run OSHA-compliant safety plans, and handle permit coordination directly with the GC or property management group on every ${city} commercial install.`,
 });
 
-const FAQ_RES_TIMING = (city: string): CityFaq => ({
-  q: `How fast can you coat a residential garage in ${city}?`,
-  a: `Most ${city} residential garages are diamond-ground, repaired, and coated in a single day using our polyurea / polyaspartic system. Vehicles are typically back on the floor in 24–48 hours.`,
+const FAQ_WAREHOUSE = (city: string): CityFaq => ({
+  q: `What floor coating do you recommend for a ${city} warehouse?`,
+  a: `It depends on the slab and the operation. Polished concrete works well on a sound slab with forklift traffic; industrial epoxy or urethane cement makes sense where you need chemical resistance, a sealed surface or color-coded zones. We test the slab in ${city} before recommending a system.`,
 });
 
 const FAQ_COMMERCIAL_LEAD_TIME = (city: string): CityFaq => ({
   q: `What's the lead time for a commercial bid in ${city}?`,
-  a: `For most ${city} commercial and industrial projects we can walk the site within 3–5 business days and return a full ITB-ready bid — with scope, mockup options, and phasing plan — inside 7–10 business days. Rush turnarounds for active GC bids are available when the RFP window is tight; just flag the due date.`,
+  a: `For most ${city} commercial and industrial projects we walk the site within 1–3 business days and return a full bid within 24 hours of receiving plans, with the system, thickness and phasing spelled out. If you're bidding to a GC with a tight deadline, flag the due date.`,
 });
 
 const FAQ_POLISHED_CONCRETE_RETAIL = (city: string): CityFaq => ({
@@ -47,7 +47,7 @@ const FAQ_POLISHED_CONCRETE_RETAIL = (city: string): CityFaq => ({
 const baseFaqs = (city: string): CityFaq[] => [
   FAQ_COMMERCIAL_AFTER_HOURS(city),
   FAQ_OSHA(city),
-  FAQ_RES_TIMING(city),
+  FAQ_WAREHOUSE(city),
   FAQ_COMMERCIAL_LEAD_TIME(city),
   FAQ_POLISHED_CONCRETE_RETAIL(city),
 ];
@@ -149,7 +149,7 @@ export const SERVICE_AREA_CITIES: ServiceAreaCity[] = [
     county: "Collin & Denton Counties",
     nearbyCities: ["celina", "frisco", "mckinney", "aubrey", "little-elm"],
     localHook:
-      "Prosper has exploded with new commercial development along Preston Road and US-380, plus high-end custom residential in Whitley Place, Windsong Ranch, and Lakes of Prosper.",
+      "Prosper has exploded with new commercial development along Preston Road and US-380.",
     commercialAngle:
       "We install retail and medical-office flooring along the Preston / 380 corridor, polished concrete for new commercial buildouts in Windsong Ranch's town center, and light-industrial epoxy across the SH-289 business parks.",
     residentialAngle:
@@ -179,7 +179,7 @@ export const SERVICE_AREA_CITIES: ServiceAreaCity[] = [
     county: "Denton County",
     nearbyCities: ["frisco", "the-colony", "aubrey", "prosper", "lewisville"],
     localHook:
-      "Little Elm has grown from a small lakeside community into a full-service commercial and residential market along the Lake Lewisville corridor.",
+      "Little Elm has grown from a small lakeside community into a full-service commercial market along the Lake Lewisville corridor.",
     commercialAngle:
       "Retail and restaurant TI work along FM-423 and US-380, polished concrete for new commercial buildouts, and industrial epoxy for the warehouse and light-industrial properties along the Eldorado / 423 corridor.",
     residentialAngle:
@@ -209,7 +209,7 @@ export const SERVICE_AREA_CITIES: ServiceAreaCity[] = [
     county: "Denton County",
     nearbyCities: ["little-elm", "prosper", "celina", "lewisville"],
     localHook:
-      "Aubrey and the Providence Village / Paloma Creek area have grown fast on the back of US-380 commercial development and Denton County's residential push.",
+      "Aubrey and the Providence Village / Paloma Creek area have grown fast on the back of US-380 commercial development.",
     commercialAngle:
       "Light-industrial epoxy and warehouse coatings along US-380, plus retail and restaurant TI flooring for the new commercial centers serving Providence Village.",
     residentialAngle:
@@ -284,7 +284,7 @@ export const SERVICE_AREA_CITIES: ServiceAreaCity[] = [
     county: "Collin County",
     nearbyCities: ["melissa", "mckinney", "van-alstyne", "celina", "princeton"],
     localHook:
-      "Anna is one of the fastest-growing small cities in Collin County, with new residential, retail, and light-commercial buildout along US-75.",
+      "Anna is one of the fastest-growing small cities in Collin County, with new retail and light-commercial buildout along US-75.",
     commercialAngle:
       "Retail and restaurant TI flooring for the US-75 commercial corridor, plus light-industrial epoxy for the new warehouse and service buildings going up around Anna's commercial expansion.",
     residentialAngle:
@@ -299,7 +299,7 @@ export const SERVICE_AREA_CITIES: ServiceAreaCity[] = [
     county: "Collin County",
     nearbyCities: ["anna", "mckinney", "van-alstyne", "celina"],
     localHook:
-      "Melissa has grown quickly on US-75 north of McKinney — new residential master-planned communities and a growing commercial base along the highway.",
+      "Melissa has grown quickly on US-75 north of McKinney, with a growing commercial base along the highway.",
     commercialAngle:
       "Retail and restaurant TI flooring along US-75, plus light-industrial epoxy for warehouse and service buildings around the Melissa commercial expansion.",
     residentialAngle:
@@ -314,7 +314,7 @@ export const SERVICE_AREA_CITIES: ServiceAreaCity[] = [
     county: "Collin County",
     nearbyCities: ["allen", "mckinney", "lucas", "parker", "plano"],
     localHook:
-      "Fairview's Village at Fairview commercial center and large-lot residential market both drive demand for premium flooring work.",
+      "Fairview's Village at Fairview commercial center drives demand for retail, restaurant and office flooring.",
     commercialAngle:
       "Polished concrete and TI flooring for The Village at Fairview's retail and restaurant tenants, plus medical-office urethane cement and back-of-house epoxy.",
     residentialAngle:
@@ -329,7 +329,7 @@ export const SERVICE_AREA_CITIES: ServiceAreaCity[] = [
     county: "Collin County",
     nearbyCities: ["allen", "fairview", "lucas", "plano", "murphy"],
     localHook:
-      "Parker is a low-density, large-lot residential community — most of our work here is high-end custom-home garages and outbuildings.",
+      "Parker is a low-density community between Plano, Allen and Murphy; our commercial work here is small-commercial and light-industrial flooring, served from our nearby Plano office.",
     commercialAngle:
       "Light-commercial and equestrian / agricultural facility coatings — barns, workshops, and tractor / equipment buildings get urethane cement or high-build epoxy that survives heavy use.",
     residentialAngle:
@@ -344,7 +344,7 @@ export const SERVICE_AREA_CITIES: ServiceAreaCity[] = [
     county: "Collin County",
     nearbyCities: ["mckinney", "anna", "melissa", "lowry-crossing"],
     localHook:
-      "Princeton has grown rapidly along US-380 with new residential, retail, and light-commercial development.",
+      "Princeton has grown rapidly along US-380 with new retail and light-commercial development.",
     commercialAngle:
       "Retail and restaurant TI flooring along the US-380 commercial corridor, plus warehouse and light-industrial epoxy for the service buildings supporting Princeton's growth.",
     residentialAngle:
@@ -359,7 +359,7 @@ export const SERVICE_AREA_CITIES: ServiceAreaCity[] = [
     county: "Dallas & Collin Counties",
     nearbyCities: ["wylie", "garland", "murphy", "richardson"],
     localHook:
-      "Sachse sits between Garland's industrial base and Wylie's residential growth — we serve both sides from our Plano HQ.",
+      "Sachse sits between Garland's industrial base and Wylie's growing commercial corridor — we serve both from our Plano HQ.",
     commercialAngle:
       "Light-industrial epoxy and TI flooring for Sachse's commercial properties along SH-78 and PGBT, with polished concrete options for retail and showroom space.",
     residentialAngle:
@@ -374,7 +374,7 @@ export const SERVICE_AREA_CITIES: ServiceAreaCity[] = [
     county: "Collin / Dallas / Rockwall Counties",
     nearbyCities: ["sachse", "murphy", "garland", "mckinney"],
     localHook:
-      "Wylie's growth along SH-78 and FM-544 brings new commercial buildout alongside a strong residential base.",
+      "Wylie's growth along SH-78 and FM-544 brings steady new commercial buildout.",
     commercialAngle:
       "Retail and restaurant TI flooring throughout Wylie's commercial centers, urethane cement for medical-office and food-service back-of-house, and industrial epoxy for the light-manufacturing properties along the city's east side.",
     residentialAngle:
@@ -389,7 +389,7 @@ export const SERVICE_AREA_CITIES: ServiceAreaCity[] = [
     county: "Collin County",
     nearbyCities: ["plano", "parker", "wylie", "sachse", "richardson"],
     localHook:
-      "Murphy is a tight, well-planned suburb with strong residential demand and a small but active commercial market along FM-544.",
+      "Murphy is a tight, well-planned suburb with a small but active commercial market along FM-544.",
     commercialAngle:
       "Retail and restaurant TI flooring along FM-544 and Murphy Marketplace, plus medical-office urethane cement and back-of-house epoxy.",
     residentialAngle:
@@ -419,7 +419,7 @@ export const SERVICE_AREA_CITIES: ServiceAreaCity[] = [
     county: "Dallas County",
     nearbyCities: ["dallas", "addison", "richardson", "farmers-branch", "plano"],
     localHook:
-      "North Dallas — Preston Hollow, Preston Center, the Tollway corridor — combines high-end residential garages with constant retail and corporate buildout.",
+      "North Dallas — Preston Center and the Tollway corridor — sees constant retail, restaurant and corporate buildout.",
     commercialAngle:
       "Polished concrete for showrooms, retail, and corporate lobbies along the Tollway and Preston Center, urethane cement for restaurant and medical-office back-of-house, and industrial epoxy for warehouse and service space along Forest and LBJ.",
     residentialAngle:
@@ -464,7 +464,7 @@ export const SERVICE_AREA_CITIES: ServiceAreaCity[] = [
     county: "Denton County",
     nearbyCities: ["flower-mound", "lewisville", "coppell", "lake-dallas"],
     localHook:
-      "Highland Village is a high-end residential community on Lake Lewisville with a tight commercial footprint — most of our work here is luxury garages and select retail TI.",
+      "Highland Village is a lakeside community on Lake Lewisville with a tight commercial footprint — our work here is retail, restaurant and office tenant-improvement flooring.",
     commercialAngle:
       "Polished concrete and TI flooring for The Shops at Highland Village and the FM-2499 commercial corridor — restaurants, retail, and medical office.",
     residentialAngle:
@@ -479,7 +479,7 @@ export const SERVICE_AREA_CITIES: ServiceAreaCity[] = [
     county: "Denton & Tarrant Counties",
     nearbyCities: ["highland-village", "lewisville", "coppell", "fort-worth"],
     localHook:
-      "Flower Mound's Lakeside DFW, River Walk, and FM-2499 corridor have added a heavy commercial buildout to what's already a strong luxury residential market.",
+      "Flower Mound's Lakeside DFW, River Walk, and FM-2499 corridor have seen heavy commercial buildout.",
     commercialAngle:
       "Polished concrete and TI flooring for the Lakeside DFW and River Walk retail and restaurant tenants, urethane cement for medical-office and food-service back-of-house, and industrial epoxy for the light-manufacturing properties along FM-1171.",
     residentialAngle:
@@ -494,7 +494,7 @@ export const SERVICE_AREA_CITIES: ServiceAreaCity[] = [
     county: "Dallas & Denton Counties",
     nearbyCities: ["carrollton", "lewisville", "flower-mound", "farmers-branch"],
     localHook:
-      "Coppell sits on the DFW Airport border — a deep distribution and logistics market combined with a strong residential base.",
+      "Coppell sits on the DFW Airport border — a deep distribution and logistics market.",
     commercialAngle:
       "Industrial epoxy and urethane cement for Coppell's massive DFW Airport-adjacent distribution and logistics market, polished concrete for office and showroom space, and TI flooring for retail and restaurants along Sandy Lake and MacArthur.",
     residentialAngle:
@@ -509,7 +509,7 @@ export const SERVICE_AREA_CITIES: ServiceAreaCity[] = [
     county: "Grayson County",
     nearbyCities: ["anna", "melissa", "howe", "sherman", "gunter"],
     localHook:
-      "Van Alstyne's growth along US-75 has brought new commercial buildout and residential development to a small-town Grayson County market.",
+      "Van Alstyne's growth along US-75 has brought new commercial buildout to a small-town Grayson County market.",
     commercialAngle:
       "Retail, restaurant, and light-industrial TI flooring along US-75 as Van Alstyne builds out — full GC coordination and ITB-ready bids.",
     residentialAngle:
@@ -554,7 +554,7 @@ export const SERVICE_AREA_CITIES: ServiceAreaCity[] = [
     county: "Grayson County",
     nearbyCities: ["celina", "van-alstyne", "howe", "sherman"],
     localHook:
-      "Gunter's growth as the Dallas North Tollway extends north has opened up new commercial and residential opportunities in southern Grayson County.",
+      "Gunter's growth as the Dallas North Tollway extends north has opened up new commercial opportunities in southern Grayson County.",
     commercialAngle:
       "Light-industrial epoxy and warehouse coatings, plus retail and restaurant TI flooring for the new commercial buildout coming with Tollway expansion.",
     residentialAngle:
@@ -569,7 +569,7 @@ export const SERVICE_AREA_CITIES: ServiceAreaCity[] = [
     county: "Grayson County",
     nearbyCities: ["van-alstyne", "sherman", "denison", "anna"],
     localHook:
-      "Howe sits on US-75 between Van Alstyne and Sherman — small-town Grayson County with growing residential demand.",
+      "Howe sits on US-75 between Van Alstyne and Sherman — small-town Grayson County with growing light-commercial demand.",
     commercialAngle:
       "Light-commercial and small-industrial epoxy work along US-75, plus retail TI for the local commercial properties.",
     residentialAngle:
@@ -584,7 +584,7 @@ export const SERVICE_AREA_CITIES: ServiceAreaCity[] = [
     county: "Collin County",
     nearbyCities: ["anna", "melissa", "princeton"],
     localHook:
-      "Blue Ridge is a small eastern Collin County community with growing residential and light-commercial demand.",
+      "Blue Ridge is a small eastern Collin County community with growing light-commercial demand.",
     commercialAngle:
       "Light-industrial epoxy and small-commercial TI flooring for Blue Ridge's commercial buildings.",
     residentialAngle:

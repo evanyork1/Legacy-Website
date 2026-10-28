@@ -38,10 +38,10 @@ Dallas, Fort Worth, Plano, Frisco, McKinney, Allen, Richardson, Carrollton, Lewi
 ## Key Pages
 
 - Homepage: https://legacyindustrialcoatings.com/
+- Commercial Epoxy Flooring: https://legacyindustrialcoatings.com/commercial
 - Concrete Polishing: https://legacyindustrialcoatings.com/concrete-polishing
 - Concrete Sealing: https://legacyindustrialcoatings.com/concrete-sealing
 - Industrial Epoxy: https://legacyindustrialcoatings.com/industrial-epoxy
-- Commercial Floors: https://legacyindustrialcoatings.com/commercialfloors
 - Commercial Flake Flooring: https://legacyindustrialcoatings.com/flake-floors
 - Gallery: https://legacyindustrialcoatings.com/gallery
 - Service Areas: https://legacyindustrialcoatings.com/service-areas
@@ -89,7 +89,8 @@ Dallas, Fort Worth, Plano, Frisco, McKinney, Allen, Richardson, Carrollton, Lewi
 
 ## Commercial System Pages
 
-- [Industrial Epoxy](https://legacyindustrialcoatings.com/industrial-epoxy): Neogard CG Series 100% solids epoxy, CG-16 to CG-250 Trowel (thin film to 1/4").
+- [Commercial Epoxy Flooring](https://legacyindustrialcoatings.com/commercial): Commercial epoxy flooring and floor coatings for retail, restaurants, offices, healthcare, schools, dealerships and warehouses; systems, after-hours work, cost drivers and FAQs.
+- [Industrial Epoxy Flooring](https://legacyindustrialcoatings.com/industrial-epoxy): Industrial epoxy flooring and floor coatings for warehouses, manufacturing, food and aerospace facilities. Neogard CG Series 100% solids epoxy, CG-16 to CG-250 Trowel (thin film to 1/4"); install process, epoxy vs. polished concrete vs. urethane cement comparison, cost drivers and FAQs.
 - [Novolac Epoxy](https://legacyindustrialcoatings.com/novolac-epoxy-flooring): Neogard Novolac 32 and 125 for chemical storage, battery rooms and containment.
 - [MMA Flooring](https://legacyindustrialcoatings.com/mma-flooring): Neogard FTS methyl methacrylate floors, 1/8"–3/8", one-hour cure.
 - [Resinous Flooring](https://legacyindustrialcoatings.com/resinous-flooring): Epoxy, quartz, urethane cement and decorative broadcast systems.
@@ -98,7 +99,7 @@ Dallas, Fort Worth, Plano, Frisco, McKinney, Allen, Richardson, Carrollton, Lewi
 - [ESD / Static-Control](https://legacyindustrialcoatings.com/esd-static-control-flooring): Sherwin-Williams Resuflor Topcoat SDE and SD, tested on site to the ESD spec.
 - [Integral Cove Base](https://legacyindustrialcoatings.com/epoxy-cove-base): Neogard Epoxy Cove Base UV (1/8" thick, 4" high), Neocrete V and FTS cove bases.
 - [Commercial Flake Flooring](https://legacyindustrialcoatings.com/flake-floors): Neogard Neoflake, Neoflake RTS Series 1 and 2, and Sherwin-Williams Resuflor Deco Flake BC.
-- [Polished Concrete](https://legacyindustrialcoatings.com/concrete-polishing): Mechanical grinding, densifying and burnishing.
+- [Polished Concrete](https://legacyindustrialcoatings.com/concrete-polishing): Commercial and industrial concrete polishing for warehouses, retail, showrooms and offices. ASCC Concrete Polishing Council aggregate classes and gloss levels, mockup-approved finishes, dust-controlled grinding, polished vs. epoxy vs. sealed comparison and FAQs.
 - [Sealed & Densified Concrete](https://legacyindustrialcoatings.com/concrete-sealing): Dustproofing and sealed-concrete finishes.
 - [Joint Fill & Crack Repair](https://legacyindustrialcoatings.com/joint-filling-crack-repair): Semi-rigid polyurea joint fill per ACI 302, spall and crack repair.
 - [Moisture Mitigation](https://legacyindustrialcoatings.com/moisture-mitigation): ASTM F2170/F1869 testing, moisture-mitigating primers and vapor barriers.
@@ -120,3 +121,16 @@ Dallas, Fort Worth, Plano, Frisco, McKinney, Allen, Richardson, Carrollton, Lewi
 **How fast do you bid?** We walk the site within 1–3 business days and deliver a full bid within 24 hours of receiving plans. Call (214) 305-6516 or request information at https://legacyindustrialcoatings.com/contact.
 
 **How much does commercial epoxy flooring cost in Dallas-Fort Worth?** Typically $3–$6 per square foot installed for thin-film epoxy and $5–$9 for high-build 100% solids epoxy. Polished concrete runs about $3–$9, quartz $8–$13, and urethane cement $10–$18 per square foot. Moisture mitigation adds about $3–$8 per square foot when testing calls for it. Full guide: https://legacyindustrialcoatings.com/blog/commercial-epoxy-flooring-cost-per-square-foot-dfw
+
+## City Pages
+
+Commercial epoxy flooring and polished concrete in DFW's largest commercial markets (36 city pages in total, all linked from https://legacyindustrialcoatings.com/service-areas):
+
+- [Dallas](https://legacyindustrialcoatings.com/epoxy-flooring/dallas): Warehouses along I-35 and Stemmons, Medical District healthcare, Design District showrooms; polished concrete in Dallas.
+- [Fort Worth](https://legacyindustrialcoatings.com/epoxy-flooring/fort-worth): AllianceTexas distribution and I-35W manufacturing floors; polished concrete in Fort Worth.
+- [Plano](https://legacyindustrialcoatings.com/epoxy-flooring/plano): Home office; corporate campuses, data and lab spaces, medical office, restaurants.
+- [Frisco](https://legacyindustrialcoatings.com/epoxy-flooring/frisco): Fast tenant-improvement work for retail, restaurants and medical office.
+- [McKinney](https://legacyindustrialcoatings.com/epoxy-flooring/mckinney): Medical office, restaurants, retail and light industrial along US-75 and SH-121.
+- [Allen](https://legacyindustrialcoatings.com/epoxy-flooring/allen): Retail and restaurant TI, showrooms and Twin Creeks light industrial.
+- [Lewisville](https://legacyindustrialcoatings.com/epoxy-flooring/lewisville): I-35E warehouses and light manufacturing, Old Town buildouts.
+- [Carrollton](https://legacyindustrialcoatings.com/epoxy-flooring/carrollton): I-35E and Belt Line manufacturing and warehouse floors.

@@ -38,8 +38,23 @@ export type SystemPageData = {
   crumbName?: string;
   serviceName?: string;
   /** Extra content blocks. Links are internal only — never a manufacturer site. */
-  sections?: { title: string; paragraphs: string[]; link?: { label: string; url: string } }[];
+  sections?: {
+    title: string;
+    paragraphs: string[];
+    link?: { label: string; url: string };
+    /** Bulleted (or numbered, with ordered: true) list rendered after the paragraphs. */
+    items?: string[];
+    ordered?: boolean;
+    /** Card links rendered as a grid (internal paths only). */
+    links?: { label: string; url: string; text?: string }[];
+    /** HTML comparison table. */
+    table?: { columns: string[]; rows: { label: string; values: string[] }[] };
+    /** Keep DFW/city wording as written (skips nationalize()). */
+    keepLocal?: boolean;
+  }[];
   comparison?: { title: string; columns: string[]; rows: { label: string; values: string[] }[] };
+  /** Overrides the "What It Is" heading with a keyword-specific H2. */
+  overviewTitle?: string;
   /** Page-specific heading + line for the single closing CTA section. */
   closing?: { title: string; text: string };
 };
@@ -265,8 +280,10 @@ SYSTEM_PAGES.push(
     path: "/industrial-epoxy",
     name: "Industrial Epoxy Flooring",
     metaTitle: "Industrial Epoxy Flooring Dallas-Fort Worth | Legacy Industrial Coatings",
-    metaDescription: "Heavy-duty industrial epoxy floor coatings for warehouses, manufacturing, and high-traffic facilities across DFW.",
-    h1: "Heavy-Duty Industrial Epoxy Flooring",
+    metaDescription: "Industrial epoxy flooring and floor coatings for warehouses, manufacturing, food and aerospace facilities. Neogard CG Series from 16 mils to 1/4\". DFW based, nationwide. Bids in 24 hours.",
+    h1: "Industrial Epoxy Flooring & Floor Coatings",
+    overviewTitle: "What Industrial Epoxy Flooring Is",
+    serviceName: "Industrial Epoxy Flooring",
     intro: "Industrial epoxy is a 100% solids resin floor installed from a thin film up to a 1/4\" troweled mortar, built for forklifts, foot traffic and production work. We install Neogard's CG Series, choosing the build-up by traffic and impact, with a Sherwin-Williams option where it is specified.",
     comparison: {
       title: "Choose a CG Series System",
@@ -296,11 +313,109 @@ SYSTEM_PAGES.push(
       "Select the resin and topcoat against the actual oils, cleaners and process chemicals.",
       "Confirm Decon-Quat and Peridox cleaning compatibility for pharmacy scopes on the approved submittal.",
     ],
+    sections: [
+      {
+        title: "Industrial Floor Coatings We Install",
+        paragraphs: [
+          "Industrial epoxy flooring is the right answer for most warehouses and production floors, but not every one. Heat, hot washdown, aggressive chemicals and tight shutdown windows each call for a different chemistry. We install the full range and match the system to the floor's actual service instead of forcing one product onto every slab.",
+        ],
+        links: [
+          { label: "CG Series industrial epoxy", url: "/industrial-epoxy", text: "100% solids epoxy from a 16-mil thin film to a 1/4\" troweled mortar for forklifts, carts and foot traffic." },
+          { label: "Novolac epoxy flooring", url: "/novolac-epoxy-flooring", text: "Higher chemical and temperature resistance for battery rooms, chemical storage and containment." },
+          { label: "Urethane cement flooring", url: "/urethane-cement-flooring", text: "Neocrete for hot washdown, thermal shock, freezers and food and beverage production." },
+          { label: "MMA flooring", url: "/mma-flooring", text: "Fast-cure FTS MMA systems for facilities that can only shut down overnight or over a weekend." },
+          { label: "Aircraft hangar flooring", url: "/aerospace-hangar-flooring", text: "SkyGard epoxy/urethane systems built to resist Skydrol and reflect light in hangars." },
+          { label: "Polished concrete", url: "/concrete-polishing", text: "When the slab itself can be the floor: ground, densified and polished, with no coating to wear through." },
+        ],
+      },
+      {
+        title: "Industrial Epoxy Flooring by Facility",
+        paragraphs: [
+          "The same epoxy behaves very differently under a reach truck, a washdown hose and a tug full of aircraft parts. These are the facility types we coat most often, and what each one usually needs.",
+        ],
+        links: [
+          { label: "Warehouses & distribution", url: "/warehouse-flooring", text: "Abrasion-resistant epoxy or polished concrete, joint repair and aisle striping, phased around live racking and shipping schedules." },
+          { label: "Manufacturing", url: "/manufacturing-floor-coating", text: "Impact- and chemical-resistant builds such as CG-65 and CG-125, with cove and safety zoning around production lines." },
+          { label: "Food & beverage processing", url: "/food-processing-flooring", text: "Sanitary, slip-resistant floors; urethane cement where hot water and thermal shock rule out standard epoxy." },
+          { label: "Aerospace & hangars", url: "/aerospace-hangar-flooring", text: "Skydrol-resistant, light-reflective hangar systems from 16 to 56 mils." },
+          { label: "Data centers", url: "/data-center-flooring", text: "Epoxy for support spaces, static-control floors for electrical rooms and novolac in battery rooms." },
+          { label: "Pharmaceutical manufacturing", url: "/pharmaceutical-flooring", text: "Seamless, cleanable floors with integral cove, specified against your disinfectant program." },
+        ],
+      },
+      {
+        title: "How We Install Industrial Epoxy",
+        paragraphs: [
+          "Most epoxy failures start before the first coat goes down. Our installs follow the same sequence on every project, documented with photos from preparation through closeout.",
+        ],
+        ordered: true,
+        items: [
+          "Moisture testing: in-situ relative humidity (ASTM F2170) and moisture vapor emission (ASTM F1869) so the primer matches the slab.",
+          "Surface preparation: shot-blast or diamond-grind to the concrete surface profile (CSP) the system requires, with dust control.",
+          "Repairs: cracks, spalls and joints filled or rebuilt so they don't telegraph through the new floor.",
+          "Primer: the standard epoxy primer, or a moisture-mitigating primer when testing calls for it.",
+          "Body and topcoat: the specified CG Series build (or other approved system), with traction aggregate where needed and a chemical/UV-resistant urethane topcoat where specified.",
+          "Details: integral cove base, transitions, safety zones and line striping in the same mobilization.",
+          "Punch walk and closeout: walk-through, touch-ups, cure and return-to-service instructions, and the full photo log.",
+        ],
+      },
+      {
+        title: "Industrial Epoxy vs. Polished Concrete vs. Urethane Cement",
+        paragraphs: [
+          "Owners often ask which floor is best. The honest answer depends on what the floor has to survive. This comparison is a starting point; testing and a site walk settle it.",
+        ],
+        table: {
+          columns: ["Industrial epoxy", "Polished concrete", "Urethane cement"],
+          rows: [
+            { label: "Best for", values: ["Warehouses, manufacturing, light-to-heavy forklift traffic, color and safety zoning", "Distribution centers, retail and showrooms where the slab is sound", "Food and beverage, commercial kitchens, washdown and freezer areas"] },
+            { label: "Chemical resistance", values: ["Good to very good; novolac or urethane topcoats raise it", "Limited; not a chemical-resistant lining", "Very good, including many food acids and hot oils"] },
+            { label: "Heat and hot washdown", values: ["Limited", "Not affected by heat", "Built for thermal shock and steam cleaning"] },
+            { label: "Downtime", values: ["Typically several days for full cure", "Can often be phased with no cure time", "Fast return to service; MMA is faster still"] },
+            { label: "Maintenance", values: ["Routine cleaning; periodic topcoat renewal in heavy traffic", "Routine cleaning and periodic burnishing or guard renewal", "Routine cleaning; very durable"] },
+          ],
+        },
+        link: { label: "Polished concrete vs. epoxy for warehouses", url: "/blog/polished-concrete-vs-epoxy-dfw-warehouses" },
+      },
+      {
+        title: "What Industrial Epoxy Flooring Costs",
+        paragraphs: [
+          "Industrial epoxy pricing is driven far more by the slab and the schedule than by the resin. Two 50,000 SF warehouses can price very differently once preparation, moisture and phasing are accounted for. These are the factors that move the number:",
+          // TODO Evan: add typical $/SF ranges for CG-32, CG-65 and CG-125 here.
+          "Send drawings or request a site walk and we return a full bid within 24 hours of receiving plans, with the system, thickness and phasing spelled out line by line.",
+        ],
+        items: [
+          "Square footage and layout (open floor vs. many small rooms)",
+          "Removal of existing coatings, adhesives or sealers",
+          "Moisture test results and whether a moisture-mitigating primer is required",
+          "System thickness, from a CG-16 thin film to a CG-250 troweled mortar",
+          "Crack, joint and spall repair",
+          "Cove base, striping and safety zoning",
+          "Phasing, night and weekend work around a running operation",
+        ],
+        link: { label: "Commercial epoxy flooring cost guide", url: "/blog/commercial-epoxy-flooring-cost-per-square-foot-dfw" },
+      },
+      {
+        title: "Recent Industrial Projects",
+        paragraphs: [
+          "We document every job from preparation to closeout. A few recent examples of industrial and commercial work:",
+          // TODO Evan: approve the Plano warehouse (Assa Abloy) and other industrial projects to feature by name.
+        ],
+        links: [
+          { label: "Restaurant pump room with integral cove base", url: "/commercial-case-studies/restaurant-pump-room-integrated-cove-base", text: "Seamless resin floor and cove in a wet mechanical space." },
+          { label: "Pharmaceutical manufacturing floor restoration", url: "/commercial-case-studies/pharmaceutical-manufacturing-polished-concrete", text: "Polished concrete with polyurea crack and divot repair in an operating facility." },
+          { label: "Weekend warehouse floor coating", url: "/blog/warehouse-floor-coating-case-study-weekend-install", text: "A warehouse coated over a weekend so shipping never stopped." },
+          { label: "All commercial case studies", url: "/commercial-case-studies", text: "Problems, systems and results from recent commercial projects." },
+        ],
+      },
+    ],
     faqs: [
-      { q: "Which epoxy system is appropriate for my facility?", a: "We review wheel loads, abrasion, cleaning chemistry, moisture and shutdown limits before recommending a primer, body and topcoat." },
-      { q: "Can you work in an occupied building?", a: "Low-odor options such as Resuflor Performance HPS can support phased work. Occupant separation, ventilation and access controls remain part of the installation plan." },
-      { q: "Does every slab need a moisture-mitigating primer?", a: "No. Testing and the selected system's limits determine whether the standard primer or an approved moisture-mitigating alternative is appropriate." },
-      { q: "Can you include cove and striping?", a: "Yes. We coordinate integral cove, traction zones and compatible floor markings within the same flooring scope." },
+      { q: "What is the best industrial floor coating?", a: "There is no single best coating; the right one depends on traffic, chemicals, heat and downtime. For most warehouses and production floors, a 100% solids epoxy such as Neogard's CG Series is the workhorse. Novolac epoxy handles harsher chemicals, urethane cement handles hot washdown and thermal shock, and MMA handles the tightest shutdown windows." },
+      { q: "How long does industrial epoxy flooring last?", a: "Service life depends on the system thickness, the traffic and how the floor is maintained. Thicker builds such as CG-65 and CG-125 hold up longer under forklifts, and renewing the topcoat in high-wear areas extends the life of the whole floor. We recommend a build based on your traffic so the floor isn't under-specified." },
+      { q: "Can forklifts drive on an epoxy floor?", a: "Yes. Industrial epoxy is designed for forklift and cart traffic, provided the system thickness matches the load and wheel type. Heavier traffic calls for thicker, aggregate-filled builds like CG-65 or CG-125 rather than a thin-film coating." },
+      { q: "How long does installation take, and how much downtime is there?", a: "It depends on square footage, preparation and the system. We phase large floors zone by zone so the rest of the building keeps running, and we confirm walking, equipment and vehicle return-to-service times against the product data before the schedule is set. When downtime has to be measured in hours, we look at MMA." },
+      { q: "Epoxy or polished concrete for a warehouse?", a: "Polished concrete works well on sound slabs in distribution space and needs no cure time. Epoxy is better when you need color, safety zoning, chemical resistance or a cleanable sealed surface, or when the slab is too damaged to polish well. We often see both in the same building." },
+      { q: "Do you work nights and weekends in operating facilities?", a: "Yes. Most of our industrial work happens around live operations, with night and weekend crews, zone-by-zone phasing, dust control and coordination with your operations team." },
+      { q: "Do you test for moisture before installing epoxy?", a: "Yes, on every project. We run ASTM F2170 in-situ relative humidity and ASTM F1869 moisture vapor emission tests, because excess slab moisture is one of the most common causes of epoxy failure. When readings are high, we use a moisture-mitigating primer." },
+      { q: "How much does industrial epoxy flooring cost per square foot?", a: "Cost per square foot depends on preparation, moisture mitigation, system thickness, square footage, repairs and phasing. Send plans or request a site walk and we return a full bid within 24 hours of receiving plans." },
     ],
     photos: photoSets.industrial,
   }),
@@ -495,8 +610,10 @@ SYSTEM_PAGES.push(
     path: "/concrete-polishing",
     name: "Polished Concrete",
     metaTitle: "Concrete Polishing Dallas-Fort Worth | Legacy Industrial Coatings",
-    metaDescription: "Professional concrete polishing for commercial and industrial spaces across DFW. Durable, low-maintenance polished floors.",
-    h1: "Professional Concrete Polishing Services",
+    metaDescription: "Commercial and industrial polished concrete for warehouses, retail, showrooms and offices in Dallas–Fort Worth and nationwide. Mockup-approved finishes, dust-controlled grinding, bids in 24 hours.",
+    h1: "Commercial & Industrial Polished Concrete",
+    overviewTitle: "What Polished Concrete Is",
+    serviceName: "Concrete Polishing",
     intro: "Concrete polishing grinds the existing slab through progressively finer diamond tooling, densifies it and refines it to a chosen sheen, so the slab itself becomes the finished floor. It suits warehouses, retail, showrooms and offices that want a durable, low-maintenance surface without a coating.",
     whatItIs: [
       "The slab is mechanically ground through progressive tooling, densified and refined to the approved finish. Cream, fine aggregate and more exposed aggregate produce different appearances, all influenced by the original concrete.",
@@ -519,11 +636,119 @@ SYSTEM_PAGES.push(
       "Approve aggregate exposure and sheen on representative concrete before proceeding.",
       "Coordinate compatible joint fill, repairs and protection from following trades.",
     ],
+    sections: [
+      {
+        title: "Choose Your Polished Concrete Finish",
+        paragraphs: [
+          "Polished concrete finishes are described two ways: how much aggregate (stone) shows, and how much the floor shines. The Concrete Polishing Council of the American Society of Concrete Contractors (ASCC) uses aggregate exposure classes and gloss levels so owners, designers and installers mean the same thing. The existing slab always shapes the result, so we set the standard with a mockup on your concrete before the full floor is polished.",
+        ],
+        table: {
+          columns: ["What you see", "Where it fits"],
+          rows: [
+            { label: "Cream (Class A)", values: ["Little or no aggregate; the smooth top paste of the slab", "Offices, showrooms and retail where a uniform look matters"] },
+            { label: "Salt-and-pepper (Class B)", values: ["Fine aggregate speckled across the surface", "Retail, lobbies, schools and many warehouses"] },
+            { label: "Exposed aggregate (Classes C–D)", values: ["Medium to large stone exposed for a terrazzo-like look", "Architectural spaces; requires deeper grinding"] },
+            { label: "Sheen: matte to high gloss (Levels 1–4)", values: ["From a flat ground finish to a highly reflective polish", "Higher gloss brightens a space; matte hides wear in heavy traffic"] },
+          ],
+        },
+      },
+      {
+        title: "Polished Concrete by Facility",
+        paragraphs: [
+          "Commercial concrete polishing is popular because it turns a slab you already own into a durable, low-maintenance floor. How we polish it depends on the building.",
+        ],
+        links: [
+          { label: "Warehouses & distribution centers", url: "/warehouse-flooring", text: "Dust-proofed, densified floors that stand up to forklifts, with joint filling and aisle striping." },
+          { label: "Retail & showrooms", url: "/retail-flooring", text: "Higher-gloss finishes that brighten the sales floor; we phase around store hours." },
+          { label: "Offices & lobbies", url: "/office-flooring", text: "Cream or salt-and-pepper finishes alongside carpet tile and LVT." },
+          { label: "Schools", url: "/school-flooring", text: "Low-maintenance corridors and commons scheduled around the academic calendar." },
+          { label: "Auto dealerships & service", url: "/auto-dealership-flooring", text: "Showroom polish up front, sealed or coated service drives in back." },
+          { label: "Pharmaceutical manufacturing", url: "/pharmaceutical-flooring", text: "Floor restoration with crack and divot repair in an operating plant." },
+        ],
+      },
+      {
+        title: "Polished Concrete vs. Epoxy vs. Sealed Concrete",
+        paragraphs: [
+          "All three start with the same slab. The difference is what ends up on top, and what the floor has to survive.",
+        ],
+        table: {
+          columns: ["Polished concrete", "Epoxy coating", "Sealed & densified"],
+          rows: [
+            { label: "What it is", values: ["The slab ground, densified and polished; no coating", "A resin layer bonded to the slab", "A densifier and sealer on the existing surface"] },
+            { label: "Best for", values: ["Sound slabs in distribution, retail, offices and showrooms", "Color, safety zoning, chemical exposure and damaged slabs", "Back-of-house and budget-driven spaces"] },
+            { label: "Chemical resistance", values: ["Limited", "Good to very good", "Limited"] },
+            { label: "Downtime", values: ["Often none beyond the work zone", "Several days for full cure", "Short"] },
+            { label: "Maintenance", values: ["Routine cleaning and periodic burnishing", "Routine cleaning; periodic topcoat renewal", "Periodic resealing"] },
+          ],
+        },
+        link: { label: "Compare with industrial epoxy flooring", url: "/industrial-epoxy" },
+      },
+      {
+        title: "Our Polishing Process",
+        paragraphs: [
+          "A good polish is mostly preparation and patience. Every project follows the same sequence:",
+        ],
+        ordered: true,
+        items: [
+          "Assess the slab: hardness, flatness, contamination, existing coatings and visible repairs.",
+          "Remove existing coatings, adhesives or sealers where present.",
+          "Grind through a progressive sequence of diamond tooling to the approved aggregate exposure, with dust control.",
+          "Densify the slab to harden the surface and reduce dusting.",
+          "Fill joints and repair cracks with a compatible filler.",
+          "Polish to the approved sheen, confirmed against the mockup.",
+          "Apply a protective guard where specified, and hand over a maintenance plan.",
+        ],
+      },
+      {
+        title: "Polished Concrete in Dallas–Fort Worth",
+        keepLocal: true,
+        paragraphs: [
+          "Our Plano headquarters keeps us close to polished concrete projects across Dallas–Fort Worth, so site walks happen within 1–3 business days and crews can phase work around retail hours or a running warehouse. We polish floors throughout the Metroplex, including Dallas, Fort Worth, Plano, Frisco, McKinney, Allen, Lewisville and Carrollton, and travel for multi-site and national programs.",
+        ],
+        links: [
+          { label: "Polished concrete in Dallas", url: "/epoxy-flooring/dallas" },
+          { label: "Polished concrete in Fort Worth", url: "/epoxy-flooring/fort-worth" },
+          { label: "Polished concrete in Plano", url: "/epoxy-flooring/plano" },
+          { label: "All service areas", url: "/service-areas" },
+        ],
+      },
+      {
+        title: "What Polished Concrete Costs",
+        paragraphs: [
+          "Polished concrete pricing depends mostly on the condition of the slab and the finish you choose. Deeper aggregate exposure and higher gloss take more grinding and polishing passes. The main factors:",
+          // TODO Evan: add typical $/SF ranges by finish level (cream, salt-and-pepper, exposed aggregate).
+          "Send drawings or request a site walk and we return a full bid within 24 hours of receiving plans.",
+        ],
+        items: [
+          "Square footage, layout and access",
+          "Removal of existing coatings, adhesives or sealers",
+          "Slab hardness, flatness and the amount of crack and joint repair",
+          "Aggregate exposure (cream, salt-and-pepper or exposed aggregate)",
+          "Target sheen and any guard or dye",
+          "Phasing, nights and weekends",
+        ],
+      },
+      {
+        title: "Recent Polishing Projects",
+        paragraphs: [
+          "Examples of recent concrete polishing and sealing work:",
+          // TODO Evan: approve additional polishing projects to feature by name.
+        ],
+        links: [
+          { label: "Pharmaceutical manufacturing polished concrete", url: "/commercial-case-studies/pharmaceutical-manufacturing-polished-concrete", text: "Floor restoration with polyurea crack and divot repair in an operating facility." },
+          { label: "Fast-casual restaurant concrete sealing", url: "/commercial-case-studies/fast-casual-restaurant-concrete-sealing", text: "Sealed concrete for a restaurant that needed to reopen fast." },
+        ],
+      },
+    ],
     faqs: [
-      { q: "Can you polish an existing slab?", a: "Often, but contamination, previous coatings, repairs and concrete condition influence the result. We assess these before setting finish expectations." },
-      { q: "Will polishing hide cracks?", a: "No. Repairs can make cracks serviceable, but polished concrete generally retains visible evidence of the original slab." },
-      { q: "How is polished concrete different from sealed concrete?", a: "Polishing mechanically refines the concrete to a selected appearance. Sealing protects a prepared slab without the same progressive refinement." },
-      { q: "Is polished concrete appropriate around chemicals?", a: "Not for every exposure. Acidic or aggressive service may require a resinous chemical-resistant system instead." },
+      { q: "Can you polish an existing slab?", a: "Often, yes. Contamination, previous coatings, repairs and the condition of the concrete all affect the result, so we assess the slab and set expectations with a mockup before the full floor is polished." },
+      { q: "Will polishing hide cracks?", a: "No. Cracks can be repaired and filled so they're serviceable, but polished concrete keeps visible evidence of the original slab. That character is part of the look." },
+      { q: "How long does polished concrete last?", a: "The polished slab is the wearing surface, so there is no coating to peel or wear through. With routine cleaning and periodic burnishing or guard renewal in high-traffic areas, the finish keeps its appearance for many years." },
+      { q: "Is polished concrete slippery?", a: "Clean, dry polished concrete generally provides good traction, and sheen level does not by itself make a floor slippery. Water, oil and dust are what reduce traction, so entrances and wet areas need matting and a cleaning plan. We can recommend a lower sheen or a different system where floors stay wet." },
+      { q: "Polished concrete or epoxy for a high-traffic distribution center?", a: "For a sound slab in dry distribution space, polished concrete is durable, low maintenance and has no coating to wear off under forklifts. Epoxy makes more sense where you need color and safety zoning, chemical resistance, or a sealed surface over a damaged slab." },
+      { q: "How much downtime does polishing require?", a: "Usually only the area being worked on is out of service, because there is no coating to cure. We phase large floors zone by zone and can work nights and weekends." },
+      { q: "How do we maintain polished concrete?", a: "Dust-mop daily, clean with a neutral cleaner and an auto-scrubber, and burnish periodically in high-traffic areas. Avoid acidic cleaners. We hand over a maintenance plan at closeout." },
+      { q: "How much does polished concrete cost per square foot?", a: "Cost depends on slab condition, coating removal, repairs, the finish and sheen you choose, square footage and phasing. Send plans or request a site walk and we return a full bid within 24 hours of receiving plans." },
     ],
     photos: photoSets.polished,
   }),

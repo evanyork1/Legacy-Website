@@ -44,8 +44,6 @@ const CRM = lazy(() => import("./pages/CRM"));
 const SalesPresentation = lazy(() => import("./pages/SalesPresentation"));
 const CustomerPresentationPage = lazy(() => import("./pages/CustomerPresentationPage"));
 import SplashSelect from "./pages/SplashSelect";
-import CommercialFloors from "./pages/CommercialFloors";
-import AboutCommercial from "./pages/AboutCommercial";
 import AquaTotsFlooring from "./pages/AquaTotsFlooring";
 import CaseStudies from "./pages/CaseStudies";
 import CaseStudyDetail from "./pages/CaseStudyDetail";
@@ -122,8 +120,9 @@ function App() {
               <Route path="/residential-patio" element={<ResidentialPatio />} />
               <Route path="/garagefloors" element={<ResidentialGarageFloors />} />
               <Route path="/commercial" element={<Commercial />} />
-              <Route path="/commercialfloors" element={<CommercialFloors />} />
-              <Route path="/about-commercial" element={<AboutCommercial />} />
+              {/* Consolidated into /commercial and /our-process (301s in public/_redirects). */}
+              <Route path="/commercialfloors" element={<Navigate to="/commercial" replace />} />
+              <Route path="/about-commercial" element={<Navigate to="/our-process" replace />} />
               <Route path="/faq" element={<FAQ />} />
               <Route path="/blog" element={<Blog />} />
               <Route path="/blog/:slug" element={<BlogPostPage />} />

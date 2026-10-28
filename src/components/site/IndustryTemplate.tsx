@@ -20,6 +20,7 @@ import { withCostFaq } from "@/data/site/costFaq";
  * (hairline grid) → standards → project → FAQ → navy CTA → other industries.
  */
 const H2 = "font-heading text-3xl md:text-[2.5rem] font-bold text-foreground leading-[1.1] mb-12 text-balance";
+const INLINE = "text-foreground underline underline-offset-4 decoration-border hover:decoration-foreground";
 
 const IndustryTemplate = ({ industry }: { industry?: IndustryPageData }) => {
   if (!industry) return <NotFound />;
@@ -216,11 +217,17 @@ const IndustryTemplate = ({ industry }: { industry?: IndustryPageData }) => {
 
       <FaqBlock heading={`${industry.name} Flooring Questions`} faqs={faqs} />
 
-      {/* Related systems */}
-      {systemLinks.length > 0 && (
-        <section className="py-16 border-t border-border">
-          <div className="max-w-7xl mx-auto px-6 md:px-8 lg:px-12">
-            <Eyebrow>Systems Used Here</Eyebrow>
+      {/* Related systems + money-page anchors */}
+      <section className="py-16 border-t border-border">
+        <div className="max-w-7xl mx-auto px-6 md:px-8 lg:px-12">
+          <Eyebrow>Systems Used Here</Eyebrow>
+          <p className="text-muted-foreground font-body text-[15px] leading-[1.8] mb-6 max-w-3xl">
+            Comparing options for your {industry.name.toLowerCase()} floor? See our guides to{" "}
+            <a href="/commercial" className={INLINE}>commercial epoxy flooring</a>,{" "}
+            <a href="/industrial-epoxy" className={INLINE}>industrial epoxy flooring</a> and{" "}
+            <a href="/concrete-polishing" className={INLINE}>polished concrete</a>.
+          </p>
+          {systemLinks.length > 0 && (
             <div className="flex flex-wrap gap-3">
               {systemLinks.map((s) => (
                 <a
@@ -232,9 +239,9 @@ const IndustryTemplate = ({ industry }: { industry?: IndustryPageData }) => {
                 </a>
               ))}
             </div>
-          </div>
-        </section>
-      )}
+          )}
+        </div>
+      </section>
 
 
       {/* Other industries */}

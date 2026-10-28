@@ -73,7 +73,7 @@ const DFW = () => {
           { name: "Epoxy Garage Floor Coatings", description: "Premium polyurea flake garage floor coatings installed in one day with a lifetime warranty across Dallas-Fort Worth.", url: "/garagefloors" },
           { name: "Mechanical Polished Concrete", description: "Diamond-ground, densified, and burnished polished concrete floors for DFW commercial, retail, and warehouse facilities.", url: "/concrete-polishing" },
           { name: "Industrial Epoxy Flooring", description: "High-traffic epoxy and industrial floor coatings for warehouses, manufacturing, and aviation hangars.", url: "/industrial-epoxy" },
-          { name: "Commercial Floor Coatings", description: "Turn-key DFW commercial flooring solutions including chemical-resistant and FDA-compliant systems.", url: "/commercialfloors" },
+          { name: "Commercial Epoxy Flooring", description: "Commercial epoxy flooring and floor coatings for retail, restaurants, offices, healthcare, schools and dealerships.", url: "/commercial" },
         ]}
         faqs={homepageFaqs}
       />
