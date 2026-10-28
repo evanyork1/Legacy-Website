@@ -100,7 +100,6 @@ export const SYSTEM_GROUPS: NavGroup[] = [
       { label: "Secondary Containment", path: "/secondary-containment-coatings" },
       { label: "Battery Room Flooring", path: "/battery-room-flooring" },
       { label: "Deck & Traffic Coatings", path: "/deck-coatings" },
-      { label: "Roof & Deck Waterproofing", path: "/roof-deck-waterproofing" },
     ],
   },
   {
@@ -111,7 +110,6 @@ export const SYSTEM_GROUPS: NavGroup[] = [
       { label: "Commercial LVT & LVP", path: "/commercial-lvt-flooring" },
       { label: "Resilient Flooring", path: "/resilient-flooring" },
       { label: "Maintenance Programs", path: "/commercial-floor-maintenance" },
-      { label: "Materials Library", path: "/materials" },
     ],
   },
 ];

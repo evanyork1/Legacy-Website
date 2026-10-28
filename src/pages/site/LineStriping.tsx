@@ -1,8 +1,8 @@
 import SiteHeader from "@/components/site/SiteHeader";
 import SiteFooter from "@/components/site/SiteFooter";
 import { PageHero, FaqBlock } from "@/components/site/sections";
-import ExpertNotesBlock from "@/components/site/ExpertNotes";
-import { EXPERT_SYSTEMS } from "@/data/site/expert/systems";
+import SimplePage from "@/components/site/SimplePage";
+import { SIMPLE_SYSTEMS } from "@/data/site/simple/systems";
 import { Seo } from "@/components/seo/Seo";
 import { StructuredData } from "@/components/seo/StructuredData";
 import warehouseImage from "@/assets/industries/industrial-warehouse-2.jpg";
@@ -49,6 +49,37 @@ const options = [
 ];
 
 export default function LineStriping() {
+  const simple = SIMPLE_SYSTEMS["/line-striping"];
+  if (simple) {
+    return (
+      <SimplePage
+        path="/line-striping"
+        metaTitle="Line Striping & Floor Marking DFW | Legacy Industrial Coatings"
+        metaDescription="Warehouse floor marking, forklift lanes, pedestrian walkways and parking garage striping in DFW. Layout design, epoxy striping and after-hours installation."
+        h1="Line Striping & Floor Marking"
+        eyebrow="Safety & Marking"
+        heroImage={warehouseImage}
+        heroAlt="Warehouse floor with safety striping"
+        crumbs={[
+          { name: "Home", url: "/" },
+          { name: "Commercial Flooring", url: "/commercial" },
+          { name: "Line Striping", url: "/line-striping" },
+        ]}
+        serviceName="Line Striping"
+        content={simple}
+        related={{
+          title: "Where It's Used",
+          links: [
+            { label: "Warehouses & distribution", path: "/warehouse-flooring" },
+            { label: "Manufacturing", path: "/manufacturing-floor-coating" },
+            { label: "Parking structures", path: "/parking-garage-coatings" },
+            { label: "Industrial epoxy flooring", path: "/industrial-epoxy" },
+          ],
+        }}
+        closing={{ title: "Get a bid on your floor marking", text: "Send a layout or a scope. Site walk within 1–3 business days; full bid within 24 hours of receiving plans." }}
+      />
+    );
+  }
   return (
     <div className="lcf min-h-screen bg-background text-foreground">
       <Seo
@@ -212,7 +243,6 @@ export default function LineStriping() {
           </div>
         </section>
 
-        <ExpertNotesBlock notes={EXPERT_SYSTEMS["/line-striping"]} />
         <FaqBlock heading="Line striping questions" faqs={faqs} />
       </main>
       <SiteFooter cta={{ title: "Put a clear plan on your floor", text: "Send your racking plan, parking layout or marking scope. We'll review preparation, materials and installation windows with you." }} />

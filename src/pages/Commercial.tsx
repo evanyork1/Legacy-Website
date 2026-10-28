@@ -37,7 +37,7 @@ const SPACES = [
   {
     label: "Restaurants & commercial kitchens",
     url: "/restaurant-kitchen-flooring",
-    text: "Slip-resistant, sanitary floors with integral cove. Urethane cement or Legacy Kitchen Slurry where hot water, grease and thermal shock would break down standard epoxy.",
+    text: "Slip-resistant, sanitary floors with integral cove. Urethane cement or epoxy slurry where hot water, grease and thermal shock would break down standard epoxy.",
   },
   {
     label: "Offices & lobbies",
@@ -70,7 +70,7 @@ const SYSTEMS = [
   {
     label: "Industrial epoxy flooring",
     url: "/industrial-epoxy",
-    text: "Legacy Epoxy Series epoxy from a 16-mil thin film to a 1/4\" troweled mortar: the workhorse for warehouses, back-of-house and production floors.",
+    text: "Epoxy from a thin film to a troweled mortar: the workhorse for warehouses, back-of-house and production floors.",
   },
   {
     label: "Decorative flake floors",
@@ -80,12 +80,12 @@ const SYSTEMS = [
   {
     label: "Quartz flooring",
     url: "/quartz-flooring",
-    text: "Legacy Quartz broadcast and trowel systems: textured, colorful and slip-resistant for restrooms, kitchens and corridors.",
+    text: "Quartz floors: textured, colorful and slip-resistant for restrooms, kitchens and corridors.",
   },
   {
     label: "Urethane cement flooring",
     url: "/urethane-cement-flooring",
-    text: "Legacy Urethane Cement for kitchens, food production, washdown and freezer areas where heat and thermal shock are part of the job.",
+    text: "Urethane cement for kitchens, food production, washdown and freezer areas where heat and thermal shock are part of the job.",
   },
   {
     label: "MMA flooring",
@@ -106,11 +106,6 @@ const SYSTEMS = [
     label: "Commercial LVT & LVP",
     url: "/commercial-lvt-flooring",
     text: "Glue-down and rigid-core luxury vinyl tile and plank, plus sheet vinyl and VCT, from the same crew.",
-  },
-  {
-    label: "Systems library",
-    url: "/materials",
-    text: "Every system we install, with coat-by-coat build-ups, thickness and where each one is used.",
   },
 ];
 
@@ -151,18 +146,6 @@ const FAQS = [
   {
     q: "Epoxy or polished concrete for a retail store?",
     a: "Polished concrete is a great fit when the slab is sound and you want a clean, low-maintenance look. Epoxy, flake or quartz make more sense when you need color, a branded look, extra slip resistance or a sealed surface over a damaged slab.",
-  },
-  {
-    q: "Are commercial epoxy floors slippery?",
-    a: "They don't have to be. We add traction aggregate or textured topcoats in wet areas, entrances and kitchens, and choose finishes such as flake or quartz where slip resistance matters most.",
-  },
-  {
-    q: "Can you install over existing VCT or tile?",
-    a: "Usually the existing VCT, tile or failed coating is removed so the new system bonds to sound concrete. We assess each floor first; sound existing coatings can sometimes be prepared and recoated.",
-  },
-  {
-    q: "How do we maintain a commercial epoxy floor?",
-    a: "Sweep or dust-mop daily and clean with a neutral cleaner and an auto-scrubber. Avoid harsh solvents unless the topcoat is rated for them. We provide maintenance guidance for your specific system at closeout.",
   },
 ];
 

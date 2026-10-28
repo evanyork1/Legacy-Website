@@ -4,17 +4,15 @@ import SiteFooter from "@/components/site/SiteFooter";
 import { Seo } from "@/components/seo/Seo";
 import { StructuredData } from "@/components/seo/StructuredData";
 import { Eyebrow, FaqBlock, PageHero } from "@/components/site/sections";
-import { CatalogSection, HQ_LINE, TrustStrip } from "@/components/site/catalog";
-import { catalogForPage } from "@/data/site/catalog";
-import { RECOMMENDED } from "@/data/site/recommended";
+import { HQ_LINE, TrustStrip } from "@/components/site/catalog";
 import { ALL_INDUSTRIES, ALL_SYSTEMS } from "@/data/site/nav";
 import { INDUSTRY_PAGES } from "@/data/site/industries";
 import { caseStudies } from "@/data/caseStudies";
 import NotFound from "@/pages/NotFound";
 import type { IndustryPageData } from "@/data/site/industries";
 import { withCostFaq } from "@/data/site/costFaq";
-import ExpertNotesBlock from "@/components/site/ExpertNotes";
-import { EXPERT_INDUSTRIES } from "@/data/site/expert/industries";
+import SimplePage from "@/components/site/SimplePage";
+import { SIMPLE_INDUSTRIES } from "@/data/site/simple/industries";
 
 /**
  * Industry page — mirrors legacycommercialfloors.com industry detail:
@@ -38,9 +36,48 @@ const IndustryTemplate = ({ industry }: { industry?: IndustryPageData }) => {
     .map((i) => ({ ...i, img: INDUSTRY_PAGES.find((p) => p.path === i.path)?.heroImage }))
     .filter((i) => i.img)
     .slice(0, 8);
-  const recommended = RECOMMENDED[industry.path] ?? [];
-  const catalog = catalogForPage(industry.path);
   const faqs = withCostFaq(`${industry.name.toLowerCase()} flooring`, industry.faqs);
+
+  const simple = SIMPLE_INDUSTRIES[industry.path];
+  if (simple) {
+    return (
+      <SimplePage
+        path={industry.path}
+        metaTitle={industry.metaTitle}
+        metaDescription={industry.metaDescription}
+        h1={industry.h1}
+        eyebrow="Industry"
+        heroImage={industry.heroImage}
+        heroAlt={industry.heroAlt}
+        crumbs={crumbs}
+        serviceName={`${industry.name} Flooring`}
+        content={simple}
+        photos={industry.photos}
+        related={{ title: "Floors We Install Here", links: systemLinks }}
+        more={{ title: "Other Industries We Serve", links: others.map((o) => ({ label: o.label, path: o.path })) }}
+        extra={
+          cs ? (
+            <section className="py-16 md:py-20 border-t border-border">
+              <div className="max-w-4xl mx-auto px-6 md:px-8 lg:px-12">
+                <Eyebrow>Relevant Project</Eyebrow>
+                <h2 className="font-heading text-2xl md:text-3xl font-bold text-foreground leading-[1.15] mb-4">{cs.title}</h2>
+                <p className="text-muted-foreground text-[16px] leading-[1.8] mb-6">{cs.summary}</p>
+                <a href={`/commercial-case-studies/${cs.slug}`} className="inline-flex items-center gap-2 font-heading text-[12px] tracking-[0.2em] uppercase text-foreground hover:underline">
+                  Read the case study <ArrowRight size={12} />
+                </a>
+              </div>
+            </section>
+          ) : undefined
+        }
+        closing={
+          industry.closing ?? {
+            title: `Get a bid on your ${industry.name.toLowerCase()} floor`,
+            text: "Send plans or a scope. Site walk within 1–3 business days; full bid within 24 hours of receiving plans.",
+          }
+        }
+      />
+    );
+  }
 
   return (
     <div className="lcf min-h-screen bg-background">
@@ -113,8 +150,8 @@ const IndustryTemplate = ({ industry }: { industry?: IndustryPageData }) => {
       {/* Recommended systems, area by area */}
       <section className="py-24 md:py-32">
         <div className="max-w-7xl mx-auto px-6 md:px-8 lg:px-12">
-          <Eyebrow>Recommended Systems</Eyebrow>
-          <h2 className={H2}>Area by Area: What We Install</h2>
+          <Eyebrow>Area by Area</Eyebrow>
+          <h2 className={H2}>What We Install, Room by Room</h2>
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4 [&>*]:border [&>*]:border-border">
             {industry.areas.map((area) => (
               <div key={area.name} className="bg-background p-8 md:p-10 flex flex-col">
@@ -122,65 +159,20 @@ const IndustryTemplate = ({ industry }: { industry?: IndustryPageData }) => {
                   {area.name}
                 </h3>
                 <p className="text-muted-foreground text-[14px] leading-[1.7] flex-1">{area.text}</p>
-                <div className="mt-6 pt-5 border-t border-border">
-                  <div className="font-heading text-[14px] font-semibold text-foreground">{area.system}</div>
-                  {area.thickness && <div className="text-[12px] text-muted-foreground mt-1">{area.thickness}</div>}
-                  {area.link && (
-                    <a
-                      href={area.link}
-                      className="group inline-flex items-center gap-2 mt-4 font-heading text-[11px] tracking-[0.2em] uppercase text-foreground"
-                    >
-                      View System <ArrowRight size={12} className="transition-transform group-hover:translate-x-1" />
-                    </a>
-                  )}
-                </div>
+                {area.link && (
+                  <a
+                    href={area.link}
+                    className="group inline-flex items-center gap-2 mt-6 font-heading text-[11px] tracking-[0.2em] uppercase text-foreground"
+                  >
+                    Learn more <ArrowRight size={12} className="transition-transform group-hover:translate-x-1" />
+                  </a>
+                )}
               </div>
             ))}
           </div>
         </div>
       </section>
 
-      {recommended.length > 0 && (
-        <section className="pb-24 md:pb-32">
-          <div className="max-w-7xl mx-auto px-6 md:px-8 lg:px-12">
-            <Eyebrow>Recommended Systems</Eyebrow>
-            <h2 className="font-heading text-2xl md:text-3xl font-bold text-foreground leading-[1.1] mb-8">Systems We Specify for {industry.name}</h2>
-            <ul className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4 [&>*]:border [&>*]:border-border">
-              {recommended.map((r) => (
-                <li key={r.href + r.label} className="bg-background">
-                  <a href={r.href} className="group flex items-start justify-between gap-3 p-6 h-full hover:bg-secondary transition-colors">
-                    <span>
-                      <span className="block font-heading font-semibold text-[14px] text-foreground group-hover:underline">{r.label}</span>
-                      {r.note && <span className="block text-[13px] text-muted-foreground mt-1">{r.note}</span>}
-                    </span>
-                    <ArrowRight size={14} className="text-muted-foreground mt-1 shrink-0 transition-transform group-hover:translate-x-1" />
-                  </a>
-                </li>
-              ))}
-            </ul>
-          </div>
-        </section>
-      )}
-
-      <CatalogSection systems={catalog} title={`${industry.name} Systems & Build-Ups`} />
-
-      {/* Standards */}
-      {industry.standards.length > 0 && (
-        <section className="py-24 md:py-32 bg-secondary">
-          <div className="max-w-5xl mx-auto px-6 md:px-8 lg:px-12">
-            <Eyebrow>Standards</Eyebrow>
-            <h2 className={H2}>Standards &amp; Specs That Apply</h2>
-            <ul className="grid md:grid-cols-2 gap-x-10 gap-y-4">
-              {industry.standards.map((s) => (
-                <li key={s} className="flex items-start gap-3 text-foreground font-body text-[15px] leading-[1.7]">
-                  <Check size={18} className="text-foreground/60 mt-1 flex-shrink-0" />
-                  <span>{s}</span>
-                </li>
-              ))}
-            </ul>
-          </div>
-        </section>
-      )}
 
       {/* Relevant project */}
       {cs && (
@@ -216,8 +208,6 @@ const IndustryTemplate = ({ industry }: { industry?: IndustryPageData }) => {
       )}
 
       <TrustStrip />
-
-      <ExpertNotesBlock notes={EXPERT_INDUSTRIES[industry.path]} />
 
       <FaqBlock heading={`${industry.name} Flooring Questions`} faqs={faqs} />
 

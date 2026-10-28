@@ -1,12 +1,11 @@
-import ExpertNotesBlock from "@/components/site/ExpertNotes";
-import { EXPERT_INDUSTRIES } from "@/data/site/expert/industries";
+import SimplePage from "@/components/site/SimplePage";
+import { SIMPLE_INDUSTRIES } from "@/data/site/simple/industries";
 import { useState } from "react";
 import { ArrowRight, ExternalLink } from "lucide-react";
 import SiteHeader from "@/components/site/SiteHeader";
 import SiteFooter from "@/components/site/SiteFooter";
 import { Seo } from "@/components/seo/Seo";
 import { HQ_LINE, TrustStrip } from "@/components/site/catalog";
-import { RECOMMENDED } from "@/data/site/recommended";
 import { StructuredData } from "@/components/seo/StructuredData";
 import {
   Breadcrumbs,
@@ -59,7 +58,7 @@ const HOTSPOTS: Hotspot[] = [
     label: "Battery / UPS Rooms",
     x: 470, y: 20, w: 150, h: 80,
     lines: "Acid-resistant floor with integral cove and coated curbs that hold a spill; code-required spill control for lead-acid batteries.",
-    system: "Legacy Novolac 32 / 125",
+    system: "Chemical-resistant novolac epoxy",
     link: "/novolac-epoxy-flooring",
   },
   {
@@ -104,11 +103,11 @@ const HOTSPOTS: Hotspot[] = [
   },
   {
     id: "roof",
-    label: "Roof",
+    label: "Stairs & decks",
     x: 470, y: 250, w: 150, h: 90,
-    lines: "Fluid-applied waterproofing and pedestrian traffic coatings for roofs, stairs, mezzanines and elevated slabs.",
-    system: "Legacy roof & deck systems",
-    link: "/roof-deck-waterproofing",
+    lines: "Pedestrian traffic coatings for stairs, mezzanines and elevated slabs.",
+    system: "Deck coatings",
+    link: "/deck-coatings",
   },
 ];
 
@@ -132,7 +131,7 @@ const SCOPE_CARDS = [
   {
     name: "3. Battery rooms (lead-acid or lithium)",
     text: "Acid-resistant floor with integral cove and coated curbs that hold a spill; building and fire codes require spill control for lead-acid batteries.",
-    system: "Legacy Novolac 32 / 125 acid-resistant epoxy",
+    system: "Acid-resistant novolac epoxy",
     links: [
       { label: "Novolac epoxy flooring", path: "/novolac-epoxy-flooring" },
       { label: "Battery room flooring", path: "/battery-room-flooring" },
@@ -187,13 +186,10 @@ const SCOPE_CARDS = [
     ],
   },
   {
-    name: "10. Roofs, stairs, mezzanines, elevated slabs",
-    text: "Fluid-applied waterproofing and pedestrian traffic coatings that protect the structure below.",
-    system: "Legacy fluid-applied systems",
-    links: [
-      { label: "Roof & deck waterproofing", path: "/roof-deck-waterproofing" },
-      { label: "Deck coatings", path: "/deck-coatings" },
-    ],
+    name: "10. Stairs, mezzanines, elevated slabs",
+    text: "Pedestrian traffic coatings that protect the structure below.",
+    system: "Deck coatings",
+    links: [{ label: "Deck coatings", path: "/deck-coatings" }],
   },
 ];
 
@@ -365,7 +361,50 @@ const CampusArt = ({ id, b }: { id: string; b: Box }) => {
   }
 };
 
+const SimpleDataCenter = () => (
+  <SimplePage
+    path="/data-center-flooring"
+    metaTitle="Data Center Flooring | DFW & Nationwide | Legacy Industrial Coatings"
+    metaDescription="Floors, linings and coatings for data centers, from the data hall to the generator yard: sealed concrete, ESD epoxy, battery rooms and transformer and fuel containment. Headquartered in Dallas-Fort Worth, working nationwide."
+    h1="Data Center Flooring"
+    eyebrow="Mission-Critical & Tech"
+    heroImage={imgHero}
+    heroAlt="Data center flooring and containment coatings"
+    crumbs={[
+      { name: "Home", url: "/" },
+      { name: "Industries", url: "/who-we-serve" },
+      { name: "Data Center Flooring", url: "/data-center-flooring" },
+    ]}
+    serviceName="Data Center Flooring"
+    content={SIMPLE_INDUSTRIES["/data-center-flooring"]}
+    photos={[
+      { src: imgHero, alt: "Data hall sealed concrete floor in a data center" },
+      { src: img2, alt: "ESD flooring in a data center electrical room" },
+      { src: img3, alt: "Mechanical room urethane cement floor with cove" },
+    ]}
+    related={{
+      title: "Floors We Install Here",
+      links: [
+        { label: "ESD / static-control flooring", path: "/esd-static-control-flooring" },
+        { label: "Battery room flooring", path: "/battery-room-flooring" },
+        { label: "Transformer & fuel containment", path: "/secondary-containment-coatings" },
+        { label: "Urethane cement flooring", path: "/urethane-cement-flooring" },
+        { label: "Sealed concrete", path: "/concrete-sealing" },
+      ],
+    }}
+    closing={{
+      title: "Get a bid on your data center floors",
+      text: "Send plans or a scope. Site walk within 1–3 business days; full bid within 24 hours of receiving plans.",
+    }}
+  />
+);
+
 const DataCenterFlooring = () => {
+  if (SIMPLE_INDUSTRIES["/data-center-flooring"]) return <SimpleDataCenter />;
+  return <DataCenterFlooringFull />;
+};
+
+const DataCenterFlooringFull = () => {
   const [active, setActive] = useState<Hotspot>(HOTSPOTS[5]); // Data Hall default
 
   return (
@@ -401,7 +440,7 @@ const DataCenterFlooring = () => {
       <PageHero
         eyebrow="Mission-Critical & Tech"
         title="Floors, linings and coatings for data centers — from data hall to generator yard"
-        subhead="One contractor for the white space, the battery rooms, the fuel yard and the roof. Site walk within 1–3 business days; full bid within 24 hours of receiving plans."
+        subhead="One contractor for the white space, the battery rooms, the fuel yard and the transformer pads. Site walk within 1–3 business days; full bid within 24 hours of receiving plans."
         image={imgHero}
         imageAlt="Data center flooring and containment coatings"
         compact
@@ -610,23 +649,6 @@ const DataCenterFlooring = () => {
         </div>
       </section>
 
-      <section className="py-16 md:py-20 border-t border-border">
-        <div className="container mx-auto px-4 max-w-6xl">
-          <p className="text-[11px] font-semibold uppercase tracking-[0.3em] text-muted-foreground mb-3">Recommended systems</p>
-          <h2 className="text-2xl md:text-[32px] font-bold text-foreground tracking-tight mb-6">Data center solutions, system by system</h2>
-          <ul className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4 [&>*]:border [&>*]:border-border">
-            {RECOMMENDED["/data-center-flooring"].map((r) => (
-              <li key={r.label} className="bg-background">
-                <a href={r.href} className="block p-5 h-full hover:bg-secondary transition-colors">
-                  <span className="block font-semibold text-foreground">{r.label}</span>
-                  {r.note && <span className="block text-sm text-muted-foreground mt-1">{r.note}</span>}
-                </a>
-              </li>
-            ))}
-          </ul>
-        </div>
-      </section>
-
       <TrustStrip />
 
       {/* Photos */}
@@ -645,7 +667,6 @@ const DataCenterFlooring = () => {
           </div>
         </div>
       </section>
-      <ExpertNotesBlock notes={EXPERT_INDUSTRIES["/data-center-flooring"]} />
       <FaqBlock heading="Data center flooring FAQ" faqs={FAQS} bg={false} />
 
       <SiteFooter

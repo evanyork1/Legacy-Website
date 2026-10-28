@@ -282,7 +282,7 @@ SYSTEM_PAGES.push(
     path: "/industrial-epoxy",
     name: "Industrial Epoxy Flooring",
     metaTitle: "Industrial Epoxy Flooring Dallas-Fort Worth | Legacy Industrial Coatings",
-    metaDescription: "Industrial epoxy flooring and floor coatings for warehouses, manufacturing, food and aerospace facilities. Legacy Epoxy Series from 16 mils to 1/4\". DFW based, nationwide. Bids in 24 hours.",
+    metaDescription: "Industrial epoxy flooring and floor coatings for warehouses, manufacturing, food and aerospace facilities. Thin-film to troweled epoxy mortar. DFW based, nationwide. Bids in 24 hours.",
     h1: "Industrial Epoxy Flooring & Floor Coatings",
     overviewTitle: "What Industrial Epoxy Flooring Is",
     serviceName: "Industrial Epoxy Flooring",
@@ -442,13 +442,6 @@ SYSTEM_PAGES.push(
         { label: "ESD (Legacy ESD)", values: ["Electronics, electrical and UPS rooms", "Standard", "35 mils nominal (Legacy ESD 35)", "/esd-static-control-flooring"] },
       ],
     },
-    sections: [
-      {
-        title: "Full Systems Library",
-        paragraphs: ["Every system we install — chemistry, nominal thickness, coat-by-coat build-up and published properties — is listed in one place."],
-        link: { label: "Open the Systems Library", url: "/materials" },
-      },
-    ],
     whatItIs: [
       "A resinous floor combines a prepared substrate with compatible primers, body coats, aggregates and finish coats. The assembly can prioritize chemical resistance, sanitation, appearance or traffic durability.",
       "Epoxy suits most production and circulation areas; novolac handles harsher chemicals and heat; urethane cement handles hot, wet and thermal-shock environments; MMA and polyaspartic systems reopen fastest. Different rooms can use different systems with coordinated transitions.",
@@ -544,70 +537,36 @@ SYSTEM_PAGES.push(
     crumbName: "Flake Flooring",
     serviceName: "Commercial Flake Flooring",
     metaTitle: "Flake Epoxy Floor Coating DFW | Legacy Industrial Coatings",
-    metaDescription: "Commercial flake epoxy, polyurea and polyaspartic floor systems for showrooms, dealerships, retail, schools, restaurants and service areas across Dallas-Fort Worth.",
+    metaDescription: "Commercial flake floors for showrooms, dealerships, retail, schools, restaurants and locker rooms: epoxy flake, one-day polyurea flake and heavy-duty flake systems across Dallas-Fort Worth.",
     h1: "Commercial Flake Flooring",
-    intro: "A commercial flake floor is a resin system with decorative vinyl flakes broadcast into the body coat and sealed under a clear topcoat. It gives a durable, textured, color-blended finish for showrooms, dealerships, retail, schools, restaurants and service areas.",
+    intro: "A commercial flake floor is a seamless resin coating with colored vinyl flakes broadcast into it and sealed under a clear topcoat. It's durable, easy to clean, slip-resistant and looks sharp in showrooms, dealerships, retail, schools, restaurants and locker rooms.",
     whatItIs: [
-      "The resin body and clear topcoat carry the protection; the flake blend sets the color and adds texture underfoot. Because the finish is seamless, there are no grout lines to trap dirt in high-traffic commercial spaces.",
-      "We install flake floors at every level, from a standard epoxy flake to polyurea and polyaspartic one-day systems and heavy-duty builds with a urethane topcoat or a 3/16\" urethane cement body.",
+      "The resin does the work: it bonds to the ground concrete and seals out water, oil and spills. The flake gives the floor its color and a little texture underfoot, and hides dirt and wear between cleanings. There are no grout lines, so there's nothing to trap dirt or bacteria.",
+      "Not every flake floor is the same. We offer it at different levels, from a standard epoxy flake to a heavy-duty system built for kitchens and schools, and we help you pick the one that fits your traffic, your cleaning and how long you can be closed.",
     ],
     sections: [
       {
-        title: "Flake Floor Levels: From Standard to Heavy-Duty",
-        paragraphs: [
-          "Not every flake floor is the same floor. The resin under the flake and the topcoat over it decide how the floor handles traffic, chemicals, sunlight and downtime. Here is how our flake systems step up, from the most economical to the most substantial.",
+        title: "Flake Floor Options, From Standard to Heavy-Duty",
+        paragraphs: [],
+        items: [
+          "Standard epoxy flake: epoxy base, full flake broadcast and a clear topcoat. A good, economical floor for break rooms, locker rooms and back-of-house.",
+          "One-day polyurea flake: a polyurea base coat, full flake broadcast and a polyaspartic topcoat. It cures fast, so most areas are ground, coated and sealed in a day, and the topcoat won't yellow in sunlight. Great for showrooms, retail, entries and wet areas.",
+          "Heavy-duty flake: a thicker epoxy body broadcast to full coverage with a tough urethane topcoat that stands up to harsh cleaners and heavy use. Built for schools, healthcare corridors and restaurants.",
+          "Urethane cement flake: the most substantial option, a 3/16\" urethane cement floor with decorative flake for commercial kitchens and food areas with hot water and heavy cleaning.",
         ],
-        table: {
-          columns: ["System", "What it is", "Best for"],
-          rows: [
-            { label: "1 · Standard", values: ["Legacy Flake Epoxy", "Epoxy primer and body, full flake broadcast, two clear seal coats", "Break rooms, locker rooms, back-of-house on a normal schedule"] },
-            { label: "2 · Fast return", values: ["Legacy Flake Fast-Cure", "Epoxy body with UV-stable polyaspartic seal coats", "Retail and showrooms that need to reopen sooner or get sunlight"] },
-            { label: "3 · One-day polyurea", values: ["Legacy Flake Polyurea", "Polyurea base coat, full flake broadcast, polyaspartic topcoat", "Wet areas, entries and tight one-day shutdowns"] },
-            { label: "3 · One-day polyaspartic", values: ["Legacy Flake One-Day", "All-polyaspartic base and seals", "The shortest shutdown windows, sunlit spaces"] },
-            { label: "4 · Heavy-duty", values: ["Legacy Flake UT", "High-solids epoxy primer, recoatable epoxy body broadcast to rejection, low-odor aliphatic urethane topcoat", "Schools, healthcare corridors and restaurants that clean hard every day"] },
-            { label: "5 · Most substantial", values: ["Legacy Urethane Cement Flake", "3/16\" urethane cement body with decorative flake and a urethane or polyaspartic topcoat", "Commercial kitchens and food areas with hot water and thermal shock"] },
-            { label: "Overnight", values: ["Legacy MMA Flake", "Self-leveling MMA with flake, one-hour cure", "Facilities that can only close for a night"] },
-          ],
-        },
         links: [
-          { label: "Polyurea flake case study", url: "/commercial-case-studies/swim-school-flake-floor-multi-location", text: "Six swim school locations: mold-trapping VCT removed, polyurea flake floor with heavy grip installed." },
-          { label: "Urethane cement flooring", url: "/urethane-cement-flooring", text: "The heaviest flake option, for kitchens and thermal shock." },
-          { label: "MMA flooring", url: "/mma-flooring", text: "Flake and quartz floors that cure in about an hour." },
+          { label: "Polyurea flake case study", url: "/commercial-case-studies/swim-school-flake-floor-multi-location", text: "Six swim school locations: mold-trapping VCT removed and replaced with a polyurea flake floor with heavy grip." },
+          { label: "Urethane cement flooring", url: "/urethane-cement-flooring", text: "The heaviest option, for kitchens and hot washdown." },
         ],
       },
       {
-        title: "Polyurea and Polyaspartic Flake Floors",
+        title: "Why Polyurea and Polyaspartic",
         paragraphs: [
-          "Polyurea and polyaspartic are fast-curing coatings. A polyurea base coat penetrates and bonds aggressively to properly ground concrete and stays slightly flexible, and a polyaspartic topcoat is UV-stable, so it will not yellow in sunlit showrooms and storefronts. Together they let us grind, coat, broadcast and seal a floor in a single day in many spaces.",
-          "Fast cure also means a short working time, so these floors need experienced crews and careful slab preparation. We grind to the specified profile, repair cracks and joints, and test moisture first; flake systems are not recommended above 80% RH (ASTM F2170) without a moisture-mitigating primer.",
-          "Grip matters. Wet entries, pool decks, locker rooms and service drives get extra anti-slip aggregate in the topcoat, and we confirm the texture on a sample before installation.",
-        ],
-      },
-      {
-        title: "Legacy Flake Systems",
-        paragraphs: [
-          "Legacy Flake Epoxy is our epoxy flake floor; Legacy Flake Fast-Cure keeps the epoxy base and adds polyaspartic seals, Legacy Flake One-Day is all polyaspartic, and Legacy Flake Polyurea pairs a polyurea base with a polyaspartic topcoat for the fastest return to service. Build-ups are listed below.",
-          "Polyaspartic seals are UV-stable, so they suit sunlit showrooms and storefronts. Flake systems are not recommended above 80% RH without a moisture-mitigating primer.",
-        ],
-      },
-      {
-        title: "Legacy Flake UT",
-        paragraphs: [
-          "Legacy Flake UT is an epoxy flake system specified under CSI 09 67 23 resinous flooring. Vinyl chips are broadcast into a clear or pigmented epoxy and sealed with a clear urethane finish.",
-          "The epoxy base gives the floor its chemical-resistant protection, while the urethane topcoat stands up to foot traffic, carts and routine cleaning.",
+          "Polyurea cures fast and bonds hard to properly ground concrete, with a little flex that handles temperature swings. A polyaspartic topcoat is clear, tough and UV-stable, so it won't yellow by a sunny storefront or showroom window. Together they let us reopen your space quickly.",
+          "Every flake floor starts the same way: we grind the concrete, repair cracks and joints, and test the slab for moisture first. Where floors get wet, we add extra grip to the topcoat and show you a sample before we start.",
         ],
       },
     ],
-    comparison: {
-      title: "Compare Commercial Flake Systems",
-      columns: ["Legacy Flake (epoxy)", "Legacy Flake Fast-Cure", "Legacy Flake Polyurea", "Legacy Flake One-Day", "Legacy Flake UT"],
-      rows: [
-        { label: "Chemistry", values: ["Epoxy base and seals", "Epoxy base, polyaspartic seals", "Polyurea base, polyaspartic topcoat", "All polyaspartic", "Epoxy base, urethane topcoat"] },
-        { label: "Return to service", values: ["Standard", "Fast", "Fastest", "Fastest", "Standard"] },
-        { label: "UV-stable topcoat option", values: ["CRU or urethane seal", "Polyaspartic", "Polyaspartic", "Polyaspartic", "Urethane topcoat"] },
-        { label: "Best for", values: ["Interiors on a standard schedule", "Faster reopening over an epoxy base", "Wet areas and one-day installs", "Shortest shutdown windows", "Chemical-resistant interiors"] },
-      ],
-    },
     whereUsed: [
       { label: "Auto dealerships & service drives", path: "/auto-dealership-flooring" },
       { label: "Retail and showrooms", path: "/retail-flooring" },
@@ -617,25 +576,14 @@ SYSTEM_PAGES.push(
       { label: "Multifamily amenity spaces", path: "/multifamily-flooring" },
     ],
     buildups: [],
-    cure: "Return-to-service times are confirmed in the submittal for the selected system; the polyaspartic systems reopen faster than epoxy.",
-    performance: [
-      "Seamless, color-blended finish with no grout lines.",
-      "Texture and topcoat selected for the facility's traction and cleaning needs.",
-      "Integral cove and transition details available within the approved assembly.",
-    ],
-    chemicalResistance: [
-      "The epoxy body provides chemical-resistant protection in Legacy Flake Epoxy and Legacy Flake UT.",
-      "Cleaners, vehicle fluids and disinfectants are reviewed against the selected topcoat's resistance data.",
-    ],
+    performance: ["Seamless, color-blended finish with no grout lines."],
     faqs: [
-      { q: "Epoxy vs polyaspartic flake — which is right for my facility?", a: "Epoxy flake (Legacy Flake Epoxy) suits interiors that can allow a standard cure. Legacy Flake Fast-Cure and Legacy Flake One-Day suit spaces that must reopen quickly or see direct sunlight, because the polyaspartic seals are UV-stable. We recommend a system after reviewing traffic, chemicals, schedule and slab conditions." },
-      { q: "What is the difference between polyurea, polyaspartic and epoxy flake floors?", a: "Epoxy is the standard: strong, chemical resistant and economical, with a normal cure. Polyurea cures very fast and bonds aggressively to ground concrete with some flexibility, so it is often used as the base coat on one-day floors. Polyaspartic is a fast-curing, UV-stable topcoat that will not yellow in sunlight. Many of our fastest flake floors use a polyurea base under a polyaspartic topcoat." },
-      { q: "How fast can a commercial flake floor go back into service?", a: "Legacy Flake One-Day is the fastest, Legacy Flake Fast-Cure is fast, and Legacy Flake Epoxy follows a standard cure. Exact walk-on and equipment release times are confirmed in your submittal." },
-      { q: "Can flake floors handle forklifts, carts or vehicle traffic?", a: "Flake floors handle foot traffic, carts and vehicle traffic in showrooms and service drives when the assembly is specified for it. Heavy forklift traffic usually calls for a higher-build epoxy or urethane cement system, which we can recommend instead." },
-      { q: "How slip-resistant is a flake floor, and can texture be added?", a: "The flake broadcast adds some texture on its own, and an aggregate can be added to the topcoat where more traction is needed — for example at entries, wet areas and service drives. We confirm the texture on a sample before installation." },
-      { q: "Can you install over an existing coating or VCT?", a: "VCT and failed coatings are removed so the new system bonds to sound, prepared concrete. A sound existing coating may accept a compatible system after testing and mechanical preparation." },
-      { q: "How do I clean and maintain a commercial flake floor?", a: "Daily sweeping or dust mopping and regular cleaning with a neutral cleaner keep the finish looking new. We provide manufacturer-compatible care guidance at closeout and can recoat the topcoat as part of a maintenance program." },
-      { q: "How much does commercial flake flooring cost in DFW?", a: "Cost is driven by surface preparation, moisture testing and any mitigation, square footage, the system selected (epoxy or polyaspartic) and how the work is phased around your operations. Send plans or request a site walk and we will return a firm bid within 24 hours of receiving plans." },
+      { q: "What is the difference between epoxy flake and polyurea flake?", a: "Epoxy flake is the standard, economical option with a normal cure time. Polyurea flake uses a fast-curing polyurea base coat and a polyaspartic topcoat, so it goes in faster, gets you back open sooner and won't yellow in sunlight." },
+      { q: "How fast can a flake floor go back into service?", a: "A polyurea flake floor can usually be installed in a day in most areas. Epoxy and heavy-duty flake take longer to cure. We give you the exact schedule before we start." },
+      { q: "Is a flake floor slippery?", a: "The flake adds texture on its own, and we can add anti-slip grit to the topcoat for entries, wet areas and service drives. We show you a sample first." },
+      { q: "Can you install over VCT or an old coating?", a: "We remove VCT and failed coatings so the new floor bonds to clean, ground concrete. A sound existing coating can sometimes be prepped and coated over after we test it." },
+      { q: "How do I clean a flake floor?", a: "Sweep or dust mop daily and clean with a neutral cleaner. No waxing. The topcoat can be renewed later to make the floor look new again." },
+      { q: "How much does commercial flake flooring cost?", a: "It depends on the size of the space, how much floor prep is needed, which flake system you choose and whether we work after hours. Send plans or request a site walk and we'll return a full bid within 24 hours of receiving plans." },
     ],
     photos: photoSets.flake,
   }),
@@ -1132,46 +1080,9 @@ SYSTEM_PAGES.push(
   }),
 
   makeSystem({
-    path: "/roof-deck-waterproofing",
-    name: "Roof & Deck Waterproofing",
-    metaDescription: "DFW fluid-applied roof coatings and deck waterproofing for equipment platforms, walkways, plazas and balconies, including Legacy membrane and pedestrian options.",
-    intro: "Roof and deck waterproofing must address drainage, movement and penetrations as well as the field membrane. We separate roof-coating scopes from pedestrian wearing surfaces and buried waterproofing.",
-    whatItIs: [
-      "We organize Legacy roof systems by roof type: built-up and modified bitumen, concrete, metal, single-ply and spray polyurethane foam, each with aliphatic urethane, acrylic or silicone options. Rooftop equipment platforms and walkways get compatible protection rather than assuming the roof membrane can take unrestricted traffic.",
-      "Legacy Cold Fluid-Applied Membrane 60 is a cold fluid-applied membrane for below-tile or buried waterproofing. Legacy Pedestrian Deck provides a pedestrian traffic-bearing assembly for appropriate exposed decks. Plazas and balconies require details that coordinate the selected membrane with drains, thresholds and adjoining construction.",
-    ],
-    whereUsed: [industryLinks.data, industryLinks.office, industryLinks.hotel, industryLinks.multifamily, industryLinks.parking],
-    buildups: [],
-    sections: [{ title: "Data Center Roofs", paragraphs: ["Data center roofs carry chillers, condensers and cable trays that need protected walkways and coatings matched to the existing roof type. We coordinate roof work with the floor and containment scopes inside the building."], link: { label: "Data center solutions", url: "/data-center-flooring" } }],
-    cure: "Legacy Pedestrian Deck: traffic at 48 hrs. Coordinate membrane cure, ASTM D5957 flood testing and protection before concealment against the approved application requirements.",
-    performance: [
-      "Cold fluid-applied membrane: 60 dry mils; flood-tested per ASTM D5957.",
-      "Legacy Pedestrian Deck assembly: 32 dry mils.",
-      "Separate selection for roof coatings, exposed traffic and buried waterproofing.",
-    ],
-    chemicalResistance: [
-      "Identify equipment oils, maintenance products and other rooftop exposures before selecting the membrane.",
-      "Do not assume waterproofing approval establishes oil or chemical immersion resistance.",
-    ],
-    prep: [
-      "Survey drainage, ponding, substrate condition, existing roof materials and termination heights.",
-      "For the verified concrete pedestrian assembly: 3,000 psi concrete, 28-day cure and ICRI CSP 3–4 preparation.",
-      "Coordinate drains, penetrations, thresholds, movement joints and equipment supports.",
-      "Schedule specified flood testing and protect completed membrane from following trades.",
-    ],
-    faqs: [
-      { q: "Are roof coating and traffic coating the same?", a: "No. Roof coatings and pedestrian wearing surfaces have different service requirements and must be selected accordingly." },
-      { q: "Where is the cold fluid-applied membrane used?", a: "The verified assembly is intended for below-tile or buried waterproofing, with the specified protection and testing." },
-      { q: "Can you waterproof rooftop equipment walkways?", a: "Yes, through a compatible assembly coordinated with the roof membrane, equipment access and expected traffic." },
-      { q: "Does coating solve poor drainage?", a: "Not by itself. Drainage and ponding conditions must be reviewed before the membrane is selected." },
-    ],
-    photos: photoSets.hospitality,
-  }),
-
-  makeSystem({
     path: "/epoxy-cove-base",
     name: "Integral Epoxy Cove Base",
-    metaDescription: "Integral epoxy cove base for DFW kitchens, cleanrooms and processing facilities. Monolithic floor-to-wall transitions with verified Legacy Epoxy Cove data.",
+    metaDescription: "Integral epoxy cove base for DFW kitchens, cleanrooms and processing facilities. Seamless floor-to-wall transitions that are easy to clean.",
     intro: "Integral cove removes the sharp floor-to-wall corner that traps residue and complicates cleaning. We connect the floor and perimeter with a trowel-applied, monolithic resin detail.",
     whatItIs: [
       "A sanitary cove curves the floor finish up the wall or curb using compatible resin mortar. It can address a deficient base detail identified during a health inspection, but acceptance depends on the applicable requirements and the complete installation.",
@@ -1254,7 +1165,7 @@ SYSTEM_PAGES.push(
     path: "/novolac-epoxy-flooring",
     name: "Novolac Epoxy Flooring",
     metaTitle: "Novolac Epoxy Flooring | DFW & Nationwide | Legacy Industrial Coatings",
-    metaDescription: "Legacy Novolac 32 and 125 chemical-resistant epoxy floors for chemical storage, battery rooms, containment and food plants. Headquartered in Dallas-Fort Worth, working nationwide.",
+    metaDescription: "Chemical-resistant novolac epoxy floors for chemical storage, battery rooms, containment and food plants. Headquartered in Dallas-Fort Worth, working nationwide.",
     h1: "Novolac Epoxy Flooring for Chemical Resistance",
     intro: "Novolac epoxy is a more heavily cross-linked epoxy that resists stronger chemicals and higher operating temperatures than standard epoxy. We install Legacy Novolac 32 and Legacy Novolac 125 Broadcast in chemical storage, battery charging rooms, secondary containment and food plants.",
     whatItIs: [
@@ -1290,7 +1201,7 @@ SYSTEM_PAGES.push(
     path: "/mma-flooring",
     name: "MMA Flooring",
     metaTitle: "MMA Flooring (Fast-Cure Methyl Methacrylate) | DFW & Nationwide | Legacy Industrial Coatings",
-    metaDescription: "Legacy MMA floors cure in about an hour — for kitchens, food plants, pharmaceutical and any overnight shutdown. Headquartered in Dallas-Fort Worth, working nationwide.",
+    metaDescription: "MMA floors cure in about an hour — for kitchens, food plants, pharmaceutical and any overnight shutdown. Headquartered in Dallas-Fort Worth, working nationwide.",
     h1: "MMA Flooring — Back in Service the Same Day",
     intro: "MMA (methyl methacrylate) flooring is an acrylic resin floor installed 1/8\" to 3/8\" thick that cures in about one hour. We install Legacy MMA systems when a facility can only give us an overnight or weekend shutdown.",
     whatItIs: [

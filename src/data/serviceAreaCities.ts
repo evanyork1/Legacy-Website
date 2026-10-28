@@ -24,11 +24,6 @@ const FAQ_COMMERCIAL_AFTER_HOURS = (city: string): CityFaq => ({
   a: `Yes. Our commercial crews routinely run nights and weekends across ${city} to keep tenants and operations running. We schedule pours around your business hours, stage materials off-site, and coordinate directly with the GC or facility manager.`,
 });
 
-const FAQ_OSHA = (city: string): CityFaq => ({
-  q: `Do you pull permits and meet OSHA requirements on ${city} commercial jobs?`,
-  a: `Yes — we carry full general liability and workers' comp, run OSHA-compliant safety plans, and handle permit coordination directly with the GC or property management group on every ${city} commercial install.`,
-});
-
 const FAQ_WAREHOUSE = (city: string): CityFaq => ({
   q: `What floor coating do you recommend for a ${city} warehouse?`,
   a: `It depends on the slab and the operation. Polished concrete works well on a sound slab with forklift traffic; industrial epoxy or urethane cement makes sense where you need chemical resistance, a sealed surface or color-coded zones. We test the slab in ${city} before recommending a system.`,
@@ -39,17 +34,10 @@ const FAQ_COMMERCIAL_LEAD_TIME = (city: string): CityFaq => ({
   a: `For most ${city} commercial and industrial projects we walk the site within 1–3 business days and return a full bid within 24 hours of receiving plans, with the system, thickness and phasing spelled out. If you're bidding to a GC with a tight deadline, flag the due date.`,
 });
 
-const FAQ_POLISHED_CONCRETE_RETAIL = (city: string): CityFaq => ({
-  q: `Do you offer polished concrete for ${city} retail and restaurant buildouts?`,
-  a: `Yes — mechanical polished concrete is one of our core commercial systems in ${city}. We handle new slabs and existing floors for retail, restaurant, showroom, and hospitality TI work, including FF/FL flatness on new pours, integrally colored/dyed finishes, joint filling, and densification. We coordinate with the GC on tenant-improvement schedules and phased night pours.`,
-});
-
 const baseFaqs = (city: string): CityFaq[] => [
   FAQ_COMMERCIAL_AFTER_HOURS(city),
-  FAQ_OSHA(city),
   FAQ_WAREHOUSE(city),
   FAQ_COMMERCIAL_LEAD_TIME(city),
-  FAQ_POLISHED_CONCRETE_RETAIL(city),
 ];
 
 export const SERVICE_AREA_CITIES: ServiceAreaCity[] = [

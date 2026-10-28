@@ -349,10 +349,10 @@ const Home = () => {
                 ))}
               </div>
               <a
-                href="/materials"
+                href="/commercial"
                 className="inline-flex items-center gap-2 mt-10 font-heading text-[11px] tracking-[0.2em] uppercase text-foreground hover:underline"
               >
-                Browse the full materials library <ArrowRight size={12} />
+                See all commercial flooring <ArrowRight size={12} />
               </a>
             </div>
           </section>

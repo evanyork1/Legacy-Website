@@ -73,14 +73,12 @@ const staticUrls: UrlEntry[] = [
   { loc: "/battery-room-flooring", changefreq: "monthly", priority: "0.8", lastmod: today },
   { loc: "/joint-filling-crack-repair", changefreq: "monthly", priority: "0.8", lastmod: today },
   { loc: "/moisture-mitigation", changefreq: "monthly", priority: "0.8", lastmod: today },
-  { loc: "/roof-deck-waterproofing", changefreq: "monthly", priority: "0.8", lastmod: today },
   { loc: "/epoxy-cove-base", changefreq: "monthly", priority: "0.8", lastmod: today },
   { loc: "/commercial-carpet-tile", changefreq: "monthly", priority: "0.8", lastmod: today },
   { loc: "/commercial-lvt-flooring", changefreq: "monthly", priority: "0.8", lastmod: today },
   { loc: "/resilient-flooring", changefreq: "monthly", priority: "0.8", lastmod: today },
   { loc: "/novolac-epoxy-flooring", changefreq: "monthly", priority: "0.8", lastmod: today },
   { loc: "/mma-flooring", changefreq: "monthly", priority: "0.8", lastmod: today },
-  { loc: "/materials", changefreq: "monthly", priority: "0.7", lastmod: today },
   { loc: "/line-striping", changefreq: "monthly", priority: "0.8", lastmod: today },
 
   // Legal

@@ -27,7 +27,7 @@
 - **Urethane Cement** — Thermal-shock and chemical-resistant floors for food plants and commercial kitchens.
 - **Quartz & ESD Flooring** — Sanitary quartz broadcast and static-control systems for healthcare, labs and electronics.
 - **Mechanical Polished Concrete** — Diamond grinding, densifying and burnishing for retail, warehouse and showroom floors.
-- **Commercial Flake Flooring** — Legacy Flake (epoxy, polyaspartic and polyurea) and Legacy Flake UT for showrooms, dealerships, retail, schools and restaurants.
+- **Commercial Flake Flooring** — Epoxy flake, one-day polyurea flake (polyurea base, polyaspartic topcoat) and heavy-duty flake for showrooms, dealerships, retail, schools and restaurants.
 - **Secondary Containment & Deck Coatings** — Chemical containment, fuel dikes, parking decks and traffic coatings.
 - **Resilient Flooring** — Carpet tile, LVP/LVT, sheet vinyl, rubber and VCT for commercial interiors.
 
@@ -63,18 +63,17 @@ Dallas, Fort Worth, Plano, Frisco, McKinney, Allen, Richardson, Carrollton, Lewi
 - [Capability Packet](https://legacyindustrialcoatings.com/capability-packet): Bonding ($5M), insurance, safety program LIC-SAF-001, ASTM testing protocol, manufacturers and project scale.
 - [Who We Serve](https://legacyindustrialcoatings.com/who-we-serve): Owners & developers, general contractors, facility teams, architects & specifiers.
 - [Reviews](https://legacyindustrialcoatings.com/reviews): 5.0/5 across 201+ Google reviews.
-- [Systems Library](https://legacyindustrialcoatings.com/materials): Every system we install — chemistry, thickness, coat-by-coat build-ups and published properties.
 - [Line Striping & Floor Marking](https://legacyindustrialcoatings.com/line-striping): Warehouse floor marking, OSHA/ANSI color plans, parking lot and garage striping, coating + striping in one mobilization.
 
 ## Commercial Industry Pages
 
 - [Data Center Flooring](https://legacyindustrialcoatings.com/data-center-flooring): Data center solutions — ESD, battery rooms, SPCC fuel containment, transformer oil pits.
 - [Semiconductor & Electronics](https://legacyindustrialcoatings.com/electronics-manufacturing-flooring): ESD floors to ANSI/ESD S20.20, cleanroom and acid-resistant systems.
-- [Aerospace & Hangars](https://legacyindustrialcoatings.com/aerospace-hangar-flooring): Legacy Hangar LD/MD/HD/MRO hangar systems — Skydrol resistant, UV stable, light reflective.
+- [Aerospace & Hangars](https://legacyindustrialcoatings.com/aerospace-hangar-flooring): Bright, Skydrol-resistant hangar floor coatings for hangars, MRO shops and FBOs.
 - [Warehouse & Tilt-Up](https://legacyindustrialcoatings.com/warehouse-flooring): Densify & seal, ACI 302 joint fill, dock floors, aisle striping.
 - [Manufacturing](https://legacyindustrialcoatings.com/manufacturing-floor-coating): Urethane cement, chemical-resistant epoxy, phased installs.
 - [Food & Beverage Processing](https://legacyindustrialcoatings.com/food-processing-flooring): USDA-acceptable urethane cement, integral cove, slope-to-drain.
-- [Pharmaceutical & Medical Manufacturing](https://legacyindustrialcoatings.com/pharmaceutical-flooring): 800-grit polished concrete and Legacy Quartz + CRU systems with JIS Z 2801 anti-microbial topcoat.
+- [Pharmaceutical & Medical Manufacturing](https://legacyindustrialcoatings.com/pharmaceutical-flooring): Polished concrete and seamless resinous floors for production and cleanable rooms.
 - [Pharmacy & Cleanrooms](https://legacyindustrialcoatings.com/pharmacy-cleanroom-flooring): Seamless epoxy with HTU topcoat compatible with Decon-Quat and Peridox; ESD options.
 - [Restaurants & Commercial Kitchens](https://legacyindustrialcoatings.com/restaurant-kitchen-flooring): 1/4" urethane cement with novolac topcoat, integrated cove base, multi-location programs.
 - [Healthcare](https://legacyindustrialcoatings.com/healthcare-flooring): Quartz, epoxy, sheet vinyl and integral cove for infection control.
@@ -84,31 +83,30 @@ Dallas, Fort Worth, Plano, Frisco, McKinney, Allen, Richardson, Carrollton, Lewi
 - [Education](https://legacyindustrialcoatings.com/school-flooring): Resinous and resilient floors for schools and campuses.
 - [Multifamily](https://legacyindustrialcoatings.com/multifamily-flooring): Amenity, corridor and parking floors for multifamily properties.
 - [Auto Dealerships & Service](https://legacyindustrialcoatings.com/auto-dealership-flooring): Showroom polished concrete; hot-tire-resistant service drives and shops.
-- [Parking Structures](https://legacyindustrialcoatings.com/parking-garage-coatings): Legacy High Traffic Urethane vehicular and Legacy Pedestrian Deck pedestrian traffic coatings.
+- [Parking Structures](https://legacyindustrialcoatings.com/parking-garage-coatings): Waterproof vehicular and pedestrian traffic coatings for parking decks and ramps.
 - [Agriculture](https://legacyindustrialcoatings.com/agriculture-facility-flooring): Durable floors for agricultural facilities.
 
 ## Commercial System Pages
 
 - [Commercial Epoxy Flooring](https://legacyindustrialcoatings.com/commercial): Commercial epoxy flooring and floor coatings for retail, restaurants, offices, healthcare, schools, dealerships and warehouses; systems, after-hours work, cost drivers and FAQs.
-- [Industrial Epoxy Flooring](https://legacyindustrialcoatings.com/industrial-epoxy): Industrial epoxy flooring and floor coatings for warehouses, manufacturing, food and aerospace facilities. Legacy Epoxy Series 100% solids epoxy, Legacy Epoxy 16 to Legacy Epoxy Mortar 250 (thin film to 1/4"); install process, epoxy vs. polished concrete vs. urethane cement comparison, cost drivers and FAQs.
-- [Novolac Epoxy](https://legacyindustrialcoatings.com/novolac-epoxy-flooring): Legacy Novolac 32 and 125 for chemical storage, battery rooms and containment.
-- [MMA Flooring](https://legacyindustrialcoatings.com/mma-flooring): Legacy MMA (methyl methacrylate) floors, 1/8"–3/8", one-hour cure.
+- [Industrial Epoxy Flooring](https://legacyindustrialcoatings.com/industrial-epoxy): Industrial epoxy flooring and floor coatings for warehouses, manufacturing, food and aerospace facilities, from thin-film epoxy to troweled epoxy mortar.
+- [Novolac Epoxy](https://legacyindustrialcoatings.com/novolac-epoxy-flooring): Chemical-resistant novolac epoxy for chemical storage, battery rooms and containment.
+- [MMA Flooring](https://legacyindustrialcoatings.com/mma-flooring): Fast-cure MMA (methyl methacrylate) floors for overnight and weekend shutdowns.
 - [Resinous Flooring](https://legacyindustrialcoatings.com/resinous-flooring): Epoxy, quartz, urethane cement and decorative broadcast systems.
-- [Quartz Flooring](https://legacyindustrialcoatings.com/quartz-flooring): Legacy Quartz Broadcast, HD, Trowel and Fast-Cure polyaspartic systems.
-- [Urethane Cement](https://legacyindustrialcoatings.com/urethane-cement-flooring): Legacy Urethane Cement (1/8"–3/8") and Legacy Hybrid Urethane for hot, wet, thermal-shock environments.
-- [ESD / Static-Control](https://legacyindustrialcoatings.com/esd-static-control-flooring): Legacy ESD 35 and SD, tested on site to the ESD spec.
-- [Integral Cove Base](https://legacyindustrialcoatings.com/epoxy-cove-base): Legacy Epoxy Cove (1/8" thick, 4" high), Legacy Urethane Cement Cove and Legacy MMA Cove.
-- [Commercial Flake Flooring](https://legacyindustrialcoatings.com/flake-floors): Legacy Flake, Legacy Flake Fast-Cure and 2, and Legacy Flake UT.
+- [Quartz Flooring](https://legacyindustrialcoatings.com/quartz-flooring): Decorative, slip-resistant quartz floors for restrooms, kitchens and corridors.
+- [Urethane Cement](https://legacyindustrialcoatings.com/urethane-cement-flooring): Urethane cement floors for hot, wet, thermal-shock environments like kitchens and food plants.
+- [ESD / Static-Control](https://legacyindustrialcoatings.com/esd-static-control-flooring): Static-dissipative and conductive epoxy floors, tested on site.
+- [Integral Cove Base](https://legacyindustrialcoatings.com/epoxy-cove-base): Seamless epoxy, urethane cement and MMA cove base.
+- [Commercial Flake Flooring](https://legacyindustrialcoatings.com/flake-floors): Epoxy flake, one-day polyurea flake and heavy-duty flake floors.
 - [Polished Concrete](https://legacyindustrialcoatings.com/concrete-polishing): Commercial and industrial concrete polishing for warehouses, retail, showrooms and offices. ASCC Concrete Polishing Council aggregate classes and gloss levels, mockup-approved finishes, dust-controlled grinding, polished vs. epoxy vs. sealed comparison and FAQs.
 - [Sealed & Densified Concrete](https://legacyindustrialcoatings.com/concrete-sealing): Dustproofing and sealed-concrete finishes.
 - [Joint Fill & Crack Repair](https://legacyindustrialcoatings.com/joint-filling-crack-repair): Semi-rigid polyurea joint fill per ACI 302, spall and crack repair.
 - [Moisture Mitigation](https://legacyindustrialcoatings.com/moisture-mitigation): ASTM F2170/F1869 testing, moisture-mitigating primers and vapor barriers.
 - [Secondary Containment](https://legacyindustrialcoatings.com/secondary-containment-coatings): EPA SPCC fuel dikes, chemical containment, transformer oil pits.
 - [Battery Room Flooring](https://legacyindustrialcoatings.com/battery-room-flooring): Acid-resistant novolac with integral cove and coated curbs.
-- [Deck & Traffic Coatings](https://legacyindustrialcoatings.com/deck-coatings): Legacy High Traffic Urethane/Legacy Pedestrian Deck systems, 32–52 dry mils.
-- [Roof & Deck Waterproofing](https://legacyindustrialcoatings.com/roof-deck-waterproofing): Fluid-applied roof coatings, Legacy Cold Fluid-Applied Membrane 60, pedestrian systems.
-- [Commercial Carpet Tile Installation](https://legacyindustrialcoatings.com/commercial-carpet-tile): Carpet tile and planks for offices, schools, healthcare, hotels and multifamily; removal, floor prep, moisture testing (ASTM F2170/F1869), CRI 104 installation, furniture moves and after-hours work.
-- [Commercial LVT & LVP Flooring](https://legacyindustrialcoatings.com/commercial-lvt-flooring): Glue-down and rigid-core luxury vinyl tile and plank (ASTM F1700/F3261) for healthcare, offices, schools, retail, hotels and multifamily; floor prep to ASTM F710.
+- [Deck & Traffic Coatings](https://legacyindustrialcoatings.com/deck-coatings): Waterproof pedestrian and vehicular traffic coatings for decks, balconies and walkways.
+- [Commercial Carpet Tile Installation](https://legacyindustrialcoatings.com/commercial-carpet-tile): Carpet tile for offices, schools, healthcare, hotels and multifamily, with removal, floor prep and after-hours installs.
+- [Commercial LVT & LVP Flooring](https://legacyindustrialcoatings.com/commercial-lvt-flooring): Glue-down and rigid-core luxury vinyl tile and plank for healthcare, offices, schools, retail, hotels and multifamily.
 - [Resilient Flooring](https://legacyindustrialcoatings.com/resilient-flooring): Overview of carpet tile, LVP/LVT, sheet vinyl, rubber and VCT.
 - [Garage Floor Coatings (residential)](https://legacyindustrialcoatings.com/garagefloors): Polyurea and polyaspartic flake garage floors in Dallas–Fort Worth; one-day install.
 - [Maintenance Programs](https://legacyindustrialcoatings.com/commercial-floor-maintenance): Condition surveys, cleaning, repairs and recoating programs.

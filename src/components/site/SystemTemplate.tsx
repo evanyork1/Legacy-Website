@@ -1,17 +1,16 @@
-import { ArrowRight, Check } from "lucide-react";
+import { ArrowRight } from "lucide-react";
 import SiteHeader from "@/components/site/SiteHeader";
 import SiteFooter from "@/components/site/SiteFooter";
 import { Seo } from "@/components/seo/Seo";
 import { StructuredData } from "@/components/seo/StructuredData";
-import { DataTable, Eyebrow, FaqBlock, PageHero, SpecTable } from "@/components/site/sections";
-import { CatalogSection, HQ_LINE, SubmittalButton, TrustStrip } from "@/components/site/catalog";
+import { DataTable, Eyebrow, FaqBlock, PageHero } from "@/components/site/sections";
+import { HQ_LINE, TrustStrip } from "@/components/site/catalog";
 import { ALL_INDUSTRIES, ALL_SYSTEMS } from "@/data/site/nav";
 import NotFound from "@/pages/NotFound";
 import type { SystemPageData } from "@/data/site/systems";
 import { REVIEWED_LINE, withCostFaq } from "@/data/site/costFaq";
-import { catalogForPage } from "@/data/site/catalog";
-import ExpertNotesBlock from "@/components/site/ExpertNotes";
-import { EXPERT_SYSTEMS } from "@/data/site/expert/systems";
+import SimplePage from "@/components/site/SimplePage";
+import { SIMPLE_SYSTEMS } from "@/data/site/simple/systems";
 
 /**
  * System page: photo hero (H1 + two-sentence answer + reviewed line) →
@@ -19,20 +18,6 @@ import { EXPERT_SYSTEMS } from "@/data/site/expert/systems";
  * systems library blocks → performance/prep → gallery → FAQ → related links
  * → ONE closing CTA (RequestInfoSection inside SiteFooter).
  */
-const CheckList = ({ title, items }: { title: string; items: string[] }) => (
-  <div>
-    <h3 className="font-heading font-semibold text-[13px] uppercase tracking-[0.15em] text-foreground mb-6">{title}</h3>
-    <ul className="space-y-3">
-      {items.map((p) => (
-        <li key={p} className="flex items-start gap-3 text-[14px] text-muted-foreground leading-[1.7]">
-          <Check size={16} className="text-foreground/50 mt-1 flex-shrink-0" />
-          <span>{p}</span>
-        </li>
-      ))}
-    </ul>
-  </div>
-);
-
 const Cell = ({ v }: { v: string }) =>
   v.startsWith("/") ? (
     <a href={v} className="inline-flex items-center gap-1 font-heading text-[11px] tracking-[0.15em] uppercase text-foreground hover:underline">
@@ -47,13 +32,39 @@ const SystemTemplate = ({ system }: { system?: SystemPageData }) => {
 
   const industryLinks = ALL_INDUSTRIES.filter((i) => system.whereUsed.some((w) => w.path === i.path));
   const otherSystems = ALL_SYSTEMS.filter((s) => s.path !== system.path).slice(0, 9);
-  const catalog = catalogForPage(system.path);
   const crumbs = [
     { name: "Home", url: "/" },
-    { name: "Systems", url: "/materials" },
+    { name: "Commercial Flooring", url: "/commercial" },
     { name: system.crumbName ?? system.name, url: system.path },
   ];
   const faqs = withCostFaq(system.name.toLowerCase(), system.faqs);
+
+  const simple = SIMPLE_SYSTEMS[system.path];
+  if (simple) {
+    return (
+      <SimplePage
+        path={system.path}
+        metaTitle={system.metaTitle}
+        metaDescription={system.metaDescription}
+        h1={system.h1}
+        eyebrow="Commercial Flooring"
+        heroImage={system.heroImage}
+        heroAlt={system.heroAlt}
+        crumbs={crumbs}
+        serviceName={system.serviceName ?? system.name}
+        content={simple}
+        photos={system.photos}
+        related={{ title: "Where It's Used", links: system.whereUsed }}
+        more={{ title: "Other Floors We Install", links: otherSystems }}
+        closing={
+          system.closing ?? {
+            title: `Get a bid on your ${(system.crumbName ?? system.name).toLowerCase()} project`,
+            text: "Send plans or a scope. Site walk within 1–3 business days; full bid within 24 hours of receiving plans.",
+          }
+        }
+      />
+    );
+  }
 
   return (
     <div className="lcf min-h-screen bg-background">
@@ -110,7 +121,7 @@ const SystemTemplate = ({ system }: { system?: SystemPageData }) => {
       {system.comparison && (
         <section className="py-20 md:py-24 border-t border-border">
           <div className="max-w-6xl mx-auto px-6 md:px-8 lg:px-12">
-            <Eyebrow>Selector</Eyebrow>
+            <Eyebrow>Compare</Eyebrow>
             <h2 className="font-heading text-3xl md:text-[2.5rem] font-bold text-foreground leading-[1.1] mb-8">{system.comparison.title}</h2>
             <DataTable columns={system.comparison.columns} rows={system.comparison.rows} labelHeader="System" renderCell={(v) => <Cell v={v} />} />
           </div>
@@ -162,55 +173,6 @@ const SystemTemplate = ({ system }: { system?: SystemPageData }) => {
         </section>
       ))}
 
-      <CatalogSection systems={catalog} />
-
-      {/* Remaining build-ups not yet in the systems library */}
-      {system.buildups.length > 0 && (
-        <section className="py-24 md:py-32 bg-secondary">
-          <div className="max-w-7xl mx-auto px-6 md:px-8 lg:px-12">
-            <Eyebrow>Specifications</Eyebrow>
-            <h2 className="font-heading text-3xl md:text-[2.5rem] font-bold text-foreground leading-[1.1] mb-12">System Build-Up</h2>
-            <div className="grid lg:grid-cols-2 gap-6">
-              {system.buildups.map((b) => (
-                <SpecTable key={b.title} title={b.title} layers={b.layers} total={b.total} />
-              ))}
-            </div>
-            <SubmittalButton systemName={system.name} className="mt-8" />
-          </div>
-        </section>
-      )}
-
-      {catalog.length === 0 && system.buildups.length === 0 && (
-        <section className="py-16 border-t border-border">
-          <div className="max-w-7xl mx-auto px-6 md:px-8 lg:px-12 flex flex-col md:flex-row md:items-center md:justify-between gap-6">
-            <p className="text-muted-foreground text-[15px] max-w-xl">Product data, safety data and guide specifications for this scope are issued with our submittal.</p>
-            <SubmittalButton systemName={system.name} />
-          </div>
-        </section>
-      )}
-
-      {system.cure && (
-        <section className="pt-16">
-          <div className="max-w-7xl mx-auto px-6 md:px-8 lg:px-12">
-            <div className="border border-border bg-background p-8">
-              <h3 className="font-heading font-semibold text-[13px] uppercase tracking-[0.15em] text-foreground mb-3">Cure &amp; Return to Service</h3>
-              <p className="text-[14px] text-muted-foreground leading-[1.8]">{system.cure}</p>
-            </div>
-          </div>
-        </section>
-      )}
-
-      {/* Performance / chemicals / prep */}
-      <section className="py-24 md:py-32">
-        <div className="max-w-7xl mx-auto px-6 md:px-8 lg:px-12 grid md:grid-cols-3 gap-12">
-          <CheckList title="Performance Data" items={system.performance} />
-          {system.chemicalResistance && system.chemicalResistance.length > 0 && (
-            <CheckList title="Chemical Resistance" items={system.chemicalResistance} />
-          )}
-          <CheckList title="Prep & Testing" items={system.prep} />
-        </div>
-      </section>
-
       {/* Gallery */}
       {system.photos.length > 0 && (
         <section className="pb-24 md:pb-32">
@@ -235,8 +197,6 @@ const SystemTemplate = ({ system }: { system?: SystemPageData }) => {
       )}
 
       <TrustStrip />
-
-      <ExpertNotesBlock notes={EXPERT_SYSTEMS[system.path]} />
 
       <FaqBlock heading={`${system.name} Questions`} faqs={faqs} />
 

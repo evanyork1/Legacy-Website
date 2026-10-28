@@ -54,7 +54,6 @@ import OurProcess from "./pages/site/OurProcess";
 import CapabilityPacket from "./pages/site/CapabilityPacket";
 import WhoWeServe from "./pages/site/WhoWeServe";
 import Reviews from "./pages/site/Reviews";
-import Materials from "./pages/site/Materials";
 import LineStriping from "./pages/site/LineStriping";
 import DataCenterFlooring from "./pages/site/DataCenterFlooring";
 import SiteIndustryPage from "./pages/site/IndustryPage";
@@ -131,7 +130,8 @@ function App() {
               <Route path="/capability-packet" element={<CapabilityPacket />} />
               <Route path="/who-we-serve" element={<WhoWeServe />} />
               <Route path="/reviews" element={<Reviews />} />
-              <Route path="/materials" element={<Materials />} />
+              <Route path="/materials" element={<Navigate to="/commercial" replace />} />
+              <Route path="/roof-deck-waterproofing" element={<Navigate to="/deck-coatings" replace />} />
               <Route path="/line-striping" element={<LineStriping />} />
               <Route path="/data-center-flooring" element={<DataCenterFlooring />} />
               <Route path="/case-studies" element={<CaseStudiesHub />} />
@@ -160,7 +160,7 @@ function App() {
                   element={<SiteSystemPage path={s.path} />}
                 />
               ))}
-              <Route path="/specialty-floor-systems" element={<Navigate to="/materials" replace />} />
+              <Route path="/specialty-floor-systems" element={<Navigate to="/commercial" replace />} />
 
               {/* Keyword URL redirects to existing pages */}
               <Route path="/garage-floor-coating" element={<Navigate to="/garagefloors" replace />} />

@@ -62,14 +62,12 @@ const STATIC_ROUTES = [
   "/battery-room-flooring",
   "/joint-filling-crack-repair",
   "/moisture-mitigation",
-  "/roof-deck-waterproofing",
   "/epoxy-cove-base",
   "/resilient-flooring",
   "/commercial-carpet-tile",
   "/commercial-lvt-flooring",
   "/novolac-epoxy-flooring",
   "/mma-flooring",
-  "/materials",
   "/line-striping",
 ];
 
