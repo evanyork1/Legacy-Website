@@ -39,10 +39,8 @@ import { INDUSTRY_PAGES } from "@/data/site/industries";
 import { SERVICE_AREA_CITIES } from "@/data/serviceAreaCities";
 
 import imgDataCenter from "@/assets/industries/data-center-1.jpg";
-import aboutImage from "@/assets/site/about-legacy-team.webp";
-import partnerSherwin from "@/assets/site/partner-sherwin.webp";
-import partnerNeogard from "@/assets/site/partner-neogard.webp";
-import partnerHempel from "@/assets/site/partner-hempel.webp";
+// TODO Evan: replace with the crew photo uploaded in the Lovable draft (about-legacy-team.webp).
+import aboutImage from "@/assets/polishing-warehouse.jpg";
 
 /* Commercial homepage FAQs (rendered below and emitted as FAQPage schema). */
 const homepageFaqs = [
@@ -76,12 +74,6 @@ const homepageFaqs = [
     answer:
       "The full Dallas–Fort Worth Metroplex from our Plano office — including Dallas, Fort Worth, Plano, Frisco, McKinney, Allen, Richardson, Irving, Arlington, Garland, Carrollton, Lewisville and Denton — plus North Texas. We also travel for multi-site and national programs, so retail, food-service and industrial clients can use one flooring partner across their locations.",
   },
-];
-
-const PARTNERS = [
-  { src: partnerSherwin, alt: "Sherwin-Williams commercial epoxy and coatings partner" },
-  { src: partnerNeogard, alt: "Neogard commercial deck and epoxy coatings partner" },
-  { src: partnerHempel, alt: "Hempel commercial protective coatings partner" },
 ];
 
 /** Short card copy per industry (keyed by route). */
@@ -435,11 +427,11 @@ const Home = () => {
                   <div className="relative">
                     <img
                       src={aboutImage}
-                      alt="Legacy Industrial Coatings crew member preparing a commercial concrete slab in DFW"
+                      alt="Polished concrete warehouse floor with safety striping installed by Legacy Industrial Coatings"
                       loading="lazy"
                       decoding="async"
-                      width={1000}
-                      height={1333}
+                      width={1170}
+                      height={970}
                       className="w-full aspect-[4/5] object-cover"
                     />
                     <div className="absolute -bottom-6 -right-6 w-32 h-32 border border-foreground/10 hidden lg:block" />

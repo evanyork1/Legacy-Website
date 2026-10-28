@@ -10,7 +10,8 @@ import {
 } from "@/components/site/sections";
 import { StructuredData } from "@/components/seo/StructuredData";
 import imgHero from "@/assets/industries/industrial-warehouse-1.jpg";
-import imgCrew from "@/assets/site/about-legacy-team.webp";
+// TODO Evan: replace with the crew photo uploaded in the Lovable draft (about-legacy-team.webp).
+import imgCrew from "@/assets/polishing-warehouse.jpg";
 
 const STANDARDS = [
   {
@@ -106,9 +107,9 @@ const About = () => (
           <div className="overflow-hidden bg-muted">
             <img
               src={imgCrew}
-              alt="Legacy crew preparing a commercial concrete floor with our grinding equipment"
-              width={1000}
-              height={1333}
+              alt="Polished concrete warehouse floor with safety striping installed by Legacy Industrial Coatings"
+              width={1170}
+              height={970}
               className="w-full aspect-[4/5] object-cover"
               loading="lazy"
               decoding="async"

@@ -21,7 +21,8 @@ import Seo from "@/components/seo/Seo";
 import { StructuredData } from "@/components/seo/StructuredData";
 import { PageBreadcrumbs } from "@/components/seo/PageBreadcrumbs";
 
-import warehouseHero from "@/assets/warehouse-hero.avif";
+// TODO Evan: original hero (warehouse-hero.avif) was uploaded in the Lovable draft; using an existing warehouse photo.
+import warehouseHero from "@/assets/industries/industrial-warehouse-1.jpg";
 import maintenanceDetail from "@/assets/concrete-sealing-floor-detail.jpg";
 
 const FAQS = [
