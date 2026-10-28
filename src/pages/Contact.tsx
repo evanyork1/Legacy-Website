@@ -1,7 +1,7 @@
 import { Helmet } from "react-helmet-async";
 import { PageBreadcrumbs } from "@/components/seo/PageBreadcrumbs";
-import HeaderGeneric from "@/components/HeaderGeneric";
-import Footer from "@/components/Footer";
+import SiteHeader from "@/components/site/SiteHeader";
+import SiteFooter from "@/components/site/SiteFooter";
 import { RequestInfoForm } from "@/components/forms/RequestInfoForm";
 import { Phone, Mail } from "lucide-react";
 const Contact = () => {
@@ -16,7 +16,7 @@ const Contact = () => {
       <PageBreadcrumbs items={[{ name: "Home", url: "/" }, { name: "Contact", url: "/contact" }]} />
 
       <div className="min-h-screen bg-white">
-        <HeaderGeneric />
+        <SiteHeader />
         
         <main className="pt-0 md:pt-20">
           <section className="py-10 md:py-16 bg-gradient-to-br from-slate-50 via-blue-50/30 to-white">
@@ -94,7 +94,7 @@ const Contact = () => {
           </section>
         </main>
 
-        <Footer />
+        <SiteFooter />
       </div>
     </>;
 };

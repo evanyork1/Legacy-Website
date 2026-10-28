@@ -1,8 +1,8 @@
 import { useState, useCallback, useEffect } from "react";
 import { Helmet } from "react-helmet-async";
 import { PageBreadcrumbs } from "@/components/seo/PageBreadcrumbs";
-import HeaderGeneric from "@/components/HeaderGeneric";
-import Footer from "@/components/Footer";
+import SiteHeader from "@/components/site/SiteHeader";
+import SiteFooter from "@/components/site/SiteFooter";
 import { Button } from "@/components/ui/button";
 import { ArrowRight, Calendar } from "lucide-react";
 import { useNavigate } from "react-router-dom";
@@ -57,7 +57,7 @@ const Blog = () => {
       <PageBreadcrumbs items={[{ name: "Home", url: "/" }, { name: "Blog", url: "/blog" }]} />
 
       <div className="min-h-screen bg-white">
-        <HeaderGeneric />
+        <SiteHeader />
 
         {/* Hero */}
         <section className="pt-24 pb-16 bg-slate-50">
@@ -145,7 +145,7 @@ const Blog = () => {
           </div>
         </section>
 
-        <Footer />
+        <SiteFooter />
       </div>
 
       <BookingModal isOpen={showBookingModal} onClose={handleCloseBookingModal} />

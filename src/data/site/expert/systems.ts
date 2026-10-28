@@ -128,7 +128,7 @@ export const EXPERT_SYSTEMS: Record<string, ExpertNotes> = {
     plain: [
       "A densifier and a sealer do two different jobs. Make sure your bid says which one you are getting, or whether you are getting both.",
       "Sealed concrete is easier to clean and dusts less, but it is not a chemical-resistant lining. Spills still need prompt cleanup.",
-      "Plan on resealing. The page lists a typical cycle of every 2 to 5 years, and traffic and cleaning decide where in that range you land.",
+      "Plan on resealing. A typical cycle is every 2 to 5 years, and traffic and cleaning decide where in that range you land.",
       "If the floor has old sealer, paint or oil soaked in, expect some cleaning or removal first so the new treatment can work.",
     ],
     spec: [

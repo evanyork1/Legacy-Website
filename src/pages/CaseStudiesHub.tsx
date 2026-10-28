@@ -1,7 +1,7 @@
 import { Helmet } from "react-helmet-async";
 import { useNavigate } from "react-router-dom";
-import HeaderGeneric from "@/components/HeaderGeneric";
-import Footer from "@/components/Footer";
+import SiteHeader from "@/components/site/SiteHeader";
+import SiteFooter from "@/components/site/SiteFooter";
 import { ArrowRight, Building2, Home } from "lucide-react";
 import { caseStudies } from "@/data/caseStudies";
 
@@ -55,7 +55,7 @@ const CaseStudiesHub = () => {
         <script type="application/ld+json">{JSON.stringify(breadcrumbSchema)}</script>
       </Helmet>
 
-      <HeaderGeneric />
+      <SiteHeader />
 
       <main>
         {/* Hero */}
@@ -129,7 +129,7 @@ const CaseStudiesHub = () => {
         </section>
       </main>
 
-      <Footer />
+      <SiteFooter />
     </div>
   );
 };

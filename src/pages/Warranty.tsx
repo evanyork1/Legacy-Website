@@ -1,7 +1,8 @@
 import { Helmet } from "react-helmet-async";
 import { PageBreadcrumbs } from "@/components/seo/PageBreadcrumbs";
 import { Card, CardContent } from "@/components/ui/card";
-import Footer from "@/components/Footer";
+import SiteHeader from "@/components/site/SiteHeader";
+import SiteFooter from "@/components/site/SiteFooter";
 
 const Warranty = () => {
   return (
@@ -15,6 +16,7 @@ const Warranty = () => {
         <link rel="canonical" href="https://legacyindustrialcoatings.com/warranty" />
         <meta property="og:url" content="https://legacyindustrialcoatings.com/warranty" />
       </Helmet>
+      <SiteHeader />
 
       <PageBreadcrumbs items={[{ name: "Home", url: "/" }, { name: "Warranty", url: "/warranty" }]} />
 
@@ -143,7 +145,7 @@ const Warranty = () => {
           </Card>
         </div>
       </div>
-      <Footer />
+      <SiteFooter />
     </>
   );
 };

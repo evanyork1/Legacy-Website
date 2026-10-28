@@ -1,6 +1,8 @@
 import SiteHeader from "@/components/site/SiteHeader";
 import SiteFooter from "@/components/site/SiteFooter";
 import { PageHero, FaqBlock } from "@/components/site/sections";
+import ExpertNotesBlock from "@/components/site/ExpertNotes";
+import { EXPERT_SYSTEMS } from "@/data/site/expert/systems";
 import { Seo } from "@/components/seo/Seo";
 import { StructuredData } from "@/components/seo/StructuredData";
 import warehouseImage from "@/assets/industries/industrial-warehouse-2.jpg";
@@ -210,6 +212,7 @@ export default function LineStriping() {
           </div>
         </section>
 
+        <ExpertNotesBlock notes={EXPERT_SYSTEMS["/line-striping"]} />
         <FaqBlock heading="Line striping questions" faqs={faqs} />
       </main>
       <SiteFooter cta={{ title: "Put a clear plan on your floor", text: "Send your racking plan, parking layout or marking scope. We'll review preparation, materials and installation windows with you." }} />

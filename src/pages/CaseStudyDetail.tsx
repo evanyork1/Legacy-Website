@@ -1,8 +1,8 @@
 import { Helmet } from "react-helmet-async";
 import { useParams, useNavigate, Navigate } from "react-router-dom";
 import { useState } from "react";
-import HeaderGeneric from "@/components/HeaderGeneric";
-import Footer from "@/components/Footer";
+import SiteHeader from "@/components/site/SiteHeader";
+import SiteFooter from "@/components/site/SiteFooter";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { ArrowLeft, Calendar, Phone, MapPin, Wrench, Ruler, Clock, CheckCircle2, X } from "lucide-react";
@@ -95,7 +95,7 @@ const CaseStudyDetail = () => {
         <script type="application/ld+json">{JSON.stringify(breadcrumbSchema)}</script>
       </Helmet>
 
-      <HeaderGeneric />
+      <SiteHeader />
 
       <main className="pt-0 md:pt-24">
         {/* Back link above hero */}
@@ -244,7 +244,7 @@ const CaseStudyDetail = () => {
         </section>
       </main>
 
-      <Footer />
+      <SiteFooter />
       <BookingModal isOpen={showBookingModal} onClose={() => setShowBookingModal(false)} />
 
       {/* Lightbox */}

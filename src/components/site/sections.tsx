@@ -1,4 +1,5 @@
 import { useEffect, useRef, useState } from "react";
+import { Helmet } from "react-helmet-async";
 import { caseStudies } from "@/data/caseStudies";
 import { ArrowRight, Star } from "lucide-react";
 import { scrollToRequestInfo } from "@/lib/requestInfo";
@@ -157,6 +158,11 @@ export const PageHero = ({
     } pb-14 md:pb-20 pt-24`}
   >
     {image && (
+      <Helmet>
+        <link rel="preload" as="image" href={image} fetchPriority="high" />
+      </Helmet>
+    )}
+    {image && (
       <div className="absolute inset-0">
         <img
           src={image}
@@ -214,10 +220,14 @@ export const PageHero = ({
 
 const CountUp = ({ to, prefix = "", suffix = "" }: { to: number; prefix?: string; suffix?: string }) => {
   const ref = useRef<HTMLSpanElement>(null);
-  const [val, setVal] = useState(0);
+  // Start at the final value so prerendered HTML, crawlers and hydration all
+  // agree; only animate when the number is below the fold on load.
+  const [val, setVal] = useState(to);
   useEffect(() => {
     const el = ref.current;
     if (!el) return;
+    if (el.getBoundingClientRect().top < window.innerHeight) return;
+    setVal(0);
     const obs = new IntersectionObserver(
       (entries) => {
         if (!entries[0].isIntersecting) return;

@@ -13,6 +13,8 @@ import { caseStudies } from "@/data/caseStudies";
 import NotFound from "@/pages/NotFound";
 import type { IndustryPageData } from "@/data/site/industries";
 import { withCostFaq } from "@/data/site/costFaq";
+import ExpertNotesBlock from "@/components/site/ExpertNotes";
+import { EXPERT_INDUSTRIES } from "@/data/site/expert/industries";
 
 /**
  * Industry page — mirrors legacycommercialfloors.com industry detail:
@@ -214,6 +216,8 @@ const IndustryTemplate = ({ industry }: { industry?: IndustryPageData }) => {
       )}
 
       <TrustStrip />
+
+      <ExpertNotesBlock notes={EXPERT_INDUSTRIES[industry.path]} />
 
       <FaqBlock heading={`${industry.name} Flooring Questions`} faqs={faqs} />
 

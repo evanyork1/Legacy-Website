@@ -2,8 +2,8 @@ import { useState } from "react";
 import { Helmet } from "react-helmet-async";
 import { PageBreadcrumbs } from "@/components/seo/PageBreadcrumbs";
 import { StructuredData } from "@/components/seo/StructuredData";
-import HeaderGeneric from "@/components/HeaderGeneric";
-import Footer from "@/components/Footer";
+import SiteHeader from "@/components/site/SiteHeader";
+import SiteFooter from "@/components/site/SiteFooter";
 import { Button } from "@/components/ui/button";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 import { ArrowRight, Calendar } from "lucide-react";
@@ -120,7 +120,7 @@ const FAQ = () => {
       <PageBreadcrumbs items={[{ name: "Home", url: "/" }, { name: "About", url: "/about" }, { name: "FAQ", url: "/faq" }]} />
 
       <div className="min-h-screen bg-white">
-        <HeaderGeneric />
+        <SiteHeader />
         
         {/* Hero Section */}
         <section className="pt-16 sm:pt-20 lg:pt-24 pb-12 sm:pb-16 bg-slate-50">
@@ -223,7 +223,7 @@ const FAQ = () => {
           </div>
         </section>
 
-        <Footer />
+        <SiteFooter />
       </div>
       
       <BookingModal 

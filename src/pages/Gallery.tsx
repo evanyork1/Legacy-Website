@@ -1,7 +1,7 @@
 
 import { useState, useEffect } from "react";
-import HeaderGeneric from "@/components/HeaderGeneric";
-import Footer from "@/components/Footer";
+import SiteHeader from "@/components/site/SiteHeader";
+import SiteFooter from "@/components/site/SiteFooter";
 import { Card, CardContent } from "@/components/ui/card";
 import { Dialog, DialogContent, DialogTitle } from "@/components/ui/dialog";
 import { X, Image as ImageIcon } from "lucide-react";
@@ -62,7 +62,7 @@ const Gallery = () => {
         path="/gallery"
       />
       <PageBreadcrumbs items={[{ name: "Home", url: "/" }, { name: "About", url: "/about" }, { name: "Gallery", url: "/gallery" }]} />
-      <HeaderGeneric />
+      <SiteHeader />
       
       {/* Hero Section */}
       <section className="bg-gradient-to-br from-slate-50 via-blue-50/30 to-white py-20">
@@ -161,7 +161,7 @@ const Gallery = () => {
         </DialogContent>
       </Dialog>
 
-      <Footer />
+      <SiteFooter />
     </div>
   );
 };

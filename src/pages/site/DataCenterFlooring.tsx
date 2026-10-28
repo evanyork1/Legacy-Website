@@ -1,3 +1,5 @@
+import ExpertNotesBlock from "@/components/site/ExpertNotes";
+import { EXPERT_INDUSTRIES } from "@/data/site/expert/industries";
 import { useState } from "react";
 import { ArrowRight, ExternalLink } from "lucide-react";
 import SiteHeader from "@/components/site/SiteHeader";
@@ -643,6 +645,7 @@ const DataCenterFlooring = () => {
           </div>
         </div>
       </section>
+      <ExpertNotesBlock notes={EXPERT_INDUSTRIES["/data-center-flooring"]} />
       <FaqBlock heading="Data center flooring FAQ" faqs={FAQS} bg={false} />
 
       <SiteFooter

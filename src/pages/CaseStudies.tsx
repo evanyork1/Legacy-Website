@@ -1,6 +1,6 @@
 import { Helmet } from "react-helmet-async";
-import HeaderGeneric from "@/components/HeaderGeneric";
-import Footer from "@/components/Footer";
+import SiteHeader from "@/components/site/SiteHeader";
+import SiteFooter from "@/components/site/SiteFooter";
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { ArrowRight, Calendar, Phone } from "lucide-react";
@@ -53,7 +53,7 @@ const CaseStudies = ({ category }: CaseStudiesProps) => {
         <meta property="og:url" content={canonical} />
         <script type="application/ld+json">{JSON.stringify(breadcrumbSchema)}</script>
       </Helmet>
-      <HeaderGeneric />
+      <SiteHeader />
 
       <main className="pt-24">
         {/* Hero */}
@@ -138,7 +138,7 @@ const CaseStudies = ({ category }: CaseStudiesProps) => {
         </section>
       </main>
 
-      <Footer />
+      <SiteFooter />
       <BookingModal isOpen={showBookingModal} onClose={() => setShowBookingModal(false)} />
     </div>
   );

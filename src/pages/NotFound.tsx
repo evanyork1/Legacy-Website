@@ -1,6 +1,7 @@
 import { useLocation } from "react-router-dom";
 import { useEffect } from "react";
-import Footer from "@/components/Footer";
+import SiteHeader from "@/components/site/SiteHeader";
+import SiteFooter from "@/components/site/SiteFooter";
 import { Seo } from "@/components/seo/Seo";
 
 const NotFound = () => {
@@ -21,6 +22,7 @@ const NotFound = () => {
         path={location.pathname}
         noindex
       />
+      <SiteHeader />
       <div className="flex-1 flex items-center justify-center">
         <div className="text-center">
           <h1 className="text-4xl font-bold mb-4">404</h1>
@@ -30,7 +32,7 @@ const NotFound = () => {
           </a>
         </div>
       </div>
-      <Footer />
+      <SiteFooter />
     </div>
   );
 };

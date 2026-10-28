@@ -1,7 +1,7 @@
 import { Navigate, useParams, Link } from "react-router-dom";
 import { Helmet } from "react-helmet-async";
-import HeaderGeneric from "@/components/HeaderGeneric";
-import Footer from "@/components/Footer";
+import SiteHeader from "@/components/site/SiteHeader";
+import SiteFooter from "@/components/site/SiteFooter";
 import Seo from "@/components/seo/Seo";
 import { PageBreadcrumbs } from "@/components/seo/PageBreadcrumbs";
 import { getCareerMarket } from "@/data/careersMarkets";
@@ -87,7 +87,7 @@ const CareerMarketPage = () => {
           { name: `${market.city}, ${market.state}`, url: path },
         ]}
       />
-      <HeaderGeneric />
+      <SiteHeader />
 
       <main>
         {/* 1. Header */}
@@ -267,7 +267,7 @@ const CareerMarketPage = () => {
         </section>
       </main>
 
-      <Footer />
+      <SiteFooter />
     </div>
   );
 };

@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import { ArrowRight } from "lucide-react";
-import HeaderGeneric from "@/components/HeaderGeneric";
-import Footer from "@/components/Footer";
+import SiteHeader from "@/components/site/SiteHeader";
+import SiteFooter from "@/components/site/SiteFooter";
 import Seo from "@/components/seo/Seo";
 import { PageBreadcrumbs } from "@/components/seo/PageBreadcrumbs";
 import { CAREER_MARKETS, TOTAL_SEATS } from "@/data/careersMarkets";
@@ -20,7 +20,7 @@ const Careers = () => {
           { name: "Careers", url: "/careers" },
         ]}
       />
-      <HeaderGeneric />
+      <SiteHeader />
 
       <main>
         <section className="bg-blue-900 text-white py-20">
@@ -88,7 +88,7 @@ const Careers = () => {
         </section>
       </main>
 
-      <Footer />
+      <SiteFooter />
     </div>
   );
 };

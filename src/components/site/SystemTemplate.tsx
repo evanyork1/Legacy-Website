@@ -10,6 +10,8 @@ import NotFound from "@/pages/NotFound";
 import type { SystemPageData } from "@/data/site/systems";
 import { REVIEWED_LINE, withCostFaq } from "@/data/site/costFaq";
 import { catalogForPage } from "@/data/site/catalog";
+import ExpertNotesBlock from "@/components/site/ExpertNotes";
+import { EXPERT_SYSTEMS } from "@/data/site/expert/systems";
 
 /**
  * System page: photo hero (H1 + two-sentence answer + reviewed line) →
@@ -233,6 +235,8 @@ const SystemTemplate = ({ system }: { system?: SystemPageData }) => {
       )}
 
       <TrustStrip />
+
+      <ExpertNotesBlock notes={EXPERT_SYSTEMS[system.path]} />
 
       <FaqBlock heading={`${system.name} Questions`} faqs={faqs} />
 

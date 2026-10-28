@@ -2,12 +2,10 @@ import { useEffect, useState } from "react";
 import { Helmet } from "react-helmet-async";
 import { PageBreadcrumbs } from "@/components/seo/PageBreadcrumbs";
 import { Link, useParams } from "react-router-dom";
-import { Calendar, MapPin, Phone, ArrowLeft } from "lucide-react";
-import HeaderGeneric from "@/components/HeaderGeneric";
-import Footer from "@/components/Footer";
-import { BookingModal } from "@/components/landing/BookingModal";
+import { Calendar, MapPin, ArrowLeft } from "lucide-react";
+import SiteHeader from "@/components/site/SiteHeader";
+import SiteFooter from "@/components/site/SiteFooter";
 import { Badge } from "@/components/ui/badge";
-import { Button } from "@/components/ui/button";
 import { fetchPostBySlug, type BlogPost } from "@/data/blogPosts";
 import NotFound from "./NotFound";
 
@@ -17,7 +15,6 @@ const BlogPostPage = () => {
   const { slug } = useParams<{ slug: string }>();
   const [post, setPost] = useState<BlogPost | null>(null);
   const [loading, setLoading] = useState(true);
-  const [showBookingModal, setShowBookingModal] = useState(false);
 
   useEffect(() => {
     let active = true;
@@ -38,11 +35,11 @@ const BlogPostPage = () => {
   if (loading) {
     return (
       <div className="min-h-screen bg-white">
-        <HeaderGeneric />
+        <SiteHeader />
         <div className="container mx-auto px-4 py-24 text-center text-gray-500">
           Loading article…
         </div>
-        <Footer />
+        <SiteFooter />
       </div>
     );
   }
@@ -95,7 +92,7 @@ const BlogPostPage = () => {
       <PageBreadcrumbs items={[{ name: "Home", url: "/" }, { name: "Blog", url: "/blog" }, { name: post.title, url: `/blog/${post.slug}` }]} />
 
       <div className="min-h-screen bg-white">
-        <HeaderGeneric />
+        <SiteHeader />
 
         <article className="py-16 sm:py-20">
           <div className="container mx-auto px-4">
@@ -140,42 +137,27 @@ const BlogPostPage = () => {
                 dangerouslySetInnerHTML={{ __html: post.content }}
               />
 
-              {/* Bottom CTA */}
-              <div className="mt-14 rounded-2xl bg-blue-900 text-white p-8 sm:p-10 text-center shadow-xl">
-                <h2 className="text-2xl sm:text-3xl font-bold mb-4">
-                  Ready to transform your floors?
-                </h2>
-                <p className="text-lg opacity-90 mb-6">
-                  Talk to our team and get a clear plan for your space.
-                </p>
-                <div className="flex flex-col sm:flex-row gap-3 justify-center">
-                  <Button
-                    onClick={() => setShowBookingModal(true)}
-                    size="lg"
-                    className="bg-white text-blue-700 hover:bg-gray-100 rounded-full px-8 py-3"
-                  >
-                    <Calendar className="mr-2 h-5 w-5" />
-                    Book An Estimate
-                  </Button>
-                  <Button
-                    asChild
-                    size="lg"
-                    variant="outline"
-                    className="bg-transparent border-white text-white hover:bg-white hover:text-blue-700 rounded-full px-8 py-3"
-                  >
-                    <a href="tel:2143056516">
-                      <Phone className="mr-2 h-5 w-5" />
-                      Call 214-305-6516
-                    </a>
-                  </Button>
-                </div>
-              </div>
+              <nav aria-label="Related services" className="mt-14 border-t border-gray-200 pt-8">
+                <p className="text-sm font-semibold uppercase tracking-wide text-gray-500 mb-3">Related services</p>
+                <ul className="flex flex-wrap gap-x-6 gap-y-2 text-blue-700">
+                  <li><a href="/commercial" className="hover:underline">Commercial epoxy flooring</a></li>
+                  <li><a href="/industrial-epoxy" className="hover:underline">Industrial epoxy flooring</a></li>
+                  <li><a href="/concrete-polishing" className="hover:underline">Polished concrete</a></li>
+                  <li><a href="/commercial-carpet-tile" className="hover:underline">Commercial carpet tile</a></li>
+                  <li><a href="/commercial-lvt-flooring" className="hover:underline">Commercial LVT &amp; LVP</a></li>
+                  <li><a href="/garagefloors" className="hover:underline">Garage floor coatings</a></li>
+                </ul>
+              </nav>
             </div>
           </div>
         </article>
 
-        <Footer />
-        <BookingModal isOpen={showBookingModal} onClose={() => setShowBookingModal(false)} />
+        <SiteFooter
+          cta={{
+            title: "Talk to us about your floor",
+            text: "Send plans or a scope. Site walk within 1–3 business days; full bid within 24 hours of receiving plans.",
+          }}
+        />
       </div>
     </>
   );

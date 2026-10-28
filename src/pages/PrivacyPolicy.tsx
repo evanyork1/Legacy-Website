@@ -1,6 +1,7 @@
 import { Helmet } from "react-helmet-async";
 import { Card, CardContent } from "@/components/ui/card";
-import Footer from "@/components/Footer";
+import SiteHeader from "@/components/site/SiteHeader";
+import SiteFooter from "@/components/site/SiteFooter";
 
 const PrivacyPolicy = () => {
   return (
@@ -14,6 +15,7 @@ const PrivacyPolicy = () => {
         <link rel="canonical" href="https://legacyindustrialcoatings.com/privacy" />
         <meta property="og:url" content="https://legacyindustrialcoatings.com/privacy" />
       </Helmet>
+      <SiteHeader />
       
       <div className="min-h-screen bg-background py-8 sm:py-12">
         <div className="container mx-auto px-4 max-w-4xl">
@@ -64,7 +66,7 @@ const PrivacyPolicy = () => {
           </Card>
         </div>
       </div>
-      <Footer />
+      <SiteFooter />
     </>
   );
 };

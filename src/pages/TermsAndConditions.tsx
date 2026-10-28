@@ -1,6 +1,7 @@
 import { Helmet } from "react-helmet-async";
 import { Card, CardContent } from "@/components/ui/card";
-import Footer from "@/components/Footer";
+import SiteHeader from "@/components/site/SiteHeader";
+import SiteFooter from "@/components/site/SiteFooter";
 
 const TermsAndConditions = () => {
   return (
@@ -14,6 +15,7 @@ const TermsAndConditions = () => {
         <link rel="canonical" href="https://legacyindustrialcoatings.com/terms" />
         <meta property="og:url" content="https://legacyindustrialcoatings.com/terms" />
       </Helmet>
+      <SiteHeader />
       
       <div className="min-h-screen bg-background py-8 sm:py-12">
         <div className="container mx-auto px-4 max-w-4xl">
@@ -88,7 +90,7 @@ const TermsAndConditions = () => {
           </Card>
         </div>
       </div>
-      <Footer />
+      <SiteFooter />
     </>
   );
 };
