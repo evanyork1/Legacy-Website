@@ -58,6 +58,31 @@ const staticUrls: UrlEntry[] = [
   // Tools / utility
   { loc: "/floor-visualizer", changefreq: "monthly", priority: "0.7", lastmod: today },
 
+
+  // Commercial redesign (Phase 1 & 2)
+  { loc: "/our-process", changefreq: "monthly", priority: "0.7", lastmod: today },
+  { loc: "/capability-packet", changefreq: "monthly", priority: "0.7", lastmod: today },
+  { loc: "/who-we-serve", changefreq: "monthly", priority: "0.7", lastmod: today },
+  { loc: "/reviews", changefreq: "monthly", priority: "0.7", lastmod: today },
+  { loc: "/electronics-manufacturing-flooring", changefreq: "monthly", priority: "0.8", lastmod: today },
+  { loc: "/food-processing-flooring", changefreq: "monthly", priority: "0.8", lastmod: today },
+  { loc: "/pharmaceutical-flooring", changefreq: "monthly", priority: "0.8", lastmod: today },
+  { loc: "/pharmacy-cleanroom-flooring", changefreq: "monthly", priority: "0.8", lastmod: today },
+  { loc: "/restaurant-kitchen-flooring", changefreq: "monthly", priority: "0.8", lastmod: today },
+  { loc: "/auto-dealership-flooring", changefreq: "monthly", priority: "0.8", lastmod: today },
+  { loc: "/parking-garage-coatings", changefreq: "monthly", priority: "0.8", lastmod: today },
+  { loc: "/secondary-containment-coatings", changefreq: "monthly", priority: "0.8", lastmod: today },
+  { loc: "/battery-room-flooring", changefreq: "monthly", priority: "0.8", lastmod: today },
+  { loc: "/joint-filling-crack-repair", changefreq: "monthly", priority: "0.8", lastmod: today },
+  { loc: "/moisture-mitigation", changefreq: "monthly", priority: "0.8", lastmod: today },
+  { loc: "/roof-deck-waterproofing", changefreq: "monthly", priority: "0.8", lastmod: today },
+  { loc: "/epoxy-cove-base", changefreq: "monthly", priority: "0.8", lastmod: today },
+  { loc: "/resilient-flooring", changefreq: "monthly", priority: "0.8", lastmod: today },
+  { loc: "/novolac-epoxy-flooring", changefreq: "monthly", priority: "0.8", lastmod: today },
+  { loc: "/mma-flooring", changefreq: "monthly", priority: "0.8", lastmod: today },
+  { loc: "/materials", changefreq: "monthly", priority: "0.7", lastmod: today },
+  { loc: "/line-striping", changefreq: "monthly", priority: "0.8", lastmod: today },
+
   // Legal
   { loc: "/warranty", changefreq: "yearly", priority: "0.4", lastmod: today },
   { loc: "/privacy", changefreq: "yearly", priority: "0.3", lastmod: today },

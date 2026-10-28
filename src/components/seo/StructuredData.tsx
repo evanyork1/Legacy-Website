@@ -1,5 +1,4 @@
 import { Helmet } from "react-helmet-async";
-import { DFW_CITIES } from "@/constants/serviceAreas";
 
 interface FAQItem {
   question: string;
@@ -41,7 +40,7 @@ export const StructuredData = ({
       logo: `${SITE_URL}/lovable-uploads/31a07739-2d1a-4e04-afcf-284435670519.png`,
       image: `${SITE_URL}/lovable-uploads/e90dc902-382c-49a1-92b3-46b9b06b6a4b.png`,
       description:
-        "Legacy Industrial Coatings is a licensed and insured flooring contractor specializing in epoxy flooring, polyurea garage floor coatings, mechanical polished concrete, and industrial floor coatings across the Dallas-Fort Worth metroplex.",
+        "Commercial and industrial resinous flooring contractor in Dallas-Fort Worth: epoxy, urethane cement, quartz, ESD, polished concrete, secondary containment and deck coatings.",
       telephone: "+1-214-305-6516",
       email: "support@legacyindustrialcoatings.com",
       address: {
@@ -69,7 +68,7 @@ export const StructuredData = ({
         "Commercial flooring",
       ],
       sameAs: [
-        "https://www.linkedin.com/company/legacy-industrial-coatings",
+        "https://www.linkedin.com/company/legacy-industrial-coatings1",
         "https://www.instagram.com/legacyindustrialcoatings/",
         "https://www.facebook.com/legacyindustrialcoatings",
         "https://maps.app.goo.gl/2idbg4BFnZVKvLNK9",
@@ -90,13 +89,14 @@ export const StructuredData = ({
   if (includeLocalBusiness) {
     schemas.push({
       "@context": "https://schema.org",
-      "@type": "LocalBusiness",
+      "@type": ["LocalBusiness", "GeneralContractor"],
       "@id": `${SITE_URL}#localbusiness`,
       name: "Legacy Industrial Coatings",
       description:
-        "Premium epoxy flooring, polyurea garage coatings, mechanical polished concrete, and industrial floor coatings serving the Dallas-Fort Worth Metroplex.",
+        "Commercial and industrial resinous flooring contractor in Dallas-Fort Worth: epoxy, urethane cement, quartz, ESD, polished concrete, secondary containment and deck coatings.",
       image: `${SITE_URL}/lovable-uploads/e90dc902-382c-49a1-92b3-46b9b06b6a4b.png`,
       url: SITE_URL,
+      foundingDate: "2019-09",
       telephone: "+1-214-305-6516",
       priceRange: "$$",
       address: {
@@ -113,11 +113,8 @@ export const StructuredData = ({
         longitude: -96.6989,
       },
       areaServed: [
-        { "@type": "AdministrativeArea", name: "Dallas-Fort Worth Metroplex" },
-        ...DFW_CITIES.map((city) => ({
-          "@type": "City",
-          name: `${city}, TX`,
-        })),
+        { "@type": "AdministrativeArea", name: "Dallas-Fort Worth, TX" },
+        { "@type": "Country", name: "United States" },
       ],
       makesOffer: [
         "Epoxy flooring",
@@ -144,14 +141,14 @@ export const StructuredData = ({
         },
       ],
       sameAs: [
-        "https://www.linkedin.com/company/legacy-industrial-coatings",
+        "https://www.linkedin.com/company/legacy-industrial-coatings1",
         "https://www.instagram.com/legacyindustrialcoatings/",
         "https://www.facebook.com/legacyindustrialcoatings",
       ],
       aggregateRating: {
         "@type": "AggregateRating",
         ratingValue: "5.0",
-        reviewCount: "200",
+        reviewCount: "201",
       },
     });
   }
@@ -165,13 +162,15 @@ export const StructuredData = ({
         name: s.name,
         description: s.description,
         provider: {
-          "@type": "LocalBusiness",
+          "@type": "Organization",
+          "@id": `${SITE_URL}#organization`,
           name: "Legacy Industrial Coatings",
+          url: SITE_URL,
         },
-        areaServed: {
-          "@type": "AdministrativeArea",
-          name: "Dallas-Fort Worth Metroplex",
-        },
+        areaServed: [
+          { "@type": "AdministrativeArea", name: "Dallas-Fort Worth, TX" },
+          { "@type": "Country", name: "United States" },
+        ],
         url: s.url ? `${SITE_URL}${s.url}` : undefined,
       });
     });

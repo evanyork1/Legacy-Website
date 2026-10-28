@@ -21,6 +21,8 @@ export default {
       fontFamily: {
         'sans': ['Inter', 'system-ui', 'sans-serif'],
         'inter': ['Inter', 'system-ui', 'sans-serif'],
+        'heading': ['"Space Grotesk"', 'system-ui', 'sans-serif'],
+        'body': ['"DM Sans"', 'system-ui', 'sans-serif'],
       },
       colors: {
 				border: 'hsl(var(--border))',

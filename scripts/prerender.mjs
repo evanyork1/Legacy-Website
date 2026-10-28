@@ -47,6 +47,30 @@ const STATIC_ROUTES = [
   "/floor-visualizer",
   "/commercial-floor-maintenance",
   "/careers",
+
+  // Commercial redesign (Phase 1 & 2)
+  "/our-process",
+  "/capability-packet",
+  "/who-we-serve",
+  "/reviews",
+  "/electronics-manufacturing-flooring",
+  "/food-processing-flooring",
+  "/pharmaceutical-flooring",
+  "/pharmacy-cleanroom-flooring",
+  "/restaurant-kitchen-flooring",
+  "/auto-dealership-flooring",
+  "/parking-garage-coatings",
+  "/secondary-containment-coatings",
+  "/battery-room-flooring",
+  "/joint-filling-crack-repair",
+  "/moisture-mitigation",
+  "/roof-deck-waterproofing",
+  "/epoxy-cove-base",
+  "/resilient-flooring",
+  "/novolac-epoxy-flooring",
+  "/mma-flooring",
+  "/materials",
+  "/line-striping",
 ];
 
 // Commercial application/solution pages come from src/data/commercialNav.ts.

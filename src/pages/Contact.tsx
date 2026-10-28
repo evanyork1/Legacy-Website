@@ -60,26 +60,6 @@ const Contact = () => {
                     </div>
                   </div>
 
-                  {/* Fort Worth Office */}
-                  <div className="bg-white rounded-xl shadow-lg p-6">
-                    <h3 className="text-xl font-bold text-gray-900 mb-4">Fort Worth Office</h3>
-                    <div className="space-y-3">
-                      <div className="flex items-center">
-                        <Phone className="h-5 w-5 text-blue-600 mr-3" />
-                        <a href="tel:214-305-6516" className="text-lg font-bold text-gray-900 hover:text-blue-600">
-                          (214) 305-6516
-                        </a>
-                      </div>
-                      <div className="flex items-start">
-                        <Mail className="h-5 w-5 text-blue-600 mr-3 mt-1" />
-                        <div className="text-gray-600">
-                          <p>1300 Summit Ave, #520</p>
-                          <p>Fort Worth, TX 76102</p>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-
                   {/* Phoenix Office */}
                   <div className="bg-white rounded-xl shadow-lg p-6">
                     <h3 className="text-xl font-bold text-gray-900 mb-4">Phoenix Office</h3>

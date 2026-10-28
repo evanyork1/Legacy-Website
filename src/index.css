@@ -2,8 +2,39 @@
 @tailwind components;
 @tailwind utilities;
 
+/* Commercial site theme — mirrors legacycommercialfloors.com (navy ink, Space Grotesk + DM Sans). */
+.lcf {
+  --background: 0 0% 100%;
+  --foreground: 228 82% 10%;
+  --card: 0 0% 100%;
+  --card-foreground: 228 82% 10%;
+  --popover: 0 0% 100%;
+  --popover-foreground: 228 82% 10%;
+  --primary: 228 82% 10%;
+  --primary-foreground: 0 0% 100%;
+  --secondary: 225 14% 97%;
+  --secondary-foreground: 228 82% 10%;
+  --muted: 225 14% 95%;
+  --muted-foreground: 228 10% 50%;
+  --accent: 225 14% 97%;
+  --accent-foreground: 228 82% 10%;
+  --border: 228 12% 92%;
+  --input: 228 12% 92%;
+  --ring: 228 82% 10%;
+  --radius: 0.375rem;
+  font-family: "DM Sans", system-ui, sans-serif;
+  color: hsl(var(--foreground));
+  -webkit-font-smoothing: antialiased;
+}
+.lcf :is(h1, h2, h3, h4, h5, h6) { font-family: "Space Grotesk", system-ui, sans-serif; }
+.lcf .text-balance { text-wrap: balance; }
+@keyframes lcf-scroll-left { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
+.lcf-marquee { animation: lcf-scroll-left 50s linear infinite; }
+@media (max-width: 768px) { .lcf-marquee { animation-duration: 40s; } }
+@media (prefers-reduced-motion: reduce) { .lcf-marquee { animation: none; } }
+
 /* Only the open mobile navigation becomes a viewport-sized scroll panel. */
-@media (max-width: 767px) {
+@media (max-width: 1023px) {
   .mobile-menu-panel {
     position: fixed;
     inset: 0;
@@ -31,14 +62,16 @@
 
 /* Scoped inquiry palette preserves all existing marketing colors. */
 .request-info-theme {
- --background: 0 0% 100%; --foreground: 221 73% 22%;
- --card: 0 0% 100%; --card-foreground: 221 73% 22%;
- --primary: 221 83% 53%; --primary-foreground: 0 0% 100%;
- --muted: 210 40% 96%; --muted-foreground: 215 16% 42%;
- --accent: 214 95% 96%; --accent-foreground: 221 73% 22%;
- --border: 214 32% 89%; --input: 214 32% 86%; --ring: 221 83% 53%;
- font-family: Inter, sans-serif; letter-spacing: 0;
+ --background: 0 0% 100%; --foreground: 228 82% 10%;
+ --card: 0 0% 100%; --card-foreground: 228 82% 10%;
+ --primary: 228 82% 10%; --primary-foreground: 0 0% 100%;
+ --muted: 225 14% 97%; --muted-foreground: 228 10% 45%;
+ --accent: 225 14% 95%; --accent-foreground: 228 82% 10%;
+ --border: 228 12% 88%; --input: 228 12% 86%; --ring: 228 82% 10%;
+ --radius: 0;
+ font-family: "DM Sans", system-ui, sans-serif; letter-spacing: 0;
 }
+.request-info-theme :is(h1, h2, h3, h4) { font-family: "Space Grotesk", system-ui, sans-serif; }
 .request-info-theme progress { accent-color: hsl(var(--primary)); }
 
 /* Mobile usability overrides are scoped to public forms and footers. */

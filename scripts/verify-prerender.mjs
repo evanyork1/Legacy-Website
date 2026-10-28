@@ -15,7 +15,7 @@ const REQUIRED_BASE = "https://legacyindustrialcoatings.com";
 
 // Route file -> phrases that must appear in the rendered body.
 const KEYWORD_CHECKS = [
-  ["index.html", ["polyurea", "warranty"]],
+  ["index.html", ["epoxy", "polished concrete"]],
   ["commercial/index.html", ["warehouse", "polished concrete"]],
   ["commercialfloors/index.html", ["industrial"]],
   ["garagefloors/index.html", ["polyurea", "garage"]],

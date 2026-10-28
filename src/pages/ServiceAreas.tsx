@@ -21,13 +21,17 @@ const ServiceAreas = () => {
       <main className="pt-20 sm:pt-24 pb-12 sm:pb-16">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           {/* Hero Section */}
-          <div className="text-center mb-12 sm:mb-16">
+          <div id="nationwide" className="text-center mb-12 sm:mb-16 scroll-mt-32">
             <h1 className="text-3xl sm:text-4xl md:text-6xl font-bold text-foreground mb-4 sm:mb-6">
               Service Areas
             </h1>
             <p className="text-lg sm:text-xl text-muted-foreground max-w-3xl mx-auto mb-6 sm:mb-8 leading-relaxed">
-              Legacy Industrial Coatings proudly serves the Dallas-Fort Worth metroplex 
-              with premium garage floor coatings and commercial flooring solutions.
+              DFW based, nationwide. Legacy Industrial Coatings delivers commercial flooring
+              across the country, from individual facilities to phased, multi-site programs.
+            </p>
+            <p className="text-base sm:text-lg text-muted-foreground max-w-3xl mx-auto leading-relaxed">
+              Our Plano office coordinates dedicated project managers and crews for testing, preparation,
+              installation and closeout at every location. Dallas–Fort Worth is our home base, not our service limit.
             </p>
           </div>
 

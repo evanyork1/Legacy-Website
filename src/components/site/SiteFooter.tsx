@@ -1,0 +1,127 @@
+import { RequestInfoSection, type ClosingCta } from "@/components/sections/RequestInfoSection";
+import {
+  ALL_INDUSTRIES,
+  ALL_SYSTEMS,
+  BUSINESS,
+  COMPANY_LINKS,
+} from "@/data/site/nav";
+import logo from "@/assets/site/logo-legacy-industrial.png";
+
+const SERVICE_AREAS = [
+  { label: "Dallas", path: "/epoxy-flooring/dallas" },
+  { label: "Fort Worth", path: "/epoxy-flooring/fort-worth" },
+  { label: "Plano", path: "/epoxy-flooring/plano" },
+  { label: "Frisco", path: "/epoxy-flooring/frisco" },
+  { label: "McKinney", path: "/epoxy-flooring/mckinney" },
+  { label: "Allen", path: "/epoxy-flooring/allen" },
+  { label: "Richardson", path: "/epoxy-flooring/richardson" },
+  { label: "Lewisville", path: "/epoxy-flooring/lewisville" },
+  { label: "All Service Areas", path: "/service-areas" },
+];
+
+const HEAD = "font-heading text-[11px] font-semibold tracking-[0.15em] uppercase text-background/70 mb-3";
+const LINK = "text-[12px] text-background/75 hover:text-background transition-colors";
+
+const Column = ({ title, links }: { title: string; links: { label: string; path: string }[] }) => (
+  <div>
+    <h3 className={HEAD}>{title}</h3>
+    <ul className="space-y-1.5">
+      {links.map((l) => (
+        <li key={l.path + l.label}>
+          <a href={l.path} className={LINK}>
+            {l.label}
+          </a>
+        </li>
+      ))}
+    </ul>
+  </div>
+);
+
+export const DEFAULT_CLOSING_CTA: Required<ClosingCta> = {
+  title: "Ready for Your Next Commercial Floor?",
+  text:
+    "Tell us about your project — new build, re-coat, or a full facility floor across your DFW portfolio. Site walk within 1–3 business days; full bid within 24 hours of receiving plans.",
+};
+
+/**
+ * Global footer. The page's single closing CTA (RequestInfoSection) renders
+ * first with a page-specific heading; the navy footer below carries links and
+ * contact details only. Plano is the only office.
+ */
+const SiteFooter = ({ cta }: { cta?: ClosingCta }) => {
+  const handlePhoneClick = () => {
+    if (typeof window !== "undefined" && (window as any).gtag_report_conversion) {
+      (window as any).gtag_report_conversion(BUSINESS.phoneHref);
+    }
+  };
+
+  return (
+    <div className="lcf">
+      <RequestInfoSection id="request-info" title={cta?.title ?? DEFAULT_CLOSING_CTA.title} text={cta?.text ?? DEFAULT_CLOSING_CTA.text} />
+      <footer id="contact" className="public-mobile-footer">
+        {/* Navy footer */}
+        <div className="bg-foreground text-background">
+          <div className="max-w-7xl mx-auto px-6 md:px-8 lg:px-12 py-10">
+            <div className="grid grid-cols-2 md:grid-cols-6 gap-8">
+              <div className="col-span-2">
+                <img
+                  src={logo}
+                  alt="Legacy Industrial Coatings logo"
+                  className="h-16 w-auto brightness-0 invert mb-4"
+                  width={896}
+                  height={289}
+                  loading="lazy"
+                  decoding="async"
+                />
+                <div className="space-y-3 text-[12px] text-background/50">
+                  <div>
+                    <p className="font-heading text-[11px] font-semibold tracking-[0.15em] uppercase text-background/70 mb-1">
+                      Plano Office
+                    </p>
+                    <p>
+                      {BUSINESS.address1}, {BUSINESS.address2}
+                    </p>
+                  </div>
+                  <div className="mobile-footer-email space-y-1 pt-1">
+                    <a
+                      href={BUSINESS.phoneHref}
+                      onClick={handlePhoneClick}
+                      className="block hover:text-background/80 transition-colors"
+                    >
+                      {BUSINESS.phoneDisplay}
+                    </a>
+                    <a href={`mailto:${BUSINESS.email}`} className="block hover:text-background/80 transition-colors">
+                      {BUSINESS.email}
+                    </a>
+                  </div>
+                  <div className="mobile-social-links flex gap-4 pt-1">
+                    <a href="https://www.linkedin.com/company/legacy-industrial-coatings1" target="_blank" rel="noopener noreferrer" className="hover:text-background/80">LinkedIn</a>
+                    <a href="https://www.instagram.com/legacyindustrialcoatings/" target="_blank" rel="noopener noreferrer" className="hover:text-background/80">Instagram</a>
+                    <a href="https://www.facebook.com/legacyindustrialcoatings" target="_blank" rel="noopener noreferrer" className="hover:text-background/80">Facebook</a>
+                    <a href={BUSINESS.googleReviewsUrl} target="_blank" rel="noopener noreferrer" className="hover:text-background/80">Google</a>
+                  </div>
+                </div>
+              </div>
+
+              <Column title="Systems" links={ALL_SYSTEMS.slice(0, 10)} />
+              <Column title="Industries" links={ALL_INDUSTRIES.slice(0, 10)} />
+              <Column title="Service Areas" links={SERVICE_AREAS} />
+              <Column title="Company" links={COMPANY_LINKS.slice(0, 7)} />
+            </div>
+          </div>
+
+          <div className="max-w-7xl mx-auto px-6 md:px-8 lg:px-12 border-t border-background/10 py-4 flex flex-col md:flex-row justify-between items-center gap-2 text-[11px] text-background/70">
+            <p>&copy; {new Date().getFullYear()} Legacy Industrial Coatings LLC. All rights reserved.</p>
+            <div className="flex items-center gap-4">
+              <a href="/privacy" className="hover:text-background transition-colors">Privacy Policy</a>
+              <a href="/terms" className="hover:text-background transition-colors">Terms of Service</a>
+              <a href="/warranty" className="hover:text-background transition-colors">Warranty</a>
+            </div>
+          </div>
+        </div>
+      </footer>
+    </div>
+  );
+};
+
+export default SiteFooter;
