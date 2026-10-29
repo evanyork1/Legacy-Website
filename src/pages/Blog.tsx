@@ -7,7 +7,7 @@ import SiteHeader from "@/components/site/SiteHeader";
 import SiteFooter from "@/components/site/SiteFooter";
 import { Eyebrow, PageHero } from "@/components/site/sections";
 import { JOB } from "@/data/site/jobPhotos";
-import { fetchSortedPosts, type BlogPost } from "@/data/blogPosts";
+import { fetchSortedPosts, STATIC_POSTS, type BlogPost } from "@/data/blogPosts";
 
 const LABEL = "font-heading text-[11px] tracking-[0.2em] uppercase text-muted-foreground";
 const MORE = "inline-flex items-center gap-2 font-heading text-[11px] tracking-[0.2em] uppercase text-foreground";
@@ -75,8 +75,8 @@ const PostCard = ({ post }: { post: BlogPost }) => (
 );
 
 const Blog = () => {
-  const [posts, setPosts] = useState<BlogPost[]>([]);
-  const [loading, setLoading] = useState(true);
+  const [posts, setPosts] = useState<BlogPost[]>(STATIC_POSTS);
+  const [loading, setLoading] = useState(false);
 
   useEffect(() => {
     let active = true;

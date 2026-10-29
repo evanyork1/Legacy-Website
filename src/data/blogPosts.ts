@@ -143,7 +143,11 @@ const fetchDbPosts = async (): Promise<BlogPost[]> => {
 };
 
 export const fetchSortedPosts = async (): Promise<BlogPost[]> => {
-  const db = await fetchDbPosts();
+  // Never let a slow database hold up the list: give it 5 seconds, then show the built-in articles.
+  const db = await Promise.race([
+    fetchDbPosts(),
+    new Promise<BlogPost[]>((resolve) => setTimeout(() => resolve([]), 5000)),
+  ]);
   const staticSlugs = new Set(STATIC_POSTS.map((p) => p.slug));
   return [...STATIC_POSTS, ...db.filter((p) => !staticSlugs.has(p.slug))].sort((a, b) =>
     b.publishedDate.localeCompare(a.publishedDate),
