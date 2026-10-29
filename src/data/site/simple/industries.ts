@@ -898,7 +898,7 @@ export const SIMPLE_INDUSTRIES: Record<string, SimpleContent> = {
     overviewTitle: "Data Center Flooring for the Whole Campus",
     overview: [
       "A data center has many floor types under one roof. Data halls need flat, dust-free concrete. Electrical rooms need static control. Battery rooms, generators and fuel tanks need floors and linings that keep spills contained.",
-      "We cover all of it, plus offices, docks and stairs, so you have one flooring contractor for the campus. Work is phased with night and weekend crews so critical rooms stay online.",
+      "We cover all of it, plus offices, docks and stairs, so you have one flooring team for the campus. Work is phased with night and weekend crews so critical rooms stay online.",
     ],
     featuresTitle: "Where We Work in a Data Center",
     features: [

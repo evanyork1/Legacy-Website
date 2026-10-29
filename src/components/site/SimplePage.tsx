@@ -121,8 +121,8 @@ const SimplePage = ({
             </p>
           ))}
           <p className="text-muted-foreground font-body text-[15px] leading-[1.8] mb-4">
-            Legacy Industrial Coatings is a commercial and industrial flooring contractor based in Plano, Texas, installing
-            floors since 2019 across Dallas–Fort Worth and nationwide. See our{" "}
+            Legacy Industrial Coatings installs commercial and industrial epoxy flooring, polished concrete and floor
+            coatings from Plano, Texas, across Dallas–Fort Worth, all of Texas and nationwide. See our{" "}
             <a href="/commercial" className={INLINE}>commercial epoxy flooring</a>,{" "}
             <a href="/industrial-epoxy" className={INLINE}>industrial epoxy flooring</a> and{" "}
             <a href="/concrete-polishing" className={INLINE}>polished concrete</a> pages.
@@ -135,8 +135,8 @@ const SimplePage = ({
                 {i < CITY_LINKS.length - 1 ? ", " : ""}
               </span>
             ))}{" "}
-            and the rest of North Texas, plus{" "}
-            <a href="/service-areas" className={INLINE}>projects nationwide</a>.
+            and the rest of North Texas, plus Houston, Austin, San Antonio and{" "}
+            <a href="/service-areas" className={INLINE}>projects across Texas and nationwide</a>.
           </p>
         </div>
         {related && related.links.length > 0 && (

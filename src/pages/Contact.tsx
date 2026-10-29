@@ -7,7 +7,7 @@ import { Phone, Mail } from "lucide-react";
 const Contact = () => {
   return <>
       <Helmet>
-        <title>Contact Legacy Industrial Coatings | Commercial Epoxy Flooring Contractor, Plano TX</title>
+        <title>Contact Legacy Industrial Coatings | Commercial & Industrial Epoxy Flooring, Plano TX</title>
         <meta name="description" content="Contact Legacy Industrial Coatings for your epoxy flooring needs. Serving Dallas-Fort Worth and Phoenix metro areas." />
         <link rel="canonical" href="https://legacyindustrialcoatings.com/contact" />
         <meta property="og:url" content="https://legacyindustrialcoatings.com/contact" />

@@ -40,7 +40,7 @@ export const StructuredData = ({
       logo: `${SITE_URL}/lovable-uploads/31a07739-2d1a-4e04-afcf-284435670519.png`,
       image: `${SITE_URL}/og/legacy-commercial-industrial-flooring.jpg`,
       description:
-        "Commercial and industrial flooring contractor based in Plano, Texas, serving Dallas–Fort Worth and nationwide since 2019: epoxy floor coatings, polished concrete, urethane cement, quartz, ESD flooring, line striping and secondary containment.",
+        "Commercial and industrial epoxy flooring based in Plano, Texas, serving Dallas–Fort Worth, all of Texas and nationwide: epoxy floor coatings, polished concrete, urethane cement, quartz, ESD flooring, line striping and secondary containment.",
       telephone: "+1-214-305-6516",
       email: "support@legacyindustrialcoatings.com",
       address: {
@@ -104,7 +104,7 @@ export const StructuredData = ({
       "@id": `${SITE_URL}#localbusiness`,
       name: "Legacy Industrial Coatings",
       description:
-        "Commercial and industrial flooring contractor based in Plano, Texas, serving Dallas–Fort Worth and nationwide since 2019: epoxy floor coatings, polished concrete, urethane cement, quartz, ESD flooring, line striping and secondary containment.",
+        "Commercial and industrial epoxy flooring based in Plano, Texas, serving Dallas–Fort Worth, all of Texas and nationwide: epoxy floor coatings, polished concrete, urethane cement, quartz, ESD flooring, line striping and secondary containment.",
       image: `${SITE_URL}/og/legacy-commercial-industrial-flooring.jpg`,
       url: SITE_URL,
       foundingDate: "2019-09",
@@ -125,6 +125,7 @@ export const StructuredData = ({
       },
       areaServed: [
         { "@type": "AdministrativeArea", name: "Dallas-Fort Worth, TX" },
+        { "@type": "State", name: "Texas" },
         { "@type": "Country", name: "United States" },
       ],
       makesOffer: [

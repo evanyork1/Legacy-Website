@@ -137,7 +137,7 @@ const SiteHeader = () => {
             <a href="/" className="flex items-center" aria-label="Legacy Industrial Coatings home">
               <img
                 src={logo}
-                alt="Legacy Industrial Coatings — DFW commercial epoxy and polished concrete contractor"
+                alt="Legacy Industrial Coatings — commercial and industrial epoxy flooring and polished concrete"
                 className="h-10 md:h-12 w-auto"
                 width={896}
                 height={289}

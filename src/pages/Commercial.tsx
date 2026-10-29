@@ -163,7 +163,7 @@ const FAQS = [
   },
   {
     q: "Do you install epoxy flooring near me?",
-    a: "We are based in Plano, Texas and install epoxy floors across Dallas–Fort Worth, including Dallas, Fort Worth, Plano, Frisco, McKinney, Allen, Richardson and the surrounding cities. We also travel for commercial and industrial projects nationwide.",
+    a: "We are based in Plano, Texas and install epoxy floors across Dallas–Fort Worth, including Dallas, Fort Worth, Plano, Frisco, McKinney, Allen and Richardson, and across all of Texas, including Houston, Austin and San Antonio. We also travel for commercial and industrial projects nationwide.",
   },
   {
     q: "Can you work after hours so we can stay open?",
@@ -217,9 +217,9 @@ const Commercial = () => {
       <SiteHeader />
 
       <PageHero
-        eyebrow="Commercial Flooring Contractor"
+        eyebrow="Commercial & Industrial Epoxy Flooring"
         title="Commercial Epoxy Flooring & Floor Coatings"
-        subhead="Commercial epoxy flooring is a seamless resin floor bonded to your concrete, built for foot traffic, forklifts, spills and daily cleaning. We install epoxy floors for warehouses, manufacturing plants, restaurants, retail, healthcare and schools across Dallas–Fort Worth and nationwide, often nights and weekends so you stay open."
+        subhead="Commercial epoxy flooring is a seamless resin floor bonded to your concrete, built for foot traffic, forklifts, spills and daily cleaning. We install epoxy floors for warehouses, manufacturing plants, restaurants, retail, healthcare and schools across Dallas–Fort Worth, all of Texas and nationwide, often nights and weekends so you stay open."
         image={HERO_IMG}
         imageAlt={JOB.mfgEpoxy.alt}
         crumbs={crumbs}
@@ -323,7 +323,8 @@ const Commercial = () => {
           <h2 className={H2}>Epoxy Flooring Near You</h2>
           <p className={`${P} max-w-3xl`}>
             Legacy Industrial Coatings is based in Plano, Texas and installs commercial and industrial epoxy floors across
-            Dallas–Fort Worth, with crews that travel for projects nationwide.
+            Dallas–Fort Worth and all of Texas, including Houston, Austin and San Antonio, with crews that travel for
+            projects nationwide.
           </p>
           <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-px bg-border border border-border mb-6">
             {CITIES.map(([name, slug]) => (

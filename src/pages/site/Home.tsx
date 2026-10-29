@@ -147,10 +147,10 @@ const Home = () => {
   return (
     <>
       <Helmet>
-        <title>Legacy Industrial Coatings | Commercial & Industrial Flooring Contractor, Dallas–Fort Worth</title>
+        <title>Legacy Industrial Coatings | Commercial & Industrial Epoxy Flooring in Dallas & All of Texas</title>
         <meta
           name="description"
-          content="Commercial and industrial flooring contractor in Dallas–Fort Worth and nationwide: epoxy floor coatings, polished concrete, urethane cement and line striping. Bids within 24 hours of plans."
+          content="Commercial and industrial epoxy flooring, polished concrete, urethane cement and line striping for Dallas–Fort Worth, all of Texas and nationwide. Bids within 24 hours of plans."
         />
         <meta name="author" content="Legacy Industrial Coatings" />
         <meta name="geo.region" content="US-TX" />
@@ -158,10 +158,10 @@ const Home = () => {
         <meta name="geo.position" content="32.7767;-96.7970" />
         <meta name="ICBM" content="32.7767, -96.7970" />
         <meta property="og:type" content="website" />
-        <meta property="og:title" content="Legacy Industrial Coatings | Commercial & Industrial Flooring Contractor, Dallas–Fort Worth" />
+        <meta property="og:title" content="Legacy Industrial Coatings | Commercial & Industrial Epoxy Flooring in Dallas & All of Texas" />
         <meta
           property="og:description"
-          content="Commercial and industrial flooring contractor in Dallas–Fort Worth and nationwide: epoxy floor coatings, polished concrete, urethane cement and line striping. Bids within 24 hours of plans."
+          content="Commercial and industrial epoxy flooring, polished concrete, urethane cement and line striping for Dallas–Fort Worth, all of Texas and nationwide. Bids within 24 hours of plans."
         />
         <meta property="og:image" content="https://legacyindustrialcoatings.com/og/legacy-commercial-industrial-flooring.jpg" />
         <meta property="og:image:width" content="1200" />
@@ -170,8 +170,8 @@ const Home = () => {
         <meta property="og:url" content="https://legacyindustrialcoatings.com" />
         <meta property="og:site_name" content="Legacy Industrial Coatings" />
         <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content="Legacy Industrial Coatings | Commercial & Industrial Flooring Contractor, Dallas–Fort Worth" />
-        <meta name="twitter:description" content="Commercial and industrial flooring contractor in Dallas–Fort Worth and nationwide: epoxy floor coatings, polished concrete, urethane cement and line striping. Bids within 24 hours of plans." />
+        <meta name="twitter:title" content="Legacy Industrial Coatings | Commercial & Industrial Epoxy Flooring in Dallas & All of Texas" />
+        <meta name="twitter:description" content="Commercial and industrial epoxy flooring, polished concrete, urethane cement and line striping for Dallas–Fort Worth, all of Texas and nationwide. Bids within 24 hours of plans." />
         <meta name="twitter:image" content="https://legacyindustrialcoatings.com/og/legacy-commercial-industrial-flooring.jpg" />
         <meta name="robots" content="index, follow" />
         <meta name="theme-color" content="#0f2440" />
