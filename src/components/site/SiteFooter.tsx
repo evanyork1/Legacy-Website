@@ -22,7 +22,7 @@ import {
   BUSINESS,
   COMPANY_LINKS,
 } from "@/data/site/nav";
-import logo from "@/assets/site/logo-legacy-industrial.png";
+import logo from "@/assets/site/logo-legacy-industrial-white.png";
 
 const SERVICE_AREAS = [
   { label: "Dallas", path: "/epoxy-flooring/dallas" },
@@ -92,15 +92,17 @@ const SiteFooter = ({ cta, requestInfo = true }: { cta?: ClosingCta; requestInfo
           <div className="max-w-7xl mx-auto px-6 md:px-8 lg:px-12 py-10">
             <div className="grid grid-cols-2 md:grid-cols-6 gap-8">
               <div className="col-span-2">
+                <a href="/" aria-label="Legacy Industrial Coatings home" className="inline-block mb-6">
                 <img
                   src={logo}
                   alt="Legacy Industrial Coatings logo"
-                  className="h-16 w-auto brightness-0 invert mb-4"
-                  width={896}
-                  height={289}
+                  className="h-12 md:h-14 w-auto"
+                  width={912}
+                  height={304}
                   loading="lazy"
                   decoding="async"
                 />
+                </a>
                 <div className="space-y-3 text-[12px] text-background/50">
                   <div>
                     <p className="font-heading text-[11px] font-semibold tracking-[0.15em] uppercase text-background/70 mb-1">

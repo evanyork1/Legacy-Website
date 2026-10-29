@@ -112,6 +112,7 @@
   .public-mobile-footer ul > li + li { margin-top: 0; }
   .public-mobile-footer .mobile-footer-email { margin-left: 0; }
   .mobile-footer-email a { min-width: 0; }
+  .public-mobile-footer .mobile-footer-email a { display: flex; }
   .public-mobile-footer .mobile-social-links a { justify-content: center; }
   .mobile-scroll-dialog {
     width: calc(100% - 2rem);
