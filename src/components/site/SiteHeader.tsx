@@ -2,7 +2,7 @@ import { useCallback, useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import { ChevronDown, Menu, X } from "lucide-react";
 import { useMobileMenuScrollLock } from "@/hooks/useMobileMenuScrollLock";
-import { ABOUT_ITEMS, ALL_INDUSTRIES, ALL_SYSTEMS, BUSINESS, type NavLink } from "@/data/site/nav";
+import { ABOUT_NAV, BUSINESS, INDUSTRIES_NAV, RESOURCES_NAV, SERVICES_NAV, type NavLink } from "@/data/site/nav";
 import logo from "@/assets/site/logo-legacy-industrial.png";
 
 /**
@@ -124,7 +124,7 @@ const SiteHeader = () => {
 
   return (
     <>
-      {isMenuOpen && <div aria-hidden="true" className="h-16 lg:hidden" />}
+      {isMenuOpen && <div aria-hidden="true" className="h-16 xl:hidden" />}
       <header
         className={`lcf bg-background sticky top-0 z-50 border-b border-border${
           isMenuOpen ? " mobile-menu-panel" : ""
@@ -147,24 +147,25 @@ const SiteHeader = () => {
             </a>
 
             {/* Desktop */}
-            <nav className="hidden lg:flex items-center gap-8 xl:gap-10" aria-label="Main">
-              <Dropdown label="About" items={ABOUT_ITEMS} />
-              <Dropdown label="Industries" items={ALL_INDUSTRIES} columns={2} />
-              <Dropdown label="Systems" items={ALL_SYSTEMS} columns={2} />
-              <a href="/who-we-serve" className="relative group">
-                <span className={LINK_TEXT}>Who We Serve</span>
+            <nav className="hidden xl:flex items-center gap-7" aria-label="Main">
+              <Dropdown label="Services" items={SERVICES_NAV} />
+              <Dropdown label="Industries" items={INDUSTRIES_NAV} />
+              <a href="/commercial-case-studies" className="relative group">
+                <span className={LINK_TEXT}>Projects</span>
                 <span className={UNDERLINE} />
               </a>
-              <a href="/case-studies" className="relative group">
-                <span className={LINK_TEXT}>Case Studies</span>
+              <a href="/service-areas" className="relative group">
+                <span className={`${LINK_TEXT} whitespace-nowrap`}>Service Areas</span>
                 <span className={UNDERLINE} />
               </a>
+              <Dropdown label="Resources" items={RESOURCES_NAV} />
+              <Dropdown label="About" items={ABOUT_NAV} />
               <a
                 href="/contact"
                 onClick={goContact}
-                className="ml-2 border border-foreground text-foreground px-7 py-2.5 font-heading text-[12px] font-medium tracking-[0.2em] uppercase hover:bg-foreground hover:text-background transition-all duration-300"
+                className="ml-2 bg-foreground text-background border border-foreground px-6 py-2.5 font-heading text-[12px] font-medium tracking-[0.2em] uppercase hover:bg-background hover:text-foreground transition-all duration-300 whitespace-nowrap"
               >
-                Contact Us
+                Request a Bid
               </a>
             </nav>
 
@@ -174,7 +175,7 @@ const SiteHeader = () => {
               aria-label={isMenuOpen ? "Close menu" : "Open menu"}
               aria-expanded={isMenuOpen}
               aria-controls="mobile-navigation"
-              className="lg:hidden text-foreground flex items-center justify-center"
+              className="xl:hidden text-foreground flex items-center justify-center"
               onClick={() => setIsMenuOpen(!isMenuOpen)}
             >
               {isMenuOpen ? <X size={22} /> : <Menu size={22} />}
@@ -183,31 +184,24 @@ const SiteHeader = () => {
 
           {/* Mobile menu */}
           {isMenuOpen && (
-            <div id="mobile-navigation" className="mobile-menu-scroll lg:hidden border-t border-border bg-background">
+            <div id="mobile-navigation" className="mobile-menu-scroll xl:hidden border-t border-border bg-background">
               <nav className="flex flex-col items-center gap-8 px-6 py-10" aria-label="Mobile">
-                <MobileAccordion label="About" items={ABOUT_ITEMS} onNavigate={closeMenu} />
-                <MobileAccordion label="Industries" items={ALL_INDUSTRIES} onNavigate={closeMenu} />
-                <MobileAccordion label="Systems" items={ALL_SYSTEMS} onNavigate={closeMenu} />
-                <a
-                  href="/who-we-serve"
-                  onClick={closeMenu}
-                  className="font-heading text-xl font-light tracking-wide text-foreground"
-                >
-                  Who We Serve
+                <MobileAccordion label="Services" items={SERVICES_NAV} onNavigate={closeMenu} />
+                <MobileAccordion label="Industries" items={INDUSTRIES_NAV} onNavigate={closeMenu} />
+                <a href="/commercial-case-studies" onClick={closeMenu} className="font-heading text-xl font-light tracking-wide text-foreground">
+                  Projects
                 </a>
-                <a
-                  href="/case-studies"
-                  onClick={closeMenu}
-                  className="font-heading text-xl font-light tracking-wide text-foreground"
-                >
-                  Case Studies
+                <a href="/service-areas" onClick={closeMenu} className="font-heading text-xl font-light tracking-wide text-foreground">
+                  Service Areas
                 </a>
+                <MobileAccordion label="Resources" items={RESOURCES_NAV} onNavigate={closeMenu} />
+                <MobileAccordion label="About" items={ABOUT_NAV} onNavigate={closeMenu} />
                 <a
                   href="/contact"
                   onClick={goContact}
-                  className="border border-foreground text-foreground px-7 py-2.5 font-heading text-xs font-medium tracking-[0.2em] uppercase"
+                  className="bg-foreground text-background px-7 py-3 font-heading text-xs font-medium tracking-[0.2em] uppercase"
                 >
-                  Contact Us
+                  Request a Bid
                 </a>
                 <a
                   href={BUSINESS.phoneHref}

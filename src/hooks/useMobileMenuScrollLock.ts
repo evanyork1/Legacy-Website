@@ -12,7 +12,7 @@ export function useMobileMenuScrollLock(
 
   useLayoutEffect(() => {
     if (!isOpen) return;
-    const desktop = window.matchMedia("(min-width: 1024px)");
+    const desktop = window.matchMedia("(min-width: 1280px)");
     if (desktop.matches) {
       closeMenu();
       return;

@@ -81,7 +81,7 @@ export const SERVICE_AREA_CITIES: ServiceAreaCity[] = [
     commercialAngle:
       "We install industrial epoxy, urethane cement, mechanical polished concrete, and anti-static / ESD systems across Dallas warehouses, manufacturing plants, restaurants, hospitals, and retail buildouts. Our crews work directly with national GCs on ITB packages and handle night/weekend pours in occupied commercial buildings throughout the city.",
     residentialAngle:
-      "Older Dallas homes (Lakewood, M Streets, Preston Hollow) often have slabs that need crack repair and grinding before any coating goes down — we do that prep work in-house instead of skipping it like a one-day garage outfit.",
+      "Older Dallas homes (Lakewood, M Streets, Preston Hollow) often have slabs that need crack repair and grinding before any coating goes down — we do that prep work instead of skipping it like a one-day garage outfit.",
     landmarks: ["Design District", "Medical District", "Deep Ellum", "Preston Center"],
     zipCodes: ["75201", "75204", "75205", "75206", "75214", "75218", "75225", "75230"],
     faqs: baseFaqs("Dallas"),

@@ -69,13 +69,13 @@ const BlogPostPage = () => {
   return (
     <>
       <Helmet>
-        <title>{`${post.title} | Legacy Industrial Coatings`}</title>
+        <title>{post.metaTitle ?? `${post.title} | Legacy Industrial Coatings`}</title>
         <meta name="description" content={post.excerpt} />
         <link rel="canonical" href={canonical} />
         <meta name="robots" content="index, follow" />
 
         <meta property="og:type" content="article" />
-        <meta property="og:title" content={post.title} />
+        <meta property="og:title" content={post.metaTitle ?? post.title} />
         <meta property="og:description" content={post.excerpt} />
         <meta property="og:url" content={canonical} />
         <meta property="og:image" content={image} />
@@ -127,13 +127,13 @@ const BlogPostPage = () => {
 
               <img
                 src={post.featuredImage || post.image}
-                alt={post.title}
+                alt={post.featuredAlt ?? post.title}
                 className="w-full h-64 sm:h-96 object-cover rounded-xl shadow-lg mb-10"
                 loading="eager"
               />
 
               <div
-                className="prose prose-lg max-w-none prose-headings:text-gray-900 prose-p:text-gray-700 prose-li:text-gray-700 prose-strong:text-gray-900"
+                className="max-w-none text-[17px] leading-[1.85] text-gray-700 [&_p]:mb-5 [&_h2]:text-2xl [&_h2]:sm:text-3xl [&_h2]:font-bold [&_h2]:text-gray-900 [&_h2]:mt-12 [&_h2]:mb-4 [&_h2]:leading-tight [&_h3]:text-xl [&_h3]:font-semibold [&_h3]:text-gray-900 [&_h3]:mt-8 [&_h3]:mb-3 [&_ul]:list-disc [&_ul]:pl-6 [&_ul]:mb-6 [&_ol]:list-decimal [&_ol]:pl-6 [&_ol]:mb-6 [&_li]:mb-2 [&_strong]:text-gray-900 [&_a]:text-blue-700 [&_a]:underline [&_a]:underline-offset-2"
                 dangerouslySetInnerHTML={{ __html: post.content }}
               />
 
@@ -145,7 +145,11 @@ const BlogPostPage = () => {
                   <li><a href="/concrete-polishing" className="hover:underline">Polished concrete</a></li>
                   <li><a href="/commercial-carpet-tile" className="hover:underline">Commercial carpet tile</a></li>
                   <li><a href="/commercial-lvt-flooring" className="hover:underline">Commercial LVT &amp; LVP</a></li>
-                  <li><a href="/garagefloors" className="hover:underline">Garage floor coatings</a></li>
+                  {post.category === "Garage Floors" ? (
+                    <li><a href="/garagefloors" className="hover:underline">Garage floor coatings</a></li>
+                  ) : (
+                    <li><a href="/resources" className="hover:underline">Commercial flooring resource center</a></li>
+                  )}
                 </ul>
               </nav>
             </div>

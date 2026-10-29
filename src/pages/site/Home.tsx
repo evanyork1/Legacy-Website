@@ -216,18 +216,19 @@ const Home = () => {
             </div>
             <div className="relative max-w-7xl mx-auto px-6 md:px-8 lg:px-12 w-full">
               <p className="font-heading text-[12px] md:text-[13px] font-medium tracking-[0.3em] uppercase text-background/70 mb-4">
-                Commercial & Industrial Flooring
+                Dallas–Fort Worth · All of Texas · Nationwide
               </p>
               <h1 className="font-heading text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold text-background leading-[0.95] mb-6 md:mb-8 max-w-5xl text-balance">
-                Commercial Epoxy &amp; Polished Concrete
+                Commercial &amp; Industrial Flooring
               </h1>
               <div className="mb-8">
                 <StarRating />
               </div>
               <div className="flex flex-col sm:flex-row items-start sm:items-center gap-6 md:gap-10">
                 <p className="text-background/60 text-base md:text-xl font-body max-w-xl leading-relaxed">
-                  Resin, polished concrete, carpet tile and LVP installed for owners, GCs and facility teams —
-                  based in DFW, delivering multi-site programs nationwide.
+                  Commercial epoxy flooring, polished concrete, urethane cement and specialty floor coatings for
+                  warehouses, manufacturing facilities, data centers and commercial properties across Dallas, Fort Worth,
+                  all of Texas and nationwide.
                 </p>
                 <div className="flex flex-wrap gap-4">
                   <a
@@ -252,6 +253,45 @@ const Home = () => {
           <ProofBar />
 
           <ClientStrip />
+
+          {/* Systems */}
+          <section id="systems" className="py-24 md:py-40">
+            <div className="max-w-7xl mx-auto px-6 md:px-8 lg:px-12">
+              <SectionHeading
+                eyebrow="What We Install"
+                title="Flooring Solutions"
+                text="Epoxy, polished concrete, urethane cement, carpet tile and LVP, matched to the job, across DFW, all of Texas and nationwide."
+              />
+              <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
+                {SYSTEM_CARDS.map((s) => (
+                  <a key={s.path} href={s.path} className="block h-full">
+                    <div className="bg-background border border-border p-10 md:p-12 group hover:bg-secondary transition-colors duration-500 h-full">
+                      <s.icon
+                        size={24}
+                        className="text-foreground/30 mb-8 group-hover:text-foreground transition-colors duration-500"
+                        strokeWidth={1.5}
+                      />
+                      <h3 className="font-heading font-semibold text-[15px] uppercase tracking-[0.15em] text-foreground mb-4 group-hover:underline">
+                        {s.name}
+                      </h3>
+                      <p className="text-muted-foreground text-[14px] leading-[1.7] mb-6">{s.desc}</p>
+                      <span className="inline-flex items-center gap-2 font-heading text-[11px] tracking-[0.2em] uppercase text-foreground">
+                        Learn More <ArrowRight size={12} className="transition-transform group-hover:translate-x-1" />
+                      </span>
+                    </div>
+                  </a>
+                ))}
+              </div>
+              <a
+                href="/commercial"
+                className="inline-flex items-center gap-2 mt-10 font-heading text-[11px] tracking-[0.2em] uppercase text-foreground hover:underline"
+              >
+                See all commercial flooring <ArrowRight size={12} />
+              </a>
+            </div>
+          </section>
+
+          <InlineBookCTA />
 
           {/* Industries */}
           <section id="industries" className="py-24 md:py-40 bg-secondary">
@@ -317,45 +357,6 @@ const Home = () => {
               >
                 Explore Data Center Flooring
                 <ArrowRight size={14} className="transition-transform group-hover:translate-x-1" />
-              </a>
-            </div>
-          </section>
-
-          <InlineBookCTA />
-
-          {/* Systems */}
-          <section id="systems" className="py-24 md:py-40">
-            <div className="max-w-7xl mx-auto px-6 md:px-8 lg:px-12">
-              <SectionHeading
-                eyebrow="What We Install"
-                title="Flooring Solutions"
-                text="Resin, polished concrete, carpet tile and LVP — specified to the job and installed by our own crews, in DFW and nationwide."
-              />
-              <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
-                {SYSTEM_CARDS.map((s) => (
-                  <a key={s.path} href={s.path} className="block h-full">
-                    <div className="bg-background border border-border p-10 md:p-12 group hover:bg-secondary transition-colors duration-500 h-full">
-                      <s.icon
-                        size={24}
-                        className="text-foreground/30 mb-8 group-hover:text-foreground transition-colors duration-500"
-                        strokeWidth={1.5}
-                      />
-                      <h3 className="font-heading font-semibold text-[15px] uppercase tracking-[0.15em] text-foreground mb-4 group-hover:underline">
-                        {s.name}
-                      </h3>
-                      <p className="text-muted-foreground text-[14px] leading-[1.7] mb-6">{s.desc}</p>
-                      <span className="inline-flex items-center gap-2 font-heading text-[11px] tracking-[0.2em] uppercase text-foreground">
-                        Learn More <ArrowRight size={12} className="transition-transform group-hover:translate-x-1" />
-                      </span>
-                    </div>
-                  </a>
-                ))}
-              </div>
-              <a
-                href="/commercial"
-                className="inline-flex items-center gap-2 mt-10 font-heading text-[11px] tracking-[0.2em] uppercase text-foreground hover:underline"
-              >
-                See all commercial flooring <ArrowRight size={12} />
               </a>
             </div>
           </section>

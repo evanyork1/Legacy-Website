@@ -1,4 +1,5 @@
 import { supabase } from "@/integrations/supabase/client";
+import { ARTICLES, type StaticArticle } from "@/data/articles";
 
 export interface BlogPost {
   id: string;
@@ -19,6 +20,9 @@ export interface BlogPost {
   location?: string;
   tags?: string[];
   featured?: boolean;
+  /** Search title when it differs from the headline. */
+  metaTitle?: string;
+  featuredAlt?: string;
 }
 
 export const BLOG_CATEGORIES = [
@@ -104,7 +108,27 @@ const mapRow = (row: BlogPostRow): BlogPost => {
   };
 };
 
-export const fetchSortedPosts = async (): Promise<BlogPost[]> => {
+/** Articles that live in the code (src/data/articles) and override same-slug database posts. */
+const fromStatic = (a: StaticArticle): BlogPost => ({
+  id: `static-${a.slug}`,
+  slug: a.slug,
+  title: a.title,
+  metaTitle: a.metaTitle,
+  excerpt: a.excerpt,
+  content: a.content,
+  category: a.category,
+  featuredImage: a.featuredImage,
+  featuredAlt: a.featuredAlt,
+  image: a.featuredImage,
+  author: "Legacy Industrial Coatings",
+  publishedDate: a.publishedDate,
+  date: formatDate(a.publishedDate),
+  readTime: a.readTime,
+  tags: a.tags,
+});
+export const STATIC_POSTS: BlogPost[] = ARTICLES.map(fromStatic);
+
+const fetchDbPosts = async (): Promise<BlogPost[]> => {
   const { data, error } = await supabase
     .from("blog_posts")
     .select("id, slug, title, excerpt, content, category, featured_image, author, published_date, published")
@@ -118,7 +142,17 @@ export const fetchSortedPosts = async (): Promise<BlogPost[]> => {
   return (data ?? []).map(mapRow);
 };
 
+export const fetchSortedPosts = async (): Promise<BlogPost[]> => {
+  const db = await fetchDbPosts();
+  const staticSlugs = new Set(STATIC_POSTS.map((p) => p.slug));
+  return [...STATIC_POSTS, ...db.filter((p) => !staticSlugs.has(p.slug))].sort((a, b) =>
+    b.publishedDate.localeCompare(a.publishedDate),
+  );
+};
+
 export const fetchPostBySlug = async (slug: string): Promise<BlogPost | null> => {
+  const local = STATIC_POSTS.find((p) => p.slug === slug);
+  if (local) return local;
   const { data, error } = await supabase
     .from("blog_posts")
     .select("id, slug, title, excerpt, content, category, featured_image, author, published_date, published")

@@ -44,7 +44,7 @@ const LinkCards = ({ items }: { items: { label: string; url: string; text: strin
 const WHY = [
   "Testing first: moisture and surface-profile testing before a system is chosen",
   "Night, weekend and phased work in occupied buildings",
-  "In-house diamond grinding, shot blasting, crack and joint repair",
+  "Diamond grinding, shot blasting, crack and joint repair",
   "General liability and workers' comp on every job; OSHA-compliant crews",
   "Spec-grade, manufacturer-warranted Legacy systems, installed to the basis of design",
   "Site walk within 1–3 business days; full bid within 24 hours of receiving plans",

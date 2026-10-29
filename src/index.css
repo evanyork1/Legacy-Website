@@ -34,7 +34,7 @@
 @media (prefers-reduced-motion: reduce) { .lcf-marquee { animation: none; } }
 
 /* Only the open mobile navigation becomes a viewport-sized scroll panel. */
-@media (max-width: 1023px) {
+@media (max-width: 1279px) {
   .mobile-menu-panel {
     position: fixed;
     inset: 0;

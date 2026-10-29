@@ -258,15 +258,14 @@ const CountUp = ({ to, prefix = "", suffix = "" }: { to: number; prefix?: string
 export const ProofBar = () => (
   <section className="lcf bg-background border-b border-border">
     <div className="max-w-7xl mx-auto px-6 md:px-8 lg:px-12">
-      <div className="grid grid-cols-2 md:grid-cols-5 gap-px bg-border">
+      <div className="grid grid-cols-2 md:grid-cols-4 gap-px bg-border">
         {[
-          { v: <>$<CountUp to={5} />M</>, l: "Bonding Capacity" },
+          { v: <CountUp to={3600} suffix="+" />, l: "Jobs Completed" },
           { v: <CountUp to={201} suffix="+" />, l: "Five-Star Reviews" },
-          { v: <><CountUp to={24} /> hrs</>, l: "Bid After Plans" },
-          { v: "1–3 days", l: "Site Walk" },
-          { v: "10K–1M SF", l: "Project Range" },
-        ].map((s, i) => (
-          <div key={s.l} className={`bg-background py-8 px-4 text-center ${i === 4 ? "col-span-2 md:col-span-1" : ""}`}>
+          { v: <>$<CountUp to={5} />M</>, l: "Bonding Capacity" },
+          { v: "1K–1M+ SF", l: "Project Range" },
+        ].map((s) => (
+          <div key={s.l} className="bg-background py-8 px-4 text-center">
             <div className="font-heading text-2xl md:text-3xl font-bold text-foreground">{s.v}</div>
             <div className="font-heading text-[11px] uppercase tracking-[0.2em] text-muted-foreground mt-2">{s.l}</div>
           </div>

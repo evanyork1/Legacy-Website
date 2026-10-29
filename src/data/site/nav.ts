@@ -114,6 +114,45 @@ export const SYSTEM_GROUPS: NavGroup[] = [
   },
 ];
 
+/** Main menu: a short list per dropdown. Every page stays linked from /services, /who-we-serve and the footer. */
+export const SERVICES_NAV: NavLink[] = [
+  { label: "Commercial Epoxy Flooring", path: "/commercial" },
+  { label: "Industrial Epoxy Flooring", path: "/industrial-epoxy" },
+  { label: "Polished Concrete", path: "/concrete-polishing" },
+  { label: "Urethane Cement", path: "/urethane-cement-flooring" },
+  { label: "Specialty Coatings", path: "/services#specialty" },
+  { label: "Repairs & Prep", path: "/services#repairs" },
+  { label: "Line Striping", path: "/line-striping" },
+  { label: "All Services", path: "/services" },
+];
+
+export const INDUSTRIES_NAV: NavLink[] = [
+  { label: "Warehousing & Distribution", path: "/warehouse-flooring" },
+  { label: "Manufacturing", path: "/manufacturing-floor-coating" },
+  { label: "Food Processing", path: "/food-processing-flooring" },
+  { label: "Aviation & Hangars", path: "/aerospace-hangar-flooring" },
+  { label: "Data Centers", path: "/data-center-flooring" },
+  { label: "Healthcare", path: "/healthcare-flooring" },
+  { label: "All Industries", path: "/industries" },
+];
+
+export const RESOURCES_NAV: NavLink[] = [
+  { label: "Resource Center", path: "/resources" },
+  { label: "Blog", path: "/blog" },
+  { label: "Pricing Guides", path: "/resources#pricing" },
+  { label: "Floor Comparisons", path: "/resources#comparisons" },
+  { label: "Capability Packet", path: "/capability-packet" },
+];
+
+export const ABOUT_NAV: NavLink[] = [
+  { label: "Company", path: "/about" },
+  { label: "Our Process", path: "/our-process" },
+  { label: "Capabilities", path: "/capability-packet" },
+  { label: "Reviews", path: "/reviews" },
+  { label: "Careers", path: "/careers" },
+  { label: "Contact", path: "/contact" },
+];
+
 export const ALL_INDUSTRIES: NavLink[] = INDUSTRY_GROUPS.flatMap((g) => g.items);
 export const ALL_SYSTEMS: NavLink[] = SYSTEM_GROUPS.flatMap((g) => g.items);
 

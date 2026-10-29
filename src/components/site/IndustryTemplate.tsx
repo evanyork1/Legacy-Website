@@ -30,7 +30,7 @@ const IndustryTemplate = ({ industry }: { industry?: IndustryPageData }) => {
   const systemLinks = ALL_SYSTEMS.filter((s) => industry.areas.some((a) => a.link === s.path));
   const crumbs = [
     { name: "Home", url: "/" },
-    { name: "Industries", url: "/who-we-serve" },
+    { name: "Industries", url: "/industries" },
     { name: industry.name, url: industry.path },
   ];
   const others = ALL_INDUSTRIES.filter((i) => i.path !== industry.path)

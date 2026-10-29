@@ -217,6 +217,21 @@ export const SEO_META: Record<string, { title: string; description: string }> = 
     description:
       "Floors for agricultural, packing and food facilities that get washed down daily: urethane cement, epoxy and cove base. DFW, all of Texas and nationwide.",
   },
+  "/services": {
+    title: `Commercial & Industrial Flooring Services | Epoxy, Polished Concrete & Coatings | ${B}`,
+    description:
+      "Every floor we install: commercial and industrial epoxy, polished concrete, urethane cement, specialty coatings, repairs, striping, carpet tile and LVT. DFW, all of Texas and nationwide.",
+  },
+  "/industries": {
+    title: `Industries We Serve | Warehouse, Manufacturing, Food, Data Center Flooring | ${B}`,
+    description:
+      "Flooring for warehouses, manufacturing, food processing, aviation, data centers, healthcare, restaurants, retail and more. DFW, all of Texas and nationwide.",
+  },
+  "/resources": {
+    title: `Commercial Flooring Resource Center | Costs, Comparisons & Guides | ${B}`,
+    description:
+      "Straight answers on commercial epoxy and polished concrete costs, floor comparisons, forklift and kitchen floors, ESD testing and install timelines.",
+  },
   "/who-we-serve": {
     title: `Industries We Serve | Commercial & Industrial Flooring | ${B}`,
     description:
