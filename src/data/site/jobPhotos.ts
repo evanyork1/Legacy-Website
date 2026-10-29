@@ -96,8 +96,8 @@ export const PAGE_BEFORE_AFTER: Record<string, { before: Photo; after: Photo; ca
   "/commercial": { before: JOB.shinyBefore, after: JOB.shinyAfter, caption: "Bare concrete to a high-gloss epoxy floor in a metal warehouse building." },
   "/warehouse-flooring": { before: JOB.shinyBefore, after: JOB.shinyAfter, caption: "Bare concrete to a high-gloss epoxy floor in a metal warehouse building." },
   "/aerospace-hangar-flooring": { before: JOB.shinyBefore, after: JOB.shinyAfter, caption: "Bare concrete to a bright, high-gloss epoxy floor in a metal building." },
-  "/secondary-containment-coatings": { before: JOB.containBefore, after: JOB.containAfter, caption: "Data center transformer containment pit, before and after a watertight coating." },
-  "/data-center-flooring": { before: JOB.containBefore, after: JOB.containAfter, caption: "Transformer containment pit at a data center, before and after a watertight coating." },
+  "/secondary-containment-coatings": { before: JOB.containBefore, after: JOB.containAfter, caption: "Irving, TX data center transformer containment pit, before and after a watertight coating." },
+  "/data-center-flooring": { before: JOB.containBefore, after: JOB.containAfter, caption: "Transformer containment pit at an Irving, TX data center, before and after a watertight coating." },
 };
 
 /** Short job videos shown on a page. */
