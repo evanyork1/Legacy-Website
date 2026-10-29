@@ -1,19 +1,58 @@
 import { Helmet } from "react-helmet-async";
-import { useParams, useNavigate, Navigate } from "react-router-dom";
+import { useParams, Navigate, Link } from "react-router-dom";
 import { useState } from "react";
+import { ArrowLeft, X } from "lucide-react";
 import SiteHeader from "@/components/site/SiteHeader";
 import SiteFooter from "@/components/site/SiteFooter";
-import { Button } from "@/components/ui/button";
-import { Card, CardContent } from "@/components/ui/card";
-import { ArrowLeft, Calendar, Phone, MapPin, Wrench, Ruler, Clock, CheckCircle2, X } from "lucide-react";
-import { BookingModal } from "@/components/landing/BookingModal";
+import { Eyebrow, PageHero } from "@/components/site/sections";
 import { getCaseStudyBySlug } from "@/data/caseStudies";
+
+type Photo = { src: string; alt: string };
+
+const WRAP = "max-w-7xl mx-auto px-6 md:px-8 lg:px-12";
+const H2 = "font-heading text-3xl md:text-[2.5rem] font-bold text-foreground leading-[1.1] text-balance";
+
+const PhotoGrid = ({
+  label,
+  title,
+  photos,
+  onOpen,
+}: {
+  label: string;
+  title: string;
+  photos: Photo[];
+  onOpen: (p: Photo) => void;
+}) => (
+  <div>
+    <Eyebrow>{label}</Eyebrow>
+    <h2 className={`${H2} mb-8`}>{title}</h2>
+    <div className="grid grid-cols-2 md:grid-cols-3 gap-3 md:gap-4">
+      {photos.map((p, i) => (
+        <button
+          key={p.src + i}
+          type="button"
+          onClick={() => onOpen(p)}
+          aria-label={`Enlarge photo: ${p.alt}`}
+          className="aspect-square overflow-hidden bg-muted cursor-zoom-in focus:outline-none focus-visible:ring-2 focus-visible:ring-foreground focus-visible:ring-offset-2"
+        >
+          <img
+            src={p.src}
+            alt={p.alt}
+            loading="eager"
+            decoding="async"
+            width={600}
+            height={600}
+            className="w-full h-full object-cover transition-opacity duration-300 hover:opacity-90"
+          />
+        </button>
+      ))}
+    </div>
+  </div>
+);
 
 const CaseStudyDetail = () => {
   const { slug } = useParams<{ slug: string }>();
-  const navigate = useNavigate();
-  const [showBookingModal, setShowBookingModal] = useState(false);
-  const [lightbox, setLightbox] = useState<{ src: string; alt: string } | null>(null);
+  const [lightbox, setLightbox] = useState<Photo | null>(null);
 
   const cs = slug ? getCaseStudyBySlug(slug) : undefined;
   if (!cs) return <Navigate to="/case-studies" replace />;
@@ -50,38 +89,29 @@ const CaseStudyDetail = () => {
     ],
   };
 
-  const PhotoGrid = ({
-    title,
-    photos,
-  }: {
-    title: string;
-    photos: { src: string; alt: string }[];
-  }) => (
-    <div>
-      <div className="mb-6">
-        <h2 className="text-2xl lg:text-3xl font-bold text-gray-900">{title}</h2>
-      </div>
-      <div className="grid grid-cols-2 md:grid-cols-3 gap-3 md:gap-4">
-        {photos.map((p, i) => (
-          <button
-            key={i}
-            onClick={() => setLightbox(p)}
-            className="aspect-square overflow-hidden rounded-md bg-slate-100 group focus:outline-none focus:ring-2 focus:ring-blue-600"
-          >
-            <img
-              src={p.src}
-              alt={p.alt}
-              loading="eager"
-              className="w-full h-full object-cover group-hover:scale-[1.03] transition-transform duration-500"
-            />
-          </button>
-        ))}
-      </div>
-    </div>
-  );
+  const categoryLabel = cs.category === "residential" ? "Residential Case Studies" : "Commercial Case Studies";
+  const crumbs = [
+    { name: "Home", url: "/" },
+    { name: "Case Studies", url: "/case-studies" },
+    { name: categoryLabel, url: `/${caseStudyPath}` },
+    { name: cs.title, url: `/${caseStudyPath}/${cs.slug}` },
+  ];
+
+  const facts = [
+    { label: "Location", value: cs.location },
+    { label: "Service", value: cs.serviceType },
+    { label: "Scope", value: cs.squareFootage },
+    { label: "Timeline", value: cs.timeline },
+  ].filter((f) => !!f.value);
+
+  const story = [
+    { label: "01", title: "The Challenge", paragraphs: cs.challenge },
+    { label: "02", title: "Our Approach", paragraphs: cs.solution },
+    { label: "03", title: "The Result", paragraphs: cs.result },
+  ];
 
   return (
-    <div className="min-h-screen bg-white">
+    <div className="lcf min-h-screen bg-background">
       <Helmet>
         <title>{cs.metaTitle}</title>
         <meta name="description" content={cs.metaDescription} />
@@ -97,180 +127,142 @@ const CaseStudyDetail = () => {
 
       <SiteHeader />
 
-      <main className="pt-0 md:pt-24">
-        {/* Back link above hero */}
-        <div className="container mx-auto px-4 max-w-6xl pt-6 pb-4">
-          <button
-            onClick={() => navigate(cs.category === "residential" ? "/residential-case-studies" : "/commercial-case-studies")}
-            className="inline-flex items-center text-gray-900 hover:text-blue-700 text-sm font-medium transition-colors"
-          >
-            <ArrowLeft className="mr-2 h-4 w-4" /> All Case Studies
-          </button>
-        </div>
+      <main>
+        <PageHero
+          eyebrow={cs.tag}
+          title={cs.title}
+          subhead={cs.summary}
+          image={cs.heroImage}
+          imageAlt={cs.heroAlt}
+          crumbs={crumbs}
+        />
 
-        {/* Hero */}
-        <section className="relative">
-          <div className="relative h-[55vh] min-h-[420px] w-full overflow-hidden">
-            <img src={cs.heroImage} alt={cs.heroAlt} className="w-full h-full object-cover"  loading="eager" decoding="async" />
-            <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-black/20" />
-            <div className="absolute inset-0 flex items-end">
-              <div className="container mx-auto px-4 max-w-6xl pb-12">
-                <span className="inline-block bg-blue-600 text-white text-xs font-semibold px-3 py-1 rounded-md mb-4 uppercase tracking-wide">
-                  {cs.tag}
-                </span>
-                <h1 className="text-3xl md:text-5xl font-bold text-white max-w-4xl leading-tight">
-                  {cs.title}
-                </h1>
-              </div>
-            </div>
+        {/* Project facts */}
+        <section className="border-b border-border">
+          <div className={`${WRAP} py-10 md:py-12`}>
+            <dl className={`grid grid-cols-2 ${facts.length === 4 ? "md:grid-cols-4" : "md:grid-cols-3"} gap-px bg-border border border-border`}>
+              {facts.map((f, i) => (
+                <div
+                  key={f.label}
+                  className={`bg-background p-5 md:p-6 min-w-0 ${facts.length % 2 === 1 && i === facts.length - 1 ? "col-span-2 md:col-span-1" : ""}`}
+                >
+                  <dt className="font-heading text-[11px] tracking-[0.2em] uppercase text-muted-foreground mb-2">{f.label}</dt>
+                  <dd className="font-heading text-[15px] md:text-[16px] font-semibold text-foreground leading-snug break-words">{f.value}</dd>
+                </div>
+              ))}
+            </dl>
           </div>
         </section>
 
-        {/* Project Facts */}
-        <section className="py-10 bg-slate-50 border-b border-slate-200">
-          <div className="container mx-auto px-4 max-w-6xl">
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
-              <div className="flex items-start gap-3">
-                <MapPin className="h-5 w-5 text-blue-700 mt-0.5 shrink-0" />
-                <div>
-                  <p className="text-xs uppercase tracking-wide text-gray-500 font-semibold">Location</p>
-                  <p className="text-sm text-gray-900 font-medium">{cs.location}</p>
-                </div>
-              </div>
-              <div className="flex items-start gap-3">
-                <Wrench className="h-5 w-5 text-blue-700 mt-0.5 shrink-0" />
-                <div>
-                  <p className="text-xs uppercase tracking-wide text-gray-500 font-semibold">Service</p>
-                  <p className="text-sm text-gray-900 font-medium">{cs.serviceType}</p>
-                </div>
-              </div>
-              <div className="flex items-start gap-3">
-                <Ruler className="h-5 w-5 text-blue-700 mt-0.5 shrink-0" />
-                <div>
-                  <p className="text-xs uppercase tracking-wide text-gray-500 font-semibold">Scope</p>
-                  <p className="text-sm text-gray-900 font-medium">{cs.squareFootage}</p>
-                </div>
-              </div>
-              {cs.timeline && (
-                <div className="flex items-start gap-3">
-                  <Clock className="h-5 w-5 text-blue-700 mt-0.5 shrink-0" />
-                  <div>
-                    <p className="text-xs uppercase tracking-wide text-gray-500 font-semibold">Timeline</p>
-                    <p className="text-sm text-gray-900 font-medium">{cs.timeline}</p>
+        {/* Story: Challenge / Approach / Result */}
+        <section className="py-16 md:py-24">
+          <div className={WRAP}>
+            <div className="divide-y divide-border border-y border-border">
+              {story.map((s) => (
+                <div key={s.title} className="grid lg:grid-cols-12 gap-4 lg:gap-12 py-10 md:py-14">
+                  <div className="lg:col-span-4">
+                    <p className="font-heading text-[11px] tracking-[0.2em] uppercase text-muted-foreground mb-3">{s.label}</p>
+                    <h2 className={H2}>{s.title}</h2>
+                  </div>
+                  <div className="lg:col-span-8 max-w-3xl">
+                    {s.paragraphs.map((p, i) => (
+                      <p key={i} className="text-muted-foreground font-body text-[16px] leading-[1.85] mb-6 last:mb-0">
+                        {p}
+                      </p>
+                    ))}
                   </div>
                 </div>
-              )}
-            </div>
-          </div>
-        </section>
-
-        {/* Story: Challenge / Solution / Result */}
-        <section className="py-16 bg-white">
-          <div className="container mx-auto px-4 max-w-4xl">
-            <div className="space-y-12">
-              <div>
-                <h2 className="text-2xl lg:text-3xl font-bold text-gray-900 mb-4">The Challenge</h2>
-                <div className="prose prose-lg max-w-none text-gray-700 space-y-4 leading-relaxed">
-                  {cs.challenge.map((p, i) => (<p key={i}>{p}</p>))}
-                </div>
-              </div>
-              <div>
-                <h2 className="text-2xl lg:text-3xl font-bold text-gray-900 mb-4">Our Approach</h2>
-                <div className="prose prose-lg max-w-none text-gray-700 space-y-4 leading-relaxed">
-                  {cs.solution.map((p, i) => (<p key={i}>{p}</p>))}
-                </div>
-              </div>
-              <div>
-                <h2 className="text-2xl lg:text-3xl font-bold text-gray-900 mb-4">The Result</h2>
-                <div className="prose prose-lg max-w-none text-gray-700 space-y-4 leading-relaxed">
-                  {cs.result.map((p, i) => (<p key={i}>{p}</p>))}
-                </div>
-              </div>
+              ))}
             </div>
           </div>
         </section>
 
         {/* Before */}
-        <section className="py-16 bg-slate-50 border-y border-slate-200">
-          <div className="container mx-auto px-4 max-w-6xl">
-            <PhotoGrid title="Before" photos={cs.beforePhotos} />
-          </div>
-        </section>
+        {cs.beforePhotos.length > 0 && (
+          <section className="py-16 md:py-24 bg-secondary border-y border-border">
+            <div className={WRAP}>
+              <PhotoGrid label="Photos" title="Before" photos={cs.beforePhotos} onOpen={setLightbox} />
+            </div>
+          </section>
+        )}
 
         {/* During */}
         {cs.duringPhotos.length > 0 && (
-          <section className="py-16 bg-white">
-            <div className="container mx-auto px-4 max-w-6xl">
-              <PhotoGrid title="During" photos={cs.duringPhotos} />
+          <section className="py-16 md:py-24">
+            <div className={WRAP}>
+              <PhotoGrid label="Photos" title="During" photos={cs.duringPhotos} onOpen={setLightbox} />
             </div>
           </section>
         )}
 
         {cs.video && (
-          <section className="py-16 bg-white">
-            <div className="container mx-auto px-4 max-w-6xl">
-              <h2 className="text-2xl lg:text-3xl font-bold text-gray-900 mb-6">On the Job</h2>
-              <video src={cs.video.src} poster={cs.video.poster} muted loop playsInline autoPlay preload="none" controls className="w-full max-w-sm aspect-[9/16] object-cover rounded-md bg-slate-100" aria-label={cs.video.caption} />
-              <p className="text-sm text-gray-500 mt-3">{cs.video.caption}</p>
+          <section className="py-16 md:py-24 border-t border-border">
+            <div className={`${WRAP} grid md:grid-cols-2 gap-8 md:gap-12 items-center`}>
+              <video
+                src={cs.video.src}
+                poster={cs.video.poster}
+                muted
+                loop
+                playsInline
+                autoPlay
+                preload="none"
+                controls
+                className="w-full max-w-sm mx-auto md:mx-0 aspect-[9/16] object-cover bg-muted"
+                aria-label={cs.video.caption}
+              />
+              <div>
+                <Eyebrow>Video</Eyebrow>
+                <h2 className={`${H2} mb-4`}>On the Job</h2>
+                <p className="text-muted-foreground text-[16px] leading-[1.85]">{cs.video.caption}</p>
+              </div>
             </div>
           </section>
         )}
 
         {/* After */}
-        <section className="py-16 bg-slate-50 border-y border-slate-200">
-          <div className="container mx-auto px-4 max-w-6xl">
-            <PhotoGrid title="After" photos={cs.afterPhotos} />
-          </div>
-        </section>
-
-        {/* Key Takeaways section removed — was restaurant-specific and didn't apply across studies */}
-
-        {/* CTA */}
-        <section className="py-16 bg-slate-900 text-white">
-          <div className="container mx-auto px-4 max-w-4xl text-center">
-            <h2 className="text-3xl lg:text-4xl font-bold mb-4">
-              Is your space in need of a new flooring solution?
-            </h2>
-            <p className="text-lg text-slate-300 mb-8 max-w-2xl mx-auto">
-              Whatever your facility, surface, or timeline — we'll come take a look and put together a clear plan built for how your space actually gets used.
-            </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Button
-                onClick={() => setShowBookingModal(true)}
-                size="lg"
-                className="bg-blue-600 hover:bg-blue-700 text-white"
-              >
-                <Calendar className="mr-2 h-5 w-5" /> Book An Estimate
-              </Button>
-              <a href="tel:2143056516">
-                <Button
-                  size="lg"
-                  variant="outline"
-                  className="bg-white border-white text-slate-900 hover:bg-slate-100 hover:text-slate-900"
-                >
-                  <Phone className="mr-2 h-5 w-5" /> 214-305-6516
-                </Button>
-              </a>
+        {cs.afterPhotos.length > 0 && (
+          <section className="py-16 md:py-24 bg-secondary border-y border-border">
+            <div className={WRAP}>
+              <PhotoGrid label="Photos" title="After" photos={cs.afterPhotos} onOpen={setLightbox} />
             </div>
-          </div>
-        </section>
+          </section>
+        )}
+
+        <div className={`${WRAP} py-10`}>
+          <Link
+            to={`/${caseStudyPath}`}
+            className="inline-flex items-center gap-2 font-heading text-[12px] tracking-[0.2em] uppercase text-foreground hover:underline"
+          >
+            <ArrowLeft size={12} /> All {categoryLabel.toLowerCase()}
+          </Link>
+        </div>
       </main>
 
-      <SiteFooter />
-      <BookingModal isOpen={showBookingModal} onClose={() => setShowBookingModal(false)} />
+      <SiteFooter
+        cta={{
+          title: "Is your space in need of a new flooring solution?",
+          text: "Whatever your facility, surface, or timeline — we'll come take a look and put together a clear plan built for how your space actually gets used.",
+        }}
+      />
 
       {/* Lightbox */}
       {lightbox && (
         <div
           onClick={() => setLightbox(null)}
-          className="fixed inset-0 z-[100] bg-black/90 flex items-center justify-center p-4 cursor-zoom-out"
+          role="dialog"
+          aria-modal="true"
+          aria-label={lightbox.alt}
+          className="lcf fixed inset-0 z-[100] bg-foreground/95 flex items-center justify-center p-4 cursor-zoom-out"
         >
-          <Button variant="ghost" size="icon" aria-label="Close photo" onClick={() => setLightbox(null)} className="absolute right-4 top-[calc(1rem+env(safe-area-inset-top,0px))] z-10 md:hidden text-primary-foreground"><X /></Button>
-          <img
-            src={lightbox.src}
-            alt={lightbox.alt}
-            className="max-w-full max-h-full object-contain rounded-md"
-           loading="eager" decoding="async" />
+          <button
+            type="button"
+            aria-label="Close photo"
+            onClick={() => setLightbox(null)}
+            className="absolute right-4 top-[calc(1rem+env(safe-area-inset-top,0px))] z-10 inline-flex h-10 w-10 items-center justify-center border border-background/40 text-background hover:bg-background hover:text-foreground transition-colors"
+          >
+            <X size={18} />
+          </button>
+          <img src={lightbox.src} alt={lightbox.alt} className="max-w-full max-h-full object-contain" loading="eager" decoding="async" />
         </div>
       )}
     </div>

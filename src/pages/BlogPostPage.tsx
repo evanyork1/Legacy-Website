@@ -2,14 +2,35 @@ import { useEffect, useState } from "react";
 import { Helmet } from "react-helmet-async";
 import { PageBreadcrumbs } from "@/components/seo/PageBreadcrumbs";
 import { Link, useParams } from "react-router-dom";
-import { Calendar, MapPin, ArrowLeft } from "lucide-react";
+import { ArrowLeft, ArrowRight } from "lucide-react";
 import SiteHeader from "@/components/site/SiteHeader";
 import SiteFooter from "@/components/site/SiteFooter";
-import { Badge } from "@/components/ui/badge";
 import { fetchPostBySlug, type BlogPost } from "@/data/blogPosts";
 import NotFound from "./NotFound";
 
 const SITE_URL = "https://legacyindustrialcoatings.com";
+
+const LABEL = "font-heading text-[11px] tracking-[0.2em] uppercase text-muted-foreground";
+
+const ARTICLE_BODY = [
+  "max-w-none font-body text-[16px] md:text-[17px] leading-[1.85] text-muted-foreground break-words",
+  "[&_p]:mb-6",
+  "[&_h2]:font-heading [&_h2]:text-2xl [&_h2]:md:text-3xl [&_h2]:font-bold [&_h2]:text-foreground [&_h2]:mt-14 [&_h2]:mb-5 [&_h2]:leading-[1.15]",
+  "[&_h3]:font-heading [&_h3]:text-xl [&_h3]:font-semibold [&_h3]:text-foreground [&_h3]:mt-10 [&_h3]:mb-3 [&_h3]:leading-snug",
+  "[&_h4]:font-heading [&_h4]:font-semibold [&_h4]:text-foreground [&_h4]:mt-8 [&_h4]:mb-2",
+  "[&_ul]:list-disc [&_ul]:pl-6 [&_ul]:mb-6 [&_ol]:list-decimal [&_ol]:pl-6 [&_ol]:mb-6 [&_li]:mb-2 [&_li]:pl-1",
+  "[&_strong]:text-foreground [&_strong]:font-semibold",
+  "[&_a]:text-foreground [&_a]:underline [&_a]:underline-offset-4 [&_a]:decoration-border [&_a:hover]:decoration-foreground",
+  "[&_blockquote]:border-l [&_blockquote]:border-foreground [&_blockquote]:pl-6 [&_blockquote]:my-8 [&_blockquote]:text-foreground",
+  "[&_img]:w-full [&_img]:h-auto [&_img]:my-8",
+  "[&_table]:block [&_table]:w-full [&_table]:overflow-x-auto [&_table]:my-8 [&_table]:border [&_table]:border-border [&_table]:text-[14px]",
+  "[&_th]:bg-secondary [&_th]:text-foreground [&_th]:font-heading [&_th]:text-left [&_th]:p-3 [&_th]:border-b [&_th]:border-border",
+  "[&_td]:p-3 [&_td]:border-t [&_td]:border-border [&_td]:align-top",
+  "[&_hr]:border-border [&_hr]:my-12",
+].join(" ");
+
+const RELATED_LINK =
+  "group flex items-center justify-between gap-3 px-5 py-4 font-heading text-[14px] text-foreground hover:bg-secondary hover:underline transition-colors";
 
 const BlogPostPage = () => {
   const { slug } = useParams<{ slug: string }>();
@@ -34,10 +55,10 @@ const BlogPostPage = () => {
 
   if (loading) {
     return (
-      <div className="min-h-screen bg-white">
+      <div className="lcf min-h-screen bg-background">
         <SiteHeader />
-        <div className="container mx-auto px-4 py-24 text-center text-gray-500">
-          Loading article…
+        <div className="max-w-3xl mx-auto px-6 md:px-8 py-24 md:py-32">
+          <p className={LABEL}>Loading article…</p>
         </div>
         <SiteFooter />
       </div>
@@ -66,6 +87,16 @@ const BlogPostPage = () => {
     mainEntityOfPage: canonical,
   };
 
+  const related = [
+    { label: "Commercial & industrial epoxy flooring", path: "/commercial" },
+    { label: "Polished concrete", path: "/concrete-polishing" },
+    { label: "Commercial carpet tile", path: "/commercial-carpet-tile" },
+    { label: "Commercial LVT & LVP", path: "/commercial-lvt-flooring" },
+    post.category === "Garage Floors"
+      ? { label: "Garage floor coatings", path: "/garagefloors" }
+      : { label: "Commercial flooring resource center", path: "/resources" },
+  ];
+
   return (
     <>
       <Helmet>
@@ -91,68 +122,71 @@ const BlogPostPage = () => {
 
       <PageBreadcrumbs items={[{ name: "Home", url: "/" }, { name: "Blog", url: "/blog" }, { name: post.title, url: `/blog/${post.slug}` }]} />
 
-      <div className="min-h-screen bg-white">
+      <div className="lcf min-h-screen bg-background">
         <SiteHeader />
 
-        <article className="py-16 sm:py-20">
-          <div className="container mx-auto px-4">
-            <div className="max-w-4xl mx-auto">
+        <article>
+          <header className="pt-12 md:pt-20 pb-10 md:pb-12">
+            <div className="max-w-3xl mx-auto px-6 md:px-8">
               <Link
                 to="/blog"
-                className="inline-flex items-center gap-2 text-blue-600 hover:text-blue-700 mb-8"
+                className="inline-flex items-center gap-2 font-heading text-[11px] tracking-[0.2em] uppercase text-muted-foreground hover:text-foreground transition-colors mb-10"
               >
-                <ArrowLeft className="h-4 w-4" />
+                <ArrowLeft size={12} />
                 Back to Blog
               </Link>
 
-              <div className="flex flex-wrap items-center gap-3 mb-4">
-                <Badge variant="secondary">{post.category}</Badge>
-                <div className="flex items-center gap-2 text-gray-500 text-sm">
-                  <Calendar className="h-4 w-4" />
-                  <time dateTime={post.publishedDate}>{post.date}</time>
-                </div>
+              <p className={`${LABEL} mb-5 flex flex-wrap gap-x-3 gap-y-1`}>
+                <span className="text-foreground">{post.category}</span>
+                <span aria-hidden="true">/</span>
+                <time dateTime={post.publishedDate}>{post.date}</time>
                 {post.location && (
-                  <div className="flex items-center gap-2 text-gray-500 text-sm">
-                    <MapPin className="h-4 w-4" />
-                    {post.location}
-                  </div>
+                  <>
+                    <span aria-hidden="true">/</span>
+                    <span>{post.location}</span>
+                  </>
                 )}
-              </div>
+              </p>
 
-              <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-gray-900 mb-4 leading-tight">
+              <h1 className="font-heading text-3xl sm:text-4xl md:text-5xl font-bold text-foreground leading-[1.08] mb-6 text-balance">
                 {post.title}
               </h1>
 
-              <p className="text-gray-500 mb-8">By {post.author}</p>
+              <p className="text-muted-foreground text-[14px]">By {post.author}</p>
+            </div>
+          </header>
 
+          <div className="max-w-5xl mx-auto px-6 md:px-8">
+            <div className="aspect-[16/10] md:aspect-[16/9] overflow-hidden bg-muted">
               <img
                 src={post.featuredImage || post.image}
                 alt={post.featuredAlt ?? post.title}
-                className="w-full h-64 sm:h-96 object-cover rounded-xl shadow-lg mb-10"
+                className="w-full h-full object-cover"
                 loading="eager"
+                decoding="async"
+                fetchPriority="high"
+                width={1600}
+                height={900}
               />
-
-              <div
-                className="max-w-none text-[17px] leading-[1.85] text-gray-700 [&_p]:mb-5 [&_h2]:text-2xl [&_h2]:sm:text-3xl [&_h2]:font-bold [&_h2]:text-gray-900 [&_h2]:mt-12 [&_h2]:mb-4 [&_h2]:leading-tight [&_h3]:text-xl [&_h3]:font-semibold [&_h3]:text-gray-900 [&_h3]:mt-8 [&_h3]:mb-3 [&_ul]:list-disc [&_ul]:pl-6 [&_ul]:mb-6 [&_ol]:list-decimal [&_ol]:pl-6 [&_ol]:mb-6 [&_li]:mb-2 [&_strong]:text-gray-900 [&_a]:text-blue-700 [&_a]:underline [&_a]:underline-offset-2"
-                dangerouslySetInnerHTML={{ __html: post.content }}
-              />
-
-              <nav aria-label="Related services" className="mt-14 border-t border-gray-200 pt-8">
-                <p className="text-sm font-semibold uppercase tracking-wide text-gray-500 mb-3">Related services</p>
-                <ul className="flex flex-wrap gap-x-6 gap-y-2 text-blue-700">
-                  <li><a href="/commercial" className="hover:underline">Commercial epoxy flooring</a></li>
-                  <li><a href="/industrial-epoxy" className="hover:underline">Industrial epoxy flooring</a></li>
-                  <li><a href="/concrete-polishing" className="hover:underline">Polished concrete</a></li>
-                  <li><a href="/commercial-carpet-tile" className="hover:underline">Commercial carpet tile</a></li>
-                  <li><a href="/commercial-lvt-flooring" className="hover:underline">Commercial LVT &amp; LVP</a></li>
-                  {post.category === "Garage Floors" ? (
-                    <li><a href="/garagefloors" className="hover:underline">Garage floor coatings</a></li>
-                  ) : (
-                    <li><a href="/resources" className="hover:underline">Commercial flooring resource center</a></li>
-                  )}
-                </ul>
-              </nav>
             </div>
+          </div>
+
+          <div className="max-w-3xl mx-auto px-6 md:px-8 py-12 md:py-16">
+            <div className={ARTICLE_BODY} dangerouslySetInnerHTML={{ __html: post.content }} />
+
+            <nav aria-label="Related services" className="mt-16 pt-10 border-t border-border">
+              <p className={`${LABEL} mb-4`}>Related services</p>
+              <ul className="grid sm:grid-cols-2 gap-px bg-border border border-border">
+                {related.map((r) => (
+                  <li key={r.path} className="bg-background">
+                    <a href={r.path} className={RELATED_LINK}>
+                      <span>{r.label}</span>
+                      <ArrowRight size={14} className="text-muted-foreground flex-shrink-0 transition-transform group-hover:translate-x-1" />
+                    </a>
+                  </li>
+                ))}
+              </ul>
+            </nav>
           </div>
         </article>
 

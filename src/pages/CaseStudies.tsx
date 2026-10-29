@@ -1,22 +1,16 @@
 import { Helmet } from "react-helmet-async";
+import { Link } from "react-router-dom";
+import { ArrowRight } from "lucide-react";
 import SiteHeader from "@/components/site/SiteHeader";
 import SiteFooter from "@/components/site/SiteFooter";
-import { Card, CardContent } from "@/components/ui/card";
-import { Button } from "@/components/ui/button";
-import { ArrowRight, Calendar, Phone } from "lucide-react";
-import { useNavigate } from "react-router-dom";
-import { useState } from "react";
-import { BookingModal } from "@/components/landing/BookingModal";
-import { getCaseStudiesByCategory } from "@/data/caseStudies";
+import { PageHero } from "@/components/site/sections";
+import { caseStudies, getCaseStudiesByCategory } from "@/data/caseStudies";
 
 interface CaseStudiesProps {
   category: "commercial" | "residential";
 }
 
 const CaseStudies = ({ category }: CaseStudiesProps) => {
-  const navigate = useNavigate();
-  const [showBookingModal, setShowBookingModal] = useState(false);
-
   const isCommercial = category === "commercial";
   const basePath = isCommercial ? "/commercial-case-studies" : "/residential-case-studies";
   const heading = isCommercial ? "Real Commercial Floor Projects" : "Real Residential Floor Projects";
@@ -33,6 +27,7 @@ const CaseStudies = ({ category }: CaseStudiesProps) => {
   const canonical = `https://legacyindustrialcoatings.com${basePath}`;
 
   const studies = getCaseStudiesByCategory(category);
+  const hero = studies[0] ?? caseStudies[0];
 
   const breadcrumbSchema = {
     "@context": "https://schema.org",
@@ -43,9 +38,14 @@ const CaseStudies = ({ category }: CaseStudiesProps) => {
       { "@type": "ListItem", position: 3, name: "Case Studies", item: canonical },
     ],
   };
+  const crumbs = [
+    { name: "Home", url: "/" },
+    { name: "Case Studies", url: "/case-studies" },
+    { name: eyebrow, url: basePath },
+  ];
 
   return (
-    <div className="min-h-screen bg-white">
+    <div className="lcf min-h-screen bg-background">
       <Helmet>
         <title>{title}</title>
         <meta name="description" content={description} />
@@ -55,91 +55,65 @@ const CaseStudies = ({ category }: CaseStudiesProps) => {
       </Helmet>
       <SiteHeader />
 
-      <main className="pt-24">
-        {/* Hero */}
-        <section className="py-20 bg-gradient-to-b from-slate-50 to-white border-b border-slate-100">
-          <div className="container mx-auto px-4 max-w-5xl text-center">
-            <span className="inline-block bg-blue-50 text-blue-700 text-xs font-semibold px-3 py-1 rounded-full mb-4 uppercase tracking-wide">
-              {eyebrow}
-            </span>
-            <h1 className="text-4xl lg:text-5xl font-bold text-gray-900 mb-5 leading-tight">
-              {heading}
-            </h1>
-            <p className="text-lg text-gray-600 max-w-2xl mx-auto leading-relaxed">{subhead}</p>
-          </div>
-        </section>
+      <main>
+        <PageHero
+          eyebrow="Projects"
+          title={heading}
+          subhead={subhead}
+          image={hero?.heroImage}
+          imageAlt={hero?.heroAlt}
+          crumbs={crumbs}
+        />
 
-        {/* Grid */}
-        <section className="py-16 bg-white">
-          <div className="container mx-auto px-4 max-w-6xl">
+        <section className="py-16 md:py-24">
+          <div className="max-w-7xl mx-auto px-6 md:px-8 lg:px-12">
             {studies.length === 0 ? (
-              <div className="text-center text-gray-500 py-16">
-                <p className="text-lg">New case studies coming soon.</p>
-              </div>
+              <p className="text-muted-foreground text-[16px] leading-[1.85] py-8">New case studies coming soon.</p>
             ) : (
-              <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+              <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6">
                 {studies.map((cs) => (
-                  <button
+                  <Link
                     key={cs.slug}
-                    onClick={() => navigate(`${basePath}/${cs.slug}`)}
-                    className="text-left group"
+                    to={`${basePath}/${cs.slug}`}
+                    className="group flex flex-col border border-border bg-background hover:border-foreground transition-colors min-w-0"
                   >
-                    <Card className="border border-slate-200 shadow-sm hover:shadow-lg transition-all duration-300 overflow-hidden h-full">
-                      <div className="aspect-video overflow-hidden bg-slate-100">
-                        <img
-                          src={cs.heroImage}
-                          alt={cs.heroAlt}
-                          loading="eager"
-                          className="w-full h-full object-cover group-hover:scale-[1.02] transition-transform duration-500"
-                        />
-                      </div>
-                      <CardContent className="p-6">
-                        <span className="inline-block bg-blue-50 text-blue-700 text-xs font-semibold px-3 py-1 rounded-md mb-3">
-                          {cs.tag}
-                        </span>
-                        <h2 className="text-lg font-bold text-gray-900 mb-2 group-hover:text-blue-700 transition-colors">
-                          {cs.title}
-                        </h2>
-                        <p className="text-sm text-gray-600 leading-relaxed mb-4">{cs.summary}</p>
-                        <span className="inline-flex items-center text-sm font-semibold text-blue-700">
-                          Read case study <ArrowRight className="ml-1 h-4 w-4" />
-                        </span>
-                      </CardContent>
-                    </Card>
-                  </button>
+                    <div className="aspect-[4/3] overflow-hidden bg-muted">
+                      <img
+                        src={cs.heroImage}
+                        alt={cs.heroAlt}
+                        loading="eager"
+                        decoding="async"
+                        width={800}
+                        height={600}
+                        className="w-full h-full object-cover"
+                      />
+                    </div>
+                    <div className="p-6 flex-1 flex flex-col">
+                      <p className="font-heading text-[11px] tracking-[0.2em] uppercase text-muted-foreground mb-2">
+                        {cs.tag} · {cs.location}
+                      </p>
+                      <h2 className="font-heading font-semibold text-[17px] leading-[1.35] text-foreground mb-3 group-hover:underline">
+                        {cs.title}
+                      </h2>
+                      <p className="text-[14px] text-muted-foreground leading-[1.7] mb-4">{cs.summary}</p>
+                      <span className="mt-auto inline-flex items-center gap-2 font-heading text-[11px] tracking-[0.2em] uppercase text-foreground">
+                        Read case study <ArrowRight size={12} className="transition-transform group-hover:translate-x-1" />
+                      </span>
+                    </div>
+                  </Link>
                 ))}
               </div>
             )}
           </div>
         </section>
-
-        {/* CTA */}
-        <section className="py-16 bg-slate-50 border-t border-slate-100">
-          <div className="container mx-auto px-4 max-w-4xl text-center">
-            <h2 className="text-3xl lg:text-4xl font-bold text-gray-900 mb-4">Have a project like these?</h2>
-            <p className="text-lg text-gray-600 mb-8 max-w-2xl mx-auto">
-              Tell us about your space and we'll put together a clear scope, timeline, and number — no pressure.
-            </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Button
-                onClick={() => setShowBookingModal(true)}
-                size="lg"
-                className="bg-blue-700 hover:bg-blue-800 text-white"
-              >
-                <Calendar className="mr-2 h-5 w-5" /> Book An Estimate
-              </Button>
-              <a href="tel:2143056516">
-                <Button size="lg" variant="outline" className="border-blue-700 text-blue-700 hover:bg-blue-50">
-                  <Phone className="mr-2 h-5 w-5" /> 214-305-6516
-                </Button>
-              </a>
-            </div>
-          </div>
-        </section>
       </main>
 
-      <SiteFooter />
-      <BookingModal isOpen={showBookingModal} onClose={() => setShowBookingModal(false)} />
+      <SiteFooter
+        cta={{
+          title: "Have a project like these?",
+          text: "Tell us about your space and we'll put together a clear scope, timeline, and number — no pressure.",
+        }}
+      />
     </div>
   );
 };
