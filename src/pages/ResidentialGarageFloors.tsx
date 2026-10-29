@@ -122,6 +122,24 @@ const GarageFloors = () => {
         action={<EstimateCalButton light />}
       />
 
+      <section className="py-20 md:py-28">
+        <div className="max-w-4xl mx-auto px-6 md:px-8 lg:px-12">
+          <Eyebrow>Video</Eyebrow>
+          <h2 className={H2}>See a Garage Floor Install</h2>
+          <div className="relative aspect-video bg-foreground">
+            <iframe
+              className="absolute inset-0 w-full h-full"
+              src="https://www.youtube-nocookie.com/embed/LIHMnK4rbyc"
+              title="Legacy Industrial Coatings garage floor coating installation"
+              loading="lazy"
+              allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+              referrerPolicy="strict-origin-when-cross-origin"
+              allowFullScreen
+            />
+          </div>
+        </div>
+      </section>
+
       <section className="bg-background border-b border-border">
         <div className="max-w-7xl mx-auto px-6 md:px-8 lg:px-12">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-px bg-border">
@@ -228,24 +246,6 @@ const GarageFloors = () => {
             More projects:{" "}
             <a href="/residential-case-studies" className={A}>residential case studies</a>.
           </p>
-        </div>
-      </section>
-
-      <section className="py-20 md:py-28">
-        <div className="max-w-4xl mx-auto px-6 md:px-8 lg:px-12">
-          <Eyebrow>Video</Eyebrow>
-          <h2 className={H2}>See a Garage Floor Install</h2>
-          <div className="relative aspect-video bg-foreground">
-            <iframe
-              className="absolute inset-0 w-full h-full"
-              src="https://www.youtube-nocookie.com/embed/LIHMnK4rbyc"
-              title="Legacy Industrial Coatings garage floor coating installation"
-              loading="lazy"
-              allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-              referrerPolicy="strict-origin-when-cross-origin"
-              allowFullScreen
-            />
-          </div>
         </div>
       </section>
 
