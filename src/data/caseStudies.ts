@@ -4,6 +4,10 @@
 import plWalkBefore from "@/assets/jobs/walkway-striping-before.webp";
 import plWalkDuring from "@/assets/jobs/walkway-striping-removal.webp";
 import plWalkAfter from "@/assets/jobs/walkway-epoxy-after.webp";
+import dcBefore from "@/assets/jobs/transformer-containment-before.webp";
+import dcAfter from "@/assets/jobs/transformer-containment-after.webp";
+import dcWalk from "@/assets/jobs/data-center-site-walk.webp";
+import dcTruck from "@/assets/jobs/legacy-truck-data-center.webp";
 import supBefore from "@/assets/jobs/washroom-concrete-before.webp";
 import supAfter from "@/assets/jobs/washroom-epoxy-after.webp";
 import after1 from "@/assets/case-studies/fast-casual-restaurant/after-1.jpg";
@@ -122,6 +126,8 @@ export interface CaseStudy {
   beforePhotos: CaseStudyPhoto[];
   duringPhotos: CaseStudyPhoto[];
   afterPhotos: CaseStudyPhoto[];
+  /** Optional short job video (public path) with poster. */
+  video?: { src: string; poster: string; caption: string };
 }
 
 export const caseStudies: CaseStudy[] = [
@@ -441,6 +447,42 @@ export const caseStudies: CaseStudy[] = [
       { src: argyleAfter4, alt: "Wide view of finished metallic garage floor in Argyle TX luxury home — the floor the homeowner originally paid for, finally done right" },
       { src: argyleAfter5, alt: "Completed luxury home garage with sealed, bonded, high-performance metallic epoxy floor by Legacy Industrial Coatings" },
     ],
+  },
+  {
+    slug: "data-center-transformer-containment-coating",
+    category: "commercial",
+    tag: "Data Center",
+    title: "Data Center Transformer Containment Pit: Cracked Concrete to a Watertight Coating",
+    summary:
+      "A data center substation had a transformer containment pit with cracked, stained bare concrete. We prepped the pit and installed a seamless, watertight coating over the floor, walls, curbs and equipment pads, so transformer oil stays contained and out of the concrete.",
+    heroImage: dcAfter,
+    heroAlt: "Watertight coating on a data center transformer containment pit",
+    metaTitle: "Data Center Transformer Containment Coating Case Study | Legacy Industrial Coatings",
+    metaDescription:
+      "How Legacy Industrial Coatings turned a cracked bare-concrete transformer containment pit at a data center into a seamless, watertight containment coating.",
+    location: "Data center campus",
+    serviceType: "Transformer Containment Coating (Watertight)",
+    squareFootage: "Transformer containment pit",
+    timeline: "",
+    challenge: [
+      "Transformers at a data center substation hold large volumes of mineral oil. The concrete pit around each transformer is there to catch it if a leak or failure ever happens.",
+      "This pit was bare concrete with cracks running across the floor and staining around the equipment pads. Bare, cracked concrete soaks up oil and water and lets them through, which defeats the purpose of a containment pit.",
+    ],
+    solution: [
+      "Our team walked the substation with the site team, then prepped the pit down to clean, sound concrete so the coating could bond.",
+      "We repaired the cracks and installed a seamless, watertight coating across the floor, up the walls and curbs, and around the transformer and post foundations, so there are no open joints or bare edges for oil or water to find.",
+    ],
+    result: [
+      "The pit went from cracked, stained concrete to a continuous, watertight surface that keeps transformer oil contained and is easy to inspect and clean.",
+      "If you run a data center, substation or power facility with transformer or fuel containment that is bare, cracked or failing, we can walk it and recommend the right coating.",
+    ],
+    beforePhotos: [{ src: dcBefore, alt: "Cracked, stained concrete transformer containment pit before coating" }],
+    duringPhotos: [
+      { src: dcWalk, alt: "Legacy Industrial Coatings team walking a data center substation before the containment work" },
+      { src: dcTruck, alt: "Legacy Industrial Coatings truck and trailer on site at the data center" },
+    ],
+    afterPhotos: [{ src: dcAfter, alt: "Seamless watertight coating on the transformer containment pit after installation" }],
+    video: { src: "/video/containment-pit-prep.mp4", poster: "/video/containment-pit-prep.jpg", caption: "Prepping the containment pit before coating" },
   },
   {
     slug: "plano-distribution-center-walkway-epoxy",

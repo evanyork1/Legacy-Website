@@ -36,6 +36,8 @@ const GALLERY = [
   { ...JOB.battery, caption: "Forklift battery charging area" },
   { ...JOB.quartzCove, caption: "Quartz floor with integral cove" },
   { ...JOB.foodPlant, caption: "Food plant, slip-resistant epoxy" },
+  { ...JOB.shinyAfter, caption: "High-gloss warehouse epoxy" },
+  { ...JOB.containAfter, caption: "Data center transformer containment" },
   { ...JOB.batteryArea, caption: "Distribution center epoxy" },
 ];
 
@@ -139,6 +141,15 @@ const OPEN_BUSINESS = [
   "One point of contact who coordinates with your GC, property manager or facility team",
 ];
 
+const PRICES = [
+  ["High-traffic epoxy", "$3.50–$10 / SF"],
+  ["Polished concrete", "$2.25–$8 / SF"],
+  ["Flake floors", "$7.50–$9 / SF"],
+  ["Quartz flooring", "about $15 / SF"],
+  ["Urethane cement", "about $21 / SF"],
+  ["Integral cove base", "about $15 / LF"],
+] as const;
+
 const COST_FACTORS = [
   "Square footage and how the space is divided",
   "Removal of existing flooring, coatings or adhesives",
@@ -159,7 +170,7 @@ const FAQS = [
   },
   {
     q: "How much does commercial epoxy flooring cost per square foot?",
-    a: "Cost per square foot depends on preparation, moisture mitigation, the system and thickness, square footage, repairs and phasing. Send plans or request a site walk and we return a full bid within 24 hours of receiving plans.",
+    a: "Our standard high-traffic epoxy floors typically run about $3.50 to $10 per square foot, depending mostly on the size of the job: large open floors land near the low end and small rooms near the high end. Flake runs about $7.50 to $9, quartz about $15 and urethane cement about $21 per square foot, with integral cove base about $15 per linear foot. Prep, moisture, repairs and after-hours phasing confirm the final number.",
   },
   {
     q: "Do you install epoxy flooring near me?",
@@ -233,7 +244,7 @@ const Commercial = () => {
         <div className="max-w-7xl mx-auto px-6 md:px-8 lg:px-12">
           <Eyebrow>Our Work</Eyebrow>
           <h2 className={H2}>Epoxy Floors We've Installed</h2>
-          <div className="grid grid-cols-2 lg:grid-cols-3 gap-3 md:gap-4">
+          <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 md:gap-4">
             {GALLERY.map((g) => (
               <figure key={g.src} className="m-0">
                 <div className="aspect-[4/3] overflow-hidden bg-muted">
@@ -293,10 +304,18 @@ const Commercial = () => {
           <Eyebrow>Cost</Eyebrow>
           <h2 className={H2}>What Commercial Epoxy Flooring Costs</h2>
           <p className={P}>
-            Commercial epoxy flooring is priced per square foot, but the slab and the schedule move the number more than
-            the resin does. These are the factors that drive a commercial floor coating bid:
+            Commercial epoxy flooring is priced per square foot, and the size of the job moves the price the most. These
+            are our typical ranges:
           </p>
-          {/* TODO Evan: add typical $/SF ranges by system (thin-film epoxy, flake, quartz, urethane cement). */}
+          <div className="grid sm:grid-cols-2 gap-px bg-border border border-border mb-8">
+            {PRICES.map(([name, price]) => (
+              <div key={name} className="bg-background px-5 py-4 flex items-center justify-between gap-4">
+                <span className="font-heading text-[14px] text-foreground">{name}</span>
+                <span className="font-heading text-[14px] font-semibold text-foreground whitespace-nowrap">{price}</span>
+              </div>
+            ))}
+          </div>
+          <p className={P}>Within those ranges, these are the factors that set your number:</p>
           <ul className="list-disc pl-6 space-y-3 mb-8 text-muted-foreground font-body text-[16px] leading-[1.75]">
             {COST_FACTORS.map((i) => (
               <li key={i}>{i}</li>

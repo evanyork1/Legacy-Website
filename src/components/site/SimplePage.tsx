@@ -5,7 +5,7 @@ import { Seo } from "@/components/seo/Seo";
 import { StructuredData } from "@/components/seo/StructuredData";
 import { ClientStrip, Eyebrow, FaqBlock, PageHero } from "@/components/site/sections";
 import type { SimpleContent } from "@/data/site/simple/types";
-import { PAGE_PROJECTS } from "@/data/site/jobPhotos";
+import { PAGE_BEFORE_AFTER, PAGE_PRICE_FAQ, PAGE_PROJECTS, PAGE_VIDEO } from "@/data/site/jobPhotos";
 import { caseStudies, type CaseStudy } from "@/data/caseStudies";
 
 /**
@@ -80,6 +80,52 @@ const CITY_LINKS = [
   { name: "Lewisville", slug: "lewisville" },
 ];
 
+export const BeforeAfter = ({ path }: { path: string }) => {
+  const ba = PAGE_BEFORE_AFTER[path];
+  if (!ba) return null;
+  return (
+    <section className="py-16 md:py-20 border-t border-border">
+      <div className="max-w-7xl mx-auto px-6 md:px-8 lg:px-12">
+        <Eyebrow>Before & After</Eyebrow>
+        <p className="text-muted-foreground text-[16px] leading-[1.8] mb-6">{ba.caption}</p>
+        <div className="grid grid-cols-2 gap-3 md:gap-4 max-w-4xl">
+          {[{ ...ba.before, label: "Before" }, { ...ba.after, label: "After" }].map((p) => (
+            <figure key={p.label} className="m-0">
+              <div className="aspect-[3/4] md:aspect-[4/3] overflow-hidden bg-muted">
+                <img src={p.src} alt={p.alt} loading="lazy" decoding="async" width={800} height={600} className="w-full h-full object-cover" />
+              </div>
+              <figcaption className="mt-2 font-heading text-[11px] tracking-[0.2em] uppercase text-muted-foreground">{p.label}</figcaption>
+            </figure>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+};
+
+export const JobVideo = ({ path }: { path: string }) => {
+  const v = PAGE_VIDEO[path];
+  if (!v) return null;
+  return (
+    <section className="py-16 md:py-20 border-t border-border">
+      <div className="max-w-7xl mx-auto px-6 md:px-8 lg:px-12 grid md:grid-cols-2 gap-8 items-center">
+        <video src={v.src} poster={v.poster} muted loop playsInline autoPlay preload="none" className="w-full max-w-sm mx-auto aspect-[9/16] object-cover bg-muted" aria-label={v.caption} />
+        <div>
+          <Eyebrow>On the Job</Eyebrow>
+          <p className="font-heading text-xl md:text-2xl font-semibold text-foreground leading-[1.3]">{v.caption}</p>
+        </div>
+      </div>
+    </section>
+  );
+};
+
+/** Swap a generic cost question for the page's real price answer. */
+const withPrice = (path: string, faqs: { q: string; a: string }[]) => {
+  const p = PAGE_PRICE_FAQ[path];
+  if (!p) return faqs;
+  return [p, ...faqs.filter((f) => !/cost|price|how much/i.test(f.q))];
+};
+
 const H2 = "font-heading text-3xl md:text-[2.5rem] font-bold text-foreground leading-[1.1] mb-8 text-balance";
 const INLINE = "text-foreground underline underline-offset-4 decoration-border hover:decoration-foreground";
 
@@ -104,7 +150,7 @@ const SimplePage = ({
     <Seo title={metaTitle} description={metaDescription} path={path} ogImage={heroImage} />
     <StructuredData
       services={[{ name: serviceName, description: metaDescription, url: path }]}
-      faqs={content.faqs.map((f) => ({ question: f.q, answer: f.a }))}
+      faqs={withPrice(path, content.faqs).map((f) => ({ question: f.q, answer: f.a }))}
       breadcrumbs={crumbs}
     />
     <SiteHeader />
@@ -186,13 +232,17 @@ const SimplePage = ({
       </section>
     )}
 
+    <BeforeAfter path={path} />
+
+    <JobVideo path={path} />
+
     <ProjectCards items={projectsFor(path)} />
 
     {extra}
 
     <ClientStrip light />
 
-    <FaqBlock heading={`${serviceName} Questions`} faqs={content.faqs} />
+    <FaqBlock heading={`${serviceName} Questions`} faqs={withPrice(path, content.faqs)} />
 
     {more && more.links.length > 0 && (
       <section className="py-20 md:py-24 bg-secondary border-t border-border">

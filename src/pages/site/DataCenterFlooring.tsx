@@ -1,4 +1,5 @@
 import SimplePage from "@/components/site/SimplePage";
+import { JOB } from "@/data/site/jobPhotos";
 import { SIMPLE_INDUSTRIES } from "@/data/site/simple/industries";
 import { useState } from "react";
 import { ArrowRight, ExternalLink } from "lucide-react";
@@ -372,16 +373,12 @@ const SimpleDataCenter = () => (
     heroAlt="Data center flooring and containment coatings"
     crumbs={[
       { name: "Home", url: "/" },
-      { name: "Industries", url: "/who-we-serve" },
+      { name: "Industries", url: "/industries" },
       { name: "Data Center Flooring", url: "/data-center-flooring" },
     ]}
     serviceName="Data Center Flooring"
     content={SIMPLE_INDUSTRIES["/data-center-flooring"]}
-    photos={[
-      { src: imgHero, alt: "Data hall sealed concrete floor in a data center" },
-      { src: img2, alt: "ESD flooring in a data center electrical room" },
-      { src: img3, alt: "Mechanical room urethane cement floor with cove" },
-    ]}
+    photos={[JOB.containAfter, JOB.dcSiteWalk, JOB.dcTruck]}
     related={{
       title: "Floors We Install Here",
       links: [

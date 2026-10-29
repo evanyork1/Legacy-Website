@@ -7,14 +7,25 @@ export const ARTICLES_PART1: StaticArticle[] = [
     title: "How Much Does Commercial Epoxy Flooring Cost Per Square Foot?",
     metaTitle: "Commercial Epoxy Flooring Cost Per Square Foot | Legacy Industrial Coatings",
     excerpt:
-      "Commercial epoxy cost per square foot depends more on slab prep, moisture, repairs and scheduling than on the resin. Here is what drives the price and why.",
+      "Commercial high-traffic epoxy flooring typically costs about $3.50 to $10 per square foot, depending mostly on job size. Here is what moves the price.",
     category: "Commercial Flooring",
     publishedDate: "2026-10-29",
     readTime: "5 min read",
     featuredImage: JOB.mfgEpoxy.src,
     featuredAlt: JOB.mfgEpoxy.alt,
     tags: ["epoxy flooring cost", "commercial epoxy", "cost per square foot", "Dallas-Fort Worth", "bidding"],
-    content: `<p>The cost of commercial epoxy flooring per square foot is set mostly by the condition of your concrete and the conditions of the job, not by the epoxy itself. Surface prep, slab moisture, crack and joint repair, the system your traffic calls for, total square footage and whether the work runs after hours move the number more than anything else. The only reliable way to get a per-square-foot figure is to have someone look at your actual slab or review your plans.</p>
+    content: `<p>Commercial high-traffic epoxy flooring typically costs about <strong>$3.50 to $10 per square foot</strong>. Job size drives most of that range: large open warehouse floors land near the low end, and small rooms land near the high end. Within the range, slab prep, moisture, crack and joint repair and after-hours scheduling set your exact number, which is why a firm price starts with seeing your slab or plans.</p>
+
+<h2>Typical price ranges</h2>
+<p>These are our typical ranges for commercial and industrial floors. They are a starting point for budgeting, not a bid:</p>
+<ul>
+<li><strong>High-traffic epoxy:</strong> about $3.50 to $10 per square foot, driven mostly by job size</li>
+<li><strong>Polished concrete:</strong> about $2.25 to $8 per square foot, driven mostly by job size</li>
+<li><strong>Flake floors:</strong> about $7.50 to $9 per square foot</li>
+<li><strong>Quartz flooring:</strong> about $15 per square foot</li>
+<li><strong>Urethane cement:</strong> about $21 per square foot</li>
+<li><strong>Integral cove base:</strong> about $15 per linear foot</li>
+</ul>
 
 <h2>Why there is no single price per square foot</h2>
 <p>Two buildings with the same square footage can price very differently. A new, clean slab in an empty building is a straightforward job. An occupied plant with an old peeling coating, oil-soaked concrete, damaged joints and a schedule that only allows nights and weekends is a different project, even if the finished floor looks the same. The resin is only one line on the bid.</p>
@@ -70,14 +81,25 @@ export const ARTICLES_PART1: StaticArticle[] = [
     title: "How Much Does Polished Concrete Cost Per Square Foot?",
     metaTitle: "Polished Concrete Cost Per Square Foot | Legacy Industrial Coatings",
     excerpt:
-      "Polished concrete cost per square foot depends on slab condition, coating removal, repairs, the finish and sheen you choose, and your schedule. Here's why.",
+      "Commercial polished concrete typically costs about $2.25 to $8 per square foot, depending mostly on job size, slab condition and the sheen you choose.",
     category: "Concrete Polishing",
     publishedDate: "2026-10-29",
     readTime: "5 min read",
     featuredImage: JOB.polishedIndustrial.src,
     featuredAlt: JOB.polishedIndustrial.alt,
     tags: ["polished concrete cost", "concrete polishing", "cost per square foot", "warehouse floors", "Texas"],
-    content: `<p>The cost of polished concrete per square foot depends mostly on the condition of your slab and the finish you want. Removing old coatings or adhesives, repairing cracks and joints, how much stone you want exposed, how high a shine you want and whether the work runs after hours all change the price. Because the floor is your existing concrete, the slab itself is the biggest variable, which is why an accurate number starts with seeing it.</p>
+    content: `<p>Commercial polished concrete typically costs about <strong>$2.25 per square foot on large floors up to about $8 per square foot on small ones</strong>. Within that range, the cost depends mostly on the condition of your slab and the finish you want. Removing old coatings or adhesives, repairing cracks and joints, how much stone you want exposed, how high a shine you want and whether the work runs after hours all change the price. Because the floor is your existing concrete, the slab itself is the biggest variable, which is why an accurate number starts with seeing it.</p>
+
+<h2>Typical price ranges</h2>
+<p>These are our typical ranges for commercial and industrial floors. They are a starting point for budgeting, not a bid:</p>
+<ul>
+<li><strong>High-traffic epoxy:</strong> about $3.50 to $10 per square foot, driven mostly by job size</li>
+<li><strong>Polished concrete:</strong> about $2.25 to $8 per square foot, driven mostly by job size</li>
+<li><strong>Flake floors:</strong> about $7.50 to $9 per square foot</li>
+<li><strong>Quartz flooring:</strong> about $15 per square foot</li>
+<li><strong>Urethane cement:</strong> about $21 per square foot</li>
+<li><strong>Integral cove base:</strong> about $15 per linear foot</li>
+</ul>
 
 <h2>Why polished concrete prices vary</h2>
 <p>Polished concrete is your slab, ground with progressively finer diamond tooling, hardened with a densifier and polished to the sheen you choose. There is no coating to buy in bulk, so most of the cost is time on the floor. Anything that adds grinding passes, repairs or working hours adds cost. A flat, clean, open slab is the most efficient job. An older floor covered in glue, paint and patches is a different project.</p>

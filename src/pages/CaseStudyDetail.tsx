@@ -206,6 +206,16 @@ const CaseStudyDetail = () => {
           </section>
         )}
 
+        {cs.video && (
+          <section className="py-16 bg-white">
+            <div className="container mx-auto px-4 max-w-6xl">
+              <h2 className="text-2xl lg:text-3xl font-bold text-gray-900 mb-6">On the Job</h2>
+              <video src={cs.video.src} poster={cs.video.poster} muted loop playsInline autoPlay preload="none" controls className="w-full max-w-sm aspect-[9/16] object-cover rounded-md bg-slate-100" aria-label={cs.video.caption} />
+              <p className="text-sm text-gray-500 mt-3">{cs.video.caption}</p>
+            </div>
+          </section>
+        )}
+
         {/* After */}
         <section className="py-16 bg-slate-50 border-y border-slate-200">
           <div className="container mx-auto px-4 max-w-6xl">

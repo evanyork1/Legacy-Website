@@ -20,6 +20,12 @@ import mfgEpoxy from "@/assets/jobs/manufacturing-epoxy-floor.webp";
 import washroomAfter from "@/assets/jobs/washroom-epoxy-after.webp";
 import walkwayAfter from "@/assets/jobs/walkway-epoxy-after.webp";
 import foodPlant from "@/assets/jobs/food-plant-epoxy-floor.webp";
+import shinyAfter from "@/assets/jobs/warehouse-shiny-epoxy-after.webp";
+import shinyBefore from "@/assets/jobs/hangar-concrete-before.webp";
+import dcSiteWalk from "@/assets/jobs/data-center-site-walk.webp";
+import dcTruck from "@/assets/jobs/legacy-truck-data-center.webp";
+import containBefore from "@/assets/jobs/transformer-containment-before.webp";
+import containAfter from "@/assets/jobs/transformer-containment-after.webp";
 
 type Photo = { src: string; alt: string };
 const P = (src: string, alt: string): Photo => ({ src, alt });
@@ -43,6 +49,12 @@ export const JOB = {
   washroomAfter: P(washroomAfter, "Seamless epoxy floor in a production sanitation room"),
   walkwayAfter: P(walkwayAfter, "Epoxy walkway with high-traffic urethane finish in a Plano distribution center"),
   foodPlant: P(foodPlant, "Slip-resistant epoxy floor in a food processing plant"),
+  shinyAfter: P(shinyAfter, "High-gloss epoxy floor in a metal warehouse building after installation"),
+  shinyBefore: P(shinyBefore, "Bare concrete floor in a metal warehouse building before epoxy"),
+  dcSiteWalk: P(dcSiteWalk, "Legacy Industrial Coatings team on a data center substation site walk"),
+  dcTruck: P(dcTruck, "Legacy Industrial Coatings truck on site at a data center campus"),
+  containBefore: P(containBefore, "Cracked, stained concrete transformer containment pit at a data center before coating"),
+  containAfter: P(containAfter, "Watertight coating on a data center transformer containment pit after installation"),
 };
 
 /**
@@ -74,12 +86,45 @@ export const PAGE_PHOTOS: Record<string, { hero?: Photo; photos: Photo[] }> = {
   "/retail-flooring": { photos: [JOB.restaurantPolished, JOB.polishedIndustrial, JOB.crewRetail] },
   "/joint-filling-crack-repair": { photos: [JOB.crewWarehouse, JOB.polishedIndustrial, JOB.mfgEpoxy] },
   "/healthcare-flooring": { photos: [JOB.quartzCove, JOB.aeroMfg, JOB.epoxyTexture] },
+  "/secondary-containment-coatings": { hero: JOB.containAfter, photos: [JOB.dcSiteWalk, JOB.dcTruck, JOB.battery] },
+  "/data-center-flooring": { photos: [JOB.containAfter, JOB.dcSiteWalk, JOB.dcTruck] },
   "/agriculture-facility-flooring": { photos: [JOB.foodPlant, JOB.washroomAfter, JOB.mfgEpoxy] },
 };
 
 /** Real projects shown on each page (case study slugs, most relevant first). */
+/** Before/after pairs shown on a page. */
+export const PAGE_BEFORE_AFTER: Record<string, { before: Photo; after: Photo; caption: string }> = {
+  "/industrial-epoxy": { before: JOB.shinyBefore, after: JOB.shinyAfter, caption: "Bare concrete to a high-gloss epoxy floor in a metal warehouse building." },
+  "/warehouse-flooring": { before: JOB.shinyBefore, after: JOB.shinyAfter, caption: "Bare concrete to a high-gloss epoxy floor in a metal warehouse building." },
+  "/aerospace-hangar-flooring": { before: JOB.shinyBefore, after: JOB.shinyAfter, caption: "Bare concrete to a bright, high-gloss epoxy floor in a metal building." },
+  "/secondary-containment-coatings": { before: JOB.containBefore, after: JOB.containAfter, caption: "Data center transformer containment pit, before and after a watertight coating." },
+  "/data-center-flooring": { before: JOB.containBefore, after: JOB.containAfter, caption: "Transformer containment pit at a data center, before and after a watertight coating." },
+};
+
+/** Short job videos shown on a page. */
+export const PAGE_VIDEO: Record<string, { src: string; poster: string; caption: string }> = {
+  "/flake-floors": { src: "/video/flake-floor-install.mp4", poster: "/video/flake-floor-install.jpg", caption: "Our crew broadcasting flake on a commercial floor." },
+  "/secondary-containment-coatings": { src: "/video/containment-pit-prep.mp4", poster: "/video/containment-pit-prep.jpg", caption: "Prepping a data center transformer containment pit before coating." },
+  "/data-center-flooring": { src: "/video/containment-pit-prep.mp4", poster: "/video/containment-pit-prep.jpg", caption: "Prepping a transformer containment pit at a data center before coating." },
+};
+
+/** Typical price answers (Evan's ranges, Oct 2026). Replaces any generic cost FAQ on the page. */
+const EPOXY_PRICE = "Our standard high-traffic epoxy floors typically run about $3.50 to $10 per square foot. Size drives most of that range: large open floors land near the low end and small rooms near the high end. Prep, moisture, repairs and after-hours phasing also move the number, so we confirm it with a site walk or plans.";
+export const PAGE_PRICE_FAQ: Record<string, { q: string; a: string }> = {
+  "/industrial-epoxy": { q: "How much does industrial epoxy flooring cost?", a: EPOXY_PRICE },
+  "/warehouse-flooring": { q: "How much does a warehouse epoxy floor cost?", a: EPOXY_PRICE },
+  "/manufacturing-floor-coating": { q: "How much does a manufacturing floor coating cost?", a: EPOXY_PRICE + " Urethane cement in hot, wet or chemical areas runs about $21 per square foot." },
+  "/concrete-polishing": { q: "How much does polished concrete cost?", a: "Polished concrete typically runs about $2.25 per square foot on large floors up to about $8 per square foot on small ones. The level of shine, slab condition, repairs and dust control also move the price, so we confirm it with a site walk or plans." },
+  "/urethane-cement-flooring": { q: "How much does urethane cement flooring cost?", a: "Urethane cement typically runs about $21 per square foot, and integral cove base about $15 per linear foot. Prep, drains, slopes and phasing around production confirm the final number." },
+  "/food-processing-flooring": { q: "How much does food plant flooring cost?", a: "Urethane cement, the usual choice for washdown and hot areas, typically runs about $21 per square foot, with integral cove base about $15 per linear foot. Drier areas can use epoxy at about $3.50 to $10 per square foot depending on size." },
+  "/restaurant-kitchen-flooring": { q: "How much does commercial kitchen flooring cost?", a: "Urethane cement typically runs about $21 per square foot and quartz about $15 per square foot, with integral cove base about $15 per linear foot. Kitchen size, drains and after-hours scheduling confirm the final number." },
+  "/epoxy-cove-base": { q: "How much does epoxy cove base cost?", a: "Integral cove base typically runs about $15 per linear foot. Wall condition, height and the number of corners, drains and penetrations confirm the final number." },
+  "/quartz-flooring": { q: "How much does quartz flooring cost?", a: "Quartz flooring typically runs about $15 per square foot, with integral cove base about $15 per linear foot. Room size, prep and phasing confirm the final number." },
+  "/flake-floors": { q: "How much does a commercial flake floor cost?", a: "Commercial flake floors typically run about $7.50 to $9 per square foot. Size, slab condition and any repairs confirm the final number." },
+};
+
 export const PAGE_PROJECTS: Record<string, string[]> = {
-  "/commercial": ["plano-distribution-center-walkway-epoxy", "dallas-supplement-manufacturing-washroom-epoxy", "restaurant-pump-room-integrated-cove-base"],
+  "/commercial": ["plano-distribution-center-walkway-epoxy", "dallas-supplement-manufacturing-washroom-epoxy", "data-center-transformer-containment-coating"],
   "/industrial-epoxy": ["plano-distribution-center-walkway-epoxy", "dallas-supplement-manufacturing-washroom-epoxy"],
   "/warehouse-flooring": ["plano-distribution-center-walkway-epoxy"],
   "/line-striping": ["plano-distribution-center-walkway-epoxy"],
@@ -95,4 +140,6 @@ export const PAGE_PROJECTS: Record<string, string[]> = {
   "/concrete-sealing": ["fast-casual-restaurant-concrete-sealing"],
   "/retail-flooring": ["fast-casual-restaurant-concrete-sealing"],
   "/flake-floors": ["swim-school-flake-floor-multi-location", "dog-training-grooming-facility-flake-floor"],
+  "/secondary-containment-coatings": ["data-center-transformer-containment-coating"],
+  "/data-center-flooring": ["data-center-transformer-containment-coating"],
 };

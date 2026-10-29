@@ -106,6 +106,7 @@ const commercialCaseStudies = [
   "swim-school-flake-floor-multi-location",
   "plano-distribution-center-walkway-epoxy",
   "dallas-supplement-manufacturing-washroom-epoxy",
+  "data-center-transformer-containment-coating",
   "restaurant-pump-room-integrated-cove-base",
 ];
 const residentialCaseStudies = [
