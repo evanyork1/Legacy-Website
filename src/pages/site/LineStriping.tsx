@@ -75,7 +75,7 @@ export default function LineStriping() {
             { label: "Warehouses & distribution", path: "/warehouse-flooring" },
             { label: "Manufacturing", path: "/manufacturing-floor-coating" },
             { label: "Parking structures", path: "/parking-garage-coatings" },
-            { label: "Industrial epoxy flooring", path: "/industrial-epoxy" },
+            { label: "Industrial epoxy flooring", path: "/commercial" },
           ],
         }}
         closing={{ title: "Get a bid on your floor marking", text: "Send a layout or a scope. Site walk within 1–3 business days; full bid within 24 hours of receiving plans." }}

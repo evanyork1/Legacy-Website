@@ -74,7 +74,7 @@ export const SYSTEM_GROUPS: NavGroup[] = [
   {
     title: "Resinous",
     items: [
-      { label: "Epoxy", path: "/industrial-epoxy" },
+      { label: "Epoxy Flooring", path: "/commercial" },
       { label: "Novolac Epoxy", path: "/novolac-epoxy-flooring" },
       { label: "MMA (Fast Cure)", path: "/mma-flooring" },
       { label: "Resinous Flooring", path: "/resinous-flooring" },
@@ -116,9 +116,9 @@ export const SYSTEM_GROUPS: NavGroup[] = [
 
 /** Main menu: a short list per dropdown. Every page stays linked from /services, /who-we-serve and the footer. */
 export const SERVICES_NAV: NavLink[] = [
-  { label: "Commercial Epoxy Flooring", path: "/commercial" },
-  { label: "Industrial Epoxy Flooring", path: "/industrial-epoxy" },
+  { label: "Epoxy Flooring", path: "/commercial" },
   { label: "Polished Concrete", path: "/concrete-polishing" },
+  { label: "Carpet Tile & LVT", path: "/services#resilient" },
   { label: "Urethane Cement", path: "/urethane-cement-flooring" },
   { label: "Specialty Coatings", path: "/services#specialty" },
   { label: "Repairs & Prep", path: "/services#repairs" },

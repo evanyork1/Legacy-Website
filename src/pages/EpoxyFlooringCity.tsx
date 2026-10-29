@@ -104,8 +104,7 @@ const EpoxyFlooringCity = () => {
     areaServed: { "@type": "City", name: `${city.name}, TX` },
     makesOffer: [
       { "@type": "Offer", itemOffered: { "@type": "Service", name: "Commercial epoxy flooring", url: `${SITE_URL}/commercial` } },
-      { "@type": "Offer", itemOffered: { "@type": "Service", name: "Industrial epoxy flooring", url: `${SITE_URL}/industrial-epoxy` } },
-      { "@type": "Offer", itemOffered: { "@type": "Service", name: "Concrete polishing", url: `${SITE_URL}/concrete-polishing` } },
+            { "@type": "Offer", itemOffered: { "@type": "Service", name: "Concrete polishing", url: `${SITE_URL}/concrete-polishing` } },
     ],
   };
 
@@ -117,7 +116,7 @@ const EpoxyFlooringCity = () => {
     },
     {
       label: "Industrial epoxy flooring",
-      url: "/industrial-epoxy",
+      url: "/commercial",
       text: `High-build epoxy and industrial floor coatings for ${city.name} warehouses, manufacturing and production floors.`,
     },
     {

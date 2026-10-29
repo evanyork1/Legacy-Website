@@ -198,7 +198,7 @@ export const INDUSTRY_PAGES: IndustryPageData[] = [
         "text": "Cutting oil, coolant and metal fines demand a finish that releases soil without becoming excessively slick. Specify chemical-resistant epoxy after reviewing the actual fluids and cleaning products. Preparation includes removal of weak concrete and an assessment of oil penetration; a primer cannot compensate for deeply contaminated material. Detail equipment feet, anchor pockets and access covers before coating. Select aggregate texture with the maintenance team so squeegees and scrubbers can still recover coolant instead of leaving residue between production runs.",
         "system": "Chemical-resistant epoxy",
         "thickness": "Per approved manufacturer build-up",
-        "link": "/industrial-epoxy"
+        "link": "/commercial"
       },
       {
         "name": "Hot wash and cleaning stations",
@@ -290,7 +290,7 @@ export const INDUSTRY_PAGES: IndustryPageData[] = [
         "text": "A high-build epoxy assembly with a compatible aerospace urethane topcoat creates a bright, cleanable background around parked aircraft. White or light colors improve contrast for small objects, but do not replace the operator’s FOD inspection procedures. Confirm Skydrol and jet-fuel resistance for the complete specified system, including expected dwell time and cleanup practice. We review existing coatings and repairs before proposing removal or overcoating. Finish samples should be assessed under actual hangar lighting, not only under an office fixture.",
         "system": "Epoxy with aerospace urethane topcoat",
         "thickness": "Per approved aerospace system",
-        "link": "/industrial-epoxy"
+        "link": "/commercial"
       },
       {
         "name": "Tug routes and aircraft thresholds",
@@ -311,7 +311,7 @@ export const INDUSTRY_PAGES: IndustryPageData[] = [
         "text": "Benches, stands and mobile tool cabinets create a different wear pattern from aircraft storage. A chemical-resistant epoxy can provide a consistent finish while local detailing addresses parts washers, degreasers and concentrated spills. Use the maintenance chemical inventory rather than assuming fuel resistance covers every solvent. Where electronics handling introduces an ESD requirement, identify that zone separately and obtain the facility’s electrical acceptance criteria. Boundaries between assemblies should be visible in the drawings and located clear of frequently repositioned equipment.",
         "system": "Chemical-resistant epoxy",
         "thickness": "Approved shop-floor build-up",
-        "link": "/industrial-epoxy"
+        "link": "/commercial"
       },
       {
         "name": "Equipment positions and safety boundaries",
@@ -382,7 +382,7 @@ export const INDUSTRY_PAGES: IndustryPageData[] = [
         "text": "Seamless epoxy is an option where the design calls for a continuous, cleanable surface with controlled transitions. Confirm compatibility with the hospital’s actual disinfectants, dilution practices and contact times. Specify a finish that works with the department’s cleaning equipment rather than defaulting to the roughest texture. Around fixed cabinetry and equipment, define accessible termination points before installation. Resin flooring supports environmental cleaning, but it does not sterilize the room or remove the need for the facility’s infection-prevention procedures.",
         "system": "Healthcare epoxy assembly",
         "thickness": "Per approved clinical specification",
-        "link": "/industrial-epoxy"
+        "link": "/commercial"
       },
       {
         "name": "Public corridors and waiting areas",
@@ -481,7 +481,7 @@ export const INDUSTRY_PAGES: IndustryPageData[] = [
         "text": "Chemical-resistant epoxy should be selected against the school’s teaching chemical inventory, including concentrations and cleanup intervals. A finish that tolerates routine cleaners may not tolerate concentrated acid left beneath a cabinet. Define splash zones, sink approaches and storage-room requirements separately. We coordinate the selected texture with stool movement and cleaning access. Where cabinets remain, establish termination details so future replacement does not expose untreated strips of concrete. Product data and approved samples become part of the campus maintenance record.",
         "system": "Chemical-resistant epoxy",
         "thickness": "Per laboratory exposure specification",
-        "link": "/industrial-epoxy"
+        "link": "/commercial"
       },
       {
         "name": "CTE shops and vocational work bays",
@@ -672,7 +672,7 @@ export const INDUSTRY_PAGES: IndustryPageData[] = [
         "text": "A textured epoxy assembly can improve cleanability where refuse liquids and cleaning products otherwise soak into concrete. Review the actual detergents and expected spill dwell time before selecting the topcoat. Integral cove and sealed penetrations need coordinated details; floor coating alone cannot stop moisture entering through walls or failed plumbing. Include repairs at bin-wheel paths and thresholds where heavy containers turn. Choose texture with the maintenance team so the surface can be cleaned thoroughly without leaving organic residue trapped in an overly aggressive profile.",
         "system": "Chemical-resistant epoxy",
         "thickness": "Per approved service-room build-up",
-        "link": "/industrial-epoxy"
+        "link": "/commercial"
       },
       {
         "name": "Indoor amenity and community rooms",
@@ -778,7 +778,7 @@ export const INDUSTRY_PAGES: IndustryPageData[] = [
         "text": "Epoxy can provide a cleanable service finish around maintenance equipment and stored supplies when chemical and traffic conditions are suitable. Review housekeeping products, potential spills and equipment loads separately from the office appearance specification. Repairs to worn concrete and damaged joint edges belong in the base scope. Rooms with standing water or leaks need correction before coating. Detail transitions at doorways so service carts move without catching an edge, and provide clear maintenance guidance rather than assuming the lobby cleaning process suits every back-of-house floor.",
         "system": "Service-area epoxy",
         "thickness": "Per specified maintenance-room assembly",
-        "link": "/industrial-epoxy"
+        "link": "/commercial"
       }
     ],
     "standards": [
@@ -856,7 +856,7 @@ export const INDUSTRY_PAGES: IndustryPageData[] = [
         "text": "Stockrooms need a surface suited to delivery carts, pallet movement and concentrated turning at doors. A traffic-rated epoxy can be appropriate when the substrate and expected duty support it. Repair spalls and assess joint edges before coating; a fresh finish will not strengthen unsupported broken concrete. Review oils, packaging residues and cleaning procedures that may affect bond or traction. Schedule receiving access separately from the customer area so a reopened sales floor does not rely on moving freight across uncured work at the back of the store.",
         "system": "Traffic-rated epoxy",
         "thickness": "Manufacturer-selected traffic build-up",
-        "link": "/industrial-epoxy"
+        "link": "/commercial"
       },
       {
         "name": "Restrooms and customer support areas",
@@ -1151,7 +1151,7 @@ export const INDUSTRY_PAGES: IndustryPageData[] = [
           "Dry packaging areas may benefit from an epoxy assembly rather than the same heavy wet-process system used at the cooking line. Select texture for pedestrian and cart traffic, expected incidental spills and cleaning equipment. Discuss color zoning where ingredients, packaging materials and finished goods share circulation routes.",
         system: "High-build industrial epoxy",
         thickness: "Manufacturer-specified build for traffic and exposure",
-        link: "/industrial-epoxy",
+        link: "/commercial",
       },
       {
         name: "Utility and chemical handling zones",
@@ -1350,7 +1350,7 @@ export const INDUSTRY_PAGES: IndustryPageData[] = [
           "Install a seamless epoxy assembly with HTU high-traffic urethane topcoat where approved by the project specification. Detail terminations around equipment and wall systems before work begins. Review the proposed finish for cleanability and resistance to the actual cleaning sequence rather than selecting texture solely from a decorative sample.",
         system: "Seamless epoxy with HTU high-traffic urethane topcoat",
         thickness: "Manufacturer-approved build for the specified assembly",
-        link: "/industrial-epoxy",
+        link: "/commercial",
       },
       {
         name: "Ante rooms and gowning transitions",
@@ -1366,7 +1366,7 @@ export const INDUSTRY_PAGES: IndustryPageData[] = [
           "Evaluate hazardous-drug and non-HD rooms separately against the facility's containment and cleaning procedures. Select the compatible epoxy and HTU assembly, then document penetrations and equipment interfaces. A chemically resistant floor does not replace containment equipment, pressure relationships or the operational controls established by the pharmacy's design and compliance team.",
         system: "Chemical-compatible epoxy and HTU finish",
         thickness: "Exposure-specific assembly per approved submittal",
-        link: "/industrial-epoxy",
+        link: "/commercial",
       },
       {
         name: "Floor-to-wall junctions",

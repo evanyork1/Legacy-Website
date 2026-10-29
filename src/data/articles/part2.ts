@@ -25,7 +25,7 @@ export const ARTICLES_PART2: StaticArticle[] = [
 
 <h2>The Main Options</h2>
 <h3>Epoxy with a high-traffic urethane finish</h3>
-<p>This is the workhorse for most warehouse and production floors. The <a href="/industrial-epoxy">industrial epoxy</a> bonds to the ground concrete and gives you a seamless, cleanable surface with color, safety zones and slip-resistant texture built in. A urethane topcoat over the epoxy takes the abrasion from wheels and keeps the floor from scuffing and dulling in traffic lanes. It is a strong fit when you want a bright, marked-out floor that cleans easily.</p>
+<p>This is the workhorse for most warehouse and production floors. The <a href="/commercial">industrial epoxy</a> bonds to the ground concrete and gives you a seamless, cleanable surface with color, safety zones and slip-resistant texture built in. A urethane topcoat over the epoxy takes the abrasion from wheels and keeps the floor from scuffing and dulling in traffic lanes. It is a strong fit when you want a bright, marked-out floor that cleans easily.</p>
 
 <h3>Heavier troweled or broadcast epoxy</h3>
 <p>A thin coating is the wrong choice where loads get dropped or dragged, or where steel-wheeled carts and heavy equipment run. In those areas we step up to a heavier epoxy, either broadcast with aggregate for body and grip or troweled as a mortar. These builds absorb impact that would chip a thin film, and they can be used only in the high-abuse zones rather than across the whole building.</p>
@@ -239,7 +239,7 @@ export const ARTICLES_PART2: StaticArticle[] = [
 <li>Maintenance shops with oil, grease and occasional spills that get cleaned up promptly</li>
 <li>Commercial spaces, back-of-house areas and corridors</li>
 </ul>
-<p>For these areas, a properly prepared <a href="/industrial-epoxy">industrial epoxy</a> system with the right finish for the traffic is usually the best value.</p>
+<p>For these areas, a properly prepared <a href="/commercial">industrial epoxy</a> system with the right finish for the traffic is usually the best value.</p>
 
 <h2>When You Need Novolac</h2>
 <h3>Battery charging rooms</h3>
@@ -328,7 +328,7 @@ export const ARTICLES_PART2: StaticArticle[] = [
 <ul>
 <li><strong>You need a quick, practical floor for a kitchen, brewery or back-of-house area:</strong> sealed concrete.</li>
 <li><strong>You want a long-lasting, low-maintenance floor for a warehouse, showroom, store or production space:</strong> polished concrete.</li>
-<li><strong>The slab has heavy damage, constant chemical exposure or standing water:</strong> look at a resinous system like <a href="/industrial-epoxy">industrial epoxy</a> instead.</li>
+<li><strong>The slab has heavy damage, constant chemical exposure or standing water:</strong> look at a resinous system like <a href="/commercial">industrial epoxy</a> instead.</li>
 </ul>
 <p>Whichever you choose, fill and repair joints and cracks first. Open joints chip under carts and forklifts on both sealed and polished floors. We handle that through our <a href="/joint-filling-crack-repair">joint filling and crack repair</a> work. We install both systems across Dallas–Fort Worth and Texas, and will tell you honestly which one fits your floor.</p>
 

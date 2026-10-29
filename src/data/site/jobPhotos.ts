@@ -63,7 +63,6 @@ export const JOB = {
  * moisture testing) only appear on prep and polishing pages.
  */
 export const PAGE_PHOTOS: Record<string, { hero?: Photo; photos: Photo[] }> = {
-  "/industrial-epoxy": { hero: JOB.hangar, photos: [JOB.mfgEpoxy, JOB.aeroMfg, JOB.batteryArea] },
   "/resinous-flooring": { hero: JOB.quartzCove, photos: [JOB.mfgEpoxy, JOB.foodPlant, JOB.aeroMfg] },
   "/manufacturing-floor-coating": { hero: JOB.aeroMfg, photos: [JOB.mfgEpoxy, JOB.batteryArea, JOB.hangar] },
   "/aerospace-hangar-flooring": { hero: JOB.hangar, photos: [JOB.aeroMfg, JOB.mfgEpoxy, JOB.batteryArea] },
@@ -94,7 +93,7 @@ export const PAGE_PHOTOS: Record<string, { hero?: Photo; photos: Photo[] }> = {
 /** Real projects shown on each page (case study slugs, most relevant first). */
 /** Before/after pairs shown on a page. */
 export const PAGE_BEFORE_AFTER: Record<string, { before: Photo; after: Photo; caption: string }> = {
-  "/industrial-epoxy": { before: JOB.shinyBefore, after: JOB.shinyAfter, caption: "Bare concrete to a high-gloss epoxy floor in a metal warehouse building." },
+  "/commercial": { before: JOB.shinyBefore, after: JOB.shinyAfter, caption: "Bare concrete to a high-gloss epoxy floor in a metal warehouse building." },
   "/warehouse-flooring": { before: JOB.shinyBefore, after: JOB.shinyAfter, caption: "Bare concrete to a high-gloss epoxy floor in a metal warehouse building." },
   "/aerospace-hangar-flooring": { before: JOB.shinyBefore, after: JOB.shinyAfter, caption: "Bare concrete to a bright, high-gloss epoxy floor in a metal building." },
   "/secondary-containment-coatings": { before: JOB.containBefore, after: JOB.containAfter, caption: "Data center transformer containment pit, before and after a watertight coating." },
@@ -111,7 +110,6 @@ export const PAGE_VIDEO: Record<string, { src: string; poster: string; caption: 
 /** Typical price answers (Evan's ranges, Oct 2026). Replaces any generic cost FAQ on the page. */
 const EPOXY_PRICE = "Our standard high-traffic epoxy floors typically run about $3.50 to $10 per square foot. Size drives most of that range: large open floors land near the low end and small rooms near the high end. Prep, moisture, repairs and after-hours phasing also move the number, so we confirm it with a site walk or plans.";
 export const PAGE_PRICE_FAQ: Record<string, { q: string; a: string }> = {
-  "/industrial-epoxy": { q: "How much does industrial epoxy flooring cost?", a: EPOXY_PRICE },
   "/warehouse-flooring": { q: "How much does a warehouse epoxy floor cost?", a: EPOXY_PRICE },
   "/manufacturing-floor-coating": { q: "How much does a manufacturing floor coating cost?", a: EPOXY_PRICE + " Urethane cement in hot, wet or chemical areas runs about $21 per square foot." },
   "/concrete-polishing": { q: "How much does polished concrete cost?", a: "Polished concrete typically runs about $2.25 per square foot on large floors up to about $8 per square foot on small ones. The level of shine, slab condition, repairs and dust control also move the price, so we confirm it with a site walk or plans." },
@@ -125,7 +123,6 @@ export const PAGE_PRICE_FAQ: Record<string, { q: string; a: string }> = {
 
 export const PAGE_PROJECTS: Record<string, string[]> = {
   "/commercial": ["plano-distribution-center-walkway-epoxy", "dallas-supplement-manufacturing-washroom-epoxy", "data-center-transformer-containment-coating"],
-  "/industrial-epoxy": ["plano-distribution-center-walkway-epoxy", "dallas-supplement-manufacturing-washroom-epoxy"],
   "/warehouse-flooring": ["plano-distribution-center-walkway-epoxy"],
   "/line-striping": ["plano-distribution-center-walkway-epoxy"],
   "/joint-filling-crack-repair": ["plano-distribution-center-walkway-epoxy"],

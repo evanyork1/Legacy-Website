@@ -38,8 +38,7 @@ const SERVICE_AREAS = [
 
 /** Money pages lead the Systems column with their exact target anchors. */
 const MONEY_PAGES = [
-  { label: "Commercial Epoxy Flooring", path: "/commercial" },
-  { label: "Industrial Epoxy Flooring", path: "/industrial-epoxy" },
+  { label: "Epoxy Flooring", path: "/commercial" },
   { label: "Polished Concrete", path: "/concrete-polishing" },
 ];
 const FOOTER_SYSTEMS = [

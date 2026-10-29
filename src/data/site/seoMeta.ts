@@ -13,19 +13,14 @@ const NEXT = "Bids within 24 hours of plans.";
 
 export const SEO_META: Record<string, { title: string; description: string }> = {
   "/": {
-    title: `${B} | Commercial & Industrial Epoxy Flooring in Dallas & All of Texas`,
+    title: `${B} | Commercial & Industrial Flooring in Dallas & All of Texas`,
     description:
       "Commercial and industrial epoxy flooring, polished concrete, urethane cement and line striping for Dallas–Fort Worth, all of Texas and nationwide. " + NEXT,
   },
   "/commercial": {
-    title: `Commercial Epoxy Flooring in Dallas & Texas | ${B}`,
+    title: `Commercial & Industrial Epoxy Flooring | Dallas, Texas & Nationwide | ${B}`,
     description:
-      "Commercial epoxy flooring and floor coatings for warehouses, plants, restaurants, retail and healthcare. Plano-based, serving Dallas–Fort Worth, all of Texas and nationwide. " + NEXT,
-  },
-  "/industrial-epoxy": {
-    title: `Industrial Epoxy Flooring | Dallas, Texas & Nationwide | ${B}`,
-    description:
-      "Industrial epoxy flooring for warehouses, manufacturing plants, hangars and distribution centers. Built for forklifts and daily use. DFW, all of Texas and nationwide. " + NEXT,
+      "Commercial and industrial epoxy flooring for warehouses, plants, hangars, kitchens, retail and healthcare. Built for forklifts and daily use. DFW, all of Texas and nationwide.",
   },
   "/warehouse-flooring": {
     title: `Warehouse Floor Coatings & Epoxy Flooring | Dallas–Fort Worth | ${B}`,

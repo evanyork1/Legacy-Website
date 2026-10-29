@@ -101,7 +101,7 @@ const industryImage = (path: string) =>
   path === "/data-center-flooring" ? imgDataCenter : INDUSTRY_PAGES.find((p) => p.path === path)?.heroImage;
 
 const SYSTEM_CARDS = [
-  { name: "Epoxy", desc: "Seamless high-build epoxy and self-leveling systems for tough commercial spaces.", path: "/industrial-epoxy", icon: Droplets },
+  { name: "Epoxy", desc: "Seamless high-build epoxy and self-leveling systems for tough commercial spaces.", path: "/commercial", icon: Droplets },
   { name: "Urethane Cement", desc: "Cementitious urethane systems built for heat, chemicals, and wet processing.", path: "/urethane-cement-flooring", icon: Layers },
   { name: "Quartz Flooring", desc: "Colored quartz broadcast into resin for a sanitary, non-slip commercial surface.", path: "/quartz-flooring", icon: Grid3X3 },
   { name: "Polished Concrete", desc: "Diamond-ground and densified polished concrete for a low-maintenance, high-gloss finish.", path: "/concrete-polishing", icon: Diamond },
@@ -147,7 +147,7 @@ const Home = () => {
   return (
     <>
       <Helmet>
-        <title>Legacy Industrial Coatings | Commercial & Industrial Epoxy Flooring in Dallas & All of Texas</title>
+        <title>Legacy Industrial Coatings | Commercial & Industrial Flooring in Dallas & All of Texas</title>
         <meta
           name="description"
           content="Commercial and industrial epoxy flooring, polished concrete, urethane cement and line striping for Dallas–Fort Worth, all of Texas and nationwide. Bids within 24 hours of plans."
@@ -158,7 +158,7 @@ const Home = () => {
         <meta name="geo.position" content="32.7767;-96.7970" />
         <meta name="ICBM" content="32.7767, -96.7970" />
         <meta property="og:type" content="website" />
-        <meta property="og:title" content="Legacy Industrial Coatings | Commercial & Industrial Epoxy Flooring in Dallas & All of Texas" />
+        <meta property="og:title" content="Legacy Industrial Coatings | Commercial & Industrial Flooring in Dallas & All of Texas" />
         <meta
           property="og:description"
           content="Commercial and industrial epoxy flooring, polished concrete, urethane cement and line striping for Dallas–Fort Worth, all of Texas and nationwide. Bids within 24 hours of plans."
@@ -170,7 +170,7 @@ const Home = () => {
         <meta property="og:url" content="https://legacyindustrialcoatings.com" />
         <meta property="og:site_name" content="Legacy Industrial Coatings" />
         <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content="Legacy Industrial Coatings | Commercial & Industrial Epoxy Flooring in Dallas & All of Texas" />
+        <meta name="twitter:title" content="Legacy Industrial Coatings | Commercial & Industrial Flooring in Dallas & All of Texas" />
         <meta name="twitter:description" content="Commercial and industrial epoxy flooring, polished concrete, urethane cement and line striping for Dallas–Fort Worth, all of Texas and nationwide. Bids within 24 hours of plans." />
         <meta name="twitter:image" content="https://legacyindustrialcoatings.com/og/legacy-commercial-industrial-flooring.jpg" />
         <meta name="robots" content="index, follow" />
@@ -188,8 +188,7 @@ const Home = () => {
       <StructuredData
         services={[
           { name: "Mechanical Polished Concrete", description: "Diamond-ground, densified, and burnished polished concrete floors for DFW commercial, retail, and warehouse facilities.", url: "/concrete-polishing" },
-          { name: "Industrial Epoxy Flooring", description: "High-traffic epoxy and industrial floor coatings for warehouses, manufacturing, and aviation hangars.", url: "/industrial-epoxy" },
-          { name: "Commercial Epoxy Flooring", description: "Commercial epoxy flooring and floor coatings for retail, restaurants, offices, healthcare, schools and dealerships.", url: "/commercial" },
+          { name: "Commercial & Industrial Epoxy Flooring", description: "Epoxy flooring and floor coatings for warehouses, manufacturing, hangars, restaurants, retail, healthcare and schools.", url: "/commercial" },
         ]}
         faqs={homepageFaqs}
       />

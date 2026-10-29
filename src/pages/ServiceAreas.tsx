@@ -14,7 +14,7 @@ const HERO_IMG = "/lovable-uploads/171b7f71-4aa3-4b54-8c96-5f7143dddebf-960.webp
 
 const MONEY_PAGES = [
   { label: "Commercial epoxy flooring", url: "/commercial" },
-  { label: "Industrial epoxy flooring", url: "/industrial-epoxy" },
+  { label: "Industrial epoxy flooring", url: "/commercial" },
   { label: "Polished concrete", url: "/concrete-polishing" },
 ];
 

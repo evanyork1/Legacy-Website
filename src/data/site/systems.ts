@@ -322,7 +322,7 @@ SYSTEM_PAGES.push(
           "Industrial epoxy flooring is the right answer for most warehouses and production floors, but not every one. Heat, hot washdown, aggressive chemicals and tight shutdown windows each call for a different chemistry. We install the full range and match the system to the floor's actual service instead of forcing one product onto every slab.",
         ],
         links: [
-          { label: "Legacy Epoxy Series", url: "/industrial-epoxy", text: "100% solids epoxy from a 16-mil thin film to a 1/4\" troweled mortar for forklifts, carts and foot traffic." },
+          { label: "Legacy Epoxy Series", url: "/commercial", text: "100% solids epoxy from a 16-mil thin film to a 1/4\" troweled mortar for forklifts, carts and foot traffic." },
           { label: "Novolac epoxy flooring", url: "/novolac-epoxy-flooring", text: "Higher chemical and temperature resistance for battery rooms, chemical storage and containment." },
           { label: "Urethane cement flooring", url: "/urethane-cement-flooring", text: "Legacy Urethane Cement for hot washdown, thermal shock, freezers and food and beverage production." },
           { label: "MMA flooring", url: "/mma-flooring", text: "Fast-cure Legacy MMA systems for facilities that can only shut down overnight or over a weekend." },
@@ -431,7 +431,7 @@ SYSTEM_PAGES.push(
       title: "What Is Resinous Flooring? Choose by Chemistry",
       columns: ["Best for", "Return to service", "Thickness range", "System page"],
       rows: [
-        { label: "Epoxy (Legacy Epoxy Series)", values: ["Warehouses, production, offices, common areas", "Standard", "Thin film to 1/4\"", "/industrial-epoxy"] },
+        { label: "Epoxy (Legacy Epoxy Series)", values: ["Warehouses, production, offices, common areas", "Standard", "Thin film to 1/4\"", "/commercial"] },
         { label: "Novolac epoxy", values: ["Chemical storage, battery rooms, containment", "Standard", "Novolac 32 to Novolac 125", "/novolac-epoxy-flooring"] },
         { label: "Urethane cement (Legacy Urethane Cement)", values: ["Kitchens, food processing, freezers, thermal cycling", "Standard", "1/8\" to 3/8\"", "/urethane-cement-flooring"] },
         { label: "Hybrid urethane cement (Legacy Hybrid Urethane)", values: ["Food and beverage, cold storage, schools, healthcare", "Standard to fast (by topcoat series)", "1/8\" or 3/16\" base", "/urethane-cement-flooring#legacy-hybrid-urethane"] },
@@ -663,7 +663,7 @@ SYSTEM_PAGES.push(
             { label: "Maintenance", values: ["Routine cleaning and periodic burnishing", "Routine cleaning; periodic topcoat renewal", "Periodic resealing"] },
           ],
         },
-        link: { label: "Compare with industrial epoxy flooring", url: "/industrial-epoxy" },
+        link: { label: "Compare with industrial epoxy flooring", url: "/commercial" },
       },
       {
         title: "Our Polishing Process",

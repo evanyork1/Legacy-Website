@@ -169,8 +169,7 @@ const SimplePage = ({
           <p className="text-muted-foreground font-body text-[15px] leading-[1.8] mb-4">
             Legacy Industrial Coatings installs commercial and industrial epoxy flooring, polished concrete and floor
             coatings from Plano, Texas, across Dallas–Fort Worth, all of Texas and nationwide. See our{" "}
-            <a href="/commercial" className={INLINE}>commercial epoxy flooring</a>,{" "}
-            <a href="/industrial-epoxy" className={INLINE}>industrial epoxy flooring</a> and{" "}
+            <a href="/commercial" className={INLINE}>commercial and industrial epoxy flooring</a> and{" "}
             <a href="/concrete-polishing" className={INLINE}>polished concrete</a> pages.
           </p>
           <p className="text-muted-foreground font-body text-[14px] leading-[1.8]">

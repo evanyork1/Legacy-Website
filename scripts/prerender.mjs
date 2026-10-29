@@ -31,7 +31,6 @@ const STATIC_ROUTES = [
   "/flake-floors",
   "/residential-patio",
   "/garagefloors",
-  "/industrial-epoxy",
   "/commercial",
   "/concrete-polishing",
   "/concrete-sealing",

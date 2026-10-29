@@ -220,7 +220,7 @@ const IndustryTemplate = ({ industry }: { industry?: IndustryPageData }) => {
           <p className="text-muted-foreground font-body text-[15px] leading-[1.8] mb-6 max-w-3xl">
             Comparing options for your {industry.name.toLowerCase()} floor? See our guides to{" "}
             <a href="/commercial" className={INLINE}>commercial epoxy flooring</a>,{" "}
-            <a href="/industrial-epoxy" className={INLINE}>industrial epoxy flooring</a> and{" "}
+            <a href="/commercial" className={INLINE}>industrial epoxy flooring</a> and{" "}
             <a href="/concrete-polishing" className={INLINE}>polished concrete</a>.
           </p>
           {systemLinks.length > 0 && (

@@ -11,7 +11,7 @@ import {
   ProofBar,
 } from "@/components/site/sections";
 import { Seo } from "@/components/seo/Seo";
-import { ProjectCards, projectsFor } from "@/components/site/SimplePage";
+import { BeforeAfter, ProjectCards, projectsFor } from "@/components/site/SimplePage";
 import { JOB } from "@/data/site/jobPhotos";
 import { StructuredData } from "@/components/seo/StructuredData";
 
@@ -49,6 +49,21 @@ const CITIES = [
 
 const SPACES = [
   {
+    label: "Warehouses & distribution centers",
+    url: "/warehouse-flooring",
+    text: "Forklift-ready epoxy with a high-traffic urethane finish, joint repair and aisle striping, phased around live racking.",
+  },
+  {
+    label: "Aviation hangars",
+    url: "/aerospace-hangar-flooring",
+    text: "Bright, high-gloss epoxy that stands up to tugs, equipment, fuel and hydraulic fluid.",
+  },
+  {
+    label: "Data centers",
+    url: "/data-center-flooring",
+    text: "Sealed and coated floors, battery rooms and watertight transformer oil containment.",
+  },
+  {
     label: "Manufacturing & food plants",
     url: "/manufacturing-floor-coating",
     text: "Chemical-resistant epoxy and urethane cement for production floors, wash rooms and washdown areas.",
@@ -83,19 +98,9 @@ const SPACES = [
     url: "/auto-dealership-flooring",
     text: "Showroom finishes up front, and chemical- and hot-tire-resistant coatings in the service drive and shop.",
   },
-  {
-    label: "Warehouses & distribution",
-    url: "/warehouse-flooring",
-    text: "Industrial epoxy or polished concrete with joint repair and aisle striping, phased around live racking.",
-  },
 ];
 
 const SYSTEMS = [
-  {
-    label: "Industrial epoxy flooring",
-    url: "/industrial-epoxy",
-    text: "The workhorse floor for warehouses, distribution centers and production, with a high-traffic urethane finish where forklifts run.",
-  },
   {
     label: "Decorative flake floors",
     url: "/flake-floors",
@@ -161,8 +166,8 @@ const COST_FACTORS = [
 
 const FAQS = [
   {
-    q: "What is commercial epoxy flooring?",
-    a: "Commercial epoxy flooring is a seamless resin coating bonded to a prepared concrete slab. It creates a hard, easy-to-clean surface that stands up to foot traffic, carts, forklifts, spills and daily cleaning, and it can be finished in solid colors, flake or quartz with a slip-resistant texture.",
+    q: "What is commercial and industrial epoxy flooring?",
+    a: "Commercial and industrial epoxy flooring is a seamless resin coating bonded to a prepared concrete slab. It creates a hard, easy-to-clean surface that stands up to foot traffic, carts, forklifts, spills and daily cleaning, and it can be finished in solid colors, flake or quartz with a slip-resistant texture.",
   },
   {
     q: "Is epoxy good for warehouse floors with forklift traffic?",
@@ -207,7 +212,7 @@ const LinkCards = ({ items }: { items: { label: string; url: string; text: strin
 const Commercial = () => {
   const crumbs = [
     { name: "Home", url: "/" },
-    { name: "Commercial Epoxy Flooring", url: PATH },
+    { name: "Epoxy Flooring", url: PATH },
   ];
 
   return (
@@ -216,9 +221,9 @@ const Commercial = () => {
       <StructuredData
         services={[
           {
-            name: "Commercial Epoxy Flooring",
+            name: "Commercial & Industrial Epoxy Flooring",
             description:
-              "Commercial epoxy flooring and floor coatings for retail, restaurants, offices, healthcare, schools, dealerships and warehouses.",
+              "Commercial and industrial epoxy flooring for warehouses, distribution centers, manufacturing plants, hangars, restaurants, retail, healthcare and schools.",
             url: PATH,
           },
         ]}
@@ -228,9 +233,9 @@ const Commercial = () => {
       <SiteHeader />
 
       <PageHero
-        eyebrow="Commercial & Industrial Epoxy Flooring"
-        title="Commercial Epoxy Flooring & Floor Coatings"
-        subhead="Commercial epoxy flooring is a seamless resin floor bonded to your concrete, built for foot traffic, forklifts, spills and daily cleaning. We install epoxy floors for warehouses, manufacturing plants, restaurants, retail, healthcare and schools across Dallas–Fort Worth, all of Texas and nationwide, often nights and weekends so you stay open."
+        eyebrow="Dallas–Fort Worth · All of Texas · Nationwide"
+        title="Commercial & Industrial Epoxy Flooring"
+        subhead="Epoxy flooring is a seamless resin floor bonded to your concrete, built for forklifts, foot traffic, spills and daily cleaning. We install it in warehouses, manufacturing plants, hangars, restaurants, retail and healthcare across Dallas–Fort Worth, all of Texas and nationwide, often nights and weekends so you stay open."
         image={HERO_IMG}
         imageAlt={JOB.mfgEpoxy.alt}
         crumbs={crumbs}
@@ -272,7 +277,7 @@ const Commercial = () => {
       <section className="py-20 md:py-28">
         <div className="max-w-7xl mx-auto px-6 md:px-8 lg:px-12">
           <Eyebrow>Systems</Eyebrow>
-          <h2 className={H2}>Types of Commercial Epoxy Floors We Install</h2>
+          <h2 className={H2}>Types of Epoxy Floors and Coatings We Install</h2>
           <p className={`${P} max-w-3xl`}>
             We install manufacturer-warranted materials and size each floor to your traffic, chemicals and cleaning, so
             it isn't under-built.
@@ -334,7 +339,9 @@ const Commercial = () => {
         </div>
       </section>
 
-      <ProjectCards items={projectsFor(PATH)} title="Recent Commercial Epoxy Projects" />
+      <BeforeAfter path={PATH} />
+
+      <ProjectCards items={projectsFor(PATH)} title="Recent Epoxy Flooring Projects" />
 
       <section className="py-20 md:py-24 bg-secondary border-y border-border">
         <div className="max-w-7xl mx-auto px-6 md:px-8 lg:px-12">
@@ -361,7 +368,7 @@ const Commercial = () => {
 
       <CommercialTestimonials />
 
-      <FaqBlock heading="Commercial Epoxy Flooring Questions" faqs={FAQS} />
+      <FaqBlock heading="Epoxy Flooring Questions" faqs={FAQS} />
 
       <SiteFooter
         cta={{

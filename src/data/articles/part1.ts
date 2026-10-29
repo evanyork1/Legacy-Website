@@ -194,7 +194,7 @@ export const ARTICLES_PART1: StaticArticle[] = [
 
 <h2>What we recommend</h2>
 <p>Walk the building by use, not by square footage. The racking aisles, the dock, the battery room and the break room all see different traffic, and the best warehouse floor plans treat them differently. On a 40,000 SF <a href="/commercial-case-studies/plano-distribution-center-walkway-epoxy">Plano distribution center</a>, we removed failed, faded striping and installed epoxy with a high-traffic urethane finish and new line striping in about two weeks, keeping the walkways clearly marked for the people who use them every shift.</p>
-<p>If you are planning a new or existing facility in Dallas–Fort Worth or anywhere in Texas, start with our <a href="/warehouse-flooring">warehouse flooring</a> page, then compare details on <a href="/concrete-polishing">concrete polishing</a> and <a href="/industrial-epoxy">industrial epoxy</a>.</p>
+<p>If you are planning a new or existing facility in Dallas–Fort Worth or anywhere in Texas, start with our <a href="/warehouse-flooring">warehouse flooring</a> page, then compare details on <a href="/concrete-polishing">concrete polishing</a> and <a href="/commercial">industrial epoxy</a>.</p>
 
 <h2>Frequently asked questions</h2>
 

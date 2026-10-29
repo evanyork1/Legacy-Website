@@ -42,8 +42,7 @@ const SERVICE_GROUPS: Group[] = [
     title: "Epoxy & Resinous Floors",
     text: "Seamless floors bonded to your concrete, chosen for the traffic, chemicals and cleaning in each space.",
     items: [
-      { label: "Commercial Epoxy Flooring", path: "/commercial" },
-      { label: "Industrial Epoxy Flooring", path: "/industrial-epoxy" },
+      { label: "Commercial & Industrial Epoxy Flooring", path: "/commercial" },
       { label: "Urethane Cement", path: "/urethane-cement-flooring" },
       { label: "Resinous Flooring", path: "/resinous-flooring" },
       { label: "Flake Floors", path: "/flake-floors" },

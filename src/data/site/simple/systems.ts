@@ -5,7 +5,7 @@ import type { SimpleContent } from "./types";
  * handled in the site walk and the bid.
  */
 export const SIMPLE_SYSTEMS: Record<string, SimpleContent> = {
-  "/industrial-epoxy": {
+  "/commercial": {
     intro:
       "Industrial epoxy flooring built for forklifts, foot traffic and production work. We prepare the slab right, match the floor to your traffic and keep your operation running while we work.",
     overviewTitle: "Industrial Epoxy Flooring That Holds Up",

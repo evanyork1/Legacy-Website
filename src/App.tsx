@@ -157,7 +157,7 @@ function App() {
               ))}
 
               {/* Commercial systems — every system page renders through the shared template. */}
-              {SYSTEM_PAGES.map((s) => (
+              {SYSTEM_PAGES.filter((s) => s.path !== "/industrial-epoxy").map((s) => (
                 <Route
                   key={s.path}
                   path={s.path}
@@ -172,7 +172,8 @@ function App() {
               <Route path="/polished-concrete" element={<Navigate to="/concrete-polishing" replace />} />
               <Route path="/warehouse-epoxy-flooring" element={<Navigate to="/warehouse-flooring" replace />} />
               <Route path="/commercial-flooring" element={<Navigate to="/commercial" replace />} />
-              <Route path="/epoxy-flooring-dallas" element={<Navigate to="/industrial-epoxy" replace />} />
+              <Route path="/epoxy-flooring-dallas" element={<Navigate to="/commercial" replace />} />
+              <Route path="/industrial-epoxy" element={<Navigate to="/commercial" replace />} />
 
               
           <Route path="/garagelandingform" element={<GarageLandingForm />} />
