@@ -89,6 +89,7 @@ export const INDUSTRY_PAGES: IndustryPageData[] = [
   {
     slug: "warehouse",
     path: "/warehouse-flooring",
+    caseStudySlug: "plano-distribution-center-walkway-epoxy",
     name: "Warehouse & Tilt-Up",
     metaTitle: "Industrial & Warehouse Epoxy Flooring DFW | Legacy Industrial Coatings",
     metaDescription:
@@ -151,7 +152,6 @@ export const INDUSTRY_PAGES: IndustryPageData[] = [
       "ASTM F2170 in-situ relative humidity and ASTM F1869 MVER moisture testing before coating",
       "ASTM D7234 pull-off adhesion testing on mockups",
     ],
-    caseStudySlug: "fast-casual-restaurant-concrete-sealing",
     faqs: [
       {
         q: "Can you coat our warehouse without shutting down operations?",
