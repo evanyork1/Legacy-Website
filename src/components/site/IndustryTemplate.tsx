@@ -13,6 +13,7 @@ import type { IndustryPageData } from "@/data/site/industries";
 import { withCostFaq } from "@/data/site/costFaq";
 import SimplePage from "@/components/site/SimplePage";
 import { SIMPLE_INDUSTRIES } from "@/data/site/simple/industries";
+import { PAGE_PHOTOS } from "@/data/site/jobPhotos";
 
 /**
  * Industry page — mirrors legacycommercialfloors.com industry detail:
@@ -39,6 +40,7 @@ const IndustryTemplate = ({ industry }: { industry?: IndustryPageData }) => {
   const faqs = withCostFaq(`${industry.name.toLowerCase()} flooring`, industry.faqs);
 
   const simple = SIMPLE_INDUSTRIES[industry.path];
+  const jp = PAGE_PHOTOS[industry.path];
   if (simple) {
     return (
       <SimplePage
@@ -47,12 +49,12 @@ const IndustryTemplate = ({ industry }: { industry?: IndustryPageData }) => {
         metaDescription={industry.metaDescription}
         h1={industry.h1}
         eyebrow="Industry"
-        heroImage={industry.heroImage}
-        heroAlt={industry.heroAlt}
+        heroImage={jp?.hero?.src ?? industry.heroImage}
+        heroAlt={jp?.hero?.alt ?? industry.heroAlt}
         crumbs={crumbs}
         serviceName={`${industry.name} Flooring`}
         content={simple}
-        photos={industry.photos}
+        photos={jp?.photos ?? industry.photos}
         related={{ title: "Floors We Install Here", links: systemLinks }}
         more={{ title: "Other Industries We Serve", links: others.map((o) => ({ label: o.label, path: o.path })) }}
         extra={

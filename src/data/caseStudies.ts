@@ -1,6 +1,9 @@
 // Case study data registry. Add new entries here and they'll show up on
 // /case-studies and resolve at /case-studies/:slug
 
+import plWalkBefore from "@/assets/jobs/walkway-striping-before.webp";
+import plWalkDuring from "@/assets/jobs/walkway-striping-removal.webp";
+import plWalkAfter from "@/assets/jobs/walkway-epoxy-after.webp";
 import after1 from "@/assets/case-studies/fast-casual-restaurant/after-1.jpg";
 import after2 from "@/assets/case-studies/fast-casual-restaurant/after-2.jpg";
 import after3 from "@/assets/case-studies/fast-casual-restaurant/after-3.jpg";
@@ -435,6 +438,44 @@ export const caseStudies: CaseStudy[] = [
       { src: argyleAfter3, alt: "Detail of properly installed metallic epoxy showing depth and movement after correct substrate prep and material system" },
       { src: argyleAfter4, alt: "Wide view of finished metallic garage floor in Argyle TX luxury home — the floor the homeowner originally paid for, finally done right" },
       { src: argyleAfter5, alt: "Completed luxury home garage with sealed, bonded, high-performance metallic epoxy floor by Legacy Industrial Coatings" },
+    ],
+  },
+  {
+    slug: "plano-distribution-center-walkway-epoxy",
+    category: "commercial",
+    tag: "Distribution Center",
+    title: "Plano Distribution Center — Failed Line Striping Replaced with a Forklift-Ready Epoxy Walkway",
+    summary:
+      "A Plano distribution center had walkway striping that was fading badly and was poorly installed the first time. We removed all of it and installed an epoxy floor with a high-traffic urethane finish, built for forklift traffic and daily use.",
+    heroImage: plWalkAfter,
+    heroAlt: "Epoxy walkway with high-traffic urethane finish in a Plano, TX distribution center",
+    metaTitle: "Plano Distribution Center Epoxy Walkway Case Study | Legacy Industrial Coatings",
+    metaDescription:
+      "How Legacy Industrial Coatings removed failed, fading line striping in a Plano, TX distribution center and installed an epoxy walkway with a high-traffic urethane finish built for forklifts.",
+    location: "Plano, TX",
+    serviceType: "Striping Removal + Epoxy Floor with High-Traffic Urethane Finish",
+    squareFootage: "Warehouse pedestrian walkway and aisle markings",
+    timeline: "",
+    challenge: [
+      "This distribution center in Plano had pedestrian walkway striping that was fading badly. It had been poorly installed the first time, and under daily forklift traffic it was wearing off and no longer marking the walkway clearly.",
+      "Faded walkway lines are more than a looks problem in a working warehouse. The lines tell drivers and people on foot where each belongs, and when they fade, that separation goes with them.",
+    ],
+    solution: [
+      "We removed all of the old striping instead of painting over it. Coating on top of a failing line only hides the problem until the new layer comes up with the old one.",
+      "With the old markings gone, we prepared the concrete and installed an epoxy floor with a high-traffic urethane finish on the walkway. The urethane topcoat is what takes the wear from forklift tires and daily foot traffic.",
+    ],
+    result: [
+      "The facility now has a clean, clearly marked walkway that is built to hold up to forklift traffic and daily use, instead of striping that wears off.",
+      "If your warehouse lines are fading, peeling or were never put down right, we can remove them and put down a floor and markings that last. Send us a layout or a few photos to get started.",
+    ],
+    beforePhotos: [
+      { src: plWalkBefore, alt: "Faded, poorly installed walkway striping in a Plano distribution center before removal" },
+    ],
+    duringPhotos: [
+      { src: plWalkDuring, alt: "Removing failed walkway striping in a Plano warehouse before installing a new epoxy floor" },
+    ],
+    afterPhotos: [
+      { src: plWalkAfter, alt: "Finished epoxy walkway with high-traffic urethane finish in a Plano distribution center" },
     ],
   },
 ];

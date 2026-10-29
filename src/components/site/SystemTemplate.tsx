@@ -11,6 +11,7 @@ import type { SystemPageData } from "@/data/site/systems";
 import { REVIEWED_LINE, withCostFaq } from "@/data/site/costFaq";
 import SimplePage from "@/components/site/SimplePage";
 import { SIMPLE_SYSTEMS } from "@/data/site/simple/systems";
+import { PAGE_PHOTOS } from "@/data/site/jobPhotos";
 
 /**
  * System page: photo hero (H1 + two-sentence answer + reviewed line) →
@@ -40,6 +41,7 @@ const SystemTemplate = ({ system }: { system?: SystemPageData }) => {
   const faqs = withCostFaq(system.name.toLowerCase(), system.faqs);
 
   const simple = SIMPLE_SYSTEMS[system.path];
+  const jp = PAGE_PHOTOS[system.path];
   if (simple) {
     return (
       <SimplePage
@@ -48,12 +50,12 @@ const SystemTemplate = ({ system }: { system?: SystemPageData }) => {
         metaDescription={system.metaDescription}
         h1={system.h1}
         eyebrow="Commercial Flooring"
-        heroImage={system.heroImage}
-        heroAlt={system.heroAlt}
+        heroImage={jp?.hero?.src ?? system.heroImage}
+        heroAlt={jp?.hero?.alt ?? system.heroAlt}
         crumbs={crumbs}
         serviceName={system.serviceName ?? system.name}
         content={simple}
-        photos={system.photos}
+        photos={jp?.photos ?? system.photos}
         related={{ title: "Where It's Used", links: system.whereUsed }}
         more={{ title: "Other Floors We Install", links: otherSystems }}
         closing={

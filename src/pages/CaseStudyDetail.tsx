@@ -151,13 +151,15 @@ const CaseStudyDetail = () => {
                   <p className="text-sm text-gray-900 font-medium">{cs.squareFootage}</p>
                 </div>
               </div>
-              <div className="flex items-start gap-3">
-                <Clock className="h-5 w-5 text-blue-700 mt-0.5 shrink-0" />
-                <div>
-                  <p className="text-xs uppercase tracking-wide text-gray-500 font-semibold">Timeline</p>
-                  <p className="text-sm text-gray-900 font-medium">{cs.timeline}</p>
+              {cs.timeline && (
+                <div className="flex items-start gap-3">
+                  <Clock className="h-5 w-5 text-blue-700 mt-0.5 shrink-0" />
+                  <div>
+                    <p className="text-xs uppercase tracking-wide text-gray-500 font-semibold">Timeline</p>
+                    <p className="text-sm text-gray-900 font-medium">{cs.timeline}</p>
+                  </div>
                 </div>
-              </div>
+              )}
             </div>
           </div>
         </section>
