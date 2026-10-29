@@ -78,22 +78,6 @@ export default function LineStriping() {
             { label: "Industrial epoxy flooring", path: "/industrial-epoxy" },
           ],
         }}
-        extra={
-          <section className="py-16 md:py-20 border-t border-border">
-            <div className="max-w-4xl mx-auto px-6 md:px-8 lg:px-12">
-              <p className="font-heading text-[11px] tracking-[0.25em] uppercase text-muted-foreground mb-4">Relevant Project</p>
-              <h2 className="font-heading text-2xl md:text-3xl font-bold text-foreground leading-[1.15] mb-4">
-                Plano Distribution Center: Failed Striping Replaced with an Epoxy Walkway
-              </h2>
-              <p className="text-muted-foreground text-[16px] leading-[1.8] mb-6">
-                The walkway striping was fading badly and had been poorly installed the first time. We removed all of it and installed an epoxy floor with a high-traffic urethane finish, built for forklift traffic and daily use.
-              </p>
-              <a href="/commercial-case-studies/plano-distribution-center-walkway-epoxy" className="font-heading text-[12px] tracking-[0.2em] uppercase text-foreground hover:underline">
-                Read the case study →
-              </a>
-            </div>
-          </section>
-        }
         closing={{ title: "Get a bid on your floor marking", text: "Send a layout or a scope. Site walk within 1–3 business days; full bid within 24 hours of receiving plans." }}
       />
     );

@@ -11,6 +11,8 @@ import {
   ProofBar,
 } from "@/components/site/sections";
 import { Seo } from "@/components/seo/Seo";
+import { ProjectCards, projectsFor } from "@/components/site/SimplePage";
+import { JOB } from "@/data/site/jobPhotos";
 import { StructuredData } from "@/components/seo/StructuredData";
 
 /**
@@ -23,12 +25,32 @@ const PATH = "/commercial";
 const TITLE = "Commercial Epoxy Flooring & Floor Coatings | DFW & Nationwide | Legacy Industrial Coatings";
 const DESCRIPTION =
   "Commercial epoxy flooring and floor coatings for retail, restaurants, offices, healthcare, schools and dealerships. Testing-first installs, nights and weekends, bids in 24 hours. DFW based, nationwide.";
-const HERO_IMG = "/lovable-uploads/171b7f71-4aa3-4b54-8c96-5f7143dddebf-960.webp";
+const HERO_IMG = JOB.mfgEpoxy.src;
 
 const H2 = "font-heading text-3xl md:text-[2.5rem] font-bold text-foreground leading-[1.1] mb-8 text-balance";
 const P = "text-muted-foreground font-body text-[16px] leading-[1.85] mb-6";
 
+const GALLERY = [
+  { ...JOB.hangar, caption: "Aircraft hangar" },
+  { ...JOB.aeroMfg, caption: "Aerospace manufacturing" },
+  { ...JOB.battery, caption: "Forklift battery charging area" },
+  { ...JOB.quartzCove, caption: "Quartz floor with integral cove" },
+  { ...JOB.foodPlant, caption: "Food plant, slip-resistant epoxy" },
+  { ...JOB.batteryArea, caption: "Distribution center epoxy" },
+];
+
+const CITIES = [
+  ["Dallas", "dallas"], ["Fort Worth", "fort-worth"], ["Plano", "plano"], ["Frisco", "frisco"],
+  ["McKinney", "mckinney"], ["Allen", "allen"], ["Richardson", "richardson"], ["Carrollton", "carrollton"],
+  ["Lewisville", "lewisville"], ["Garland", "garland"], ["Coppell", "coppell"], ["Farmers Branch", "farmers-branch"],
+] as const;
+
 const SPACES = [
+  {
+    label: "Manufacturing & food plants",
+    url: "/manufacturing-floor-coating",
+    text: "Chemical-resistant epoxy and urethane cement for production floors, wash rooms and washdown areas.",
+  },
   {
     label: "Retail & showrooms",
     url: "/retail-flooring",
@@ -70,12 +92,12 @@ const SYSTEMS = [
   {
     label: "Industrial epoxy flooring",
     url: "/industrial-epoxy",
-    text: "Epoxy from a thin film to a troweled mortar: the workhorse for warehouses, back-of-house and production floors.",
+    text: "The workhorse floor for warehouses, distribution centers and production, with a high-traffic urethane finish where forklifts run.",
   },
   {
     label: "Decorative flake floors",
     url: "/flake-floors",
-    text: "Epoxy or fast-cure polyaspartic with color flake broadcast, for retail, restaurants, locker rooms and showrooms.",
+    text: "Color flake floors with a polyurea base coat and polyaspartic topcoat, or epoxy flake, for retail, locker rooms and showrooms.",
   },
   {
     label: "Quartz flooring",
@@ -128,24 +150,32 @@ const COST_FACTORS = [
 
 const FAQS = [
   {
+    q: "What is commercial epoxy flooring?",
+    a: "Commercial epoxy flooring is a seamless resin coating bonded to a prepared concrete slab. It creates a hard, easy-to-clean surface that stands up to foot traffic, carts, forklifts, spills and daily cleaning, and it can be finished in solid colors, flake or quartz with a slip-resistant texture.",
+  },
+  {
+    q: "Is epoxy good for warehouse floors with forklift traffic?",
+    a: "Yes. A properly prepared epoxy floor with a high-traffic urethane finish holds up to forklifts and pallet jacks and makes aisle and walkway striping last. We recently replaced failed striping in a 40,000 square foot Plano distribution center with exactly that system.",
+  },
+  {
     q: "How much does commercial epoxy flooring cost per square foot?",
     a: "Cost per square foot depends on preparation, moisture mitigation, the system and thickness, square footage, repairs and phasing. Send plans or request a site walk and we return a full bid within 24 hours of receiving plans.",
   },
   {
-    q: "How much downtime does a commercial floor coating require?",
-    a: "It depends on the system and the size of the space. We phase work zone by zone, work nights and weekends, and choose fast-cure systems such as polyaspartic or MMA when a business can only close briefly. Return-to-service times are confirmed against the product data before the schedule is set.",
+    q: "Do you install epoxy flooring near me?",
+    a: "We are based in Plano, Texas and install epoxy floors across Dallas–Fort Worth, including Dallas, Fort Worth, Plano, Frisco, McKinney, Allen, Richardson and the surrounding cities. We also travel for commercial and industrial projects nationwide.",
   },
   {
     q: "Can you work after hours so we can stay open?",
-    a: "Yes. Most of our commercial work happens around open businesses, with night and weekend crews, dust control and phasing planned with your team or GC.",
+    a: "Yes. Most of our commercial work happens around open businesses, with night and weekend crews, dust control and phasing planned with your team or GC. Fast-cure systems are available when you can only close briefly.",
   },
   {
     q: "How long does commercial epoxy flooring last?",
-    a: "Service life depends on the system thickness, the traffic and how the floor is maintained. A correctly specified, professionally prepared epoxy floor lasts for years, and renewing the topcoat in high-wear areas extends it further. We size the system to your traffic so it isn't under-built.",
+    a: "Service life depends on the system, the traffic and how the floor is maintained. A correctly prepared commercial epoxy floor lasts for years, and renewing the topcoat in high-wear areas extends it further. We size the system to your traffic so it isn't under-built.",
   },
   {
-    q: "Epoxy or polished concrete for a retail store?",
-    a: "Polished concrete is a great fit when the slab is sound and you want a clean, low-maintenance look. Epoxy, flake or quartz make more sense when you need color, a branded look, extra slip resistance or a sealed surface over a damaged slab.",
+    q: "Epoxy or polished concrete?",
+    a: "Polished concrete is a great fit when the slab is sound and you want a clean, low-maintenance look. Epoxy makes more sense when you need color, safety striping, chemical resistance, a sealed surface for wet cleaning or a fix for a damaged slab.",
   },
 ];
 
@@ -189,9 +219,9 @@ const Commercial = () => {
       <PageHero
         eyebrow="Commercial Flooring Contractor"
         title="Commercial Epoxy Flooring & Floor Coatings"
-        subhead="Commercial epoxy flooring is a seamless resin floor bonded to your concrete, built to handle foot traffic, carts, spills and daily cleaning. We install it, along with flake, quartz, urethane cement and polished concrete, for retail, restaurants, offices, healthcare, schools and dealerships, often after hours so you stay open."
+        subhead="Commercial epoxy flooring is a seamless resin floor bonded to your concrete, built for foot traffic, forklifts, spills and daily cleaning. We install epoxy floors for warehouses, manufacturing plants, restaurants, retail, healthcare and schools across Dallas–Fort Worth and nationwide, often nights and weekends so you stay open."
         image={HERO_IMG}
-        imageAlt="Commercial epoxy flooring installed by Legacy Industrial Coatings"
+        imageAlt={JOB.mfgEpoxy.alt}
         crumbs={crumbs}
         rating
       />
@@ -199,13 +229,30 @@ const Commercial = () => {
       <ProofBar />
       <ClientStrip light />
 
+      <section className="py-20 md:py-28">
+        <div className="max-w-7xl mx-auto px-6 md:px-8 lg:px-12">
+          <Eyebrow>Our Work</Eyebrow>
+          <h2 className={H2}>Epoxy Floors We've Installed</h2>
+          <div className="grid grid-cols-2 lg:grid-cols-3 gap-3 md:gap-4">
+            {GALLERY.map((g) => (
+              <figure key={g.src} className="m-0">
+                <div className="aspect-[4/3] overflow-hidden bg-muted">
+                  <img src={g.src} alt={g.alt} loading="lazy" decoding="async" width={800} height={600} className="w-full h-full object-cover" />
+                </div>
+                <figcaption className="mt-2 text-[13px] text-muted-foreground">{g.caption}</figcaption>
+              </figure>
+            ))}
+          </div>
+        </div>
+      </section>
+
       <section className="py-20 md:py-28 bg-secondary border-y border-border">
         <div className="max-w-7xl mx-auto px-6 md:px-8 lg:px-12">
           <Eyebrow>By Space</Eyebrow>
-          <h2 className={H2}>Commercial Floor Coatings for Every Space</h2>
+          <h2 className={H2}>Epoxy Flooring and Floor Coatings for Every Building</h2>
           <p className={`${P} max-w-3xl`}>
-            A restaurant kitchen, a showroom and a clinic corridor all need a commercial floor coating, but not the same
-            one. We specify the system around how each space is used and cleaned.
+            A warehouse aisle, a restaurant kitchen and a clinic corridor all need a commercial floor coating, but not the
+            same one. We choose the system around how each space is used and cleaned.
           </p>
           <LinkCards items={SPACES} />
         </div>
@@ -214,10 +261,10 @@ const Commercial = () => {
       <section className="py-20 md:py-28">
         <div className="max-w-7xl mx-auto px-6 md:px-8 lg:px-12">
           <Eyebrow>Systems</Eyebrow>
-          <h2 className={H2}>Commercial Epoxy Flooring Systems We Install</h2>
+          <h2 className={H2}>Types of Commercial Epoxy Floors We Install</h2>
           <p className={`${P} max-w-3xl`}>
-            Every Legacy system is built on spec-grade, manufacturer-warranted materials, and we install to the basis-of-design product or an approved
-            equal. Every system page lists its coat-by-coat build-up.
+            We install manufacturer-warranted materials and size each floor to your traffic, chemicals and cleaning, so
+            it isn't under-built.
           </p>
           <LinkCards items={SYSTEMS} />
         </div>
@@ -268,20 +315,26 @@ const Commercial = () => {
         </div>
       </section>
 
+      <ProjectCards items={projectsFor(PATH)} title="Recent Commercial Epoxy Projects" />
+
       <section className="py-20 md:py-24 bg-secondary border-y border-border">
-        <div className="max-w-4xl mx-auto px-6 md:px-8 lg:px-12">
-          <Eyebrow>Proof</Eyebrow>
-          <h2 className={H2}>Recent Commercial Projects</h2>
-          <p className={P}>
-            See the problem, the system we chose and the result on recent commercial floors, from swim schools and
-            restaurants to pharmaceutical manufacturing.
+        <div className="max-w-7xl mx-auto px-6 md:px-8 lg:px-12">
+          <Eyebrow>Service Area</Eyebrow>
+          <h2 className={H2}>Epoxy Flooring Near You</h2>
+          <p className={`${P} max-w-3xl`}>
+            Legacy Industrial Coatings is based in Plano, Texas and installs commercial and industrial epoxy floors across
+            Dallas–Fort Worth, with crews that travel for projects nationwide.
           </p>
-          {/* TODO Evan: approve named commercial projects to feature here. */}
-          <a
-            href="/commercial-case-studies"
-            className="inline-flex items-center gap-2 border border-border bg-background px-4 py-2 font-heading text-[11px] tracking-[0.15em] uppercase text-foreground hover:border-foreground transition-colors"
-          >
-            Commercial case studies <ArrowRight size={12} />
+          <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-px bg-border border border-border mb-6">
+            {CITIES.map(([name, slug]) => (
+              <a key={slug} href={`/epoxy-flooring/${slug}`} className="group bg-background px-5 py-4 flex items-center justify-between hover:bg-secondary transition-colors">
+                <span className="font-heading text-[14px] text-foreground group-hover:underline">Epoxy flooring {name}</span>
+                <ArrowRight size={14} className="text-muted-foreground flex-shrink-0" />
+              </a>
+            ))}
+          </div>
+          <a href="/service-areas" className="inline-flex items-center gap-2 font-heading text-[12px] tracking-[0.2em] uppercase text-foreground hover:underline">
+            All service areas <ArrowRight size={12} />
           </a>
         </div>
       </section>

@@ -5,6 +5,8 @@ import { Seo } from "@/components/seo/Seo";
 import { StructuredData } from "@/components/seo/StructuredData";
 import { ClientStrip, Eyebrow, FaqBlock, PageHero } from "@/components/site/sections";
 import type { SimpleContent } from "@/data/site/simple/types";
+import { PAGE_PROJECTS } from "@/data/site/jobPhotos";
+import { caseStudies, type CaseStudy } from "@/data/caseStudies";
 
 /**
  * Simple service/industry page: hero → overview → what we install → photos →
@@ -33,6 +35,50 @@ export type SimplePageProps = {
   extra?: React.ReactNode;
   closing?: { title: string; text: string };
 };
+
+/** Real job cards (case studies) with a photo, location and link. */
+export const ProjectCards = ({ items, title = "Recent Projects" }: { items: CaseStudy[]; title?: string }) =>
+  items.length === 0 ? null : (
+    <section className="py-16 md:py-20 border-t border-border">
+      <div className="max-w-7xl mx-auto px-6 md:px-8 lg:px-12">
+        <Eyebrow>Our Work</Eyebrow>
+        <h2 className="font-heading text-2xl md:text-3xl font-bold text-foreground leading-[1.15] mb-8">{title}</h2>
+        <div className={`grid gap-6 ${items.length > 1 ? "md:grid-cols-2" : "max-w-3xl"} ${items.length > 2 ? "lg:grid-cols-3" : ""}`}>
+          {items.map((cs) => (
+            <a key={cs.slug} href={`/${cs.category}-case-studies/${cs.slug}`} className="group block border border-border bg-background hover:border-foreground transition-colors">
+              <div className="aspect-[4/3] overflow-hidden bg-muted">
+                <img src={cs.heroImage} alt={cs.heroAlt} loading="lazy" decoding="async" width={800} height={600} className="w-full h-full object-cover" />
+              </div>
+              <div className="p-6">
+                <p className="font-heading text-[11px] tracking-[0.2em] uppercase text-muted-foreground mb-2">
+                  {cs.tag} · {cs.location}
+                </p>
+                <h3 className="font-heading font-semibold text-[17px] leading-[1.35] text-foreground mb-3 group-hover:underline">{cs.title}</h3>
+                <p className="text-[14px] text-muted-foreground leading-[1.7] line-clamp-3">{cs.summary}</p>
+                <span className="inline-flex items-center gap-2 mt-4 font-heading text-[11px] tracking-[0.2em] uppercase text-foreground">
+                  Read the case study <ArrowRight size={12} />
+                </span>
+              </div>
+            </a>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+
+export const projectsFor = (path: string) =>
+  (PAGE_PROJECTS[path] ?? []).map((slug) => caseStudies.find((c) => c.slug === slug)).filter((c): c is CaseStudy => !!c);
+
+const CITY_LINKS = [
+  { name: "Dallas", slug: "dallas" },
+  { name: "Fort Worth", slug: "fort-worth" },
+  { name: "Plano", slug: "plano" },
+  { name: "Frisco", slug: "frisco" },
+  { name: "McKinney", slug: "mckinney" },
+  { name: "Richardson", slug: "richardson" },
+  { name: "Carrollton", slug: "carrollton" },
+  { name: "Lewisville", slug: "lewisville" },
+];
 
 const H2 = "font-heading text-3xl md:text-[2.5rem] font-bold text-foreground leading-[1.1] mb-8 text-balance";
 const INLINE = "text-foreground underline underline-offset-4 decoration-border hover:decoration-foreground";
@@ -74,11 +120,23 @@ const SimplePage = ({
               {p}
             </p>
           ))}
-          <p className="text-muted-foreground font-body text-[15px] leading-[1.8]">
-            Based in Dallas–Fort Worth, working nationwide. See our{" "}
+          <p className="text-muted-foreground font-body text-[15px] leading-[1.8] mb-4">
+            Legacy Industrial Coatings is a commercial and industrial flooring contractor based in Plano, Texas, installing
+            floors since 2019 across Dallas–Fort Worth and nationwide. See our{" "}
             <a href="/commercial" className={INLINE}>commercial epoxy flooring</a>,{" "}
             <a href="/industrial-epoxy" className={INLINE}>industrial epoxy flooring</a> and{" "}
             <a href="/concrete-polishing" className={INLINE}>polished concrete</a> pages.
+          </p>
+          <p className="text-muted-foreground font-body text-[14px] leading-[1.8]">
+            Serving{" "}
+            {CITY_LINKS.map((c, i) => (
+              <span key={c.slug}>
+                <a href={`/epoxy-flooring/${c.slug}`} className={INLINE}>{c.name}</a>
+                {i < CITY_LINKS.length - 1 ? ", " : ""}
+              </span>
+            ))}{" "}
+            and the rest of North Texas, plus{" "}
+            <a href="/service-areas" className={INLINE}>projects nationwide</a>.
           </p>
         </div>
         {related && related.links.length > 0 && (
@@ -127,6 +185,8 @@ const SimplePage = ({
         </div>
       </section>
     )}
+
+    <ProjectCards items={projectsFor(path)} />
 
     {extra}
 

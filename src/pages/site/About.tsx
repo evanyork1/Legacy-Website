@@ -43,14 +43,15 @@ const STANDARDS = [
 const About = () => (
   <>
     <Helmet>
-      <title>About Legacy Industrial Coatings - Professional Floor Coating Experts</title>
+      <title>About Legacy Industrial Coatings | Commercial & Industrial Flooring Contractor, Plano TX</title>
       <meta
         name="description"
         content="Legacy Industrial Coatings has delivered commercial and industrial flooring for almost a decade. DFW based, nationwide: testing-first installations, documented prep and dedicated project management."
       />
       <link rel="canonical" href="https://legacyindustrialcoatings.com/about" />
       <meta property="og:type" content="website" />
-      <meta property="og:title" content="About Legacy Industrial Coatings - Professional Floor Coating Experts" />
+      <meta property="og:title" content="About Legacy Industrial Coatings | Commercial & Industrial Flooring Contractor, Plano TX" />
+        <meta property="og:image" content="https://legacyindustrialcoatings.com/og/legacy-commercial-industrial-flooring.jpg" />
       <meta property="og:description" content="Commercial and industrial flooring for almost a decade. DFW based, nationwide. Testing-first, spec-driven installations." />
       <meta property="og:url" content="https://legacyindustrialcoatings.com/about" />
     </Helmet>

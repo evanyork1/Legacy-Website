@@ -147,10 +147,10 @@ const Home = () => {
   return (
     <>
       <Helmet>
-        <title>Legacy Industrial Coatings | Epoxy & Polished Concrete DFW</title>
+        <title>Legacy Industrial Coatings | Commercial & Industrial Flooring Contractor, Dallas–Fort Worth</title>
         <meta
           name="description"
-          content="Commercial epoxy, polished concrete, urethane cement and ESD flooring for warehouses, data centers, food plants and healthcare across Dallas-Fort Worth. 201+ five-star reviews. Bids in 24 hours."
+          content="Commercial and industrial flooring contractor in Dallas–Fort Worth and nationwide: epoxy floor coatings, polished concrete, urethane cement and line striping. Bids within 24 hours of plans."
         />
         <meta name="author" content="Legacy Industrial Coatings" />
         <meta name="geo.region" content="US-TX" />
@@ -158,18 +158,21 @@ const Home = () => {
         <meta name="geo.position" content="32.7767;-96.7970" />
         <meta name="ICBM" content="32.7767, -96.7970" />
         <meta property="og:type" content="website" />
-        <meta property="og:title" content="Legacy Industrial Coatings | Epoxy & Polished Concrete DFW" />
+        <meta property="og:title" content="Legacy Industrial Coatings | Commercial & Industrial Flooring Contractor, Dallas–Fort Worth" />
         <meta
           property="og:description"
-          content="Commercial epoxy, polished concrete, urethane cement and ESD flooring for warehouses, data centers, food plants and healthcare across Dallas-Fort Worth. 201+ five-star reviews. Bids in 24 hours."
+          content="Commercial and industrial flooring contractor in Dallas–Fort Worth and nationwide: epoxy floor coatings, polished concrete, urethane cement and line striping. Bids within 24 hours of plans."
         />
-        <meta property="og:image" content="https://legacyindustrialcoatings.com/lovable-uploads/e90dc902-382c-49a1-92b3-46b9b06b6a4b.png" />
+        <meta property="og:image" content="https://legacyindustrialcoatings.com/og/legacy-commercial-industrial-flooring.jpg" />
+        <meta property="og:image:width" content="1200" />
+        <meta property="og:image:height" content="630" />
+        <meta property="og:image:alt" content="Seamless commercial resin floor in an aircraft hangar installed by Legacy Industrial Coatings" />
         <meta property="og:url" content="https://legacyindustrialcoatings.com" />
         <meta property="og:site_name" content="Legacy Industrial Coatings" />
         <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content="Legacy Industrial Coatings | Epoxy & Polished Concrete DFW" />
-        <meta name="twitter:description" content="Commercial epoxy, polished concrete, urethane cement and ESD flooring for warehouses, data centers, food plants and healthcare across Dallas-Fort Worth. 201+ five-star reviews. Bids in 24 hours." />
-        <meta name="twitter:image" content="https://legacyindustrialcoatings.com/lovable-uploads/e90dc902-382c-49a1-92b3-46b9b06b6a4b.png" />
+        <meta name="twitter:title" content="Legacy Industrial Coatings | Commercial & Industrial Flooring Contractor, Dallas–Fort Worth" />
+        <meta name="twitter:description" content="Commercial and industrial flooring contractor in Dallas–Fort Worth and nationwide: epoxy floor coatings, polished concrete, urethane cement and line striping. Bids within 24 hours of plans." />
+        <meta name="twitter:image" content="https://legacyindustrialcoatings.com/og/legacy-commercial-industrial-flooring.jpg" />
         <meta name="robots" content="index, follow" />
         <meta name="theme-color" content="#0f2440" />
         <link rel="canonical" href="https://legacyindustrialcoatings.com" />

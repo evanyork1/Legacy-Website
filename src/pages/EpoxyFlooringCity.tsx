@@ -67,8 +67,8 @@ const EpoxyFlooringCity = () => {
   const priority = PRIORITY_CITY_CONTENT[city.slug];
   const path = `/epoxy-flooring/${city.slug}`;
   const h1 = `Commercial Epoxy Flooring & Polished Concrete in ${city.name}, TX`;
-  const title = `${h1} | Legacy Industrial Coatings`;
-  const description = `Commercial epoxy flooring, industrial floor coatings and polished concrete in ${city.name}, TX for warehouses, manufacturing, retail, restaurants and healthcare. Site walk in 1–3 days, bids in 24 hours.`;
+  const title = `Epoxy Flooring ${city.name}, TX | Commercial & Industrial Floors | Legacy Industrial Coatings`;
+  const description = `Epoxy flooring, industrial floor coatings and polished concrete in ${city.name}, TX for warehouses, plants, restaurants, retail and healthcare. Site walk in 1–3 days, bids in 24 hours.`;
 
   const neighbors = city.nearbyCities
     .map((s) => SERVICE_AREA_CITIES.find((c) => c.slug === s))

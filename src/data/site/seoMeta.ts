@@ -1,0 +1,230 @@
+/**
+ * Search titles and descriptions, keyword-first. The Seo component uses these
+ * in place of whatever a page passes in, so one file controls how every page
+ * shows up in Google, AI answers and link previews.
+ *
+ * Rules: lead with the phrase people search ("epoxy flooring", "warehouse
+ * floor coating", "concrete polishing"), add the place (Dallas–Fort Worth) or
+ * the buyer, end with the brand. Descriptions answer "what, for whom, where,
+ * what next" in about 155 characters. No prices, no product names.
+ */
+const B = "Legacy Industrial Coatings";
+const NEXT = "Bids within 24 hours of plans.";
+
+export const SEO_META: Record<string, { title: string; description: string }> = {
+  "/": {
+    title: `${B} | Commercial & Industrial Flooring Contractor, Dallas–Fort Worth`,
+    description:
+      "Commercial and industrial flooring contractor in Dallas–Fort Worth and nationwide: epoxy floor coatings, polished concrete, urethane cement and line striping. " + NEXT,
+  },
+  "/commercial": {
+    title: `Commercial Epoxy Flooring Contractor in Dallas–Fort Worth | ${B}`,
+    description:
+      "Commercial epoxy flooring and floor coatings for warehouses, plants, restaurants, retail and healthcare. Plano-based, serving Dallas–Fort Worth and nationwide. " + NEXT,
+  },
+  "/industrial-epoxy": {
+    title: `Industrial Epoxy Flooring Contractor | Dallas & Nationwide | ${B}`,
+    description:
+      "Industrial epoxy flooring for warehouses, manufacturing plants, hangars and distribution centers. Built for forklifts and daily use. Dallas–Fort Worth and nationwide. " + NEXT,
+  },
+  "/warehouse-flooring": {
+    title: `Warehouse Floor Coatings & Epoxy Flooring | Dallas–Fort Worth | ${B}`,
+    description:
+      "Warehouse and distribution center floors: forklift-ready epoxy, polished concrete, joint repair and line striping, phased around your operation. DFW and nationwide.",
+  },
+  "/line-striping": {
+    title: `Warehouse Line Striping & Floor Marking | Dallas–Fort Worth | ${B}`,
+    description:
+      "Warehouse line striping and floor marking: forklift lanes, pedestrian walkways, staging and hazard zones. Old faded lines removed, new lines that last. DFW and nationwide.",
+  },
+  "/manufacturing-floor-coating": {
+    title: `Manufacturing Plant Floor Coatings & Epoxy Flooring | ${B}`,
+    description:
+      "Floor coatings for manufacturing plants: epoxy, urethane cement and chemical-resistant floors, installed around production. Based in Dallas–Fort Worth, working nationwide.",
+  },
+  "/aerospace-hangar-flooring": {
+    title: `Aircraft Hangar Floor Coatings & Epoxy | Dallas & Nationwide | ${B}`,
+    description:
+      "Aircraft hangar floor coatings and aerospace manufacturing floors: bright, fuel- and fluid-resistant epoxy built for tugs and equipment. Dallas–Fort Worth and nationwide.",
+  },
+  "/electronics-manufacturing-flooring": {
+    title: `Electronics & Semiconductor Manufacturing Flooring | ESD Epoxy | ${B}`,
+    description:
+      "Floors for electronics and semiconductor manufacturing: static-control (ESD) epoxy, clean production floors and cleanroom-ready finishes. DFW based, nationwide.",
+  },
+  "/data-center-flooring": {
+    title: `Data Center Flooring & Floor Coatings | Nationwide | ${B}`,
+    description:
+      "Data center flooring from the data hall to the generator yard: sealed concrete, ESD epoxy, battery rooms and transformer oil containment. DFW based, working nationwide.",
+  },
+  "/resinous-flooring": {
+    title: `Resinous Flooring Contractor | Epoxy, Urethane & Quartz | ${B}`,
+    description:
+      "Resinous flooring for commercial and industrial buildings: epoxy, urethane cement, quartz and cove base, matched to how each space is used and cleaned. DFW and nationwide.",
+  },
+  "/flake-floors": {
+    title: `Commercial Flake Epoxy Floors | Polyurea & Polyaspartic | ${B}`,
+    description:
+      "Commercial flake floors for retail, restaurants, locker rooms and showrooms: polyurea base with polyaspartic topcoat, epoxy flake and heavy-duty options. DFW and nationwide.",
+  },
+  "/quartz-flooring": {
+    title: `Quartz Epoxy Flooring | Slip-Resistant Commercial Floors | ${B}`,
+    description:
+      "Quartz flooring for kitchens, restrooms, labs and corridors: textured, slip-resistant and seamless, with integral cove base. Dallas–Fort Worth and nationwide.",
+  },
+  "/urethane-cement-flooring": {
+    title: `Urethane Cement Flooring Contractor | Dallas & Nationwide | ${B}`,
+    description:
+      "Urethane cement flooring for commercial kitchens, food and beverage plants and washdown areas that see hot water, grease and thermal shock. DFW based, nationwide.",
+  },
+  "/mma-flooring": {
+    title: `MMA Flooring | Fast-Cure Commercial Floors Overnight | ${B}`,
+    description:
+      "MMA (methyl methacrylate) flooring cures in hours, so restaurants, stores and clinics can get a new floor overnight or over a weekend. Dallas–Fort Worth and nationwide.",
+  },
+  "/novolac-epoxy-flooring": {
+    title: `Novolac Epoxy Flooring | Chemical-Resistant Floor Coatings | ${B}`,
+    description:
+      "Novolac epoxy for battery rooms, chemical storage, containment and plants that handle acids and solvents. Chemical-resistant floors, DFW based, working nationwide.",
+  },
+  "/battery-room-flooring": {
+    title: `Battery Charging Room Flooring | Chemical-Resistant Epoxy | ${B}`,
+    description:
+      "Forklift battery charging area and battery room floors: acid-resistant epoxy with containment and safety striping. Dallas–Fort Worth and nationwide.",
+  },
+  "/esd-static-control-flooring": {
+    title: `ESD Flooring & Static-Control Epoxy | ${B}`,
+    description:
+      "ESD and static-control flooring for electronics manufacturing, data centers, labs and server rooms. Based in Dallas–Fort Worth, working nationwide.",
+  },
+  "/epoxy-cove-base": {
+    title: `Epoxy Cove Base Installation | Integral Cove for Kitchens & Plants | ${B}`,
+    description:
+      "Integral epoxy cove base seals the joint between floor and wall so wash water can't get into the drywall. For kitchens, food plants and healthcare. DFW and nationwide.",
+  },
+  "/concrete-polishing": {
+    title: `Concrete Polishing & Polished Concrete Floors | Dallas–Fort Worth | ${B}`,
+    description:
+      "Commercial and industrial concrete polishing for warehouses, retail, offices and showrooms. Dust-controlled grinding, approved sheen, low upkeep. DFW and nationwide.",
+  },
+  "/concrete-sealing": {
+    title: `Commercial Concrete Sealing | Dallas–Fort Worth | ${B}`,
+    description:
+      "Commercial concrete sealing for restaurants, breweries, warehouses and retail: a clear seal that protects the slab from stains and wear. Dallas–Fort Worth and nationwide.",
+  },
+  "/moisture-mitigation": {
+    title: `Concrete Moisture Testing & Mitigation | Before New Flooring | ${B}`,
+    description:
+      "Slab moisture testing and moisture mitigation before epoxy, LVT or carpet tile, so new floors don't bubble, peel or fail. Dallas–Fort Worth and nationwide.",
+  },
+  "/joint-filling-crack-repair": {
+    title: `Concrete Joint Filling & Crack Repair | Warehouse Floors | ${B}`,
+    description:
+      "Warehouse joint filling, crack repair and spall repair so forklifts run smooth and joints stop breaking down. Dallas–Fort Worth and nationwide.",
+  },
+  "/commercial-floor-maintenance": {
+    title: `Commercial Floor Cleaning & Maintenance | Dallas–Fort Worth | ${B}`,
+    description:
+      "Commercial floor cleaning and maintenance for coated floors, polished concrete and tile: deep cleaning and ongoing care that keeps floors looking new. Dallas–Fort Worth.",
+  },
+  "/parking-garage-coatings": {
+    title: `Parking Garage Traffic Coatings | Dallas & Nationwide | ${B}`,
+    description:
+      "Parking garage traffic coatings and striping that protect the deck from water and road salt, phased level by level so the garage stays open. DFW and nationwide.",
+  },
+  "/deck-coatings": {
+    title: `Commercial Deck Coatings | Balconies, Walkways & Stairs | ${B}`,
+    description:
+      "Commercial deck coatings for balconies, breezeways, stairs and walkways: waterproof, slip-resistant and built for foot traffic. Dallas–Fort Worth and nationwide.",
+  },
+  "/secondary-containment-coatings": {
+    title: `Secondary Containment Coatings | Transformer Oil Containment | ${B}`,
+    description:
+      "Secondary containment coatings for transformer mineral oil at power stations and data centers, plus fuel and chemical containment. DFW based, working nationwide.",
+  },
+  "/commercial-carpet-tile": {
+    title: `Commercial Carpet Tile Installation | Dallas–Fort Worth | ${B}`,
+    description:
+      "Commercial carpet tile installation for offices, schools, healthcare and hotels, with removal, floor prep and after-hours installs. Dallas–Fort Worth and nationwide.",
+  },
+  "/commercial-lvt-flooring": {
+    title: `Commercial LVT & LVP Flooring Installation | Dallas–Fort Worth | ${B}`,
+    description:
+      "Commercial LVT and LVP installation, glue-down and rigid core, plus sheet vinyl and VCT, with moisture testing and floor prep. Dallas–Fort Worth and nationwide.",
+  },
+  "/resilient-flooring": {
+    title: `Commercial Resilient Flooring | LVT, Sheet Vinyl & Rubber | ${B}`,
+    description:
+      "Commercial resilient flooring: LVT, sheet vinyl, VCT and rubber, installed with proper moisture testing and prep. Dallas–Fort Worth and nationwide.",
+  },
+  "/restaurant-kitchen-flooring": {
+    title: `Commercial Kitchen & Restaurant Flooring | Urethane Cement & Epoxy | ${B}`,
+    description:
+      "Restaurant and commercial kitchen floors that pass inspection: slip-resistant urethane cement, epoxy and integral cove base, installed overnight. DFW and nationwide.",
+  },
+  "/food-processing-flooring": {
+    title: `Food & Beverage Plant Flooring | Urethane Cement & Epoxy | ${B}`,
+    description:
+      "Food and beverage processing floors built for washdown, hot water and thermal shock: urethane cement, epoxy and cove base. Dallas–Fort Worth and nationwide.",
+  },
+  "/pharmaceutical-flooring": {
+    title: `Pharmaceutical & Supplement Manufacturing Flooring | ${B}`,
+    description:
+      "Seamless, cleanable floors for pharmaceutical, supplement and medical manufacturing: epoxy, urethane, cove base and polished concrete. DFW based, nationwide.",
+  },
+  "/pharmacy-cleanroom-flooring": {
+    title: `Cleanroom & Pharmacy Flooring | Seamless Epoxy | ${B}`,
+    description:
+      "Seamless cleanroom and compounding pharmacy floors with integral cove base, built to be cleaned and disinfected every day. Dallas–Fort Worth and nationwide.",
+  },
+  "/healthcare-flooring": {
+    title: `Healthcare & Hospital Flooring | Seamless Epoxy | ${B}`,
+    description:
+      "Seamless, cleanable floors for hospitals, surgery centers, clinics and labs, phased around patient areas. Dallas–Fort Worth and nationwide.",
+  },
+  "/retail-flooring": {
+    title: `Retail Store Flooring | Epoxy & Polished Concrete | ${B}`,
+    description:
+      "Retail and showroom floors: polished concrete, flake and epoxy that look sharp and hold up to carts and foot traffic, installed overnight. DFW and nationwide.",
+  },
+  "/office-flooring": {
+    title: `Office Flooring | Polished Concrete, Carpet Tile & LVT | ${B}`,
+    description:
+      "Office and corporate flooring: polished concrete lobbies, carpet tile and LVT, and coated back-of-house, from one contractor. Dallas–Fort Worth and nationwide.",
+  },
+  "/school-flooring": {
+    title: `School Flooring | Epoxy & Polished Concrete for K–12 & Universities | ${B}`,
+    description:
+      "School and university floors for corridors, kitchens, locker rooms and labs, scheduled around the academic calendar. Dallas–Fort Worth and nationwide.",
+  },
+  "/hotel-flooring": {
+    title: `Hotel & Hospitality Flooring | Epoxy & Polished Concrete | ${B}`,
+    description:
+      "Hotel floors for lobbies, kitchens, back-of-house and parking, phased so rooms stay open. Dallas–Fort Worth and nationwide.",
+  },
+  "/auto-dealership-flooring": {
+    title: `Auto Dealership & Service Shop Flooring | Epoxy & Polished Concrete | ${B}`,
+    description:
+      "Dealership showroom floors and service drive and shop coatings that stand up to hot tires, oil and chemicals. Dallas–Fort Worth and nationwide.",
+  },
+  "/multifamily-flooring": {
+    title: `Multifamily Flooring | Garage & Breezeway Coatings | ${B}`,
+    description:
+      "Apartment and multifamily floors: garage coatings, breezeways, stairs, amenity spaces and units, phased around residents. Dallas–Fort Worth and nationwide.",
+  },
+  "/agriculture-facility-flooring": {
+    title: `Agricultural & Food Facility Flooring | Epoxy & Urethane Cement | ${B}`,
+    description:
+      "Floors for agricultural, packing and food facilities that get washed down daily: urethane cement, epoxy and cove base. Dallas–Fort Worth and nationwide.",
+  },
+  "/who-we-serve": {
+    title: `Industries We Serve | Commercial & Industrial Flooring | ${B}`,
+    description:
+      "Flooring for warehouses, manufacturing, data centers, food plants, healthcare, restaurants, retail, schools and more. Dallas–Fort Worth based, working nationwide.",
+  },
+  "/service-areas": {
+    title: `Service Areas | Epoxy Flooring Across Dallas–Fort Worth & Nationwide | ${B}`,
+    description:
+      "Commercial epoxy flooring, polished concrete and floor coatings across Dallas, Fort Worth, Plano, Frisco, McKinney and North Texas, plus projects nationwide.",
+  },
+};

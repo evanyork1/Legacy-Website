@@ -13,7 +13,7 @@ import type { IndustryPageData } from "@/data/site/industries";
 import { withCostFaq } from "@/data/site/costFaq";
 import SimplePage from "@/components/site/SimplePage";
 import { SIMPLE_INDUSTRIES } from "@/data/site/simple/industries";
-import { PAGE_PHOTOS } from "@/data/site/jobPhotos";
+import { PAGE_PHOTOS, PAGE_PROJECTS } from "@/data/site/jobPhotos";
 
 /**
  * Industry page — mirrors legacycommercialfloors.com industry detail:
@@ -58,7 +58,7 @@ const IndustryTemplate = ({ industry }: { industry?: IndustryPageData }) => {
         related={{ title: "Floors We Install Here", links: systemLinks }}
         more={{ title: "Other Industries We Serve", links: others.map((o) => ({ label: o.label, path: o.path })) }}
         extra={
-          cs ? (
+          cs && !PAGE_PROJECTS[industry.path] ? (
             <section className="py-16 md:py-20 border-t border-border">
               <div className="max-w-4xl mx-auto px-6 md:px-8 lg:px-12">
                 <Eyebrow>Relevant Project</Eyebrow>

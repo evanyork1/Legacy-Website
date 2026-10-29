@@ -4,6 +4,8 @@
 import plWalkBefore from "@/assets/jobs/walkway-striping-before.webp";
 import plWalkDuring from "@/assets/jobs/walkway-striping-removal.webp";
 import plWalkAfter from "@/assets/jobs/walkway-epoxy-after.webp";
+import supBefore from "@/assets/jobs/washroom-concrete-before.webp";
+import supAfter from "@/assets/jobs/washroom-epoxy-after.webp";
 import after1 from "@/assets/case-studies/fast-casual-restaurant/after-1.jpg";
 import after2 from "@/assets/case-studies/fast-casual-restaurant/after-2.jpg";
 import after3 from "@/assets/case-studies/fast-casual-restaurant/after-3.jpg";
@@ -444,38 +446,74 @@ export const caseStudies: CaseStudy[] = [
     slug: "plano-distribution-center-walkway-epoxy",
     category: "commercial",
     tag: "Distribution Center",
-    title: "Plano Distribution Center — Failed Line Striping Replaced with a Forklift-Ready Epoxy Walkway",
+    title: "40,000 SF Plano Distribution Center: Failed Line Striping Replaced with Forklift-Ready Epoxy",
     summary:
-      "A Plano distribution center had walkway striping that was fading badly and was poorly installed the first time. We removed all of it and installed an epoxy floor with a high-traffic urethane finish, built for forklift traffic and daily use.",
+      "A 40,000 square foot distribution center in Plano had walkway and aisle striping that was fading badly and was poorly installed the first time. We removed all of it, installed an epoxy floor with a high-traffic urethane finish and put down new line striping, built for forklift traffic and daily use, in about two weeks.",
     heroImage: plWalkAfter,
-    heroAlt: "Epoxy walkway with high-traffic urethane finish in a Plano, TX distribution center",
-    metaTitle: "Plano Distribution Center Epoxy Walkway Case Study | Legacy Industrial Coatings",
+    heroAlt: "Epoxy walkway with high-traffic urethane finish in a 40,000 SF Plano, TX distribution center",
+    metaTitle: "40,000 SF Warehouse Epoxy & Line Striping Case Study, Plano TX | Legacy Industrial Coatings",
     metaDescription:
-      "How Legacy Industrial Coatings removed failed, fading line striping in a Plano, TX distribution center and installed an epoxy walkway with a high-traffic urethane finish built for forklifts.",
+      "How Legacy Industrial Coatings removed failed, fading line striping in a 40,000 SF Plano, TX distribution center and installed forklift-ready epoxy with a high-traffic urethane finish and new striping in about two weeks.",
     location: "Plano, TX",
-    serviceType: "Striping Removal + Epoxy Floor with High-Traffic Urethane Finish",
-    squareFootage: "Warehouse pedestrian walkway and aisle markings",
-    timeline: "",
+    serviceType: "Striping Removal, Epoxy Floor with High-Traffic Urethane Finish, New Line Striping",
+    squareFootage: "40,000 SF warehouse",
+    timeline: "About two weeks",
     challenge: [
-      "This distribution center in Plano had pedestrian walkway striping that was fading badly. It had been poorly installed the first time, and under daily forklift traffic it was wearing off and no longer marking the walkway clearly.",
-      "Faded walkway lines are more than a looks problem in a working warehouse. The lines tell drivers and people on foot where each belongs, and when they fade, that separation goes with them.",
+      "This 40,000 square foot distribution center in Plano had pedestrian walkway and aisle striping that was fading badly. It had been poorly installed the first time, and under daily forklift traffic it was wearing off and no longer marking the walkways clearly.",
+      "Faded lines are more than a looks problem in a working warehouse. The lines tell forklift drivers and people on foot where each belongs, and when they fade, that separation goes with them.",
     ],
     solution: [
       "We removed all of the old striping instead of painting over it. Coating on top of a failing line only hides the problem until the new layer comes up with the old one.",
-      "With the old markings gone, we prepared the concrete and installed an epoxy floor with a high-traffic urethane finish on the walkway. The urethane topcoat is what takes the wear from forklift tires and daily foot traffic.",
+      "With the old markings gone, we prepared the concrete and installed an epoxy floor with a high-traffic urethane finish on the walkways, then put down new line striping. The urethane topcoat is what takes the wear from forklift tires and daily foot traffic.",
+      "The epoxy and line striping took about two weeks, phased so the building could keep running.",
     ],
     result: [
-      "The facility now has a clean, clearly marked walkway that is built to hold up to forklift traffic and daily use, instead of striping that wears off.",
+      "The facility now has clean, clearly marked walkways and aisles built to hold up to forklift traffic and daily use, instead of striping that wears off.",
       "If your warehouse lines are fading, peeling or were never put down right, we can remove them and put down a floor and markings that last. Send us a layout or a few photos to get started.",
     ],
     beforePhotos: [
       { src: plWalkBefore, alt: "Faded, poorly installed walkway striping in a Plano distribution center before removal" },
     ],
-    duringPhotos: [
-      { src: plWalkDuring, alt: "Removing failed walkway striping in a Plano warehouse before installing a new epoxy floor" },
-    ],
+    duringPhotos: [],
     afterPhotos: [
       { src: plWalkAfter, alt: "Finished epoxy walkway with high-traffic urethane finish in a Plano distribution center" },
+      { src: plWalkDuring, alt: "New aisle and walkway line striping in a Plano distribution center after the failed striping was removed" },
+    ],
+  },
+  {
+    slug: "dallas-supplement-manufacturing-washroom-epoxy",
+    category: "commercial",
+    tag: "Supplement Manufacturing",
+    title: "Dallas Supplement Manufacturing Plant: Bare Concrete Wash Room to Seamless Epoxy",
+    summary:
+      "A supplement manufacturer in Dallas had a bare, stained concrete floor in its production wash room. We prepared the slab and installed a seamless epoxy floor that is bright, easy to clean and built for daily wet cleaning.",
+    heroImage: supAfter,
+    heroAlt: "Seamless epoxy floor in a Dallas supplement manufacturing wash room",
+    metaTitle: "Supplement Plant Wash Room Epoxy Case Study, Dallas TX | Legacy Industrial Coatings",
+    metaDescription:
+      "How Legacy Industrial Coatings turned a stained bare-concrete wash room at a Dallas supplement manufacturing plant into a seamless, easy-to-clean epoxy floor.",
+    location: "Dallas, TX",
+    serviceType: "Seamless Epoxy Floor Coating",
+    squareFootage: "Production wash room",
+    timeline: "",
+    challenge: [
+      "This supplement manufacturing facility in Dallas had a bare concrete floor in its wash room, where carts, bins and equipment get cleaned every day.",
+      "Bare concrete soaks up water and residue, stains, and is hard to truly clean. In a plant that makes products people ingest, the floor needs to be a surface that can be washed down and kept sanitary, and this one wasn't.",
+    ],
+    solution: [
+      "We prepared the concrete so the coating could bond to it, then installed a seamless epoxy floor across the room and around the floor drain.",
+      "Seamless means no grout lines or open pores for water and residue to settle into, so the floor can be cleaned the same way the equipment is.",
+    ],
+    result: [
+      "The wash room went from dark, stained concrete to a bright, seamless floor that is easy to keep clean every day.",
+      "If you run a supplement, nutraceutical, food or pharmaceutical plant with bare or failing floors in wet areas, we can walk the space and recommend the right system for how it gets cleaned.",
+    ],
+    beforePhotos: [
+      { src: supBefore, alt: "Stained bare concrete floor in a Dallas supplement plant wash room before epoxy" },
+    ],
+    duringPhotos: [],
+    afterPhotos: [
+      { src: supAfter, alt: "Seamless epoxy floor in a Dallas supplement manufacturing wash room after installation" },
     ],
   },
 ];

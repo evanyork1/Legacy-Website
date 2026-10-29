@@ -39,12 +39,13 @@ const Blog = () => {
   return (
     <>
       <Helmet>
-        <title>Garage Floor Coating Blog - Expert Tips & Insights | Legacy Industrial Coatings</title>
+        <title>Commercial & Industrial Flooring Blog | Epoxy, Polished Concrete & More | Legacy Industrial Coatings</title>
         <meta
           name="description"
-          content="Expert insights on garage floor coatings, commercial flooring, and maintenance tips from Legacy Industrial Coatings. Serving Dallas, Plano, Frisco, Prosper, and Celina."
+          content="Straight answers on commercial epoxy flooring, polished concrete, warehouse floors, food plant floors and floor care from Legacy Industrial Coatings, a Dallas–Fort Worth flooring contractor."
         />
-        <meta property="og:title" content="Expert Flooring Blog | Legacy Industrial Coatings" />
+        <meta property="og:title" content="Commercial & Industrial Flooring Blog | Legacy Industrial Coatings" />
+        <meta property="og:image" content="https://legacyindustrialcoatings.com/og/legacy-commercial-industrial-flooring.jpg" />
         <meta
           property="og:description"
           content="Expert insights on garage floor coatings, commercial flooring, and maintenance tips from Legacy Industrial Coatings."

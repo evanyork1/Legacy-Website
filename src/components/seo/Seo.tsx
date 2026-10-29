@@ -1,7 +1,8 @@
 import { Helmet } from "react-helmet-async";
+import { SEO_META } from "@/data/site/seoMeta";
 
 const SITE_URL = "https://legacyindustrialcoatings.com";
-const DEFAULT_OG_IMAGE = "/lovable-uploads/e90dc902-382c-49a1-92b3-46b9b06b6a4b.png";
+const DEFAULT_OG_IMAGE = "/og/legacy-commercial-industrial-flooring.jpg";
 
 interface SeoProps {
   title: string;
@@ -20,7 +21,10 @@ interface SeoProps {
  * Using a single component guarantees we never ship a page that's missing
  * a canonical URL or has a duplicate title.
  */
-export const Seo = ({ title, description, path, ogImage, noindex }: SeoProps) => {
+export const Seo = ({ title: pageTitle, description: pageDescription, path, ogImage, noindex }: SeoProps) => {
+  const meta = SEO_META[path];
+  const title = meta?.title ?? pageTitle;
+  const description = meta?.description ?? pageDescription;
   const canonical = `${SITE_URL}${path}`;
   const image = ogImage
     ? ogImage.startsWith("http")
