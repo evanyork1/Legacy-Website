@@ -287,7 +287,7 @@ export const ClientStrip = ({ light = false }: { light?: boolean }) => (
       <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 items-center gap-x-8 gap-y-8 mt-6">
         {CLIENT_LOGOS.map((c) => (
           <div key={c.name} className="flex items-center justify-center h-20">
-            <img src={c.src} alt={c.name} width={c.width} height={c.height} loading="lazy" decoding="async" className="max-w-full w-auto h-auto max-h-16 object-contain" />
+            <img src={c.src} alt={c.name} width={c.width} height={c.height} loading="lazy" decoding="async" className="max-w-full w-auto h-auto max-h-16 object-contain grayscale opacity-60" />
           </div>
         ))}
       </div>

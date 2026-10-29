@@ -1,4 +1,21 @@
 import { RequestInfoSection, type ClosingCta } from "@/components/sections/RequestInfoSection";
+import { MANUFACTURER_LOGOS } from "@/data/site/manufacturerLogos";
+
+const ManufacturerStrip = () =>
+  MANUFACTURER_LOGOS.length === 0 ? null : (
+    <section className="lcf py-10 md:py-12 bg-background border-t border-border">
+      <div className="max-w-7xl mx-auto px-6 md:px-8 lg:px-12">
+        <p className="font-heading text-[11px] tracking-[0.25em] uppercase text-muted-foreground mb-6 text-center">
+          Materials we install
+        </p>
+        <div className="flex flex-wrap items-center justify-center gap-x-10 gap-y-6">
+          {MANUFACTURER_LOGOS.map((m) => (
+            <img key={m.name} src={m.src} alt={m.name} loading="lazy" decoding="async" className="h-8 md:h-10 w-auto object-contain grayscale opacity-60" />
+          ))}
+        </div>
+      </div>
+    </section>
+  );
 import {
   ALL_INDUSTRIES,
   ALL_SYSTEMS,
@@ -68,6 +85,7 @@ const SiteFooter = ({ cta, requestInfo = true }: { cta?: ClosingCta; requestInfo
 
   return (
     <div className="lcf">
+      {requestInfo && <ManufacturerStrip />}
       {requestInfo && <RequestInfoSection id="request-info" title={cta?.title ?? DEFAULT_CLOSING_CTA.title} text={cta?.text ?? DEFAULT_CLOSING_CTA.text} />}
       <footer id="contact" className="public-mobile-footer">
         {/* Navy footer */}
