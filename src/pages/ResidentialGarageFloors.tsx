@@ -5,6 +5,8 @@ import { BTN, DataTable, Eyebrow, FaqBlock, PageHero, StarRating } from "@/compo
 import { Seo } from "@/components/seo/Seo";
 import { StructuredData } from "@/components/seo/StructuredData";
 import { openCalBooking } from "@/lib/calBooking";
+import heroImg from "@/assets/jobs/garage-flake-porsche-gt3rs.webp";
+import truckImg from "@/assets/jobs/garage-flake-porsche-truck.webp";
 import { BUSINESS } from "@/data/site/nav";
 
 /**
@@ -18,7 +20,20 @@ const TITLE = "Garage Floor Coatings in Dallas–Fort Worth | Polyurea Flake | L
 const DESCRIPTION =
   "Polyurea and polyaspartic flake garage floor coatings in Dallas–Fort Worth. Diamond-ground prep, one-day install, park in 24–48 hours, lifetime warranty. Set up an in-person estimate.";
 const U = (id: string) => `/lovable-uploads/${id}-960.webp`;
-const HERO = U("b4732a11-b0eb-48f7-9950-d9c8e186ab97");
+const HERO = heroImg;
+const HERO_ALT = "Gray and black flake garage floor between two Porsche GT3 RS cars, installed by Legacy Industrial Coatings";
+
+/** Garage photos from the gallery (stored in Supabase) plus two recent jobs. */
+const GS = (f: string) => `https://byvazfrvoanojfayvsaz.supabase.co/storage/v1/object/public/gallery-images/gallery/${f}`;
+const GARAGE_PHOTOS = [
+  { src: truckImg, alt: "Flake garage floor with a Porsche and a truck under a hexagon-lit ceiling" },
+  ...[
+    "1750507887789-0.png", "1750707775149-8.avif", "1750507958996-6.png", "1750507953637-0.jpeg",
+    "1750507954516-1.jpg", "1750507955491-2.jpg", "1750507956261-3.jpg", "1750507956669-4.jpeg",
+    "1750707768652-0.jpg", "1750707769919-1.jpg", "1750707770769-2.jpg", "1750707771537-3.avif",
+    "1750707772123-4.jpg", "1750707773073-5.jpeg", "1750707773538-6.jpeg",
+  ].map((f) => ({ src: GS(f), alt: "Garage floor coating installed by Legacy Industrial Coatings in Dallas–Fort Worth" })),
+];
 
 const H2 = "font-heading text-3xl md:text-[2.5rem] font-bold text-foreground leading-[1.1] mb-8 text-balance";
 const P = "text-muted-foreground font-body text-[16px] leading-[1.85] mb-6";
@@ -117,7 +132,7 @@ const GarageFloors = () => {
         title="Garage Floor Coatings in Dallas–Fort Worth"
         subhead="Polyurea and polyaspartic flake garage floors, diamond-ground and installed in one day. Park on it in 24–48 hours, backed by a limited lifetime warranty."
         image={HERO}
-        imageAlt="Finished polyurea flake garage floor coating in a Dallas–Fort Worth home"
+        imageAlt={HERO_ALT}
         rating
         action={<EstimateCalButton light />}
       />
@@ -246,6 +261,20 @@ const GarageFloors = () => {
             More projects:{" "}
             <a href="/residential-case-studies" className={A}>residential case studies</a>.
           </p>
+        </div>
+      </section>
+
+      <section className="py-20 md:py-28">
+        <div className="max-w-7xl mx-auto px-6 md:px-8 lg:px-12">
+          <Eyebrow>Gallery</Eyebrow>
+          <h2 className={H2}>Garage Floors We've Coated</h2>
+          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3 md:gap-4">
+            {GARAGE_PHOTOS.map((p) => (
+              <div key={p.src} className="aspect-square overflow-hidden bg-muted">
+                <img src={p.src} alt={p.alt} loading="lazy" decoding="async" width={600} height={600} className="w-full h-full object-cover" />
+              </div>
+            ))}
+          </div>
         </div>
       </section>
 
