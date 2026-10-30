@@ -5,7 +5,7 @@ import { Seo } from "@/components/seo/Seo";
 import { StructuredData } from "@/components/seo/StructuredData";
 import { ClientStrip, Eyebrow, FaqBlock, PageHero } from "@/components/site/sections";
 import type { SimpleContent } from "@/data/site/simple/types";
-import { PAGE_BEFORE_AFTER, PAGE_PRICE_FAQ, PAGE_PROJECTS, PAGE_VIDEO } from "@/data/site/jobPhotos";
+import { PAGE_BEFORE_AFTER, PAGE_GALLERY, PAGE_PRICE_FAQ, PAGE_PROJECTS, PAGE_VIDEO } from "@/data/site/jobPhotos";
 import { caseStudies, type CaseStudy } from "@/data/caseStudies";
 
 /**
@@ -104,15 +104,53 @@ export const BeforeAfter = ({ path }: { path: string }) => {
 };
 
 export const JobVideo = ({ path }: { path: string }) => {
-  const v = PAGE_VIDEO[path];
-  if (!v) return null;
+  const raw = PAGE_VIDEO[path];
+  if (!raw) return null;
+  const list = Array.isArray(raw) ? raw : [raw];
   return (
     <section className="py-16 md:py-20 border-t border-border">
-      <div className="max-w-7xl mx-auto px-6 md:px-8 lg:px-12 grid md:grid-cols-2 gap-8 items-center">
-        <video src={v.src} poster={v.poster} muted loop playsInline autoPlay preload="none" className="w-full max-w-sm mx-auto aspect-[9/16] object-cover bg-muted" aria-label={v.caption} />
-        <div>
-          <Eyebrow>On the Job</Eyebrow>
-          <p className="font-heading text-xl md:text-2xl font-semibold text-foreground leading-[1.3]">{v.caption}</p>
+      <div className="max-w-7xl mx-auto px-6 md:px-8 lg:px-12">
+        <Eyebrow>On the Job</Eyebrow>
+        <div className={`grid gap-8 items-start ${list.length > 1 ? "md:grid-cols-[minmax(0,1fr)_minmax(0,2fr)]" : "md:grid-cols-2"}`}>
+          {list.map((v) => (
+            <figure key={v.src} className="m-0">
+              <video
+                src={v.src}
+                poster={v.poster}
+                muted
+                loop
+                playsInline
+                autoPlay
+                preload="none"
+                className={`w-full bg-muted object-cover ${v.landscape ? "aspect-video" : "max-w-sm mx-auto aspect-[9/16]"}`}
+                aria-label={v.caption}
+              />
+              <figcaption className="mt-3 font-heading text-[15px] font-semibold text-foreground">{v.caption}</figcaption>
+            </figure>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+};
+
+export const PageGallery = ({ path }: { path: string }) => {
+  const g = PAGE_GALLERY[path];
+  if (!g) return null;
+  return (
+    <section className="py-16 md:py-20 border-t border-border">
+      <div className="max-w-7xl mx-auto px-6 md:px-8 lg:px-12">
+        <Eyebrow>Gallery</Eyebrow>
+        <h2 className="font-heading text-2xl md:text-3xl font-bold text-foreground leading-[1.15] mb-8">{g.title}</h2>
+        <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 md:gap-4">
+          {g.photos.map((p) => (
+            <figure key={p.src} className="m-0">
+              <div className="aspect-[3/4] overflow-hidden bg-muted">
+                <img src={p.src} alt={p.alt} loading="lazy" decoding="async" width={600} height={800} className="w-full h-full object-cover" />
+              </div>
+              {p.caption && <figcaption className="mt-2 text-[13px] text-muted-foreground leading-[1.5]">{p.caption}</figcaption>}
+            </figure>
+          ))}
         </div>
       </div>
     </section>
@@ -234,6 +272,8 @@ const SimplePage = ({
     <BeforeAfter path={path} />
 
     <JobVideo path={path} />
+
+    <PageGallery path={path} />
 
     <ProjectCards items={projectsFor(path)} />
 

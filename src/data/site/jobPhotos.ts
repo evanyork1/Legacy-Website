@@ -26,6 +26,16 @@ import dcSiteWalk from "@/assets/jobs/data-center-site-walk.webp";
 import dcTruck from "@/assets/jobs/legacy-truck-data-center.webp";
 import containBefore from "@/assets/jobs/transformer-containment-before.webp";
 import containAfter from "@/assets/jobs/transformer-containment-after.webp";
+import polBefore from "@/assets/jobs/polish-corridor-before.webp";
+import polCorridor from "@/assets/jobs/polish-corridor-after.webp";
+import polWarehouse from "@/assets/jobs/polish-warehouse-after.webp";
+import polJoint from "@/assets/jobs/polish-joint-repair.webp";
+import polSpall from "@/assets/jobs/polish-spall-repair.webp";
+import polDealership from "@/assets/jobs/polish-dealership.webp";
+import polLobby from "@/assets/jobs/polish-lobby.webp";
+import polShowroom from "@/assets/polishing-gallery-showroom.jpg";
+import polStriped from "@/assets/polishing-gallery-warehouse.jpg";
+import polOffice from "@/assets/polishing-gallery-office.webp";
 
 type Photo = { src: string; alt: string };
 const P = (src: string, alt: string): Photo => ({ src, alt });
@@ -54,6 +64,16 @@ export const JOB = {
   dcSiteWalk: P(dcSiteWalk, "Legacy Industrial Coatings team on a data center substation site walk"),
   dcTruck: P(dcTruck, "Legacy Industrial Coatings truck on site at a data center campus"),
   containBefore: P(containBefore, "Cracked, stained concrete transformer containment pit at a data center before coating"),
+  polBefore: P(polBefore, "Dull, worn concrete corridor in a production facility before polishing"),
+  polCorridor: P(polCorridor, "High-gloss polished concrete corridor in a production facility after polishing"),
+  polWarehouse: P(polWarehouse, "Large polished concrete floor in a newly built-out production warehouse"),
+  polJoint: P(polJoint, "Filled control joint and patched spall ground flush in a polished concrete floor"),
+  polSpall: P(polSpall, "Repaired spalls filled and polished into a concrete floor"),
+  polDealership: P(polDealership, "Polished concrete floor in a dealership service lounge"),
+  polLobby: P(polLobby, "Bright polished concrete floor in a commercial lobby"),
+  polShowroom: P(polShowroom, "Polished concrete showroom floor with exotic cars"),
+  polStriped: P(polStriped, "Polished concrete warehouse floor with yellow safety striping"),
+  polOffice: P(polOffice, "Polished concrete floor in a dealership sales office"),
   containAfter: P(containAfter, "Watertight coating on a data center transformer containment pit after installation"),
 };
 
@@ -71,7 +91,7 @@ export const PAGE_PHOTOS: Record<string, { hero?: Photo; photos: Photo[] }> = {
   "/line-striping": { hero: JOB.lineStriping, photos: [JOB.stripingFix, JOB.battery, JOB.mfgEpoxy] },
   "/battery-room-flooring": { hero: JOB.battery, photos: [JOB.batteryArea, JOB.mfgEpoxy, JOB.walkwayAfter] },
   "/novolac-epoxy-flooring": { hero: JOB.battery, photos: [JOB.batteryArea, JOB.washroomAfter, JOB.foodPlant] },
-  "/concrete-polishing": { hero: JOB.polishedIndustrial, photos: [JOB.restaurantPolished, JOB.crewWarehouse, JOB.crewRetail] },
+  "/concrete-polishing": { hero: JOB.polWarehouse, photos: [JOB.polShowroom, JOB.polStriped, JOB.polDealership] },
   "/concrete-sealing": { photos: [JOB.restaurantPolished, JOB.polishedIndustrial, JOB.crewRetail] },
   "/restaurant-kitchen-flooring": { hero: JOB.restaurantPolished, photos: [JOB.foodPlant, JOB.quartzCove, JOB.washroomAfter] },
   "/food-processing-flooring": { hero: JOB.foodPlant, photos: [JOB.quartzCove, JOB.mfgEpoxy, JOB.epoxyTexture] },
@@ -93,6 +113,7 @@ export const PAGE_PHOTOS: Record<string, { hero?: Photo; photos: Photo[] }> = {
 /** Real projects shown on each page (case study slugs, most relevant first). */
 /** Before/after pairs shown on a page. */
 export const PAGE_BEFORE_AFTER: Record<string, { before: Photo; after: Photo; caption: string }> = {
+  "/concrete-polishing": { before: JOB.polBefore, after: JOB.polCorridor, caption: "A worn production corridor ground, repaired and polished to a high-gloss finish." },
   "/commercial": { before: JOB.shinyBefore, after: JOB.shinyAfter, caption: "Bare concrete to a high-gloss epoxy floor in a metal warehouse building." },
   "/warehouse-flooring": { before: JOB.shinyBefore, after: JOB.shinyAfter, caption: "Bare concrete to a high-gloss epoxy floor in a metal warehouse building." },
   "/aerospace-hangar-flooring": { before: JOB.shinyBefore, after: JOB.shinyAfter, caption: "Bare concrete to a bright, high-gloss epoxy floor in a metal building." },
@@ -100,8 +121,26 @@ export const PAGE_BEFORE_AFTER: Record<string, { before: Photo; after: Photo; ca
   "/data-center-flooring": { before: JOB.containBefore, after: JOB.containAfter, caption: "Transformer containment pit at an Irving, TX data center, before and after a watertight coating." },
 };
 
+/** Extra photo galleries shown on a page. */
+export const PAGE_GALLERY: Record<string, { title: string; photos: (Photo & { caption?: string })[] }> = {
+  "/concrete-polishing": {
+    title: "From the Job Site",
+    photos: [
+      { ...JOB.polJoint, caption: "Joints filled and ground flush before the final polish" },
+      { ...JOB.polSpall, caption: "Spalls repaired so they polish in with the slab" },
+      { ...JOB.polLobby, caption: "Commercial lobby" },
+      { ...JOB.polOffice, caption: "Dealership sales office" },
+    ],
+  },
+};
+
+type Video = { src: string; poster: string; caption: string; landscape?: boolean };
 /** Short job videos shown on a page. */
-export const PAGE_VIDEO: Record<string, { src: string; poster: string; caption: string }> = {
+export const PAGE_VIDEO: Record<string, Video | Video[]> = {
+  "/concrete-polishing": [
+    { src: "/video/concrete-polishing-job.mp4", poster: "/video/concrete-polishing-job.jpg", caption: "Polishing a production floor on the job." },
+    { src: "/video/polished-warehouse-walkthrough.mp4", poster: "/video/polished-warehouse-walkthrough.jpg", caption: "Walking the finished polished floor.", landscape: true },
+  ],
   "/flake-floors": { src: "/video/flake-floor-install.mp4", poster: "/video/flake-floor-install.jpg", caption: "Our crew broadcasting flake on a commercial floor." },
   "/secondary-containment-coatings": { src: "/video/containment-pit-prep.mp4", poster: "/video/containment-pit-prep.jpg", caption: "Prepping a data center transformer containment pit before coating." },
   "/data-center-flooring": { src: "/video/containment-pit-prep.mp4", poster: "/video/containment-pit-prep.jpg", caption: "Prepping a transformer containment pit at a data center before coating." },
