@@ -12,7 +12,7 @@ import { caseStudies } from "@/data/caseStudies";
 import heroImg from "@/assets/case-studies/pharmaceutical-polished-concrete/after-1-960.webp";
 
 /**
- * /epoxy-flooring/:city — commercial city pages. The eight largest markets
+ * /epoxy-flooring/:city — commercial city pages. The ten priority markets
  * (PRIORITY_CITY_SLUGS in cityContent.ts) get unique content; every page
  * links the three money pages with their target anchor text.
  */
@@ -50,7 +50,7 @@ const WHY = [
   "Site walk within 1–3 business days; full bid within 24 hours of receiving plans",
 ];
 
-/** Nearest of the eight hub cities, for non-priority pages. */
+/** Nearest of the priority hub cities, for non-priority pages. */
 const nearestHub = (city: ServiceAreaCity): ServiceAreaCity | undefined => {
   const slug = city.nearbyCities.find((s) => isPriorityCity(s)) ?? "plano";
   return SERVICE_AREA_CITIES.find((c) => c.slug === slug);
@@ -68,7 +68,7 @@ const EpoxyFlooringCity = () => {
   const path = `/epoxy-flooring/${city.slug}`;
   const h1 = `Commercial Epoxy Flooring & Polished Concrete in ${city.name}, TX`;
   const title = `Epoxy Flooring ${city.name}, TX | Commercial & Industrial Floors | Legacy Industrial Coatings`;
-  const description = `Epoxy flooring, industrial floor coatings and polished concrete in ${city.name}, TX for warehouses, plants, restaurants, retail and healthcare. Site walk in 1–3 days, bids in 24 hours.`;
+  const description = `Epoxy flooring, floor coatings and polished concrete in ${city.name}, TX for warehouses, plants, restaurants and retail. Site walk in 1–3 days.`;
 
   const neighbors = city.nearbyCities
     .map((s) => SERVICE_AREA_CITIES.find((c) => c.slug === s))
@@ -154,7 +154,7 @@ const EpoxyFlooringCity = () => {
       <section className="py-20 md:py-28">
         <div className="max-w-4xl mx-auto px-6 md:px-8 lg:px-12">
           <Eyebrow>{city.name}</Eyebrow>
-          <h2 className={H2}>Commercial Flooring Contractor in {city.name}</h2>
+          <h2 className={H2}>Commercial Flooring Company in {city.name}</h2>
           <p className={P}>{priority?.intro ?? city.localHook}</p>
           <p className={P}>{city.commercialAngle}</p>
           {hub && (

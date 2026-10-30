@@ -8,9 +8,9 @@ export const SIMPLE_SYSTEMS: Record<string, SimpleContent> = {
   "/commercial": {
     intro:
       "Industrial epoxy flooring built for forklifts, foot traffic and production work. We prepare the slab right, match the floor to your traffic and keep your operation running while we work.",
-    overviewTitle: "Industrial Epoxy Flooring That Holds Up",
+    overviewTitle: "What Is Commercial Epoxy Flooring?",
     overview: [
-      "Industrial epoxy flooring is a seamless resin floor bonded to your concrete. It can be a thin coating for light traffic, a high-build epoxy for heavier use or a troweled epoxy mortar for the hardest impact. Color, texture and safety zones are built in.",
+      "Commercial and industrial epoxy flooring is a seamless resin floor bonded to your concrete. It can be a thin coating for light traffic, a high-build epoxy for heavier use or a troweled epoxy mortar for the hardest impact. Color, texture and safety zones are built in.",
       "Most epoxy failures start before the first coat goes down. We test the slab for moisture, diamond grind it and repair cracks and joints first. Then we choose the build for your traffic, chemicals and schedule, and phase the work at night, on weekends or zone by zone.",
     ],
     featuresTitle: "Why Facilities Choose Industrial Epoxy",
@@ -49,7 +49,7 @@ export const SIMPLE_SYSTEMS: Record<string, SimpleContent> = {
   "/concrete-polishing": {
     intro:
       "Polished concrete turns the slab you already have into a durable, low-maintenance floor. No coating to peel, little downtime and a finish you approve on your own concrete first.",
-    overviewTitle: "Polished Concrete for Commercial and Industrial Floors",
+    overviewTitle: "What Is Polished Concrete?",
     overview: [
       "Polished concrete is your existing slab, ground with progressively finer diamond tooling, hardened with a densifier and polished to the sheen you choose. Because the concrete itself is the floor, there is nothing to wear through under forklifts or foot traffic.",
       "Every slab is different, so we start with a mockup on your concrete. You pick how much stone shows, from a smooth cream finish to salt-and-pepper or exposed aggregate, and how much it shines. We grind with dust control and phase the work so warehouses, stores and offices stay open.",
@@ -90,7 +90,7 @@ export const SIMPLE_SYSTEMS: Record<string, SimpleContent> = {
   "/commercial-carpet-tile": {
     intro:
       "Commercial carpet tile installation from one crew, start to finish. We remove the old floor, prep the slab and install after hours so your office, school or building keeps working.",
-    overviewTitle: "Commercial Carpet Tile Installation, Start to Finish",
+    overviewTitle: "What Is Commercial Carpet Tile?",
     overview: [
       "Carpet tile is modular carpet glued down in squares or planks, so a stained or worn tile can be swapped instead of replacing the whole room. It is quiet, comfortable and the go-to soft floor for offices, schools, clinics, hotels and multifamily.",
       "What makes a carpet tile floor last happens before the first tile goes down. Our crew removes the old carpet, VCT or vinyl and adhesive, patches and levels the slab, tests moisture and installs to the manufacturer's requirements so the warranty holds. We work nights and weekends and move furniture zone by zone.",
@@ -130,7 +130,7 @@ export const SIMPLE_SYSTEMS: Record<string, SimpleContent> = {
   "/commercial-lvt-flooring": {
     intro:
       "Commercial LVT and LVP installation from one crew, start to finish. We remove the old floor, prep and test the slab and install after hours so your building stays open.",
-    overviewTitle: "Commercial LVT and LVP, Installed Right",
+    overviewTitle: "What Is Commercial LVT and LVP?",
     overview: [
       "LVT (luxury vinyl tile) and LVP (luxury vinyl plank) look like stone or wood but clean like vinyl. Commercial LVT has a heavier wear layer and is usually glued down so it handles carts, rolling chairs and busy corridors. Rigid-core click LVP fits smaller spaces and unit turns.",
       "Most LVT failures come from the slab, not the vinyl. Our crew removes the old floor and adhesive, patches and levels the concrete, tests moisture and uses the adhesive the manufacturer calls for, so your warranty holds. We work nights, weekends and in phases around your people.",
@@ -170,7 +170,7 @@ export const SIMPLE_SYSTEMS: Record<string, SimpleContent> = {
   "/secondary-containment-coatings": {
     intro:
       "We line transformer oil containment pits, curbs and basins at substations, power plants and data centers, plus generator fuel and chemical containment, so a leak stays where it belongs.",
-    overviewTitle: "Transformer Oil and Secondary Containment Linings",
+    overviewTitle: "Why Do Transformer Pits Need a Containment Coating?",
     overview: [
       "Oil-filled transformers sit over a concrete pit, curb or basin meant to catch the oil if the tank leaks or fails. Bare concrete is not enough on its own. It cracks, shrinks and has joints and penetrations, and oil and water find every one of them.",
       "We seal the floor, walls, joints and penetrations into one continuous lining that bridges cracks and moves with the concrete. The containment design belongs to the owner's engineer and the facility's spill plan (SPCC). Our job is to make the structure hold oil, working within your outage and safety rules.",
@@ -247,7 +247,7 @@ export const SIMPLE_SYSTEMS: Record<string, SimpleContent> = {
   "/resinous-flooring": {
     intro:
       "Resinous flooring is a seamless floor made from liquid resins applied over prepared concrete. We help you pick the right chemistry for each room, then install it with the prep it needs.",
-    overviewTitle: "Resinous Flooring, Matched to the Room",
+    overviewTitle: "What Is Resinous Flooring?",
     overview: [
       "Epoxy, novolac epoxy, urethane cement, MMA, polyurea and polyaspartic are all resinous materials, but they are not interchangeable. Each trades off cost, chemical and heat resistance, and how fast the floor returns to service.",
       "We start with what the floor has to survive: traffic, chemicals, hot water, cleaning and how long you can be closed. Then we test moisture, diamond grind the slab and install the right system. Different rooms in one building can get different floors with clean transitions.",
@@ -288,7 +288,7 @@ export const SIMPLE_SYSTEMS: Record<string, SimpleContent> = {
   "/quartz-flooring": {
     intro:
       "Quartz flooring is a seamless, textured resin floor with colored quartz built in. It is durable, sanitary and easy to clean in restrooms, kitchens, corridors and healthcare spaces.",
-    overviewTitle: "Quartz Flooring for Clean, Durable Spaces",
+    overviewTitle: "What Is Quartz Flooring?",
     overview: [
       "Colored quartz sand is broadcast into layers of epoxy, or troweled in for heavier use, then sealed with a clear topcoat. The result is a tough, decorative floor with built-in texture and no grout lines to trap dirt or bacteria.",
       "We set the quartz blend and finish texture together so the floor has good grip and still cleans easily. Integral cove carries the floor up the wall for a fully cleanable room. As always, we test moisture and diamond grind the slab before the first coat.",
@@ -328,7 +328,7 @@ export const SIMPLE_SYSTEMS: Record<string, SimpleContent> = {
   "/esd-static-control-flooring": {
     intro:
       "Static-control flooring is a grounded resin floor that bleeds static away from people and equipment before it can damage sensitive electronics. We install it and test it on site before turnover.",
-    overviewTitle: "ESD and Static-Control Flooring, Tested On Site",
+    overviewTitle: "How Does ESD Flooring Work?",
     overview: [
       "ESD floors use a conductive or static-dissipative epoxy tied to building ground. When someone walks across the floor, charge drains away instead of building up and jumping to a circuit board, server or test bench.",
       "The floor is one part of your static-control program, alongside grounding straps, footwear and procedures. We coordinate grounding points with your electrical team, install the system your spec calls for and test resistance on site before we hand it over.",
@@ -408,7 +408,7 @@ export const SIMPLE_SYSTEMS: Record<string, SimpleContent> = {
   "/urethane-cement-flooring": {
     intro:
       "Urethane cement is the floor for hot, wet, hard-working spaces. It handles steam cleaning, hot oil, food acids and thermal shock where standard epoxy can crack or let go.",
-    overviewTitle: "Urethane Cement Flooring for Kitchens and Food Plants",
+    overviewTitle: "What Is Urethane Cement Flooring?",
     overview: [
       "Urethane cement is a cement-based urethane mortar that bonds tightly to concrete and moves with it as temperatures swing. That is why it is the standard floor for commercial kitchens, food and beverage plants, washdown rooms and freezers.",
       "It is thicker and tougher than a typical coating and handles damper slabs better than most epoxies. We grind the concrete, cut anchor grooves at edges, drains and doorways, and finish with a slip-resistant texture suited to your cleaning routine. Hybrid builds pair a urethane cement base with a different topcoat when the room calls for it.",
@@ -448,7 +448,7 @@ export const SIMPLE_SYSTEMS: Record<string, SimpleContent> = {
   "/novolac-epoxy-flooring": {
     intro:
       "Novolac epoxy is a tougher epoxy that resists stronger chemicals and higher heat than standard epoxy. We install it in chemical storage, battery rooms, containment areas and food plants.",
-    overviewTitle: "Novolac Epoxy Flooring for Chemical Resistance",
+    overviewTitle: "What Is Novolac Epoxy Flooring?",
     overview: [
       "Novolac is a more tightly cross-linked epoxy. In plain terms, it holds up to concentrated acids, solvents and constant heat that would soften or stain a standard epoxy floor.",
       "Before we recommend it, we check your actual chemicals, strengths and contact times against the manufacturer's resistance data. Then we test moisture, grind the slab and carry the novolac up the cove and over curbs so spills stay contained. Smooth and sand-textured builds are available.",
@@ -488,7 +488,7 @@ export const SIMPLE_SYSTEMS: Record<string, SimpleContent> = {
   "/mma-flooring": {
     intro:
       "MMA flooring is a fast-curing acrylic resin floor that goes back into service the same day. It is the answer when a kitchen, plant or facility can only close overnight or for a weekend.",
-    overviewTitle: "MMA Flooring, Back in Service the Same Day",
+    overviewTitle: "What Is MMA Flooring?",
     overview: [
       "MMA (methyl methacrylate) cures in about an hour per coat, even in cold rooms, so a whole floor can go down in one overnight or weekend shutdown. It is seamless, waterproof and UV stable for indoor or outdoor use.",
       "MMA has a strong odor while it cures, so we plan ventilation and schedule the work inside your shutdown window. In many kitchens it can go over existing quarry tile after prep, which avoids demolition. Matching cove base finishes the room.",
@@ -528,7 +528,7 @@ export const SIMPLE_SYSTEMS: Record<string, SimpleContent> = {
   "/battery-room-flooring": {
     intro:
       "Battery room flooring has to match the battery chemistry and the spill plan. We install acid-resistant floors with integral cove and coated curbs for UPS, battery storage and charging rooms.",
-    overviewTitle: "Acid-Resistant Battery Room Flooring",
+    overviewTitle: "What Flooring Goes in a Battery Room?",
     overview: [
       "Lead-acid battery rooms usually get a novolac epoxy floor, carried up the cove and over the curbs so a spill stays in the room. We pick the system for the electrolyte and how it could reach the floor, not just a generic industrial coating.",
       "Lithium battery rooms have a different hazard profile, and flooring does not replace fire protection, ventilation or electrical safeguards. Where static control is also required, we coordinate an ESD-capable system with the chemical resistance the room needs.",
@@ -568,7 +568,7 @@ export const SIMPLE_SYSTEMS: Record<string, SimpleContent> = {
   "/joint-filling-crack-repair": {
     intro:
       "Broken joint edges and cracked concrete beat up forklifts, trap debris and get worse every day. We repair the damage and fill the joints so wheels roll smoothly again.",
-    overviewTitle: "Concrete Joint Filling and Crack Repair",
+    overviewTitle: "Why Fill Warehouse Floor Joints?",
     overview: [
       "Control joints in a warehouse slab are weak spots under hard wheels. Left open, the edges chip and spall until carts and forklifts bang across every one. Filling joints with a semi-rigid polyurea supports those edges, and we shave it flush for a smooth ride.",
       "Cracks, divots and spalls each need their own fix. We remove loose concrete, rebuild the profile and separate stable cracks from ones that still move and need a flexible detail. Repairs can stand alone or come with a new coating or polish.",
@@ -608,7 +608,7 @@ export const SIMPLE_SYSTEMS: Record<string, SimpleContent> = {
   "/moisture-mitigation": {
     intro:
       "Moisture in the slab is one of the top reasons new floors fail. We test first, then choose the right mitigation so your coating, vinyl or carpet stays bonded.",
-    overviewTitle: "Concrete Moisture Testing and Mitigation",
+    overviewTitle: "Why Test Concrete for Moisture Before a Floor Goes Down?",
     overview: [
       "Concrete can hold and release moisture for years. That vapor pushes up against coatings and adhesives, causing bubbles, peeling and lifting tiles. Testing tells us what we are dealing with before any finish goes down.",
       "When readings are high, there are options. Many epoxy, flake and quartz floors can go over a moisture-mitigating epoxy primer. Urethane cement tolerates damper slabs on its own. Other projects need a full vapor-barrier system matched to the patch, adhesive and finish.",
@@ -648,7 +648,7 @@ export const SIMPLE_SYSTEMS: Record<string, SimpleContent> = {
   "/epoxy-cove-base": {
     intro:
       "Integral cove base curves the floor up the wall so there is no corner for dirt, grease or water to hide. It is the sanitary edge kitchens, food plants and cleanrooms need.",
-    overviewTitle: "Integral Epoxy Cove Base for Sanitary Spaces",
+    overviewTitle: "What Is Integral Epoxy Cove Base?",
     overview: [
       "A seamless cove is troweled from resin mortar and tied into the floor, so floor and wall become one continuous surface. Mops and squeegees reach everything, and nothing seeps behind a glued-on base.",
       "We install cove over drywall, concrete or block, and match it to the floor system: epoxy, urethane cement or MMA. Inside and outside corners, door returns and equipment are detailed by hand. It is a common fix when a health inspection flags the floor-to-wall detail.",
@@ -688,7 +688,7 @@ export const SIMPLE_SYSTEMS: Record<string, SimpleContent> = {
   "/concrete-sealing": {
     intro:
       "Sealed concrete is a fast, practical floor for restaurants, breweries, kitchens and warehouses. We densify and seal the slab you have so it resists stains, sheds less dust and cleans easily.",
-    overviewTitle: "Commercial Concrete Sealing",
+    overviewTitle: "What Does Concrete Sealing Do?",
     overview: [
       "Sealing protects the existing slab without adding a thick coating. A densifier hardens the surface and cuts down on dust. A sealer blocks stains from oil, grease and spills so the floor wipes clean.",
       "It goes in faster than polished concrete or a resin floor, which makes it a good fit for back-of-house areas and budget-driven spaces. We clean and prep the slab first, remove old finishes where needed, and plan periodic resealing so the protection keeps working.",
@@ -728,7 +728,7 @@ export const SIMPLE_SYSTEMS: Record<string, SimpleContent> = {
   "/deck-coatings": {
     intro:
       "Deck coatings waterproof elevated concrete and give vehicles and people a durable surface to drive and walk on. We coat parking decks, balconies, walkways and plazas as one complete system.",
-    overviewTitle: "Pedestrian and Vehicular Deck Coatings",
+    overviewTitle: "What Is a Traffic Deck Coating?",
     overview: [
       "Elevated concrete takes a beating from weather, tires and foot traffic, and water that gets through damages the structure below. A traffic-bearing deck coating is a waterproof membrane with a tough wear surface on top.",
       "Parking decks need a vehicular system built for tire wear, turns and ramps, with extra wear layers where traffic is heaviest. Balconies, walkways and plazas get a pedestrian system that balances waterproofing, grip and appearance. Cracks, drains, joints and edges get as much attention as the field coating.",

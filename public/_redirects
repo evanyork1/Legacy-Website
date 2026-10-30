@@ -25,6 +25,16 @@ http://www.legacyindustrialcoatings.com/*   https://legacyindustrialcoatings.com
 /about-commercial       /our-process   301!
 /about-commercial/      /our-process   301!
 
+# Old service URLs → current pages (permanent)
+/materials                      /commercial             301!
+/roof-deck-waterproofing        /deck-coatings          301!
+/specialty-floor-systems        /commercial             301!
+/garage-floor-coating           /garagefloors           301!
+/polyaspartic-garage-floor      /garagefloors           301!
+/polished-concrete              /concrete-polishing     301!
+/warehouse-epoxy-flooring       /warehouse-flooring     301!
+/commercial-flooring            /commercial             301!
+
 # Old /case-studies/<slug> links → canonical category URLs
 /case-studies/argyle-luxury-home-metallic-floor-tear-out-redo  /residential-case-studies/argyle-luxury-home-metallic-floor-tear-out-redo  301!
 /case-studies/*  /commercial-case-studies/:splat  301!

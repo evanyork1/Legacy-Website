@@ -260,7 +260,7 @@ const Commercial = () => {
       <section className="py-20 md:py-28">
         <div className="max-w-7xl mx-auto px-6 md:px-8 lg:px-12">
           <Eyebrow>Systems</Eyebrow>
-          <h2 className={H2}>Types of Epoxy Floors and Coatings We Install</h2>
+          <h2 className={H2}>What Types of Epoxy Floors and Coatings Are There?</h2>
           <p className={`${P} max-w-3xl`}>
             We install manufacturer-warranted materials and size each floor to your traffic, chemicals and cleaning, so
             it isn't under-built.

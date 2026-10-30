@@ -16,10 +16,10 @@ const CaseStudies = ({ category }: CaseStudiesProps) => {
   const heading = isCommercial ? "Real Commercial Floor Projects" : "Real Residential Floor Projects";
   const eyebrow = isCommercial ? "Commercial Case Studies" : "Residential Case Studies";
   const title = isCommercial
-    ? "Commercial Case Studies | Concrete Floor Projects | Legacy Industrial Coatings"
-    : "Residential Case Studies | Garage & Patio Floor Projects | Legacy Industrial Coatings";
+    ? "Commercial Flooring Case Studies | Legacy Industrial Coatings"
+    : "Garage & Patio Floor Case Studies | Legacy Industrial Coatings";
   const description = isCommercial
-    ? "Real commercial concrete sealing, polishing, and coating case studies from Legacy Industrial Coatings. See before-and-after results from restaurants, breweries, warehouses, and more across DFW."
+    ? "Real commercial flooring case studies: epoxy, polished concrete and coatings in warehouses, plants, schools and restaurants, with before and after photos."
     : "Real residential garage floor and patio coating case studies from Legacy Industrial Coatings. See before-and-after results from homeowners across DFW.";
   const subhead = isCommercial
     ? "A look at the actual restaurants, breweries, kitchens, and warehouses we've protected — with the before, during, and after photos to back it up."

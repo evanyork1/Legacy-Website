@@ -47,7 +47,7 @@ const homepageFaqs = [
   {
     question: "Which commercial floor systems do you install?",
     answer:
-      "Epoxy and self-leveling resin, urethane cement, quartz broadcast, static-control (ESD) floors, secondary containment linings, deck and traffic coatings, integral cove base, moisture mitigation, line striping and mechanically polished or sealed concrete — plus carpet tile, LVP/LVT, VCT and sheet vinyl, so one contractor can cover every floor finish in the building.",
+      "Epoxy and self-leveling resin, urethane cement, quartz broadcast, static-control (ESD) floors, secondary containment linings, deck and traffic coatings, integral cove base, moisture mitigation, line striping and mechanically polished or sealed concrete — plus carpet tile, LVP/LVT, VCT and sheet vinyl, so one company can cover every floor finish in the building.",
   },
   {
     question: "How long will a commercial resin floor last?",
@@ -101,6 +101,16 @@ const INDUSTRY_CARD_DESC: Record<string, string> = {
 const industryImage = (path: string) =>
   PAGE_PHOTOS[path]?.hero?.src ?? (path === "/data-center-flooring" ? imgDataCenter : INDUSTRY_PAGES.find((p) => p.path === path)?.heroImage);
 
+/** Problem-first entry points (linked to the repair landing pages). */
+const PROBLEM_LINKS = [
+  { q: "Is your epoxy floor peeling or bubbling?", a: "Find out why it failed and whether a recoat will hold or the old coating has to come off.", label: "Epoxy floor repair", path: "/epoxy-floor-repair" },
+  { q: "Cracked joints, spalls or forklift damage?", a: "Joint, crack and spall repairs done in phases so the warehouse keeps running.", label: "Warehouse floor repair", path: "/warehouse-floor-repair" },
+  { q: "Is the concrete dusting or chalking?", a: "Densify and polish, seal or coat the slab so the dust stops for good.", label: "Concrete dusting repair", path: "/concrete-dusting-repair" },
+  { q: "Worn, pitted or stained concrete?", a: "Grind, patch and level the slab, then coat or polish it like new.", label: "Concrete resurfacing", path: "/concrete-floor-resurfacing" },
+  { q: "Kitchen floor failing inspection?", a: "Broken tile, failed grout and missing cove base replaced with a seamless floor, overnight.", label: "Kitchen floor repair", path: "/commercial-kitchen-floor-repair" },
+  { q: "Faded or wrong floor striping?", a: "Old markings removed and new lanes, walkways and safety zones laid out.", label: "Line striping", path: "/line-striping" },
+];
+
 const SYSTEM_CARDS = [
   { name: "Epoxy", desc: "Seamless high-build epoxy and self-leveling systems for tough commercial spaces.", path: "/commercial", icon: Droplets },
   { name: "Urethane Cement", desc: "Cementitious urethane systems built for heat, chemicals, and wet processing.", path: "/urethane-cement-flooring", icon: Layers },
@@ -148,10 +158,10 @@ const Home = () => {
   return (
     <>
       <Helmet>
-        <title>Legacy Industrial Coatings | Commercial & Industrial Flooring in Dallas & All of Texas</title>
+        <title>Legacy Industrial Coatings | Commercial & Industrial Flooring in Texas</title>
         <meta
           name="description"
-          content="Commercial and industrial epoxy flooring, polished concrete, urethane cement and line striping for Dallas–Fort Worth, all of Texas and nationwide. Bids within 24 hours of plans."
+          content="Commercial and industrial epoxy flooring, polished concrete, urethane cement and line striping across Dallas–Fort Worth, Texas and nationwide."
         />
         <meta name="author" content="Legacy Industrial Coatings" />
         <meta name="geo.region" content="US-TX" />
@@ -159,10 +169,10 @@ const Home = () => {
         <meta name="geo.position" content="32.7767;-96.7970" />
         <meta name="ICBM" content="32.7767, -96.7970" />
         <meta property="og:type" content="website" />
-        <meta property="og:title" content="Legacy Industrial Coatings | Commercial & Industrial Flooring in Dallas & All of Texas" />
+        <meta property="og:title" content="Legacy Industrial Coatings | Commercial & Industrial Flooring in Texas" />
         <meta
           property="og:description"
-          content="Commercial and industrial epoxy flooring, polished concrete, urethane cement and line striping for Dallas–Fort Worth, all of Texas and nationwide. Bids within 24 hours of plans."
+          content="Commercial and industrial epoxy flooring, polished concrete, urethane cement and line striping across Dallas–Fort Worth, Texas and nationwide."
         />
         <meta property="og:image" content="https://legacyindustrialcoatings.com/og/legacy-commercial-industrial-flooring.jpg" />
         <meta property="og:image:width" content="1200" />
@@ -171,8 +181,8 @@ const Home = () => {
         <meta property="og:url" content="https://legacyindustrialcoatings.com" />
         <meta property="og:site_name" content="Legacy Industrial Coatings" />
         <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content="Legacy Industrial Coatings | Commercial & Industrial Flooring in Dallas & All of Texas" />
-        <meta name="twitter:description" content="Commercial and industrial epoxy flooring, polished concrete, urethane cement and line striping for Dallas–Fort Worth, all of Texas and nationwide. Bids within 24 hours of plans." />
+        <meta name="twitter:title" content="Legacy Industrial Coatings | Commercial & Industrial Flooring in Texas" />
+        <meta name="twitter:description" content="Commercial and industrial epoxy flooring, polished concrete, urethane cement and line striping across Dallas–Fort Worth, Texas and nationwide." />
         <meta name="twitter:image" content="https://legacyindustrialcoatings.com/og/legacy-commercial-industrial-flooring.jpg" />
         <meta name="robots" content="index, follow" />
         <meta name="theme-color" content="#0f2440" />
@@ -288,6 +298,28 @@ const Home = () => {
               >
                 See all commercial flooring <ArrowRight size={12} />
               </a>
+            </div>
+          </section>
+
+          {/* Problems we fix — for people who search by the problem, not the product */}
+          <section id="floor-problems" className="py-20 md:py-28 border-t border-border">
+            <div className="max-w-7xl mx-auto px-6 md:px-8 lg:px-12">
+              <SectionHeading
+                eyebrow="Floor Problems We Fix"
+                title="What Problem Are You Trying to Solve?"
+                text="Peeling coatings, cracked joints, dusty slabs and failed kitchen floors. Start with the problem and we'll tell you whether it needs a repair, a recoat or a new floor."
+              />
+              <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-px bg-border border border-border">
+                {PROBLEM_LINKS.map((p) => (
+                  <a key={p.path} href={p.path} className="group bg-background p-6 md:p-8 hover:bg-secondary transition-colors">
+                    <h3 className="font-heading font-semibold text-[16px] text-foreground mb-2 group-hover:underline">{p.q}</h3>
+                    <p className="text-muted-foreground text-[14px] leading-[1.7] mb-4">{p.a}</p>
+                    <span className="inline-flex items-center gap-2 font-heading text-[11px] tracking-[0.2em] uppercase text-foreground">
+                      {p.label} <ArrowRight size={12} className="transition-transform group-hover:translate-x-1" />
+                    </span>
+                  </a>
+                ))}
+              </div>
             </div>
           </section>
 

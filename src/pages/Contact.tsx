@@ -27,10 +27,10 @@ const Contact = () => {
   return (
     <div className="lcf min-h-screen bg-background">
       <Helmet>
-        <title>Contact Legacy Industrial Coatings | Commercial & Industrial Epoxy Flooring, Plano TX</title>
+        <title>Contact Legacy Industrial Coatings | Request a Flooring Bid</title>
         <meta
           name="description"
-          content="Contact Legacy Industrial Coatings for commercial and industrial epoxy flooring and polished concrete. Plano, TX office serving Dallas–Fort Worth, all of Texas and nationwide."
+          content="Request a bid on commercial and industrial epoxy flooring or polished concrete. Plano, TX office serving DFW, all of Texas and nationwide."
         />
         <link rel="canonical" href="https://legacyindustrialcoatings.com/contact" />
         <meta property="og:url" content="https://legacyindustrialcoatings.com/contact" />

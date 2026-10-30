@@ -57,6 +57,8 @@ import { IndustriesHub, ResourcesHub, ServicesHub } from "./pages/site/Hubs";
 import Warranties from "./pages/site/Warranties";
 import Reviews from "./pages/site/Reviews";
 import LineStriping from "./pages/site/LineStriping";
+import RepairPage from "./pages/site/RepairPage";
+import { REPAIR_PAGES } from "./data/site/simple/repairs";
 import DataCenterFlooring from "./pages/site/DataCenterFlooring";
 import SiteIndustryPage from "./pages/site/IndustryPage";
 import SiteSystemPage from "./pages/site/SystemPage";
@@ -156,6 +158,11 @@ function App() {
                   path={i.path}
                   element={<SiteIndustryPage path={i.path} />}
                 />
+              ))}
+
+              {/* Problems & repairs landing pages */}
+              {REPAIR_PAGES.map((r) => (
+                <Route key={r.path} path={r.path} element={<RepairPage page={r} />} />
               ))}
 
               {/* Commercial systems — every system page renders through the shared template. */}

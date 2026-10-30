@@ -97,8 +97,8 @@ const toBlock = (items: { question: string; answer: string }[]) => items.map((f)
 const FAQ = () => (
   <div className="lcf min-h-screen bg-background">
     <Helmet>
-      <title>Frequently Asked Questions - Garage Floor Coatings | Legacy Industrial Coatings</title>
-      <meta name="description" content="Get answers to common questions about our polyurea garage floor coatings, installation process, pricing, and maintenance. Expert advice from Legacy Industrial Coatings." />
+      <title>Garage Floor Coating FAQ | Legacy Industrial Coatings</title>
+      <meta name="description" content="Answers to common questions about polyurea garage floor coatings: installation, pricing, warranty and maintenance." />
       <meta name="keywords" content="garage floor coating FAQ, polyurea coating questions, floor coating maintenance, garage floor installation" />
 
       <meta property="og:title" content="FAQ - Garage Floor Coating Questions | Legacy Industrial Coatings" />

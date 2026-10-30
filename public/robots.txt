@@ -18,6 +18,8 @@ Disallow: /landingvisual
 Disallow: /floor-visualizer
 Disallow: /gpt
 Disallow: /jobberdetails
+Disallow: /packetsformat
+Disallow: /app-shell.html
 Allow: /
 
 Sitemap: https://legacyindustrialcoatings.com/sitemap.xml

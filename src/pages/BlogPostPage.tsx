@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { Helmet } from "react-helmet-async";
+import { fitDescription, fitTitle } from "@/lib/seoText";
 import { PageBreadcrumbs } from "@/components/seo/PageBreadcrumbs";
 import { Link, useParams } from "react-router-dom";
 import { ArrowLeft, ArrowRight } from "lucide-react";
@@ -97,11 +98,24 @@ const BlogPostPage = () => {
       : { label: "Commercial flooring resource center", path: "/resources" },
   ];
 
+  // Question-and-answer pairs in the article (an <h3> ending in "?" followed by a <p>) become FAQ schema for AI answers.
+  const strip = (h: string) => h.replace(/<[^>]+>/g, "").replace(/&amp;/g, "&").replace(/\s+/g, " ").trim();
+  const faqs = [...post.content.matchAll(/<h3[^>]*>([\s\S]*?)<\/h3>\s*<p[^>]*>([\s\S]*?)<\/p>/g)]
+    .map((m) => ({ q: strip(m[1]), a: strip(m[2]) }))
+    .filter((f) => f.q.endsWith("?") && f.a.length > 20);
+  const faqLd = faqs.length
+    ? {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        mainEntity: faqs.map((f) => ({ "@type": "Question", name: f.q, acceptedAnswer: { "@type": "Answer", text: f.a } })),
+      }
+    : null;
+
   return (
     <>
       <Helmet>
-        <title>{post.metaTitle ?? `${post.title} | Legacy Industrial Coatings`}</title>
-        <meta name="description" content={post.excerpt} />
+        <title>{fitTitle(post.metaTitle ?? `${post.title} | Legacy Industrial Coatings`)}</title>
+        <meta name="description" content={fitDescription(post.excerpt)} />
         <link rel="canonical" href={canonical} />
         <meta name="robots" content="index, follow" />
 
@@ -118,6 +132,7 @@ const BlogPostPage = () => {
         <meta name="twitter:image" content={image} />
 
         <script type="application/ld+json">{JSON.stringify(jsonLd)}</script>
+        {faqLd && <script type="application/ld+json">{JSON.stringify(faqLd)}</script>}
       </Helmet>
 
       <PageBreadcrumbs items={[{ name: "Home", url: "/" }, { name: "Blog", url: "/blog" }, { name: post.title, url: `/blog/${post.slug}` }]} />

@@ -307,7 +307,7 @@ export const caseStudies: CaseStudy[] = [
     heroAlt:
       "Finished custom ombre polyurea polyaspartic flake floor with anti-slip additive in a children's swim school lobby by Legacy Industrial Coatings",
     metaTitle:
-      "Children's Swim School Flake Floor Case Study — VCT Removal & Mold Remediation | Legacy Industrial Coatings",
+      "Swim School Flake Floor — VCT Removal & Mold Remediation",
     metaDescription:
       "Six-location partnership with a national children's swim school. We remove failing VCT tile that traps water, mold, and bacteria, decontaminate the slab, and install a custom ombre polyurea polyaspartic flake floor with heavy slip-resistant additive built for wet feet and child safety.",
     location: "DFW, TX (multi-location partnership — 6 sites completed)",

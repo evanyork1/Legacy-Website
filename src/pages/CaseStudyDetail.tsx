@@ -1,4 +1,5 @@
 import { Helmet } from "react-helmet-async";
+import { fitDescription, fitTitle } from "@/lib/seoText";
 import { useParams, Navigate, Link } from "react-router-dom";
 import { useState } from "react";
 import { ArrowLeft, X } from "lucide-react";
@@ -113,11 +114,11 @@ const CaseStudyDetail = () => {
   return (
     <div className="lcf min-h-screen bg-background">
       <Helmet>
-        <title>{cs.metaTitle}</title>
-        <meta name="description" content={cs.metaDescription} />
+        <title>{fitTitle(cs.metaTitle)}</title>
+        <meta name="description" content={fitDescription(cs.metaDescription)} />
         <link rel="canonical" href={canonical} />
-        <meta property="og:title" content={cs.metaTitle} />
-        <meta property="og:description" content={cs.metaDescription} />
+        <meta property="og:title" content={fitTitle(cs.metaTitle)} />
+        <meta property="og:description" content={fitDescription(cs.metaDescription)} />
         <meta property="og:image" content={heroImageAbs} />
         <meta property="og:type" content="article" />
         <meta property="og:url" content={canonical} />

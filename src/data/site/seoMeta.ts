@@ -13,7 +13,7 @@ const NEXT = "Bids within 24 hours of plans.";
 
 export const SEO_META: Record<string, { title: string; description: string }> = {
   "/": {
-    title: `${B} | Commercial & Industrial Flooring in Dallas & All of Texas`,
+    title: `${B} | Commercial & Industrial Flooring in Texas`,
     description:
       "Commercial and industrial epoxy flooring, polished concrete, urethane cement and line striping for Dallas–Fort Worth, all of Texas and nationwide. " + NEXT,
   },
@@ -213,12 +213,12 @@ export const SEO_META: Record<string, { title: string; description: string }> = 
       "Floors for agricultural, packing and food facilities that get washed down daily: urethane cement, epoxy and cove base. DFW, all of Texas and nationwide.",
   },
   "/services": {
-    title: `Commercial & Industrial Flooring Services | Epoxy, Polished Concrete & Coatings | ${B}`,
+    title: "Commercial Flooring Services | Epoxy, Polished Concrete & More",
     description:
       "Every floor we install: commercial and industrial epoxy, polished concrete, urethane cement, specialty coatings, repairs, striping, carpet tile and LVT. DFW, all of Texas and nationwide.",
   },
   "/industries": {
-    title: `Industries We Serve | Warehouse, Manufacturing, Food, Data Center Flooring | ${B}`,
+    title: `Commercial Flooring by Industry | Legacy Industrial Coatings`,
     description:
       "Flooring for warehouses, manufacturing, food processing, aviation, data centers, healthcare, restaurants, retail and more. DFW, all of Texas and nationwide.",
   },

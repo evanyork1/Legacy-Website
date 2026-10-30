@@ -75,7 +75,7 @@ export const SERVICE_AREA_CITIES: ServiceAreaCity[] = [
     slug: "dallas",
     name: "Dallas",
     county: "Dallas County",
-    nearbyCities: ["richardson", "carrollton", "garland", "addison", "farmers-branch", "north-dallas"],
+    nearbyCities: ["richardson", "carrollton", "garland", "addison", "farmers-branch", "north-dallas", "irving", "arlington"],
     localHook:
       "Dallas is our largest commercial service market — from Design District showrooms to industrial parks along I-35 and Stemmons, healthcare facilities in the Medical District, and high-end residential garages in Preston Hollow and Lake Highlands.",
     commercialAngle:
@@ -90,7 +90,7 @@ export const SERVICE_AREA_CITIES: ServiceAreaCity[] = [
     slug: "fort-worth",
     name: "Fort Worth",
     county: "Tarrant County",
-    nearbyCities: ["dallas", "flower-mound", "coppell", "lewisville"],
+    nearbyCities: ["dallas", "arlington", "irving", "flower-mound", "coppell", "lewisville"],
     localHook:
       "Fort Worth's Alliance corridor, AllianceTexas, and the industrial belt along I-35W make it a heavy commercial market for us — distribution centers, manufacturing floors, and FedEx-grade warehouses where the coating has to outlast the forklift traffic.",
     commercialAngle:
@@ -100,6 +100,36 @@ export const SERVICE_AREA_CITIES: ServiceAreaCity[] = [
     landmarks: ["AllianceTexas", "Sundance Square", "Cultural District"],
     zipCodes: ["76102", "76107", "76109", "76137", "76177"],
     faqs: baseFaqs("Fort Worth"),
+  },
+  {
+    slug: "irving",
+    name: "Irving",
+    county: "Dallas County",
+    nearbyCities: ["dallas", "coppell", "farmers-branch", "carrollton", "fort-worth", "arlington"],
+    localHook:
+      "Irving sits between Dallas and DFW Airport, and its commercial floors reflect that: Las Colinas office towers and corporate campuses, airport-adjacent logistics buildings, a growing cluster of data centers, plus hospitals and hotels that never fully close.",
+    commercialAngle:
+      "In Irving we install polished concrete and resinous floors in Las Colinas lobbies, break rooms and back-of-house; industrial epoxy, joint repair and striping in distribution buildings near the airport; and static-control floors, battery-room novolac and watertight containment coatings at data centers. Hospital and hotel work is phased by zone and scheduled around occupancy.",
+    residentialAngle:
+      "Garage floors are a small part of our Irving work. When we do one, the slab is ground and crack-repaired first, then coated with a polyurea base coat and flake, sealed with a polyaspartic topcoat.",
+    landmarks: ["Las Colinas", "DFW Airport", "SH-114 / SH-161 corridor", "Irving Convention Center"],
+    zipCodes: ["75038", "75039", "75060", "75061", "75062", "75063"],
+    faqs: baseFaqs("Irving"),
+  },
+  {
+    slug: "arlington",
+    name: "Arlington",
+    county: "Tarrant County",
+    nearbyCities: ["fort-worth", "dallas", "irving"],
+    localHook:
+      "Arlington sits in the middle of the Metroplex between Dallas and Fort Worth, with one of the region's largest industrial parks in the Great Southwest Industrial District, automotive manufacturing and supplier buildings around the GM Arlington Assembly area, and distribution warehouses lining I-20, I-30 and SH-360.",
+    commercialAngle:
+      "Most of our Arlington work is industrial: high-build epoxy and urethane cement for warehouses and manufacturing floors, with joint repair and aisle striping. We also handle concourse, kitchen and back-of-house floors for venues in the Entertainment District, campus labs and corridors around UT Arlington, and retail and restaurant buildouts along the I-20 and Cooper Street corridors.",
+    residentialAngle:
+      "Garage floors are a small part of our Arlington work. When we do one, the slab is ground and crack-repaired first, then coated with a polyurea base coat and flake, sealed with a polyaspartic topcoat.",
+    landmarks: ["Great Southwest Industrial District", "Entertainment District", "UT Arlington", "I-20 / I-30 / SH-360 corridor"],
+    zipCodes: ["76006", "76010", "76011", "76013", "76015", "76017", "76018"],
+    faqs: baseFaqs("Arlington"),
   },
   {
     slug: "mckinney",
@@ -390,7 +420,7 @@ export const SERVICE_AREA_CITIES: ServiceAreaCity[] = [
     slug: "farmers-branch",
     name: "Farmers Branch",
     county: "Dallas County",
-    nearbyCities: ["addison", "carrollton", "dallas", "north-dallas"],
+    nearbyCities: ["addison", "carrollton", "dallas", "north-dallas", "irving"],
     localHook:
       "Farmers Branch's I-35E industrial belt and Mercer business district make it one of our highest-volume commercial markets in DFW.",
     commercialAngle:
@@ -480,7 +510,7 @@ export const SERVICE_AREA_CITIES: ServiceAreaCity[] = [
     slug: "coppell",
     name: "Coppell",
     county: "Dallas & Denton Counties",
-    nearbyCities: ["carrollton", "lewisville", "flower-mound", "farmers-branch"],
+    nearbyCities: ["carrollton", "lewisville", "flower-mound", "farmers-branch", "irving"],
     localHook:
       "Coppell sits on the DFW Airport border — a deep distribution and logistics market.",
     commercialAngle:

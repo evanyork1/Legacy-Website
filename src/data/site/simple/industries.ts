@@ -109,7 +109,7 @@ export const SIMPLE_INDUSTRIES: Record<string, SimpleContent> = {
 
   "/auto-dealership-flooring": {
     intro:
-      "Showroom floors that help sell cars and service floors that stand up to hot tires, fluids and lifts. One contractor for the whole dealership.",
+      "Showroom floors that help sell cars and service floors that stand up to hot tires, fluids and lifts. One team for the whole dealership.",
     overviewTitle: "Dealership Flooring From Showroom to Service Bay",
     overview: [
       "A dealership floor changes from showroom to shop under the same roof. The showroom needs a clean, bright finish that looks good under display lighting. The service drive has to handle hot tires and water, and the shop takes tools, lifts and spilled fluids every day.",
@@ -161,7 +161,7 @@ export const SIMPLE_INDUSTRIES: Record<string, SimpleContent> = {
   "/electronics-manufacturing-flooring": {
     intro:
       "Static-control and cleanroom flooring for electronics and semiconductor plants, built to your process engineer's requirements and tested before turnover.",
-    overviewTitle: "ESD Flooring for Electronics Manufacturing",
+    overviewTitle: "What Flooring Does Electronics Manufacturing Need?",
     overview: [
       "In electronics manufacturing, a static discharge can ruin a component before anyone notices. The floor is part of the grounding path, so it has to match your static-control program, not just carry an ESD label. Cleanrooms and wet-process areas add their own demands.",
       "We work from your engineering requirements, test for moisture, prep the slab with diamond grinding, and install conductive or static-dissipative epoxy, cleanroom finishes and chemical-resistant linings. Static-control floors are tested before turnover so you know they perform.",
@@ -212,7 +212,7 @@ export const SIMPLE_INDUSTRIES: Record<string, SimpleContent> = {
   "/food-processing-flooring": {
     intro:
       "Food and beverage plant floors built for hot washdown, thermal shock and harsh sanitizers, detailed at drains and walls where most floors fail.",
-    overviewTitle: "Food Processing Flooring That Survives Washdown",
+    overviewTitle: "What Is the Best Flooring for Food Processing?",
     overview: [
       "Processing floors take hot oil, cold ingredients, heavy carts and aggressive cleaning, sometimes in the same shift. Standard epoxy often cracks or peels under those temperature swings. Urethane cement is the go-to for wet production because it handles hot water and thermal shock (fast changes from hot to cold) far better.",
       "The details matter as much as the floor. We pay close attention to drains, slope, equipment bases and wall transitions, because that is where water gets trapped and floors start to fail. Work is phased around production and sanitation so the plant keeps running.",
@@ -510,7 +510,7 @@ export const SIMPLE_INDUSTRIES: Record<string, SimpleContent> = {
       },
       {
         q: "Do you install carpet tile and LVT as well as coatings?",
-        a: "Yes. That lets one contractor handle the whole floor plan, including the transitions between materials, which is where mixed-trade jobs usually run into trouble. You get one schedule, one point of contact and one bid.",
+        a: "Yes. That lets one company handle the whole floor plan, including the transitions between materials, which is where mixed-trade jobs usually run into trouble. You get one schedule, one point of contact and one bid.",
       },
       {
         q: "What drives the cost of office flooring?",
@@ -522,7 +522,7 @@ export const SIMPLE_INDUSTRIES: Record<string, SimpleContent> = {
   "/parking-garage-coatings": {
     intro:
       "Traffic coatings that waterproof parking decks, resist tire wear and keep the garage open while the work gets done.",
-    overviewTitle: "Parking Garage Coatings That Protect the Deck",
+    overviewTitle: "What Does a Parking Garage Coating Do?",
     overview: [
       "A parking deck coating is a waterproof layer, not just paint. Water and road salts that get into the concrete rust the steel inside, which leads to spalls, leaks and expensive structural repairs. A good traffic coating seals the deck and stands up to turning tires.",
       "We map the deck into standard and heavy-wear areas, repair cracks and joints first, then install the coating and new striping. Work is phased level by level, with night and weekend crews, so the garage stays open.",
@@ -679,7 +679,7 @@ export const SIMPLE_INDUSTRIES: Record<string, SimpleContent> = {
   "/restaurant-kitchen-flooring": {
     intro:
       "Kitchen floors that handle hot oil, boiling water and daily washdown and help you pass inspection, installed overnight so you keep serving.",
-    overviewTitle: "Restaurant Kitchen Flooring Built for Service",
+    overviewTitle: "What Is the Best Flooring for a Restaurant Kitchen?",
     overview: [
       "Kitchen floors fail at the edges first: around drains, at the wall base and under fryers, where hot oil and water break down weaker floors. Urethane cement is built for those conditions and holds up to thermal shock (fast changes from hot to cold).",
       "We fix the problems under worn floors, including contaminated concrete, failing wall bases and broken drain edges, then install a floor that lasts. We work overnight and in phases, and we can run a repeatable scope for multi-location restaurant groups.",
@@ -895,7 +895,7 @@ export const SIMPLE_INDUSTRIES: Record<string, SimpleContent> = {
   "/data-center-flooring": {
     intro:
       "Floors, linings and coatings for data centers, from the data hall to the generator yard, installed around live operations.",
-    overviewTitle: "Data Center Flooring for the Whole Campus",
+    overviewTitle: "What Flooring Does a Data Center Need?",
     overview: [
       "A data center has many floor types under one roof. Data halls need flat, dust-free concrete. Electrical rooms need static control. Battery rooms, generators and fuel tanks need floors and linings that keep spills contained.",
       "We cover all of it, plus offices, docks and stairs, so you have one flooring team for the campus. Work is phased with night and weekend crews so critical rooms stay online.",

@@ -124,7 +124,7 @@ const CareerMarketPage = () => {
         {/* 1. Header */}
         <PageHero
           eyebrow={`${market.city}, ${market.state} — ${market.seats} ${market.seats === 1 ? "seat" : "seats"}`}
-          title="Commercial Flooring Sales Rep."
+          title={`Commercial Flooring Sales Rep — ${market.city}, ${market.stateAbbr}`}
           subhead={market.headline}
           image={JOB.dcSiteWalk.src}
           imageAlt={JOB.dcSiteWalk.alt}

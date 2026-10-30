@@ -1,7 +1,7 @@
 import { ArrowRight } from "lucide-react";
 import SiteHeader from "@/components/site/SiteHeader";
 import SiteFooter from "@/components/site/SiteFooter";
-import { ClientStrip, PageHero } from "@/components/site/sections";
+import { ClientStrip, FaqBlock, PageHero } from "@/components/site/sections";
 import { Seo } from "@/components/seo/Seo";
 import { StructuredData } from "@/components/seo/StructuredData";
 import { INDUSTRY_GROUPS, type NavLink } from "@/data/site/nav";
@@ -76,8 +76,13 @@ const SERVICE_GROUPS: Group[] = [
   {
     id: "repairs",
     title: "Repairs & Prep",
-    text: "The work under the floor that decides how long it lasts.",
+    text: "Fixing peeling, cracked, dusty or worn floors, and the prep work under a new one that decides how long it lasts.",
     items: [
+      { label: "Warehouse Floor Repair", path: "/warehouse-floor-repair" },
+      { label: "Epoxy Floor Repair & Recoating", path: "/epoxy-floor-repair" },
+      { label: "Concrete Floor Resurfacing", path: "/concrete-floor-resurfacing" },
+      { label: "Concrete Dusting Repair", path: "/concrete-dusting-repair" },
+      { label: "Commercial Kitchen Floor Repair", path: "/commercial-kitchen-floor-repair" },
       { label: "Joint Filling & Crack Repair", path: "/joint-filling-crack-repair" },
       { label: "Moisture Mitigation", path: "/moisture-mitigation" },
       { label: "Line Striping & Floor Marking", path: "/line-striping" },
@@ -95,6 +100,56 @@ const SERVICE_GROUPS: Group[] = [
   },
 ];
 
+const SERVICE_FAQS = [
+  {
+    q: "What types of commercial flooring do you install?",
+    a: "Epoxy and other resin floors, polished and sealed concrete, urethane cement, quartz and flake floors, specialty coatings (ESD, novolac, secondary containment, deck coatings), integral cove base, line striping, and carpet tile and LVT. We also handle the repairs and prep under the floor: joint filling, crack and spall repair, moisture mitigation and resurfacing.",
+  },
+  {
+    q: "How much does commercial flooring cost per square foot?",
+    a: "It depends on the system, the condition of the slab and the size of the job. As a guide, high-traffic epoxy runs about $3.50 to $10 per square foot, polished concrete about $2.25 to $8, flake floors $7.50 to $9, quartz about $15 and urethane cement about $21. Integral cove base is about $15 per linear foot. Larger jobs land at the low end of each range. A site walk sets the real number.",
+  },
+  {
+    q: "How do I know which floor is right for my building?",
+    a: "Start with how the space is used: the traffic (forklifts, carts, foot traffic), the chemicals and temperatures it sees, how it is cleaned and how long you can be shut down. We walk the site, check the concrete and recommend the simplest floor that will hold up.",
+  },
+  {
+    q: "Can you repair my existing floor instead of replacing it?",
+    a: "Often, yes. Cracked joints, spalls, worn traffic lanes and faded striping can usually be repaired, and a coating that is still well bonded can often be recoated. If the old coating is peeling or the slab has a moisture problem, it has to come off first. We will tell you which one you have after the site walk.",
+  },
+  {
+    q: "Can you work while my facility stays open?",
+    a: "Yes. Most of our commercial projects are in occupied buildings. We phase the work by area and schedule nights and weekends so you keep operating.",
+  },
+  {
+    q: "Where do you install commercial flooring?",
+    a: "We are based in Plano, Texas and work across Dallas–Fort Worth, all of Texas and nationwide.",
+  },
+];
+
+const INDUSTRY_FAQS = [
+  {
+    q: "What is the best flooring for a warehouse?",
+    a: "For most warehouses it is polished concrete or a high-build epoxy with a high-traffic urethane topcoat, plus filled joints and line striping. Polished concrete is the lowest-maintenance option for open storage. Epoxy is better where you need color-coded zones, spill resistance or a brighter floor.",
+  },
+  {
+    q: "What is the best flooring for a commercial kitchen or food plant?",
+    a: "Urethane cement. It handles hot oil, boiling water washdowns and fast temperature swings that make standard epoxy crack or peel, and it is usually installed with integral cove base and sloped to the drains.",
+  },
+  {
+    q: "What flooring does a manufacturing plant need?",
+    a: "It depends on the process. Forklift aisles and assembly areas usually get a high-build epoxy, chemical and plating areas get novolac epoxy, wet and hot areas get urethane cement, and electronics areas get ESD flooring. One coating for the whole plant rarely works.",
+  },
+  {
+    q: "Do you install flooring in data centers?",
+    a: "Yes. We coat electrical rooms, battery rooms, generator areas and transformer oil containment pits, and we polish or seal the concrete in data halls and support spaces.",
+  },
+  {
+    q: "Do you work in healthcare, schools and offices?",
+    a: "Yes. Along with resin floors and polished concrete, we install commercial carpet tile and LVT, so one company can cover lobbies, corridors, classrooms, offices and the back-of-house spaces.",
+  },
+];
+
 export const ServicesHub = () => {
   const crumbs = [
     { name: "Home", url: "/" },
@@ -103,7 +158,7 @@ export const ServicesHub = () => {
   return (
     <div className="lcf min-h-screen bg-background">
       <Seo title="Services" description="" path="/services" ogImage={JOB.mfgEpoxy.src} />
-      <StructuredData breadcrumbs={crumbs} />
+      <StructuredData breadcrumbs={crumbs} faqs={SERVICE_FAQS.map((f) => ({ question: f.q, answer: f.a }))} />
       <SiteHeader />
       <PageHero
         eyebrow="Services"
@@ -115,6 +170,7 @@ export const ServicesHub = () => {
       />
       <GroupGrid groups={SERVICE_GROUPS} />
       <ClientStrip light />
+      <FaqBlock heading="Commercial Flooring Questions" faqs={SERVICE_FAQS} />
       <SiteFooter cta={{ title: "Not sure which floor you need?", text: "Tell us about the space and how it's used. We'll walk it and recommend the right system." }} />
     </div>
   );
@@ -128,7 +184,7 @@ export const IndustriesHub = () => {
   return (
     <div className="lcf min-h-screen bg-background">
       <Seo title="Industries" description="" path="/industries" ogImage={JOB.aeroMfg.src} />
-      <StructuredData breadcrumbs={crumbs} />
+      <StructuredData breadcrumbs={crumbs} faqs={INDUSTRY_FAQS.map((f) => ({ question: f.q, answer: f.a }))} />
       <SiteHeader />
       <PageHero
         eyebrow="Industries"
@@ -140,6 +196,7 @@ export const IndustriesHub = () => {
       />
       <GroupGrid groups={INDUSTRY_GROUPS.map((g) => ({ title: g.title, items: g.items }))} />
       <ClientStrip light />
+      <FaqBlock heading="Flooring by Industry: Common Questions" faqs={INDUSTRY_FAQS} />
       <SiteFooter cta={{ title: "Get a bid on your facility", text: "Send plans or a scope, or schedule a site walk." }} />
     </div>
   );

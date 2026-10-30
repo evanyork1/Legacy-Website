@@ -1,5 +1,6 @@
 import { Helmet } from "react-helmet-async";
 import { SEO_META } from "@/data/site/seoMeta";
+import { fitDescription, fitTitle } from "@/lib/seoText";
 
 const SITE_URL = "https://legacyindustrialcoatings.com";
 const DEFAULT_OG_IMAGE = "/og/legacy-commercial-industrial-flooring.jpg";
@@ -23,8 +24,8 @@ interface SeoProps {
  */
 export const Seo = ({ title: pageTitle, description: pageDescription, path, ogImage, noindex }: SeoProps) => {
   const meta = SEO_META[path];
-  const title = meta?.title ?? pageTitle;
-  const description = meta?.description ?? pageDescription;
+  const title = fitTitle(meta?.title ?? pageTitle);
+  const description = fitDescription(meta?.description ?? pageDescription);
   const canonical = `${SITE_URL}${path}`;
   const image = ogImage
     ? ogImage.startsWith("http")

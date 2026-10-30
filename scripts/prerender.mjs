@@ -72,6 +72,11 @@ const STATIC_ROUTES = [
   "/novolac-epoxy-flooring",
   "/mma-flooring",
   "/line-striping",
+  "/warehouse-floor-repair",
+  "/epoxy-floor-repair",
+  "/concrete-floor-resurfacing",
+  "/concrete-dusting-repair",
+  "/commercial-kitchen-floor-repair",
 ];
 
 // Commercial application/solution pages come from src/data/commercialNav.ts.

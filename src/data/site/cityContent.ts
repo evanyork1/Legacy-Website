@@ -1,5 +1,5 @@
 /**
- * Unique commercial content for the eight largest DFW commercial markets.
+ * Unique commercial content for the ten largest DFW commercial markets.
  * City pages for these slugs render this content in place of the shared
  * template copy. Landmarks and corridors come from serviceAreaCities.ts;
  * nothing here names a client or project that isn't in caseStudies.ts.
@@ -29,6 +29,8 @@ export const PRIORITY_CITY_SLUGS = [
   "allen",
   "lewisville",
   "carrollton",
+  "irving",
+  "arlington",
 ] as const;
 
 export const isPriorityCity = (slug: string) =>
@@ -68,6 +70,21 @@ const DATA_CENTER: CityLink = {
   label: "Data centers & electronics",
   url: "/data-center-flooring",
   text: "Static-dissipative and conductive epoxy for data halls, labs and electronics assembly.",
+};
+const CONTAINMENT: CityLink = {
+  label: "Transformer & secondary containment",
+  url: "/secondary-containment-coatings",
+  text: "Seamless, watertight coatings for transformer pits, fuel containment and chemical areas, carried up walls and curbs.",
+};
+const HOTEL: CityLink = {
+  label: "Hotels & hospitality",
+  url: "/hotel-flooring",
+  text: "Kitchen, laundry and back-of-house floors plus polished concrete in public areas, phased so the property stays open.",
+};
+const SCHOOL: CityLink = {
+  label: "Schools & campuses",
+  url: "/school-flooring",
+  text: "Labs, shops, kitchens and corridors, scheduled around the academic calendar.",
 };
 
 export const PRIORITY_CITY_CONTENT: Record<string, PriorityCityContent> = {
@@ -224,6 +241,48 @@ export const PRIORITY_CITY_CONTENT: Record<string, PriorityCityContent> = {
       {
         q: "Do you add safety striping to Carrollton warehouse floors?",
         a: "Yes. Line striping and floor marking for aisles, walkways and equipment zones can be added as part of the floor project.",
+      },
+    ],
+  },
+  irving: {
+    intro:
+      "Irving is where we do some of our most specialized work. At a data center substation in Irving we took transformer oil containment pits, each about 1,500 square feet of coatable space, from cracked bare concrete to a seamless, watertight coating across the floor, walls, curbs and equipment pads. The rest of the city keeps us busy too: Las Colinas office towers and corporate campuses, logistics and distribution buildings around DFW Airport, and hospitals and hotels that have to stay open while the floor goes down.",
+    facilities: [DATA_CENTER, CONTAINMENT, OFFICE, WAREHOUSE, HEALTHCARE, HOTEL],
+    polished:
+      "Las Colinas lobbies, corporate amenity spaces and airport-area showrooms are good candidates for polished concrete when the slab is sound. Because these buildings are usually occupied, we grind with dust-controlled equipment, work after hours, densify, fill joints and polish to the aggregate exposure and sheen approved on a mockup.",
+    faqs: [
+      {
+        q: "Do you coat transformer containment pits at Irving data centers?",
+        a: "Yes. At an Irving data center substation we prepped cracked, stained bare-concrete transformer pits, repaired the cracks and installed a seamless, watertight coating across the floor, walls, curbs and pads so transformer oil stays contained. Each pit was about 1,500 square feet of coatable space.",
+      },
+      {
+        q: "What else do you install in Irving data centers besides containment?",
+        a: "Static-dissipative or conductive floors in electrical and UPS rooms, chemical-resistant novolac in battery rooms, and durable epoxy in loading docks, corridors and mechanical spaces. We match the system to each room rather than using one coating everywhere.",
+      },
+      {
+        q: "Can you work in an occupied Las Colinas office building or an Irving hotel?",
+        a: "Yes. We phase the work by floor or zone, run nights and weekends, and use dust-controlled grinding so tenants, guests and staff keep using the building.",
+      },
+    ],
+  },
+  arlington: {
+    intro:
+      "Arlington sits between Dallas and Fort Worth, and its commercial floors are mostly industrial. The Great Southwest Industrial District is one of the largest industrial parks in the region, the area around the GM Arlington Assembly plant is full of automotive supplier and manufacturing buildings, and distribution warehouses line I-20, I-30 and SH-360. Those floors take forklifts, pallet jacks, oil and fluids every shift, so we test the slab and look at the operation before recommending a system.",
+    facilities: [WAREHOUSE, MANUFACTURING, RESTAURANT, SCHOOL, RETAIL],
+    polished:
+      "For Arlington distribution buildings with a sound slab and light chemical exposure, polished concrete is often the lowest-maintenance floor available: no coating to wear through under forklift traffic and nothing to recoat. We assess the slab, repair joints and cracks, then grind, densify and polish to the finish approved on a mockup.",
+    faqs: [
+      {
+        q: "Do you coat warehouse and manufacturing floors in the Great Southwest Industrial District?",
+        a: "Yes. Warehouses, light-manufacturing and flex buildings in the Great Southwest Industrial District are typical Arlington work for us: high-build industrial epoxy, urethane cement where heat or washdown is involved, or polished concrete, plus joint repair and aisle striping.",
+      },
+      {
+        q: "What floor works for an Arlington automotive supplier or parts plant?",
+        a: "Floors that see oil, coolant, hydraulic fluid and steel-wheeled carts usually need a chemical- and impact-resistant system: high-build or novolac epoxy, or urethane cement where there is heat or hot-water washdown. We review the process and test the slab before recommending one.",
+      },
+      {
+        q: "Do you work on stadium, venue and campus floors in Arlington?",
+        a: "Yes. Concourses, commissary kitchens, restrooms and back-of-house areas in Entertainment District venues, and labs, shops and corridors on university campuses, get seamless, cleanable floors scheduled around event calendars and the academic year.",
       },
     ],
   },

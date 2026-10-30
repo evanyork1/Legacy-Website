@@ -108,11 +108,11 @@ const ResidentialPatio = () => {
 
   return <>
       <Helmet>
-        <title>Polyurea Patio Floors - Premium Outdoor Patio Coatings | Legacy Industrial Coatings</title>
-        <meta name="description" content="Transform your outdoor patio with our premium polyurea flake floors. Lifetime warranty, weather-resistant, and endless customization options. Perfect for outdoor living spaces." />
+        <title>Polyurea Patio Floor Coatings | Legacy Industrial Coatings</title>
+        <meta name="description" content="Polyurea flake patio floors that stand up to Texas sun and rain. Lifetime warranty and a wide range of color blends." />
         <meta name="keywords" content="polyurea patio floors, outdoor patio coating, flake flooring, decorative concrete, patio renovation, outdoor floor coating Dallas, weather resistant flooring" />
 
-        <meta property="og:title" content="Polyurea Patio Floors - Premium Outdoor Patio Coatings | Legacy Industrial Coatings" />
+        <meta property="og:title" content="Polyurea Patio Floor Coatings | Legacy Industrial Coatings" />
         <meta property="og:description" content="Transform your outdoor patio with our premium polyurea flake floors. Lifetime warranty, weather-resistant, and endless customization options." />
         <meta property="og:image" content="https://legacyindustrialcoatings.com/lovable-uploads/7b59a18f-94c1-45aa-88f1-9bc7c3277305.png" />
 

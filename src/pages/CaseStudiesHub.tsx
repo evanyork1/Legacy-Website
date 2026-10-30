@@ -51,7 +51,7 @@ const CaseStudiesHub = () => {
   return (
     <div className="lcf min-h-screen bg-background">
       <Helmet>
-        <title>Case Studies | Commercial & Residential Floor Projects | Legacy Industrial Coatings</title>
+        <title>Flooring Case Studies | Legacy Industrial Coatings</title>
         <meta
           name="description"
           content="Explore real commercial and residential concrete floor case studies from Legacy Industrial Coatings — before, during, and after photos from projects across DFW."
