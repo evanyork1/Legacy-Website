@@ -1,4 +1,3 @@
-import { useEffect, useRef, useState } from "react";
 import { Helmet } from "react-helmet-async";
 import { caseStudies } from "@/data/caseStudies";
 import { ArrowRight, Star } from "lucide-react";
@@ -218,42 +217,14 @@ export const PageHero = ({
 /* Proof bar with count-up numbers                                     */
 /* ------------------------------------------------------------------ */
 
-const CountUp = ({ to, prefix = "", suffix = "" }: { to: number; prefix?: string; suffix?: string }) => {
-  const ref = useRef<HTMLSpanElement>(null);
-  // Start at the final value so prerendered HTML, crawlers and hydration all
-  // agree; only animate when the number is below the fold on load.
-  const [val, setVal] = useState(to);
-  useEffect(() => {
-    const el = ref.current;
-    if (!el) return;
-    if (el.getBoundingClientRect().top < window.innerHeight) return;
-    setVal(0);
-    const obs = new IntersectionObserver(
-      (entries) => {
-        if (!entries[0].isIntersecting) return;
-        obs.disconnect();
-        const start = performance.now();
-        const dur = 1200;
-        const tick = (now: number) => {
-          const p = Math.min(1, (now - start) / dur);
-          setVal(Math.round(to * (1 - Math.pow(1 - p, 3))));
-          if (p < 1) requestAnimationFrame(tick);
-        };
-        requestAnimationFrame(tick);
-      },
-      { threshold: 0.4 },
-    );
-    obs.observe(el);
-    return () => obs.disconnect();
-  }, [to]);
-  return (
-    <span ref={ref}>
-      {prefix}
-      {val.toLocaleString()}
-      {suffix}
-    </span>
-  );
-};
+/** Static stat value: always the real number, so prerendered HTML, crawlers and AI tools see it. */
+const CountUp = ({ to, prefix = "", suffix = "" }: { to: number; prefix?: string; suffix?: string }) => (
+  <span>
+    {prefix}
+    {to.toLocaleString()}
+    {suffix}
+  </span>
+);
 
 export const ProofBar = () => (
   <section className="lcf bg-background border-b border-border">
@@ -547,7 +518,7 @@ export const FeaturedCaseStudies = ({ limit = 3 }: { limit?: number }) => {
         />
         <div className="grid md:grid-cols-3 gap-px bg-border border border-border">
           {items.map((c) => (
-            <a key={c.slug} href={`/case-studies/${c.slug}`} className="group bg-background flex flex-col h-full">
+            <a key={c.slug} href={`/${c.category}-case-studies/${c.slug}`} className="group bg-background flex flex-col h-full">
               <div className="aspect-[4/3] overflow-hidden bg-muted">
                 <img
                   src={c.heroImage}

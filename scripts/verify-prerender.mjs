@@ -148,7 +148,7 @@ function walk(dir) {
     const full = join(dir, entry);
     const s = statSync(full);
     if (s.isDirectory()) out.push(...walk(full));
-    else if (entry.endsWith(".html")) out.push(full);
+    else if (entry.endsWith(".html") && entry !== "app-shell.html") out.push(full);
   }
   return out;
 }

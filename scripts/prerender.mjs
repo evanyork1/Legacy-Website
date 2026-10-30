@@ -221,6 +221,12 @@ async function main() {
   if (!existsSync(join(DIST, "index.html"))) {
     throw new Error("dist/index.html missing — run `vite build` first.");
   }
+  // Keep the unrendered app shell for Netlify's SPA fallback, so URLs that
+  // aren't prerendered never serve the homepage's HTML (duplicate content).
+  if (!existsSync(join(DIST, "app-shell.html"))) {
+    const shell = readFileSync(join(DIST, "index.html"), "utf8").replace(/<title>[^<]*<\/title>/, "<title>Legacy Industrial Coatings</title>");
+    writeFileSync(join(DIST, "app-shell.html"), shell, "utf8");
+  }
   const preview = await startPreview();
   let browser;
   try {
