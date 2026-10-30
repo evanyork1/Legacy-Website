@@ -61,3 +61,6 @@ verify_jwt = false
 
 [functions.notify-request-info]
 verify_jwt = false
+
+[functions.notify-warranty-claim]
+verify_jwt = false

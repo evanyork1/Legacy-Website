@@ -139,7 +139,7 @@ const SiteFooter = ({ cta, requestInfo = true }: { cta?: ClosingCta; requestInfo
                 <Column title="Service Areas" links={SERVICE_AREAS} />
                 <Column title="Residential" links={[{ label: "Garage Floors", path: "/garagefloors" }]} />
               </div>
-              <Column title="Company" links={COMPANY_LINKS.slice(0, 7)} />
+              <Column title="Company" links={[...COMPANY_LINKS.slice(0, 7), { label: "Warranties", path: "/warranties" }]} />
             </div>
           </div>
 

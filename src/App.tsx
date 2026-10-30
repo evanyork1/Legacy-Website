@@ -54,6 +54,7 @@ import OurProcess from "./pages/site/OurProcess";
 import CapabilityPacket from "./pages/site/CapabilityPacket";
 import WhoWeServe from "./pages/site/WhoWeServe";
 import { IndustriesHub, ResourcesHub, ServicesHub } from "./pages/site/Hubs";
+import Warranties from "./pages/site/Warranties";
 import Reviews from "./pages/site/Reviews";
 import LineStriping from "./pages/site/LineStriping";
 import DataCenterFlooring from "./pages/site/DataCenterFlooring";
@@ -131,6 +132,7 @@ function App() {
               <Route path="/capability-packet" element={<CapabilityPacket />} />
               <Route path="/who-we-serve" element={<WhoWeServe />} />
               <Route path="/services" element={<ServicesHub />} />
+              <Route path="/warranties" element={<Warranties />} />
               <Route path="/industries" element={<IndustriesHub />} />
               <Route path="/resources" element={<ResourcesHub />} />
               <Route path="/reviews" element={<Reviews />} />

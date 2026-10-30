@@ -50,6 +50,7 @@ const STATIC_ROUTES = [
   "/capability-packet",
   "/who-we-serve",
   "/services",
+  "/warranties",
   "/industries",
   "/resources",
   "/reviews",
