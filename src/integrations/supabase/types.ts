@@ -159,6 +159,13 @@ export type Database = {
           square_footage: string | null
           status: string
           utm_campaign: string | null
+          utm_term: string | null
+          utm_content: string | null
+          gclid: string | null
+          gbraid: string | null
+          wbraid: string | null
+          msclkid: string | null
+          fbclid: string | null
           utm_medium: string | null
           utm_source: string | null
         }
@@ -177,6 +184,13 @@ export type Database = {
           square_footage?: string | null
           status?: string
           utm_campaign?: string | null
+          utm_term?: string | null
+          utm_content?: string | null
+          gclid?: string | null
+          gbraid?: string | null
+          wbraid?: string | null
+          msclkid?: string | null
+          fbclid?: string | null
           utm_medium?: string | null
           utm_source?: string | null
         }
@@ -195,6 +209,13 @@ export type Database = {
           square_footage?: string | null
           status?: string
           utm_campaign?: string | null
+          utm_term?: string | null
+          utm_content?: string | null
+          gclid?: string | null
+          gbraid?: string | null
+          wbraid?: string | null
+          msclkid?: string | null
+          fbclid?: string | null
           utm_medium?: string | null
           utm_source?: string | null
         }

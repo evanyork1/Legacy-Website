@@ -69,6 +69,13 @@ export const CommercialContactModal = ({ open, onOpenChange }: CommercialContact
           utm_source: utms.utm_source ?? null,
           utm_medium: utms.utm_medium ?? null,
           utm_campaign: utms.utm_campaign ?? null,
+          utm_term: utms.utm_term ?? null,
+          utm_content: utms.utm_content ?? null,
+          gclid: utms.gclid ?? null,
+          gbraid: utms.gbraid ?? null,
+          wbraid: utms.wbraid ?? null,
+          msclkid: utms.msclkid ?? null,
+          fbclid: utms.fbclid ?? null,
           landing_page: typeof window !== "undefined" ? window.location.href : null,
           referrer: typeof document !== "undefined" ? (document.referrer || null) : null,
         });
