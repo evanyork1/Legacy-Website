@@ -1,13 +1,18 @@
 import { createClient } from "npm:@supabase/supabase-js@2";
 
 /**
- * Sends a new warranty claim to the team through the same Zapier webhook the
- * Request Information form uses (ZAPIER_REQUEST_INFO_HOOK), labeled as a
- * WARRANTY CLAIM. Called by the /warranties form after the claim is saved.
+ * Sends a new warranty claim to the TEAM ONLY through its own Zapier workflow
+ * ("Website Warranty Claim → Team Email"). That
+ * workflow emails support@legacyindustrialcoatings.com, evan@licoat.com and
+ * sam@licoat.com from "Legacy Warranty". Warranty claims are NOT leads: this
+ * never uses the Request Information lead hook, never creates a JobTread job
+ * and never emails the customer.
  * Each claim is sent once: the row is claimed by setting notified_at first.
- * Intended recipients: support@legacyindustrialcoatings.com, evan@licoat.com, sam@licoat.com.
  */
-const RECIPIENTS = "support@legacyindustrialcoatings.com, evan@licoat.com, sam@licoat.com";
+// Catch hook of the "Website Warranty Claim → Team Email" Zapier workflow (team-only email),
+// kept out of the repo. Set it as the ZAPIER_WARRANTY_HOOK edge function secret.
+// Never the Request Information lead hook.
+const WARRANTY_HOOK = "";
 const LINK_SECONDS = 30 * 24 * 60 * 60;
 
 const cors = {
@@ -27,7 +32,7 @@ Deno.serve(async (req) => {
     const id = body?.submission_id;
     if (typeof id !== "string" || !UUID.test(id)) return json({ error: "A valid submission_id is required" }, 400);
 
-    const url = Deno.env.get("SUPABASE_URL"), key = Deno.env.get("SUPABASE_SERVICE_ROLE_KEY"), hook = Deno.env.get("ZAPIER_REQUEST_INFO_HOOK");
+    const url = Deno.env.get("SUPABASE_URL"), key = Deno.env.get("SUPABASE_SERVICE_ROLE_KEY"), hook = Deno.env.get("ZAPIER_WARRANTY_HOOK") || WARRANTY_HOOK;
     if (!url || !key || !hook) return json({ error: "Notification configuration unavailable" }, 503);
     const admin = createClient(url, key);
 
@@ -50,43 +55,18 @@ Deno.serve(async (req) => {
       if (signed?.signedUrl) photos.push({ name: p.name, url: signed.signedUrl });
     }
 
-    const lines = [
-      "WARRANTY CLAIM (from the /warranties page). Reach out within 5 business days.",
-      "",
-      `Address: ${row.address}`,
-      `Previous customer: ${row.previous_customer}`,
-      `Floor installed: ${row.install_date}`,
-      "",
-      "Issue:",
-      row.description,
-      "",
-      photos.length ? `Photos (links work for 30 days):\n${photos.map((p) => `${p.name}: ${p.url}`).join("\n")}` : "Photos: none attached",
-      "",
-      `Send to: ${RECIPIENTS}`,
-    ];
     const payload = {
-      id: row.id,
-      type: "warranty_claim",
-      source: "warranty-claim-form",
-      subject: `WARRANTY CLAIM: ${row.name} – ${row.address}`.slice(0, 200),
+      claim_id: row.id,
       name: row.name,
-      email: row.email ?? "",
       phone: row.phone,
-      company: "WARRANTY CLAIM",
-      square_footage: null,
-      job_site_address: row.address,
+      email: row.email ?? "",
+      address: row.address,
       previous_customer: row.previous_customer,
       install_date: row.install_date,
-      issue_description: row.description,
-      project_description: lines.join("\n"),
-      landing_page: row.landing_page,
-      referrer: null,
-      utm_source: null,
-      utm_medium: null,
-      utm_campaign: null,
-      created_at: row.created_at,
-      files: photos.map((p) => ({ name: p.name, url: p.url, size: 0 })),
-      recipients: RECIPIENTS,
+      description: row.description,
+      submitted_at: row.created_at,
+      page: row.landing_page,
+      photos,
     };
     const response = await fetch(hook, {
       method: "POST",
