@@ -26,6 +26,8 @@ import dcSiteWalk from "@/assets/jobs/data-center-site-walk.webp";
 import dcTruck from "@/assets/jobs/legacy-truck-data-center.webp";
 import containBefore from "@/assets/jobs/transformer-containment-before.webp";
 import containAfter from "@/assets/jobs/transformer-containment-after.webp";
+import craneBay from "@/assets/jobs/epoxy-white-crane-bay.webp";
+import church from "@/assets/jobs/carpet-church-sanctuary.webp";
 import polBefore from "@/assets/jobs/polish-corridor-before.webp";
 import polCorridor from "@/assets/jobs/polish-corridor-after.webp";
 import polWarehouse from "@/assets/jobs/polish-warehouse-after.webp";
@@ -64,6 +66,8 @@ export const JOB = {
   dcSiteWalk: P(dcSiteWalk, "Legacy Industrial Coatings team on a data center substation site walk"),
   dcTruck: P(dcTruck, "Legacy Industrial Coatings truck on site at a data center campus"),
   containBefore: P(containBefore, "Cracked, stained concrete transformer containment pit at a data center before coating"),
+  craneBay: P(craneBay, "Bright white epoxy floor under yellow overhead crane rails in a manufacturing bay"),
+  church: P(church, "Commercial carpet in a church sanctuary with tiered seating"),
   polBefore: P(polBefore, "Dull, worn concrete corridor in a production facility before polishing"),
   polCorridor: P(polCorridor, "High-gloss polished concrete corridor in a production facility after polishing"),
   polWarehouse: P(polWarehouse, "Large polished concrete floor in a newly built-out production warehouse"),
@@ -82,7 +86,8 @@ export const JOB = {
  * Heroes are landscape shots of finished floors; process shots (grinding,
  * moisture testing) only appear on prep and polishing pages.
  */
-export const PAGE_PHOTOS: Record<string, { hero?: Photo; photos: Photo[] }> = {
+export const PAGE_PHOTOS: Record<string, { hero?: Photo; photos?: Photo[] }> = {
+  "/commercial-carpet-tile": { hero: JOB.church },
   "/resinous-flooring": { hero: JOB.quartzCove, photos: [JOB.mfgEpoxy, JOB.foodPlant, JOB.aeroMfg] },
   "/manufacturing-floor-coating": { hero: JOB.aeroMfg, photos: [JOB.mfgEpoxy, JOB.batteryArea, JOB.hangar] },
   "/aerospace-hangar-flooring": { hero: JOB.hangar, photos: [JOB.aeroMfg, JOB.mfgEpoxy, JOB.batteryArea] },

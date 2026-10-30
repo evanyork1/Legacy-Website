@@ -25,12 +25,13 @@ const PATH = "/commercial";
 const TITLE = "Commercial Epoxy Flooring & Floor Coatings | DFW & Nationwide | Legacy Industrial Coatings";
 const DESCRIPTION =
   "Commercial epoxy flooring and floor coatings for retail, restaurants, offices, healthcare, schools and dealerships. Testing-first installs, nights and weekends, bids in 24 hours. DFW based, nationwide.";
-const HERO_IMG = JOB.mfgEpoxy.src;
+const HERO_IMG = JOB.craneBay.src;
 
 const H2 = "font-heading text-3xl md:text-[2.5rem] font-bold text-foreground leading-[1.1] mb-8 text-balance";
 const P = "text-muted-foreground font-body text-[16px] leading-[1.85] mb-6";
 
 const GALLERY = [
+  { ...JOB.mfgEpoxy, caption: "Manufacturing & warehouse" },
   { ...JOB.hangar, caption: "Aircraft hangar" },
   { ...JOB.aeroMfg, caption: "Aerospace manufacturing" },
   { ...JOB.battery, caption: "Forklift battery charging area" },
@@ -38,7 +39,6 @@ const GALLERY = [
   { ...JOB.foodPlant, caption: "Food plant, slip-resistant epoxy" },
   { ...JOB.shinyAfter, caption: "High-gloss warehouse epoxy" },
   { ...JOB.containAfter, caption: "Data center transformer containment" },
-  { ...JOB.batteryArea, caption: "Distribution center epoxy" },
 ];
 
 const CITIES = [
@@ -237,7 +237,7 @@ const Commercial = () => {
         title="Commercial & Industrial Epoxy Flooring"
         subhead="Epoxy flooring is a seamless resin floor bonded to your concrete, built for forklifts, foot traffic, spills and daily cleaning. We install it in warehouses, manufacturing plants, hangars, restaurants, retail and healthcare across Dallas–Fort Worth, all of Texas and nationwide, often nights and weekends so you stay open."
         image={HERO_IMG}
-        imageAlt={JOB.mfgEpoxy.alt}
+        imageAlt={JOB.craneBay.alt}
         crumbs={crumbs}
         rating
       />
