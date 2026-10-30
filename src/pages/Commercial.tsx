@@ -11,7 +11,7 @@ import {
   ProofBar,
 } from "@/components/site/sections";
 import { Seo } from "@/components/seo/Seo";
-import { BeforeAfter, ProjectCards, projectsFor } from "@/components/site/SimplePage";
+import { BeforeAfter, JobVideo, ProjectCards, projectsFor } from "@/components/site/SimplePage";
 import { JOB } from "@/data/site/jobPhotos";
 import { StructuredData } from "@/components/seo/StructuredData";
 
@@ -340,6 +340,8 @@ const Commercial = () => {
       </section>
 
       <BeforeAfter path={PATH} />
+
+      <JobVideo path={PATH} />
 
       <ProjectCards items={projectsFor(PATH)} title="Recent Epoxy Flooring Projects" />
 

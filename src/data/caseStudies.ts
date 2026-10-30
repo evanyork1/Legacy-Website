@@ -4,6 +4,9 @@
 import plWalkBefore from "@/assets/jobs/walkway-striping-before.webp";
 import plWalkDuring from "@/assets/jobs/walkway-striping-removal.webp";
 import plWalkAfter from "@/assets/jobs/walkway-epoxy-after.webp";
+import parishBefore from "@/assets/jobs/parish-lab-before.webp";
+import parishGrind from "@/assets/jobs/parish-lab-grinding.webp";
+import parishAfter from "@/assets/jobs/parish-lab-after.webp";
 import dcBefore from "@/assets/jobs/transformer-containment-before.webp";
 import dcAfter from "@/assets/jobs/transformer-containment-after.webp";
 import dcWalk from "@/assets/jobs/data-center-site-walk.webp";
@@ -447,6 +450,39 @@ export const caseStudies: CaseStudy[] = [
       { src: argyleAfter4, alt: "Wide view of finished metallic garage floor in Argyle TX luxury home — the floor the homeowner originally paid for, finally done right" },
       { src: argyleAfter5, alt: "Completed luxury home garage with sealed, bonded, high-performance metallic epoxy floor by Legacy Industrial Coatings" },
     ],
+  },
+  {
+    slug: "parish-episcopal-school-stem-lab-flake-floor",
+    category: "commercial",
+    tag: "School",
+    title: "Parish Episcopal School, Dallas: Worn Lab Floor to a Seamless Flake Floor",
+    summary:
+      "Parish Episcopal School in Dallas needed a new floor in its science and engineering lab, where the old painted floor was worn, stained and patched. We ground off the old coating, prepped the slab and installed a seamless flake floor built for a hands-on lab.",
+    heroImage: parishAfter,
+    heroAlt: "Finished gray flake floor in the Parish Episcopal School science and engineering lab in Dallas",
+    metaTitle: "Parish Episcopal School Lab Flake Floor Case Study, Dallas TX | Legacy Industrial Coatings",
+    metaDescription:
+      "How Legacy Industrial Coatings replaced a worn, painted lab floor at Parish Episcopal School in Dallas with a seamless, easy-to-clean flake floor.",
+    location: "Dallas, TX",
+    serviceType: "Coating Removal + Flake Floor",
+    squareFootage: "Science and engineering lab",
+    timeline: "",
+    challenge: [
+      "The science and engineering lab at Parish Episcopal School gets heavy use from students, tools, carts and projects. Its old painted floor was worn through in spots, stained and patched, and no longer easy to keep clean.",
+      "Coating over a worn, painted floor just puts a new layer on a surface that is already letting go, so the old coating had to come off first.",
+    ],
+    solution: [
+      "We ground the old coating off down to sound concrete and prepped the slab so the new system could bond to it.",
+      "Then we installed a seamless flake floor: a base coat, a full broadcast of decorative flake, and a clear topcoat that seals it in. It is tough under carts and tools and easy for the school to clean.",
+    ],
+    result: [
+      "The lab went from a worn, patched floor to a bright, seamless flake floor that holds up to daily hands-on work and cleans up easily.",
+      "If your school has labs, shops, kitchens or corridors with worn or peeling floors, we can schedule the work around the academic calendar.",
+    ],
+    beforePhotos: [{ src: parishBefore, alt: "Worn, stained painted floor in the Parish Episcopal School lab before the new floor" }],
+    duringPhotos: [{ src: parishGrind, alt: "Diamond grinder removing the old coating in the Parish Episcopal School lab" }],
+    afterPhotos: [{ src: parishAfter, alt: "Seamless flake floor in the Parish Episcopal School lab after installation" }],
+    video: { src: "/video/parish-lab-base-coat.mp4", poster: "/video/parish-lab-base-coat.jpg", caption: "Spreading the base coat in the lab" },
   },
   {
     slug: "data-center-transformer-containment-coating",
