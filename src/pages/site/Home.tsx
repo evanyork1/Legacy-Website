@@ -331,35 +331,6 @@ const Home = () => {
             </div>
           </section>
 
-          {/* Featured: data centers */}
-          <section className="relative bg-foreground text-background overflow-hidden">
-            <img
-              src={imgDataCenter}
-              alt="Data center hall with sealed resin floor and server racks"
-              loading="lazy"
-              decoding="async"
-              width={1600}
-              height={900}
-              className="absolute inset-0 w-full h-full object-cover opacity-25"
-            />
-            <div className="relative max-w-7xl mx-auto px-6 md:px-8 lg:px-12 py-20 md:py-28">
-              <Eyebrow light>Featured Industry</Eyebrow>
-              <h2 className="font-heading text-3xl md:text-[2.75rem] font-bold leading-[1.1] mb-6 max-w-3xl text-balance">
-                Data Center Solutions
-              </h2>
-              <p className="text-background/70 font-body text-[16px] leading-[1.8] max-w-2xl mb-10">
-                Static-control floors, battery and electrical rooms, fuel and transformer containment, and finished
-                office space — flooring for every part of a data center campus, in DFW and beyond.
-              </p>
-              <a
-                href="/data-center-flooring"
-                className="group inline-flex items-center gap-3 bg-background text-foreground border border-background px-8 py-4 font-heading text-[12px] font-medium tracking-[0.2em] uppercase hover:bg-transparent hover:text-background transition-all duration-500"
-              >
-                Explore Data Center Flooring
-                <ArrowRight size={14} className="transition-transform group-hover:translate-x-1" />
-              </a>
-            </div>
-          </section>
 
           <InlineBookCTA />
 
