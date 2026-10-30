@@ -36,6 +36,7 @@ import { scrollToRequestInfo } from "@/lib/requestInfo";
 import { ALL_INDUSTRIES, BUSINESS } from "@/data/site/nav";
 import { INDUSTRY_PAGES } from "@/data/site/industries";
 import { SERVICE_AREA_CITIES } from "@/data/serviceAreaCities";
+import { PAGE_PHOTOS } from "@/data/site/jobPhotos";
 
 import imgDataCenter from "@/assets/industries/data-center-1.jpg";
 // TODO Evan: replace with the crew photo uploaded in the Lovable draft (about-legacy-team.webp).
@@ -98,7 +99,7 @@ const INDUSTRY_CARD_DESC: Record<string, string> = {
 };
 
 const industryImage = (path: string) =>
-  path === "/data-center-flooring" ? imgDataCenter : INDUSTRY_PAGES.find((p) => p.path === path)?.heroImage;
+  PAGE_PHOTOS[path]?.hero?.src ?? (path === "/data-center-flooring" ? imgDataCenter : INDUSTRY_PAGES.find((p) => p.path === path)?.heroImage);
 
 const SYSTEM_CARDS = [
   { name: "Epoxy", desc: "Seamless high-build epoxy and self-leveling systems for tough commercial spaces.", path: "/commercial", icon: Droplets },

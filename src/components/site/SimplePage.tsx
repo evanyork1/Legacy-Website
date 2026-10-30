@@ -5,7 +5,7 @@ import { Seo } from "@/components/seo/Seo";
 import { StructuredData } from "@/components/seo/StructuredData";
 import { ClientStrip, Eyebrow, FaqBlock, PageHero } from "@/components/site/sections";
 import type { SimpleContent } from "@/data/site/simple/types";
-import { PAGE_BEFORE_AFTER, PAGE_GALLERY, PAGE_PRICE_FAQ, PAGE_PROJECTS, PAGE_VIDEO } from "@/data/site/jobPhotos";
+import { PAGE_BEFORE_AFTER, PAGE_GALLERY, PAGE_PRICE_FAQ, PAGE_PROJECTS, PAGE_SPECS, PAGE_VIDEO } from "@/data/site/jobPhotos";
 import { caseStudies, type CaseStudy } from "@/data/caseStudies";
 
 /**
@@ -157,6 +157,45 @@ export const PageGallery = ({ path }: { path: string }) => {
   );
 };
 
+export const SpecSheets = ({ path }: { path: string }) => {
+  const sp = PAGE_SPECS[path];
+  if (!sp) return null;
+  const DOC = "inline-flex items-center gap-2 font-heading text-[11px] tracking-[0.15em] uppercase text-foreground hover:underline";
+  return (
+    <section className="py-16 md:py-20 border-t border-border">
+      <div className="max-w-7xl mx-auto px-6 md:px-8 lg:px-12">
+        <Eyebrow>Specs & Data Sheets</Eyebrow>
+        <h2 className="font-heading text-2xl md:text-3xl font-bold text-foreground leading-[1.15] mb-4">{sp.title}</h2>
+        <p className="text-muted-foreground text-[16px] leading-[1.8] mb-8 max-w-3xl">{sp.intro}</p>
+        <div className="grid md:grid-cols-3 gap-px bg-border border border-border mb-6">
+          {sp.systems.map((x) => (
+            <div key={x.name} className="bg-background p-6">
+              <h3 className="font-heading font-semibold text-[17px] text-foreground mb-2">{x.name}</h3>
+              <p className="text-[14px] text-muted-foreground leading-[1.7] mb-4">{x.text}</p>
+              <ul className="space-y-2">
+                {x.docs.map((d) => (
+                  <li key={d.url}>
+                    <a href={d.url} target="_blank" rel="noopener" className={DOC}>
+                      {d.label} <ArrowRight size={12} />
+                    </a>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          ))}
+        </div>
+        <div className="flex flex-wrap gap-x-8 gap-y-2">
+          {sp.shared.map((d) => (
+            <a key={d.url} href={d.url} target="_blank" rel="noopener" className={DOC}>
+              {d.label} <ArrowRight size={12} />
+            </a>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+};
+
 /** Swap a generic cost question for the page's real price answer. */
 const withPrice = (path: string, faqs: { q: string; a: string }[]) => {
   const p = PAGE_PRICE_FAQ[path];
@@ -274,6 +313,8 @@ const SimplePage = ({
     <JobVideo path={path} />
 
     <PageGallery path={path} />
+
+    <SpecSheets path={path} />
 
     <ProjectCards items={projectsFor(path)} />
 

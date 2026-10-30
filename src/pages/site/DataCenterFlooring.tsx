@@ -369,8 +369,8 @@ const SimpleDataCenter = () => (
     metaDescription="Floors, linings and coatings for data centers, from the data hall to the generator yard: sealed concrete, ESD epoxy, battery rooms and transformer and fuel containment. Headquartered in Dallas-Fort Worth, working nationwide."
     h1="Data Center Flooring"
     eyebrow="Mission-Critical & Tech"
-    heroImage={imgHero}
-    heroAlt="Data center flooring and containment coatings"
+    heroImage={JOB.indDataCenter.src}
+    heroAlt={JOB.indDataCenter.alt}
     crumbs={[
       { name: "Home", url: "/" },
       { name: "Industries", url: "/industries" },

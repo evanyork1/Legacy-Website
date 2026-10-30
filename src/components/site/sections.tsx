@@ -506,8 +506,16 @@ export const SpecTable = ({
 
 export const CAPABILITY_PACKET_PDF = "/legacy-capability-packet.pdf";
 
+const FEATURED_SLUGS = [
+  "plano-distribution-center-walkway-epoxy",
+  "parish-episcopal-school-stem-lab-flake-floor",
+  "pharmaceutical-manufacturing-polished-concrete",
+];
+
 export const FeaturedCaseStudies = ({ limit = 3 }: { limit?: number }) => {
-  const items = caseStudies.filter((c) => c.category === "commercial").slice(0, limit);
+  const items = FEATURED_SLUGS.map((s) => caseStudies.find((c) => c.slug === s))
+    .filter((c): c is (typeof caseStudies)[number] => !!c)
+    .slice(0, limit);
   return (
     <section className="lcf py-24 md:py-32 bg-background border-t border-border">
       <div className="max-w-7xl mx-auto px-6 md:px-8 lg:px-12">

@@ -248,7 +248,7 @@ const Commercial = () => {
       <section className="py-20 md:py-28">
         <div className="max-w-7xl mx-auto px-6 md:px-8 lg:px-12">
           <Eyebrow>Our Work</Eyebrow>
-          <h2 className={H2}>Epoxy Floors We've Installed</h2>
+          <h2 className={H2}>Solutions for Every Environment</h2>
           <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 md:gap-4">
             {GALLERY.map((g) => (
               <figure key={g.src} className="m-0">
