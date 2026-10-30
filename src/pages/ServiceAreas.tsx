@@ -1,119 +1,124 @@
-import HeaderGeneric from "@/components/HeaderGeneric";
-import Footer from "@/components/Footer";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { MapPin } from "lucide-react";
-import { Link } from "react-router-dom";
+import { ArrowRight } from "lucide-react";
+import SiteHeader from "@/components/site/SiteHeader";
+import SiteFooter from "@/components/site/SiteFooter";
+import { Eyebrow, PageHero } from "@/components/site/sections";
 import { Seo } from "@/components/seo/Seo";
+import { StructuredData } from "@/components/seo/StructuredData";
 import { SERVICE_AREA_CITIES } from "@/data/serviceAreaCities";
+import { isPriorityCity, PRIORITY_CITY_SLUGS } from "@/data/site/cityContent";
+
+const PATH = "/service-areas";
+const H2 = "font-heading text-3xl md:text-[2.5rem] font-bold text-foreground leading-[1.1] mb-8 text-balance";
+const P = "text-muted-foreground font-body text-[16px] leading-[1.85] mb-6";
+const HERO_IMG = "/lovable-uploads/171b7f71-4aa3-4b54-8c96-5f7143dddebf-960.webp";
+
+const MONEY_PAGES = [
+  { label: "Commercial epoxy flooring", url: "/commercial" },
+  { label: "Industrial epoxy flooring", url: "/commercial" },
+  { label: "Polished concrete", url: "/concrete-polishing" },
+];
 
 const ServiceAreas = () => {
-  const serviceAreas = SERVICE_AREA_CITIES;
+  const hubs = PRIORITY_CITY_SLUGS.map((s) => SERVICE_AREA_CITIES.find((c) => c.slug === s)).filter(
+    (c): c is NonNullable<typeof c> => !!c,
+  );
+  const others = SERVICE_AREA_CITIES.filter((c) => !isPriorityCity(c.slug));
+  const crumbs = [
+    { name: "Home", url: "/" },
+    { name: "Service Areas", url: PATH },
+  ];
 
   return (
-    <div className="min-h-screen bg-background">
+    <div className="lcf min-h-screen bg-background">
       <Seo
-        title="DFW Service Areas — Garage & Commercial Floor Coatings | Legacy Industrial Coatings"
-        description="We serve Plano, Frisco, Dallas, McKinney, Prosper, Flower Mound, Celina and 30+ cities across the Dallas-Fort Worth metroplex with garage and commercial floor coatings."
-        path="/service-areas"
+        title="Service Areas: DFW & Nationwide Commercial Flooring | Legacy Industrial Coatings"
+        description="Commercial epoxy flooring, industrial floor coatings and polished concrete across Dallas–Fort Worth, from Dallas, Fort Worth and Plano to 30+ surrounding cities, and on projects nationwide."
+        path={PATH}
+        ogImage={HERO_IMG}
       />
-      <HeaderGeneric />
-      
-      <main className="pt-20 sm:pt-24 pb-12 sm:pb-16">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          {/* Hero Section */}
-          <div className="text-center mb-12 sm:mb-16">
-            <h1 className="text-3xl sm:text-4xl md:text-6xl font-bold text-foreground mb-4 sm:mb-6">
-              Service Areas
-            </h1>
-            <p className="text-lg sm:text-xl text-muted-foreground max-w-3xl mx-auto mb-6 sm:mb-8 leading-relaxed">
-              Legacy Industrial Coatings proudly serves the Dallas-Fort Worth metroplex 
-              with premium garage floor coatings and commercial flooring solutions.
-            </p>
-          </div>
+      <StructuredData breadcrumbs={crumbs} />
+      <SiteHeader />
 
-          {/* Service Areas Grid */}
-          <Card className="mb-8 sm:mb-12">
-            <CardHeader className="text-center p-4 sm:p-6">
-              <CardTitle className="flex items-center justify-center gap-2 text-xl sm:text-2xl">
-                <MapPin className="h-5 w-5 sm:h-6 sm:w-6 text-primary" />
-                Cities We Serve
-              </CardTitle>
-            </CardHeader>
-            <CardContent className="p-4 sm:p-6">
-              <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-3 sm:gap-4">
-                {serviceAreas.map((area) => (
-                  <Link
-                    key={area.slug}
-                    to={`/epoxy-flooring/${area.slug}`}
-                    className="p-3 sm:p-4 bg-muted/50 rounded-lg text-center hover:bg-muted/80 transition-colors"
-                  >
-                    <span className="text-foreground font-medium text-sm sm:text-base">{area.name}</span>
-                  </Link>
-                ))}
-              </div>
-            </CardContent>
-          </Card>
+      <PageHero
+        eyebrow="DFW Based, Nationwide"
+        title="Service Areas"
+        subhead="Our Plano office runs commercial flooring projects across Dallas–Fort Worth and mobilizes crews to facilities nationwide, from a single building to phased, multi-site programs."
+        image={HERO_IMG}
+        imageAlt="Commercial epoxy floor installation in a DFW warehouse"
+        crumbs={crumbs}
+        compact
+      />
 
-          {/* Services Overview */}
-          <div className="grid md:grid-cols-2 gap-6 sm:gap-8">
-            <Card>
-              <CardHeader className="p-4 sm:p-6">
-                <CardTitle className="text-lg sm:text-xl">Residential Services</CardTitle>
-              </CardHeader>
-              <CardContent className="p-4 sm:p-6 pt-0">
-                <ul className="space-y-2 text-muted-foreground text-sm sm:text-base">
-                  <li>• Garage Floor Coatings</li>
-                  <li>• Polyurea Floor Systems</li>
-                  <li>• Decorative Concrete Finishes</li>
-                  <li>• Patio & Driveway Coatings</li>
-                  <li>• Basement Floor Solutions</li>
-                </ul>
-              </CardContent>
-            </Card>
-
-            <Card>
-              <CardHeader className="p-4 sm:p-6">
-                <CardTitle className="text-lg sm:text-xl">Commercial Services</CardTitle>
-              </CardHeader>
-              <CardContent className="p-4 sm:p-6 pt-0">
-                <ul className="space-y-2 text-muted-foreground text-sm sm:text-base">
-                  <li>• Industrial Epoxy Flooring</li>
-                  <li>• Warehouse Floor Coatings</li>
-                  <li>• Retail Space Flooring</li>
-                  <li>• Manufacturing Floor Systems</li>
-                  <li>• Healthcare & Food Grade Floors</li>
-                </ul>
-              </CardContent>
-            </Card>
-          </div>
-
-          {/* Contact CTA */}
-          <div className="text-center mt-12 sm:mt-16">
-            <h2 className="text-2xl sm:text-3xl font-bold text-foreground mb-4">
-              Ready to Get Started?
-            </h2>
-            <p className="text-base sm:text-lg text-muted-foreground mb-6 sm:mb-8 leading-relaxed">
-              Contact us today for a free estimate in your area
-            </p>
-            <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center">
+      <section id="nationwide" className="py-20 md:py-28 scroll-mt-32">
+        <div className="max-w-4xl mx-auto px-6 md:px-8 lg:px-12">
+          <Eyebrow>Nationwide</Eyebrow>
+          <h2 className={H2}>Dallas–Fort Worth Is Our Home Base, Not Our Service Limit</h2>
+          <p className={P}>
+            Dedicated project managers and crews handle testing, preparation, installation and closeout at every
+            location. Multi-site owners get one point of contact and the same system, specified the same way, at every
+            building.
+          </p>
+          {/* TODO Evan: list the states you've completed projects in. */}
+          <div className="flex flex-wrap gap-2">
+            {MONEY_PAGES.map((m) => (
               <a
-                href="/quote"
-                className="inline-flex items-center justify-center px-6 sm:px-8 py-3 border border-transparent text-sm sm:text-base font-medium rounded-md text-primary-foreground bg-primary hover:bg-primary/90 transition-colors"
+                key={m.url}
+                href={m.url}
+                className="inline-flex items-center gap-2 border border-border px-4 py-2 font-heading text-[11px] tracking-[0.15em] uppercase text-foreground hover:border-foreground transition-colors"
               >
-                Get Free Quote
+                {m.label} <ArrowRight size={12} />
               </a>
-              <a
-                href="/contact"
-                className="inline-flex items-center justify-center px-6 sm:px-8 py-3 border border-input text-sm sm:text-base font-medium rounded-md text-foreground bg-background hover:bg-accent hover:text-accent-foreground transition-colors"
-              >
-                Call Us Now
-              </a>
-            </div>
+            ))}
           </div>
         </div>
-      </main>
+      </section>
 
-      <Footer />
+      <section className="py-20 md:py-28 bg-secondary border-y border-border">
+        <div className="max-w-7xl mx-auto px-6 md:px-8 lg:px-12">
+          <Eyebrow>Major Markets</Eyebrow>
+          <h2 className={H2}>Commercial Flooring in DFW's Largest Markets</h2>
+          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
+            {hubs.map((c) => (
+              <a
+                key={c.slug}
+                href={`/epoxy-flooring/${c.slug}`}
+                className="group block border border-border bg-background p-6 hover:border-foreground transition-colors"
+              >
+                <span className="flex items-center justify-between gap-3 font-heading font-semibold text-[15px] text-foreground">
+                  {c.name}, TX
+                  <ArrowRight size={14} className="text-muted-foreground transition-transform group-hover:translate-x-1" />
+                </span>
+                <span className="block mt-2 text-[13px] text-muted-foreground">{c.county}</span>
+              </a>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section className="py-20 md:py-28">
+        <div className="max-w-7xl mx-auto px-6 md:px-8 lg:px-12">
+          <Eyebrow>All Cities</Eyebrow>
+          <h2 className={H2}>More DFW Cities We Serve</h2>
+          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-px bg-border border border-border">
+            {others.map((c) => (
+              <a
+                key={c.slug}
+                href={`/epoxy-flooring/${c.slug}`}
+                className="bg-background px-4 py-4 font-heading text-[13px] text-foreground hover:bg-secondary transition-colors"
+              >
+                {c.name}
+              </a>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <SiteFooter
+        cta={{
+          title: "Get a bid on your project, wherever it is",
+          text: "Send drawings or a scope. Site walk within 1–3 business days in DFW; full bid within 24 hours of receiving plans.",
+        }}
+      />
     </div>
   );
 };

@@ -32,7 +32,6 @@ export const SOLUTIONS: NavEntry[] = [
   { label: "Urethane Cement", path: "/urethane-cement-flooring", slug: "urethane-cement" },
   { label: "Quartz Flooring", path: "/quartz-flooring", slug: "quartz-flooring" },
   { label: "Polished Concrete", path: "/concrete-polishing", existing: true },
-  { label: "Specialty Systems", path: "/specialty-floor-systems", slug: "specialty-systems" },
   { label: "Static-Control (ESD)", path: "/esd-static-control-flooring", slug: "static-control-flooring" },
   { label: "Deck Coatings", path: "/deck-coatings", slug: "deck-coatings" },
   { label: "Sealed Concrete", path: "/concrete-sealing", existing: true },

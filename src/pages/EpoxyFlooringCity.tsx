@@ -1,67 +1,60 @@
-import { useParams, Link, Navigate } from "react-router-dom";
+import { useParams, Navigate } from "react-router-dom";
 import { Helmet } from "react-helmet-async";
-import HeaderGeneric from "@/components/HeaderGeneric";
-import Footer from "@/components/Footer";
+import { ArrowRight } from "lucide-react";
+import SiteHeader from "@/components/site/SiteHeader";
+import SiteFooter from "@/components/site/SiteFooter";
+import { Eyebrow, FaqBlock, PageHero, ProofBar } from "@/components/site/sections";
 import { Seo } from "@/components/seo/Seo";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { Button } from "@/components/ui/button";
-import {
-  Phone,
-  Calendar,
-  Building2,
-  Factory,
-  Warehouse,
-  Hammer,
-  Shield,
-  CheckCircle2,
-  MapPin,
-  Home,
-} from "lucide-react";
-import { getCityBySlug, SERVICE_AREA_CITIES } from "@/data/serviceAreaCities";
-import { openCalBooking } from "@/lib/calBooking";
+import { StructuredData } from "@/components/seo/StructuredData";
+import { getCityBySlug, SERVICE_AREA_CITIES, type ServiceAreaCity } from "@/data/serviceAreaCities";
+import { isPriorityCity, PRIORITY_CITY_CONTENT } from "@/data/site/cityContent";
+import { caseStudies } from "@/data/caseStudies";
+import heroImg from "@/assets/case-studies/pharmaceutical-polished-concrete/after-1-960.webp";
 
-const PHONE_DISPLAY = "214-305-6516";
-const PHONE_HREF = "tel:+12143056516";
+/**
+ * /epoxy-flooring/:city — commercial city pages. The eight largest markets
+ * (PRIORITY_CITY_SLUGS in cityContent.ts) get unique content; every page
+ * links the three money pages with their target anchor text.
+ */
 
-const openBooking = openCalBooking;
+const SITE_URL = "https://legacyindustrialcoatings.com";
+// Real job photo: 21,000 SF polished concrete, pharmaceutical plant, Dallas.
+const HERO_IMG = heroImg;
 
-const COMMERCIAL_PHOTOS = [
-  { src: "/lovable-uploads/171b7f71-4aa3-4b54-8c96-5f7143dddebf.png", alt: "Commercial epoxy floor installation in DFW warehouse" },
-  { src: "/lovable-uploads/4a97932b-03f2-42ab-9e2f-2a90852befc0.png", alt: "Industrial urethane cement floor coating" },
-  { src: "/lovable-uploads/b5e6bdc4-80f9-44ea-a580-29d22662f7d4.png", alt: "Commercial polished concrete floor" },
-  { src: "/lovable-uploads/85530262-ab7f-4339-af86-ed63ee721679.png", alt: "Warehouse floor coating with line striping" },
-];
+const H2 = "font-heading text-3xl md:text-[2.5rem] font-bold text-foreground leading-[1.1] mb-8 text-balance";
+const P = "text-muted-foreground font-body text-[16px] leading-[1.85] mb-6";
+const A = "text-foreground underline underline-offset-4 decoration-border hover:decoration-foreground";
+const PILL =
+  "inline-flex items-center gap-2 border border-border bg-background px-4 py-2 font-heading text-[11px] tracking-[0.15em] uppercase text-foreground hover:border-foreground transition-colors";
 
-const RESIDENTIAL_PHOTOS = [
-  { src: "/lovable-uploads/008e4edb-0e9b-4952-8a51-b7d92f110955.png", alt: "Residential garage with speckled polyurea flake floor" },
-  { src: "/lovable-uploads/e57c7675-310f-4345-ba29-137d7f5b6fc2.png", alt: "Large residential garage with premium epoxy coating" },
-  { src: "/lovable-uploads/afa49718-8e01-4090-bf6e-4e50dd95630c.png", alt: "BMW on premium speckled garage floor" },
-  { src: "/lovable-uploads/624693af-bec7-4554-be4d-134ef392147c.png", alt: "Sports cars on high-end residential garage floor" },
-];
-
-const CTAButtons = ({ city, variant = "default" }: { city: string; variant?: "default" | "light" }) => (
-  <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center">
-    <Button
-      size="lg"
-      onClick={openBooking}
-      className="text-base"
-    >
-      <Calendar className="mr-2 h-5 w-5" />
-      Book an Estimate in {city}
-    </Button>
-    <Button
-      asChild
-      size="lg"
-      variant={variant === "light" ? "secondary" : "outline"}
-      className="text-base"
-    >
-      <a href={PHONE_HREF}>
-        <Phone className="mr-2 h-5 w-5" />
-        Call {PHONE_DISPLAY}
+const LinkCards = ({ items }: { items: { label: string; url: string; text: string }[] }) => (
+  <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
+    {items.map((l) => (
+      <a key={l.url} href={l.url} className="group block border border-border bg-background p-6 hover:border-foreground transition-colors">
+        <span className="flex items-center justify-between gap-3 font-heading font-semibold text-[15px] text-foreground">
+          {l.label}
+          <ArrowRight size={14} className="text-muted-foreground transition-transform group-hover:translate-x-1" />
+        </span>
+        <span className="block mt-2 text-[14px] text-muted-foreground leading-[1.7]">{l.text}</span>
       </a>
-    </Button>
+    ))}
   </div>
 );
+
+const WHY = [
+  "Testing first: moisture and surface-profile testing before a system is chosen",
+  "Night, weekend and phased work in occupied buildings",
+  "Diamond grinding, shot blasting, crack and joint repair",
+  "General liability and workers' comp on every job; OSHA-compliant crews",
+  "Spec-grade, manufacturer-warranted Legacy systems, installed to the basis of design",
+  "Site walk within 1–3 business days; full bid within 24 hours of receiving plans",
+];
+
+/** Nearest of the eight hub cities, for non-priority pages. */
+const nearestHub = (city: ServiceAreaCity): ServiceAreaCity | undefined => {
+  const slug = city.nearbyCities.find((s) => isPriorityCity(s)) ?? "plano";
+  return SERVICE_AREA_CITIES.find((c) => c.slug === slug);
+};
 
 const EpoxyFlooringCity = () => {
   const { city: slug } = useParams<{ city: string }>();
@@ -71,21 +64,35 @@ const EpoxyFlooringCity = () => {
     return <Navigate to="/service-areas" replace />;
   }
 
-  const title = `Commercial & Residential Epoxy Flooring in ${city.name}, TX | Legacy Industrial Coatings`;
-  const description = `Industrial epoxy, urethane cement, polished concrete and polyurea garage floors in ${city.name}, ${city.county}. Commercial-grade flooring contractor serving GCs, facility managers, and homeowners across DFW.`;
+  const priority = PRIORITY_CITY_CONTENT[city.slug];
+  const path = `/epoxy-flooring/${city.slug}`;
+  const h1 = `Commercial Epoxy Flooring & Polished Concrete in ${city.name}, TX`;
+  const title = `Epoxy Flooring ${city.name}, TX | Commercial & Industrial Floors | Legacy Industrial Coatings`;
+  const description = `Epoxy flooring, industrial floor coatings and polished concrete in ${city.name}, TX for warehouses, plants, restaurants, retail and healthcare. Site walk in 1–3 days, bids in 24 hours.`;
 
   const neighbors = city.nearbyCities
     .map((s) => SERVICE_AREA_CITIES.find((c) => c.slug === s))
-    .filter((c): c is NonNullable<typeof c> => !!c);
+    .filter((c): c is ServiceAreaCity => !!c);
+  const hub = priority ? undefined : nearestHub(city);
+  const localProjects = caseStudies.filter(
+    (cs) => cs.category === "commercial" && cs.location.toLowerCase().startsWith(`${city.name.toLowerCase()},`),
+  );
+  const faqs = [...(priority?.faqs ?? []), ...city.faqs];
+
+  const crumbs = [
+    { name: "Home", url: "/" },
+    { name: "Service Areas", url: "/service-areas" },
+    { name: city.name, url: path },
+  ];
 
   const localBusinessJsonLd = {
     "@context": "https://schema.org",
     "@type": "LocalBusiness",
-    name: `Legacy Industrial Coatings — ${city.name}`,
-    image: "https://legacyindustrialcoatings.com/lovable-uploads/e90dc902-382c-49a1-92b3-46b9b06b6a4b.png",
-    url: `https://legacyindustrialcoatings.com/epoxy-flooring/${city.slug}`,
+    "@id": `${SITE_URL}${path}#business`,
+    name: "Legacy Industrial Coatings",
+    image: `${SITE_URL}/lovable-uploads/e90dc902-382c-49a1-92b3-46b9b06b6a4b.png`,
+    url: `${SITE_URL}${path}`,
     telephone: "+1-214-305-6516",
-    priceRange: "$$",
     address: {
       "@type": "PostalAddress",
       streetAddress: "6010 W Spring Creek Pkwy",
@@ -94,285 +101,174 @@ const EpoxyFlooringCity = () => {
       postalCode: "75024",
       addressCountry: "US",
     },
-    areaServed: {
-      "@type": "City",
-      name: `${city.name}, TX`,
-    },
+    areaServed: { "@type": "City", name: `${city.name}, TX` },
+    makesOffer: [
+      { "@type": "Offer", itemOffered: { "@type": "Service", name: "Commercial epoxy flooring", url: `${SITE_URL}/commercial` } },
+            { "@type": "Offer", itemOffered: { "@type": "Service", name: "Concrete polishing", url: `${SITE_URL}/concrete-polishing` } },
+    ],
   };
 
-  const faqJsonLd = {
-    "@context": "https://schema.org",
-    "@type": "FAQPage",
-    mainEntity: city.faqs.map((f) => ({
-      "@type": "Question",
-      name: f.q,
-      acceptedAnswer: { "@type": "Answer", text: f.a },
-    })),
-  };
+  const services = [
+    {
+      label: "Commercial epoxy flooring",
+      url: "/commercial",
+      text: `Epoxy, flake, quartz and urethane cement floors for ${city.name} retail, restaurants, offices, healthcare and schools.`,
+    },
+    {
+      label: "Industrial epoxy flooring",
+      url: "/commercial",
+      text: `High-build epoxy and industrial floor coatings for ${city.name} warehouses, manufacturing and production floors.`,
+    },
+    {
+      label: "Polished concrete",
+      url: "/concrete-polishing",
+      text: `Commercial concrete polishing for ${city.name} showrooms, lobbies, offices and distribution floors.`,
+    },
+  ];
 
   return (
-    <div className="min-h-screen bg-background">
-      <Seo
-        title={title}
-        description={description}
-        path={`/epoxy-flooring/${city.slug}`}
+    <div className="lcf min-h-screen bg-background">
+      <Seo title={title} description={description} path={path} ogImage={HERO_IMG} />
+      <StructuredData
+        includeLocalBusiness={false}
+        faqs={faqs.map((f) => ({ question: f.q, answer: f.a }))}
+        breadcrumbs={crumbs}
       />
       <Helmet>
         <script type="application/ld+json">{JSON.stringify(localBusinessJsonLd)}</script>
-        <script type="application/ld+json">{JSON.stringify(faqJsonLd)}</script>
       </Helmet>
-      <HeaderGeneric />
+      <SiteHeader />
 
-      <main className="pt-20 sm:pt-24 pb-12 sm:pb-16">
-        {/* Hero */}
-        <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center mb-12 sm:mb-16">
-          <div className="inline-flex items-center gap-2 text-sm text-muted-foreground mb-4">
-            <MapPin className="h-4 w-4" /> {city.county}
-          </div>
-          <h1 className="text-3xl sm:text-4xl md:text-6xl font-bold text-foreground mb-4 sm:mb-6">
-            Commercial &amp; Residential Epoxy Flooring in {city.name}, TX
-          </h1>
-          <p className="text-lg sm:text-xl text-muted-foreground max-w-3xl mx-auto mb-8 leading-relaxed">
-            Industrial epoxy, urethane cement, polished concrete, and polyurea
-            coatings for {city.name} businesses, warehouses, restaurants, medical
-            facilities — and the homeowner down the street.
-          </p>
-          <CTAButtons city={city.name} />
-        </section>
+      <PageHero
+        eyebrow={`${city.name}, TX · ${city.county}`}
+        title={h1}
+        subhead={`Commercial epoxy flooring, industrial floor coatings and polished concrete for ${city.name} warehouses, manufacturing plants, retail, restaurants and healthcare facilities, installed by crews from our Plano office.`}
+        image={HERO_IMG}
+        imageAlt="Polished concrete floor installed by Legacy Industrial Coatings in a Dallas pharmaceutical manufacturing plant"
+        crumbs={crumbs}
+        compact
+      />
 
-        {/* Local intro */}
-        <section className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 mb-12 sm:mb-16">
-          <Card>
-            <CardContent className="p-6 sm:p-8">
-              <p className="text-base sm:text-lg text-muted-foreground leading-relaxed">
-                {city.localHook}
-              </p>
-            </CardContent>
-          </Card>
-        </section>
+      <ProofBar />
 
-        {/* Commercial-first section */}
-        <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-12 sm:mb-16">
-          <div className="text-center mb-8">
-            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-primary/10 text-primary text-xs font-semibold uppercase tracking-wide mb-3">
-              <Building2 className="h-4 w-4" /> Primary focus
-            </div>
-            <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-foreground mb-3">
-              Commercial &amp; Industrial Flooring in {city.name}
-            </h2>
-            <p className="text-base sm:text-lg text-muted-foreground max-w-3xl mx-auto">
-              {city.commercialAngle}
+      <section className="py-20 md:py-28">
+        <div className="max-w-4xl mx-auto px-6 md:px-8 lg:px-12">
+          <Eyebrow>{city.name}</Eyebrow>
+          <h2 className={H2}>Commercial Flooring Contractor in {city.name}</h2>
+          <p className={P}>{priority?.intro ?? city.localHook}</p>
+          <p className={P}>{city.commercialAngle}</p>
+          {hub && (
+            <p className={P}>
+              {city.name} projects are run by the same crews that handle{" "}
+              <a href={`/epoxy-flooring/${hub.slug}`} className={A}>
+                commercial epoxy flooring in {hub.name}
+              </a>
+              , mobilizing from our Plano office.
             </p>
-          </div>
+          )}
+        </div>
+      </section>
 
-          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
-            {[
-              {
-                icon: Warehouse,
-                title: "Warehouse & Distribution",
-                copy: "High-build epoxy and urethane cement systems engineered for forklift traffic, racking loads, and 24/7 operations.",
-              },
-              {
-                icon: Factory,
-                title: "Manufacturing & Industrial",
-                copy: "Chemical-resistant urethane cement, thermal-shock-rated systems, and anti-slip topcoats for production environments.",
-              },
-              {
-                icon: Building2,
-                title: "Retail, Restaurant & Medical TI",
-                copy: "Polished concrete, decorative epoxy, and food-service-grade urethane cement coordinated with the GC's schedule.",
-              },
-              {
-                icon: Shield,
-                title: "ESD / Anti-Static Floors",
-                copy: "Conductive and static-dissipative epoxy for electronics manufacturing, lab spaces, and data centers.",
-              },
-              {
-                icon: Hammer,
-                title: "Polished Concrete",
-                copy: "FF/FL-flat mechanically polished concrete for showrooms, lobbies, and high-traffic retail in {city.name}.",
-              },
-              {
-                icon: CheckCircle2,
-                title: "GC-Ready Bids",
-                copy: "ITB-ready packages, full insurance, OSHA-compliant safety plans, and night/weekend pours in occupied facilities.",
-              },
-            ].map((item) => {
-              const Icon = item.icon;
-              return (
-                <Card key={item.title}>
-                  <CardHeader className="p-5 sm:p-6">
-                    <div className="flex items-center gap-3">
-                      <div className="rounded-lg bg-primary/10 p-2">
-                        <Icon className="h-5 w-5 text-primary" />
-                      </div>
-                      <CardTitle className="text-base sm:text-lg">{item.title}</CardTitle>
-                    </div>
-                  </CardHeader>
-                  <CardContent className="p-5 sm:p-6 pt-0 text-sm sm:text-base text-muted-foreground">
-                    {item.copy.replace("{city.name}", city.name)}
-                  </CardContent>
-                </Card>
-              );
-            })}
-          </div>
+      <section className="py-20 md:py-28 bg-secondary border-y border-border">
+        <div className="max-w-7xl mx-auto px-6 md:px-8 lg:px-12">
+          <Eyebrow>Services</Eyebrow>
+          <h2 className={H2}>What We Install in {city.name}</h2>
+          <p className={`${P} max-w-3xl`}>
+            Every floor starts with testing the slab. From there we recommend the system that fits how the space is used,
+            built on spec-grade, manufacturer-warranted materials.
+          </p>
+          <LinkCards items={services} />
+        </div>
+      </section>
 
-          <div className="text-center mt-8 sm:mt-10">
-            <CTAButtons city={city.name} />
-          </div>
-
-          <div className="mt-10 sm:mt-12 grid grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4">
-            {COMMERCIAL_PHOTOS.map((p) => (
-              <img
-                key={p.src}
-                src={p.src}
-                alt={`${p.alt} — ${city.name}, TX`}
-                loading="eager"
-                decoding="async"
-                className="w-full h-40 sm:h-48 object-cover rounded-lg shadow-md"
-              />
-            ))}
+      {priority && (
+        <section className="py-20 md:py-28">
+          <div className="max-w-7xl mx-auto px-6 md:px-8 lg:px-12">
+            <Eyebrow>Facilities</Eyebrow>
+            <h2 className={H2}>{city.name} Facilities We Work In</h2>
+            <LinkCards items={priority.facilities} />
           </div>
         </section>
+      )}
 
-        {/* Why commercial buyers in city pick us */}
-        <section className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 mb-12 sm:mb-16">
-          <Card className="bg-muted/40">
-            <CardHeader className="p-5 sm:p-6">
-              <CardTitle className="text-xl sm:text-2xl">
-                Why {city.name} GCs &amp; Facility Managers Pick Legacy
-              </CardTitle>
-            </CardHeader>
-            <CardContent className="p-5 sm:p-6 pt-0">
-              <ul className="grid sm:grid-cols-2 gap-3 text-sm sm:text-base text-muted-foreground">
-                {[
-                  "Direct relationships with national and regional GCs across DFW",
-                  "Full general liability and workers' comp on every job",
-                  "OSHA-compliant crews — safety plans submitted with the bid",
-                  "Night, weekend, and phased pours in occupied buildings",
-                  "In-house diamond grinding, shot blasting, and crack repair",
-                  "Manufacturer-certified installer for major coating systems",
-                  `Local team — headquartered in Plano, working ${city.name} regularly`,
-                  "Realistic schedules — we hit our dates",
-                ].map((reason) => (
-                  <li key={reason} className="flex gap-2">
-                    <CheckCircle2 className="h-5 w-5 shrink-0 text-primary" />
-                    <span>{reason}</span>
+      {priority?.polished && (
+        <section className="py-20 md:py-28 bg-secondary border-y border-border">
+          <div className="max-w-4xl mx-auto px-6 md:px-8 lg:px-12">
+            <Eyebrow>Polished Concrete</Eyebrow>
+            <h2 className={H2}>Polished Concrete in {city.name}</h2>
+            <p className={P}>{priority.polished}</p>
+            <a href="/concrete-polishing" className={PILL}>
+              Commercial concrete polishing <ArrowRight size={12} />
+            </a>
+          </div>
+        </section>
+      )}
+
+      <section className="py-20 md:py-28 border-b border-border">
+        <div className="max-w-4xl mx-auto px-6 md:px-8 lg:px-12">
+          <Eyebrow>Why Legacy</Eyebrow>
+          <h2 className={H2}>Why {city.name} GCs &amp; Facility Managers Call Us</h2>
+          <ul className="list-disc pl-6 space-y-3 text-muted-foreground font-body text-[16px] leading-[1.75]">
+            {WHY.map((w) => (
+              <li key={w}>{w}</li>
+            ))}
+          </ul>
+        </div>
+      </section>
+
+      {priority && (
+        <section className="py-20 md:py-24 bg-secondary border-b border-border">
+          <div className="max-w-4xl mx-auto px-6 md:px-8 lg:px-12">
+            <Eyebrow>Projects</Eyebrow>
+            <h2 className={H2}>Commercial Projects in {city.name}</h2>
+            {localProjects.length > 0 ? (
+              <ul className="space-y-3 mb-8 font-body text-[16px]">
+                {localProjects.map((cs) => (
+                  <li key={cs.slug}>
+                    <a href={`/commercial-case-studies/${cs.slug}`} className={A}>
+                      {cs.title}
+                    </a>
                   </li>
                 ))}
               </ul>
-            </CardContent>
-          </Card>
-        </section>
-
-        {/* Residential (secondary) */}
-        <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-12 sm:mb-16">
-          <div className="text-center mb-8">
-            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-muted text-foreground text-xs font-semibold uppercase tracking-wide mb-3">
-              <Home className="h-4 w-4" /> Also serving homeowners
-            </div>
-            <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-foreground mb-3">
-              Residential Garage &amp; Patio Floors in {city.name}
-            </h2>
-            <p className="text-base sm:text-lg text-muted-foreground max-w-3xl mx-auto">
-              {city.residentialAngle}
-            </p>
-          </div>
-
-          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
-            {[
-              {
-                title: "Polyurea Flake Garage Floors",
-                copy: "One-day install, lifetime warranty, full slab prep and crack repair included.",
-              },
-              {
-                title: "Patios, Walkways & Pool Decks",
-                copy: "UV-stable, slip-rated coatings built for Texas sun and pool chemistry.",
-              },
-              {
-                title: "Workshops & Detached Garages",
-                copy: "Same commercial-grade systems we install in industrial buildings, sized to your home.",
-              },
-            ].map((item) => (
-              <Card key={item.title}>
-                <CardHeader className="p-5 sm:p-6">
-                  <CardTitle className="text-base sm:text-lg">{item.title}</CardTitle>
-                </CardHeader>
-                <CardContent className="p-5 sm:p-6 pt-0 text-sm sm:text-base text-muted-foreground">
-                  {item.copy}
-                </CardContent>
-              </Card>
-            ))}
-          </div>
-
-          <div className="mt-10 sm:mt-12 grid grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4">
-            {RESIDENTIAL_PHOTOS.map((p) => (
-              <img
-                key={p.src}
-                src={p.src}
-                alt={`${p.alt} — ${city.name}, TX`}
-                loading="eager"
-                decoding="async"
-                className="w-full h-40 sm:h-48 object-cover rounded-lg shadow-md"
-              />
-            ))}
+            ) : (
+              <p className={P}>See the problem, the system we chose and the result on recent commercial floors across DFW.</p>
+            )}
+            {/* TODO Evan: approve named projects/clients in this city to feature here. */}
+            <a href="/commercial-case-studies" className={PILL}>
+              All commercial case studies <ArrowRight size={12} />
+            </a>
           </div>
         </section>
+      )}
 
-        {/* FAQs */}
-        <section className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 mb-12 sm:mb-16">
-          <h2 className="text-2xl sm:text-3xl font-bold text-foreground mb-6 text-center">
-            {city.name} Flooring FAQs
-          </h2>
-          <div className="space-y-4">
-            {city.faqs.map((faq) => (
-              <Card key={faq.q}>
-                <CardHeader className="p-5 sm:p-6">
-                  <CardTitle className="text-base sm:text-lg">{faq.q}</CardTitle>
-                </CardHeader>
-                <CardContent className="p-5 sm:p-6 pt-0 text-sm sm:text-base text-muted-foreground">
-                  {faq.a}
-                </CardContent>
-              </Card>
-            ))}
-          </div>
-        </section>
+      <FaqBlock heading={`${city.name} Commercial Flooring Questions`} faqs={faqs} />
 
-        {/* Nearby cities */}
-        {neighbors.length > 0 && (
-          <section className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 mb-12 sm:mb-16">
-            <h2 className="text-xl sm:text-2xl font-bold text-foreground mb-4 text-center">
-              We Also Serve Nearby Cities
-            </h2>
-            <div className="flex flex-wrap justify-center gap-2 sm:gap-3">
+      {neighbors.length > 0 && (
+        <section className="lcf py-16 md:py-20 border-t border-border">
+          <div className="max-w-5xl mx-auto px-6 md:px-8 lg:px-12">
+            <Eyebrow>Nearby</Eyebrow>
+            <h2 className="font-heading text-2xl md:text-3xl font-bold text-foreground mb-6">Nearby Cities We Serve</h2>
+            <div className="flex flex-wrap gap-2">
               {neighbors.map((n) => (
-                <Link
-                  key={n.slug}
-                  to={`/epoxy-flooring/${n.slug}`}
-                  className="px-3 sm:px-4 py-2 bg-muted/50 hover:bg-muted rounded-full text-sm font-medium text-foreground transition-colors"
-                >
-                  Epoxy Flooring in {n.name}
-                </Link>
+                <a key={n.slug} href={`/epoxy-flooring/${n.slug}`} className={PILL}>
+                  {n.name}
+                </a>
               ))}
+              <a href="/service-areas" className={PILL}>
+                All service areas
+              </a>
             </div>
-          </section>
-        )}
-
-        {/* Final CTA */}
-        <section className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-foreground mb-4">
-            Ready to Quote Your {city.name} Project?
-          </h2>
-          <p className="text-base sm:text-lg text-muted-foreground mb-6 sm:mb-8 leading-relaxed">
-            Whether it's a 200,000 sq ft warehouse, a 12-restaurant TI package,
-            or a single residential garage — we'll be on-site fast with a
-            realistic scope and price.
-          </p>
-          <CTAButtons city={city.name} />
+          </div>
         </section>
-      </main>
+      )}
 
-      <Footer />
+      <SiteFooter
+        cta={{
+          title: `Get a bid on your ${city.name} project`,
+          text: "Send drawings or a scope. Site walk within 1–3 business days; full bid within 24 hours of receiving plans.",
+        }}
+      />
     </div>
   );
 };

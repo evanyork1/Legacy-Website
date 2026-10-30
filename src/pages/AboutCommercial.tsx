@@ -1,138 +1,118 @@
-import { RequestInfoSection } from "@/components/sections/RequestInfoSection";
-import { motion } from "framer-motion";
-import { ArrowLeft, Award, Shield, MapPin, Users } from "lucide-react";
-import { useNavigate } from "react-router-dom";
-import legacyLogo from "@/assets/legacy-logo-white.png";
+import SiteHeader from "@/components/site/SiteHeader";
+import SiteFooter from "@/components/site/SiteFooter";
 import { Seo } from "@/components/seo/Seo";
+import { StructuredData } from "@/components/seo/StructuredData";
 import { PageBreadcrumbs } from "@/components/seo/PageBreadcrumbs";
+import {
+  ClientStrip,
+  CommercialTestimonials,
+  PageHero,
+  ProofBar,
+} from "@/components/site/sections";
+import imgHero from "@/assets/industries/industrial-warehouse-2.jpg";
 
-const AboutCommercial = () => {
-  const navigate = useNavigate();
+const GC_POINTS = [
+  {
+    title: "We bid the divisions you actually need",
+    text: "Div 09 67 fluid-applied flooring, 03 35 43 polished concrete, 07 18 traffic coatings, 07 92 joint sealants and fillers — scoped from your drawings, not a square-foot guess.",
+  },
+  {
+    title: "Submittals that pass the first time",
+    text: "Product data sheets, system build-up, thickness, cure times and phasing — assembled the way your PM wants to see them.",
+  },
+  {
+    title: "Testing before we coat",
+    text: "ASTM F2170 in-situ RH, ASTM F1869 MVER, ICRI 310.2R CSP matched to the system, and ASTM D7234 pull-off adhesion on mockups.",
+  },
+  {
+    title: "Crews when your schedule needs them",
+    text: "Night and weekend mobilization is standard for us. We phase around other trades and keep your turnover date honest.",
+  },
+  {
+    title: "Paperwork that prequalifies",
+    text: "$5M bonding capacity, full GL / Auto / Umbrella / Workers' Comp, additional insured and waiver of subrogation endorsements, and written Safety & Health Program LIC-SAF-001.",
+  },
+  {
+    title: "Closeout you can hand over",
+    text: "Daily photo documentation from prep through final coat, punch walk, warranty and a complete closeout package.",
+  },
+];
 
-  return (
-    <div className="min-h-screen bg-[hsl(0,0%,5%)] text-white">
-      <Seo
-        title="About Legacy Industrial Coatings — Commercial Concrete & Polishing Partner for GCs"
-        description="Tech consultants for general contractors. Millions of square feet of commercial concrete polishing and industrial coatings delivered to spec for ITBs across Texas."
-        path="/about-commercial"
-      />
-      <PageBreadcrumbs items={[{ name: "Home", url: "/" }, { name: "Commercial", url: "/commercialfloors" }, { name: "About", url: "/about-commercial" }]} />
-      {/* ─── Navbar ─── */}
-      <header className="fixed top-0 left-0 right-0 z-50">
-        <div className="bg-[hsl(0,0%,5%)]/80 backdrop-blur-md border-b border-white/10">
-          <div className="container mx-auto px-6 flex items-center justify-between h-16">
-            <button onClick={() => navigate("/commercialfloors")} className="flex items-center gap-3 group">
-              <img src={legacyLogo} alt="Legacy Industrial Coatings" className="h-8" loading="eager" decoding="async" fetchPriority="high" />
-            </button>
-            <button onClick={() => navigate("/commercialfloors")} className="flex items-center gap-2 text-white/60 hover:text-blue-400 text-xs uppercase tracking-[0.2em] font-medium transition-colors">
-              <ArrowLeft size={14} /> Back
-            </button>
-          </div>
-        </div>
-      </header>
+const AboutCommercial = () => (
+  <div className="lcf min-h-screen bg-background">
+    <Seo
+      title="About Legacy Industrial Coatings — Commercial Concrete & Polishing Partner for GCs"
+      description="Tech consultants for general contractors. Millions of square feet of commercial concrete polishing and industrial coatings delivered to spec for ITBs across Texas."
+      path="/about-commercial"
+    />
+    <StructuredData
+      breadcrumbs={[
+        { name: "Home", url: "/" },
+        { name: "Commercial", url: "/commercialfloors" },
+        { name: "About", url: "/about-commercial" },
+      ]}
+    />
+    <SiteHeader />
+    <PageBreadcrumbs
+      items={[
+        { name: "Home", url: "/" },
+        { name: "Commercial", url: "/commercialfloors" },
+        { name: "About", url: "/about-commercial" },
+      ]}
+    />
 
-      {/* ─── Hero ─── */}
-      <section className="pt-32 pb-20 md:pt-40 md:pb-28">
-        <div className="container mx-auto px-6">
-          <motion.div initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8 }} className="max-w-3xl">
-            <div className="w-16 h-[2px] bg-blue-500 mb-8" />
-            <p className="text-xs uppercase tracking-[0.3em] text-blue-400 mb-6 font-medium">About Us</p>
-            <h1 className="text-5xl md:text-7xl font-bold leading-[0.95] tracking-tight">
-              MILLIONS OF<br />
-              <span className="text-blue-900">SQUARE FEET.</span>
-              <br />
-              ONE STANDARD.
-            </h1>
-          </motion.div>
-        </div>
-      </section>
+    <PageHero
+      eyebrow="About Legacy — Commercial"
+      title="A flooring partner built for general contractors"
+      subhead="We act as tech consultants on your flooring scope: we read the drawings, flag the substrate risks, and deliver a bidable, buildable system — then we install it to spec."
+      image={imgHero}
+      imageAlt="Commercial concrete polishing crew on a DFW project"
+      compact
+    />
 
-      {/* ─── Mission ─── */}
-      <section className="py-20 md:py-28 bg-[hsl(0,0%,8%)]">
-        <div className="container mx-auto px-6">
-          <div className="grid lg:grid-cols-2 gap-16 items-start">
-            <motion.div initial={{ opacity: 0, x: -30 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} transition={{ duration: 0.7 }}>
-              <div className="w-12 h-[2px] bg-blue-500 mb-6" />
-              <h2 className="text-3xl md:text-5xl font-bold tracking-tight mb-8">
-                OUR <span className="text-blue-900">APPROACH</span>
-              </h2>
-            </motion.div>
+    <ProofBar />
 
-            <motion.div initial={{ opacity: 0, x: 30 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} transition={{ duration: 0.7 }} className="space-y-6">
-              <p className="text-white/70 text-lg leading-relaxed">
-                Our approach is built on technical oversight and risk mitigation. We specialize in navigating the high-stakes requirements of Mission Critical, Logistics, and Healthcare sectors—where floor flatness (FF/FL) and operational uptime are non-negotiable. By leveraging a deep, vetted network of specialized crews and advanced technology, we mobilize the precise resources needed to hit 24/7 construction schedules without the bottlenecks of equipment availability.
-              </p>
-              <p className="text-white/70 text-lg leading-relaxed">
-                We position ourselves as a consultant to the General Contractor, providing expert guidance on moisture mitigation, slab stabilization, and chemical selection. At Legacy, our mission is to own the outcome of every square foot, ensuring that every project is delivered with OSHA-compliant safety standards, manufacturer-backed warranties, and a finish that stands up to industrial-scale wear.
-              </p>
-            </motion.div>
-          </div>
-        </div>
-      </section>
-
-      {/* ─── Pillars ─── */}
-      <section className="py-20 md:py-28">
-        <div className="container mx-auto px-6">
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-px bg-white/10">
-            {[
-              { icon: Shield, title: "Risk Mitigation", desc: "Technical oversight on every slab — moisture testing, chemical selection, and spec compliance before work begins." },
-              { icon: Users, title: "Vetted Crews", desc: "A deep network of specialized teams mobilized with the exact skills each project demands." },
-              { icon: Award, title: "Own the Outcome", desc: "OSHA-compliant safety, manufacturer-backed warranties, and a finish built for industrial-scale wear." },
-              { icon: MapPin, title: "National Reach", desc: "Based in DFW, deploying across the country for mission-critical, logistics, and healthcare projects." },
-            ].map((pillar, i) => (
-              <motion.div key={pillar.title} initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.5, delay: i * 0.1 }} className="bg-[hsl(0,0%,5%)] p-10">
-                <pillar.icon className="w-7 h-7 text-blue-400 mb-5" strokeWidth={1.5} />
-                <h3 className="text-lg font-semibold tracking-wide mb-3">{pillar.title}</h3>
-                <p className="text-white/50 text-sm leading-relaxed">{pillar.desc}</p>
-              </motion.div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* ─── CTA ─── */}
-      <section className="py-20 md:py-28 bg-[hsl(0,0%,8%)] border-t border-white/10">
-        <div className="container mx-auto px-6 text-center">
-          <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.6 }}>
-            <h2 className="text-3xl md:text-5xl font-bold tracking-tight mb-6">
-              LET'S <span className="text-blue-900">BUILD</span> TOGETHER
-            </h2>
-            <p className="text-white/60 text-lg max-w-xl mx-auto mb-10">
-              Ready to discuss your next project? Our estimators are standing by.
-            </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <button onClick={() => navigate("/commercialfloors#contact")} className="px-8 py-4 bg-blue-600 text-white font-semibold text-sm uppercase tracking-[0.15em] hover:bg-blue-500 transition-colors inline-flex items-center justify-center">
-                Contact Us
-              </button>
-              <a href="tel:2143056516" className="px-8 py-4 border border-white/30 text-white font-semibold text-sm uppercase tracking-[0.15em] hover:border-blue-400 hover:text-blue-400 transition-colors inline-flex items-center justify-center gap-2">
-                (214) 305-6516
-              </a>
+    <section className="py-20 md:py-28">
+      <div className="container mx-auto px-4 max-w-6xl">
+        <p className="text-[11px] font-semibold uppercase tracking-[0.3em] text-muted-foreground mb-3">
+          How we work with GCs
+        </p>
+        <h2 className="text-2xl md:text-[32px] font-bold text-foreground tracking-tight mb-10">
+          Millions of square feet delivered to spec
+        </h2>
+        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
+          {GC_POINTS.map((p) => (
+            <div key={p.title} className="border border-border bg-background p-6">
+              <h3 className="text-base font-bold text-foreground mb-2">{p.title}</h3>
+              <p className="text-sm text-muted-foreground leading-relaxed">{p.text}</p>
             </div>
-          </motion.div>
+          ))}
         </div>
-      </section>
+      </div>
+    </section>
 
-      {/* ─── Footer ─── */}
-      <RequestInfoSection id="request-info" />
-      <footer className="py-16 border-t border-white/10">
-        <div className="container mx-auto px-6">
-          <div className="flex flex-col md:flex-row items-center justify-between gap-6">
-            <div>
-              <img src={legacyLogo} alt="Legacy Industrial Coatings" className="h-8 mb-2"  loading="eager" decoding="async" />
-              <p className="text-white/40 text-sm">Dallas-Fort Worth, TX — Serving Texas & Beyond</p>
-            </div>
-            <button onClick={() => navigate("/commercialfloors")} className="text-xs uppercase tracking-[0.2em] text-white/50 hover:text-blue-400 transition-colors flex items-center gap-1">
-              <ArrowLeft size={12} /> Commercial Floors
-            </button>
-          </div>
-          <div className="w-full h-[2px] bg-blue-500/20 mt-8" />
-          <p className="mt-6 text-center text-white/30 text-xs tracking-wider">
-            © {new Date().getFullYear()} Legacy Industrial Coatings. All rights reserved.
-          </p>
-        </div>
-      </footer>
-    </div>
-  );
-};
+    <section className="py-20 md:py-28 bg-secondary border-y border-border">
+      <div className="container mx-auto px-4 max-w-4xl">
+        <h2 className="text-2xl md:text-[32px] font-bold text-foreground tracking-tight mb-5">
+          Who we fit — and who we don't
+        </h2>
+        <p className="text-muted-foreground leading-relaxed mb-4">
+          We are not the right fit for every project, nor do we strive to be the lowest-priced
+          contractor in the room. We partner with owners, developers and contractors who value
+          doing it right the first time.
+        </p>
+        <p className="text-muted-foreground leading-relaxed">
+          If your ITB needs a flooring sub who shows up with a testing protocol, a safety program
+          and a closeout package — that's us. If it needs the cheapest number on the spreadsheet,
+          we're probably not your low bid, and we're comfortable saying so early.
+        </p>
+      </div>
+    </section>
+
+    <ClientStrip />
+    <CommercialTestimonials />
+    <SiteFooter cta={{ title: "Send us your ITB", text: "Full bid within 24 hours of receiving plans. Site walk within 1–3 business days." }} />
+  </div>
+);
 
 export default AboutCommercial;

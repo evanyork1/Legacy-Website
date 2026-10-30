@@ -1,15 +1,15 @@
 import { Helmet } from "react-helmet-async";
-import { useNavigate } from "react-router-dom";
-import HeaderGeneric from "@/components/HeaderGeneric";
-import Footer from "@/components/Footer";
-import { ArrowRight, Building2, Home } from "lucide-react";
+import { Link } from "react-router-dom";
+import SiteHeader from "@/components/site/SiteHeader";
+import SiteFooter from "@/components/site/SiteFooter";
+import { PageHero } from "@/components/site/sections";
+import { ArrowRight } from "lucide-react";
 import { caseStudies } from "@/data/caseStudies";
 
 const CaseStudiesHub = () => {
-  const navigate = useNavigate();
-
-  const commercialHero = caseStudies.find((c) => c.category === "commercial")?.heroImage;
-  const residentialHero = caseStudies.find((c) => c.category === "residential")?.heroImage;
+  const commercial = caseStudies.find((c) => c.category === "commercial");
+  const residential = caseStudies.find((c) => c.category === "residential");
+  const hero = caseStudies[0];
 
   const canonical = "https://legacyindustrialcoatings.com/case-studies";
   const breadcrumbSchema = {
@@ -20,30 +20,36 @@ const CaseStudiesHub = () => {
       { "@type": "ListItem", position: 2, name: "Case Studies", item: canonical },
     ],
   };
+  const crumbs = [
+    { name: "Home", url: "/" },
+    { name: "Case Studies", url: "/case-studies" },
+  ];
 
   const cards = [
     {
       key: "commercial",
+      label: "Commercial",
       title: "Commercial Case Studies",
       description:
         "Restaurants, manufacturing plants, kennels, swim schools, and back-of-house spaces — real projects with real before, during, and after photos.",
-      image: commercialHero,
-      icon: Building2,
+      image: commercial?.heroImage,
+      imageAlt: commercial?.heroAlt ?? "Commercial Case Studies",
       path: "/commercial-case-studies",
     },
     {
       key: "residential",
+      label: "Residential",
       title: "Residential Case Studies",
       description:
         "High-end garages, patios, and home flooring projects — including tear-outs of failed cheap installs and full rebuilds done the right way.",
-      image: residentialHero,
-      icon: Home,
+      image: residential?.heroImage,
+      imageAlt: residential?.heroAlt ?? "Residential Case Studies",
       path: "/residential-case-studies",
     },
   ];
 
   return (
-    <div className="min-h-screen bg-white">
+    <div className="lcf min-h-screen bg-background">
       <Helmet>
         <title>Case Studies | Commercial & Residential Floor Projects | Legacy Industrial Coatings</title>
         <meta
@@ -55,81 +61,64 @@ const CaseStudiesHub = () => {
         <script type="application/ld+json">{JSON.stringify(breadcrumbSchema)}</script>
       </Helmet>
 
-      <HeaderGeneric />
+      <SiteHeader />
 
       <main>
-        {/* Hero */}
-        <section className="relative overflow-hidden bg-gradient-to-br from-slate-900 via-slate-900 to-blue-950 text-white">
-          <div
-            aria-hidden
-            className="absolute inset-0 opacity-20"
-            style={{
-              backgroundImage:
-                "radial-gradient(ellipse at top, hsl(217 91% 60% / 0.35), transparent 60%), radial-gradient(ellipse at bottom right, hsl(217 91% 40% / 0.25), transparent 60%)",
-            }}
-          />
-          <div className="relative container mx-auto px-4 py-20 md:py-28 max-w-5xl text-center">
-            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight mb-5">
-              Case Studies
-            </h1>
-            <p className="text-lg md:text-xl text-slate-300 max-w-2xl mx-auto leading-relaxed">
-              View a few of our featured projects from commercial or residential spaces.
-            </p>
-          </div>
-        </section>
+        <PageHero
+          eyebrow="Projects"
+          title="Case Studies"
+          subhead="View a few of our featured projects from commercial or residential spaces."
+          image={hero?.heroImage}
+          imageAlt={hero?.heroAlt}
+          crumbs={crumbs}
+        />
 
-        {/* Selection Cards */}
-        <section className="py-16 md:py-24 bg-white">
-          <div className="container mx-auto px-4 max-w-6xl">
-            <div className="grid md:grid-cols-2 gap-8">
-              {cards.map((card) => {
-                const Icon = card.icon;
-                return (
-                  <button
-                    key={card.key}
-                    onClick={() => navigate(card.path)}
-                    className="group relative text-left rounded-2xl overflow-hidden border border-slate-200 shadow-sm hover:shadow-2xl transition-all duration-500 hover:-translate-y-1 bg-white"
-                  >
-                    <div className="relative aspect-[4/3] md:aspect-[5/4] overflow-hidden bg-slate-900">
-                      {card.image && (
-                        <img
-                          src={card.image}
-                          alt={card.title}
-                          loading="eager"
-                          className="absolute inset-0 w-full h-full object-cover opacity-90 group-hover:scale-105 group-hover:opacity-100 transition-all duration-700"
-                        />
-                      )}
-                      <div className="absolute inset-0 bg-gradient-to-t from-slate-950/95 via-slate-950/40 to-transparent" />
-                      <div className="absolute top-5 left-5">
-                        <span className="inline-flex items-center gap-2 bg-white/10 backdrop-blur-md border border-white/20 text-white text-xs font-semibold px-3 py-1.5 rounded-full uppercase tracking-wider">
-                          <Icon className="h-3.5 w-3.5" />
-                          {card.key === "commercial" ? "Commercial" : "Residential"}
-                        </span>
-                      </div>
-                      <div className="absolute bottom-0 left-0 right-0 p-6 md:p-8 text-white">
-                        <h2 className="text-2xl md:text-3xl font-bold leading-tight">
-                          {card.title}
-                        </h2>
-                      </div>
-                    </div>
-                    <div className="p-6 md:p-8">
-                      <p className="text-gray-600 leading-relaxed mb-5">
-                        {card.description}
-                      </p>
-                      <span className="inline-flex items-center text-base font-semibold text-blue-700 group-hover:text-blue-900 transition-colors">
-                        View {card.key} case studies
-                        <ArrowRight className="ml-2 h-5 w-5 transition-transform duration-300 group-hover:translate-x-1" />
-                      </span>
-                    </div>
-                  </button>
-                );
-              })}
+        <section className="py-16 md:py-24">
+          <div className="max-w-7xl mx-auto px-6 md:px-8 lg:px-12">
+            <div className="grid md:grid-cols-2 gap-4 md:gap-6">
+              {cards.map((card) => (
+                <Link
+                  key={card.key}
+                  to={card.path}
+                  className="group flex flex-col border border-border bg-background hover:border-foreground transition-colors min-w-0"
+                >
+                  <div className="aspect-[4/3] md:aspect-[5/4] overflow-hidden bg-muted">
+                    {card.image && (
+                      <img
+                        src={card.image}
+                        alt={card.imageAlt}
+                        loading="eager"
+                        decoding="async"
+                        width={1000}
+                        height={800}
+                        className="w-full h-full object-cover"
+                      />
+                    )}
+                  </div>
+                  <div className="p-6 md:p-8 flex-1 flex flex-col">
+                    <p className="font-heading text-[11px] tracking-[0.2em] uppercase text-muted-foreground mb-3">{card.label}</p>
+                    <h2 className="font-heading text-2xl md:text-3xl font-bold text-foreground leading-[1.15] mb-4 group-hover:underline">
+                      {card.title}
+                    </h2>
+                    <p className="text-muted-foreground text-[16px] leading-[1.85] mb-6">{card.description}</p>
+                    <span className="mt-auto inline-flex items-center gap-2 font-heading text-[12px] tracking-[0.2em] uppercase text-foreground">
+                      View {card.key} case studies
+                      <ArrowRight size={12} className="transition-transform group-hover:translate-x-1" />
+                    </span>
+                  </div>
+                </Link>
+              ))}
             </div>
           </div>
         </section>
       </main>
 
-      <Footer />
+      <SiteFooter
+        cta={{
+          title: "Have a project like these?",
+          text: "Tell us about your space and we'll put together a clear scope, timeline, and number — no pressure.",
+        }}
+      />
     </div>
   );
 };

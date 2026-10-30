@@ -1,366 +1,334 @@
-import { responsiveImage, largestVariant } from "@/lib/responsiveImage";
-import { Helmet } from "react-helmet-async";
-import { PageBreadcrumbs } from "@/components/seo/PageBreadcrumbs";
-import StructuredData from "@/components/seo/StructuredData";
-import { useNavigate } from "react-router-dom";
-import { useState, useEffect } from "react";
-import { captureUtmsFromLocation } from "@/contexts/BookingUrlContext";
-import HeaderGeneric from "@/components/HeaderGeneric";
-import Footer from "@/components/Footer";
-import { Button } from "@/components/ui/button";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { ArrowRight } from "lucide-react";
+import SiteHeader from "@/components/site/SiteHeader";
+import SiteFooter from "@/components/site/SiteFooter";
+import {
+  ClientStrip,
+  CommercialTestimonials,
+  Eyebrow,
+  FaqBlock,
+  PageHero,
+  ProcessPreview,
+  ProofBar,
+} from "@/components/site/sections";
+import { Seo } from "@/components/seo/Seo";
+import { BeforeAfter, JobVideo, ProjectCards, projectsFor } from "@/components/site/SimplePage";
+import { JOB } from "@/data/site/jobPhotos";
+import { StructuredData } from "@/components/seo/StructuredData";
 
-import { BookingModal } from "@/components/landing/BookingModal";
-import { RequestInfoForm } from "@/components/forms/RequestInfoForm";
-import { Building, Factory, Car, Plane, Dog, Church, Store, School, Utensils, ArrowRight, Phone, Calendar } from "lucide-react";
+/**
+ * /commercial — the page that targets "commercial epoxy flooring" and
+ * "commercial floor coatings". Other pages link here with that anchor text;
+ * no other page uses these phrases in its title or H1.
+ */
 
-const HERO_SIZES = "(min-width: 1024px) 50vw, 100vw";
-const HERO_IMG = responsiveImage("/lovable-uploads/171b7f71-4aa3-4b54-8c96-5f7143dddebf.png", HERO_SIZES);
+const PATH = "/commercial";
+const TITLE = "Commercial Epoxy Flooring & Floor Coatings | DFW & Nationwide | Legacy Industrial Coatings";
+const DESCRIPTION =
+  "Commercial epoxy flooring and floor coatings for retail, restaurants, offices, healthcare, schools and dealerships. Testing-first installs, nights and weekends, bids in 24 hours. DFW based, nationwide.";
+const HERO_IMG = JOB.craneBay.src;
 
-const COMMERCIAL_FAQS = [
+const H2 = "font-heading text-3xl md:text-[2.5rem] font-bold text-foreground leading-[1.1] mb-8 text-balance";
+const P = "text-muted-foreground font-body text-[16px] leading-[1.85] mb-6";
+
+const GALLERY = [
+  { ...JOB.mfgEpoxy, caption: "Manufacturing & warehouse" },
+  { ...JOB.hangar, caption: "Aircraft hangar" },
+  { ...JOB.aeroMfg, caption: "Aerospace manufacturing" },
+  { ...JOB.battery, caption: "Forklift battery charging area" },
+  { ...JOB.quartzCove, caption: "Quartz floor with integral cove" },
+  { ...JOB.foodPlant, caption: "Food plant, slip-resistant epoxy" },
+  { ...JOB.shinyAfter, caption: "High-gloss warehouse epoxy" },
+  { ...JOB.containAfter, caption: "Data center transformer containment" },
+];
+
+const CITIES = [
+  ["Dallas", "dallas"], ["Fort Worth", "fort-worth"], ["Plano", "plano"], ["Frisco", "frisco"],
+  ["McKinney", "mckinney"], ["Allen", "allen"], ["Richardson", "richardson"], ["Carrollton", "carrollton"],
+  ["Lewisville", "lewisville"], ["Garland", "garland"], ["Coppell", "coppell"], ["Farmers Branch", "farmers-branch"],
+] as const;
+
+const SPACES = [
   {
-    question: "How does your bid process work for GCs and facility managers?",
-    answer:
-      "We walk the site within 3–5 business days of your RFP or ITB request, then return a full commercial-ready bid inside 7–10 business days — scope of work, system spec, mockup options, phasing plan, and schedule aligned to your critical path. Rush turnarounds are available when the RFP window is tight. We work directly with national and regional GCs on tenant improvement, ground-up, and re-coat projects across DFW.",
+    label: "Warehouses & distribution centers",
+    url: "/warehouse-flooring",
+    text: "Forklift-ready epoxy with a high-traffic urethane finish, joint repair and aisle striping, phased around live racking.",
   },
   {
-    question: "Are you OSHA-compliant and fully insured for commercial work?",
-    answer:
-      "Yes. We carry full general liability and workers' comp, submit OSHA-compliant safety plans with every bid, and our crews are trained on containment, ventilation, silica exposure, and fall protection. Certificates of insurance are provided directly to the GC or property manager on request, and we participate in owner/GC-controlled insurance programs (OCIP/CCIP) when required.",
+    label: "Aviation hangars",
+    url: "/aerospace-hangar-flooring",
+    text: "Bright, high-gloss epoxy that stands up to tugs, equipment, fuel and hydraulic fluid.",
   },
   {
-    question: "Can you install nights or weekends to keep operations running?",
-    answer:
-      "Almost all of our commercial work is phased around occupied buildings — nights, weekends, and holiday shutdowns. We stage materials off-site, run low-odor systems where required, and coordinate directly with facility managers on containment, egress, and hand-off. Multi-phase pours in retail, warehouse, food-service, and medical environments are our normal mode of work.",
+    label: "Data centers",
+    url: "/data-center-flooring",
+    text: "Sealed and coated floors, battery rooms and watertight transformer oil containment.",
   },
   {
-    question: "What's the warranty on commercial vs residential coatings?",
-    answer:
-      "Residential polyurea flake garages carry our lifetime warranty against peeling, chipping, and UV yellowing. Commercial and industrial systems are warrantied against manufacturing defect and delamination for the design life of the specified system — typically 5 to 15 years depending on the assembly (high-build epoxy, urethane cement, polished concrete). Full written warranty terms and manufacturer backing are included with every commercial bid.",
+    label: "Manufacturing & food plants",
+    url: "/manufacturing-floor-coating",
+    text: "Chemical-resistant epoxy and urethane cement for production floors, wash rooms and washdown areas.",
+  },
+  {
+    label: "Retail & showrooms",
+    url: "/retail-flooring",
+    text: "Decorative flake, quartz or polished concrete that looks sharp on day one and holds up to carts and foot traffic, installed overnight so the store opens on time.",
+  },
+  {
+    label: "Restaurants & commercial kitchens",
+    url: "/restaurant-kitchen-flooring",
+    text: "Slip-resistant, sanitary floors with integral cove. Urethane cement or epoxy slurry where hot water, grease and thermal shock would break down standard epoxy.",
+  },
+  {
+    label: "Offices & lobbies",
+    url: "/office-flooring",
+    text: "Polished concrete and resinous floors for lobbies, break rooms and back-of-house, alongside carpet tile and LVT for the office floor.",
+  },
+  {
+    label: "Healthcare & clinics",
+    url: "/healthcare-flooring",
+    text: "Seamless, cleanable floors with integral cove, specified against your disinfectant list and phased around patient areas.",
+  },
+  {
+    label: "Schools & universities",
+    url: "/school-flooring",
+    text: "Durable corridors, kitchens, locker rooms and labs, scheduled around the academic calendar.",
+  },
+  {
+    label: "Auto dealerships & service",
+    url: "/auto-dealership-flooring",
+    text: "Showroom finishes up front, and chemical- and hot-tire-resistant coatings in the service drive and shop.",
   },
 ];
+
+const SYSTEMS = [
+  {
+    label: "Decorative flake floors",
+    url: "/flake-floors",
+    text: "Color flake floors with a polyurea base coat and polyaspartic topcoat, or epoxy flake, for retail, locker rooms and showrooms.",
+  },
+  {
+    label: "Quartz flooring",
+    url: "/quartz-flooring",
+    text: "Quartz floors: textured, colorful and slip-resistant for restrooms, kitchens and corridors.",
+  },
+  {
+    label: "Urethane cement flooring",
+    url: "/urethane-cement-flooring",
+    text: "Urethane cement for kitchens, food production, washdown and freezer areas where heat and thermal shock are part of the job.",
+  },
+  {
+    label: "MMA flooring",
+    url: "/mma-flooring",
+    text: "Fast-cure methyl methacrylate systems for businesses that can only close for a night or a weekend.",
+  },
+  {
+    label: "Polished concrete",
+    url: "/concrete-polishing",
+    text: "Commercial concrete polishing that turns the existing slab into a durable, low-maintenance finished floor.",
+  },
+  {
+    label: "Commercial carpet tile",
+    url: "/commercial-carpet-tile",
+    text: "Carpet tile and planks for offices, schools, healthcare and hotels, with removal, floor prep and after-hours installs.",
+  },
+  {
+    label: "Commercial LVT & LVP",
+    url: "/commercial-lvt-flooring",
+    text: "Glue-down and rigid-core luxury vinyl tile and plank, plus sheet vinyl and VCT, from the same crew.",
+  },
+];
+
+const OPEN_BUSINESS = [
+  "Night and weekend crews, so the store, restaurant or clinic opens on schedule",
+  "Zone-by-zone phasing that keeps the rest of the building in use",
+  "Low-odor and fast-cure options for occupied buildings",
+  "Dust control during grinding, and protection of finished areas and adjacent trades",
+  "One point of contact who coordinates with your GC, property manager or facility team",
+];
+
+
+const FAQS = [
+  {
+    q: "What is commercial and industrial epoxy flooring?",
+    a: "Commercial and industrial epoxy flooring is a seamless resin coating bonded to a prepared concrete slab. It creates a hard, easy-to-clean surface that stands up to foot traffic, carts, forklifts, spills and daily cleaning, and it can be finished in solid colors, flake or quartz with a slip-resistant texture.",
+  },
+  {
+    q: "Is epoxy good for warehouse floors with forklift traffic?",
+    a: "Yes. A properly prepared epoxy floor with a high-traffic urethane finish holds up to forklifts and pallet jacks and makes aisle and walkway striping last. We recently replaced failed striping in a 40,000 square foot Plano distribution center with exactly that system.",
+  },
+  {
+    q: "How much does commercial epoxy flooring cost per square foot?",
+    a: "Our standard high-traffic epoxy floors typically run about $3.50 to $10 per square foot, depending mostly on the size of the job: large open floors land near the low end and small rooms near the high end. Flake runs about $7.50 to $9, quartz about $15 and urethane cement about $21 per square foot, with integral cove base about $15 per linear foot. Prep, moisture testing, repairs, removal of old coatings and after-hours phasing confirm the final number, which we put in writing after a site walk or a look at your plans.",
+  },
+  {
+    q: "Do you install epoxy flooring near me?",
+    a: "We are based in Plano, Texas and install epoxy floors across Dallas–Fort Worth, including Dallas, Fort Worth, Plano, Frisco, McKinney, Allen and Richardson, and across all of Texas, including Houston, Austin and San Antonio. We also travel for commercial and industrial projects nationwide.",
+  },
+  {
+    q: "Can you work after hours so we can stay open?",
+    a: "Yes. Most of our commercial work happens around open businesses, with night and weekend crews, dust control and phasing planned with your team or GC. Fast-cure systems are available when you can only close briefly.",
+  },
+  {
+    q: "How long does commercial epoxy flooring last?",
+    a: "Service life depends on the system, the traffic and how the floor is maintained. A correctly prepared commercial epoxy floor lasts for years, and renewing the topcoat in high-wear areas extends it further. We size the system to your traffic so it isn't under-built.",
+  },
+  {
+    q: "Epoxy or polished concrete?",
+    a: "Polished concrete is a great fit when the slab is sound and you want a clean, low-maintenance look. Epoxy makes more sense when you need color, safety striping, chemical resistance, a sealed surface for wet cleaning or a fix for a damaged slab.",
+  },
+];
+
+const LinkCards = ({ items }: { items: { label: string; url: string; text: string }[] }) => (
+  <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
+    {items.map((l) => (
+      <a key={l.url} href={l.url} className="group block border border-border bg-background p-6 hover:border-foreground transition-colors">
+        <span className="flex items-center justify-between gap-3 font-heading font-semibold text-[15px] text-foreground">
+          {l.label}
+          <ArrowRight size={14} className="text-muted-foreground transition-transform group-hover:translate-x-1" />
+        </span>
+        <span className="block mt-2 text-[14px] text-muted-foreground leading-[1.7]">{l.text}</span>
+      </a>
+    ))}
+  </div>
+);
+
 const Commercial = () => {
-  const navigate = useNavigate();
-  const [isBookingModalOpen, setIsBookingModalOpen] = useState(false);
-  useEffect(() => { captureUtmsFromLocation(); }, []);
-  const services = [{
-    title: "Concrete Polishing",
-    description: "Transform your concrete floors with our professional polishing services. Achieve a high-gloss, durable finish that's perfect for retail spaces, showrooms, and high-traffic commercial areas."
-  }, {
-    title: "Industrial Epoxy",
-    description: "Heavy-duty epoxy systems designed for manufacturing, warehouses, and industrial facilities. Chemical resistant, extremely durable, and built to withstand the toughest conditions."
-  }, {
-    title: "Flake Floors",
-    description: "Decorative and durable flake flooring systems perfect for commercial spaces. Provides excellent slip resistance, hides imperfections, and offers endless design possibilities for retail stores, restaurants, and showrooms."
-  }];
-  const applications = [{
-    name: "Airplane Hangars",
-    icon: <Plane className="h-6 w-6" />
-  }, {
-    name: "Warehouses",
-    icon: <Factory className="h-6 w-6" />
-  }, {
-    name: "Manufacturing Plants",
-    icon: <Factory className="h-6 w-6" />
-  }, {
-    name: "Car Dealerships",
-    icon: <Car className="h-6 w-6" />
-  }, {
-    name: "Dog Kennels",
-    icon: <Dog className="h-6 w-6" />
-  }, {
-    name: "Commercial Kitchens",
-    icon: <Utensils className="h-6 w-6" />
-  }, {
-    name: "Wedding Venues",
-    icon: <Church className="h-6 w-6" />
-  }, {
-    name: "Retail Stores",
-    icon: <Store className="h-6 w-6" />
-  }, {
-    name: "Schools & Universities",
-    icon: <School className="h-6 w-6" />
-  }, {
-    name: "Distribution Centers",
-    icon: <Building className="h-6 w-6" />
-  }, {
-    name: "Food Processing",
-    icon: <Utensils className="h-6 w-6" />
-  }, {
-    name: "And More",
-    icon: <Building className="h-6 w-6" />
-  }];
-  const commercialImages = [{
-    src: "/lovable-uploads/171b7f71-4aa3-4b54-8c96-5f7143dddebf.png",
-    alt: "Commercial restaurant with polished concrete floors"
-  }, {
-    src: "/lovable-uploads/4a97932b-03f2-42ab-9e2f-2a90852befc0.png",
-    alt: "Commercial restroom with epoxy flooring"
-  }, {
-    src: "/lovable-uploads/b5e6bdc4-80f9-44ea-a580-29d22662f7d4.png",
-    alt: "Industrial floor coating detail"
-  }, {
-    src: "/lovable-uploads/85530262-ab7f-4339-af86-ed63ee721679.png",
-    alt: "Commercial warehouse flooring"
-  }, {
-    src: "/lovable-uploads/57f768f2-8d88-45f9-9d4e-a4c13cf1ed0b.png",
-    alt: "Industrial epoxy floor installation"
-  }, {
-    src: "/lovable-uploads/701db69b-4439-4779-9115-583d175298af.png",
-    alt: "Helicopter hangar with polished concrete floors"
-  }, {
-    src: "/lovable-uploads/d1b328fa-3e30-4126-8266-ae64a33edd79.png",
-    alt: "Medical facility with epoxy flooring"
-  }, {
-    src: "/lovable-uploads/36244d7f-fc1a-4402-928c-de98a796b0d7.png",
-    alt: "Garage with polished concrete flooring"
-  }, {
-    src: "/lovable-uploads/79ce02fc-d147-4c75-b50f-753c518a0483.png",
-    alt: "Aircraft maintenance hangar flooring"
-  }];
-  return <>
-      <Helmet>
-        <title>Commercial Epoxy Flooring DFW | Legacy Industrial Coatings</title>
-        <meta name="description" content="Large-scale commercial epoxy flooring in Dallas-Fort Worth. Warehouses, dealerships, industrial facilities. Heavy-duty floor systems built to last." />
-        <meta name="keywords" content="commercial flooring Dallas, industrial epoxy DFW, concrete polishing Dallas, warehouse flooring, retail store flooring, restaurant flooring" />
-        
-        {/* Geo-location meta tags */}
-        <meta name="geo.region" content="US-TX" />
-        <meta name="geo.placename" content="Dallas" />
-        <meta name="geo.position" content="32.7767;-96.7970" />
-        <meta name="ICBM" content="32.7767, -96.7970" />
+  const crumbs = [
+    { name: "Home", url: "/" },
+    { name: "Epoxy Flooring", url: PATH },
+  ];
 
-        {/* Open Graph */}
-        <meta property="og:type" content="website" />
-        <meta property="og:title" content="Commercial Epoxy Flooring DFW | Legacy Industrial Coatings" />
-        <meta property="og:description" content="Large-scale commercial epoxy flooring in Dallas-Fort Worth. Warehouses, dealerships, industrial facilities. Heavy-duty floor systems built to last." />
-        <meta property="og:image" content="https://legacyindustrialcoatings.com/lovable-uploads/171b7f71-4aa3-4b54-8c96-5f7143dddebf.png" />
-        
-        {/* Additional SEO */}
-        <meta name="robots" content="index, follow" />
-        <meta name="theme-color" content="#2563eb" />
-        <link rel="canonical" href="https://legacyindustrialcoatings.com/commercial" />
-        <meta property="og:url" content="https://legacyindustrialcoatings.com/commercial" />
-        <link rel="preload" as="image" href={HERO_IMG.src} imageSrcSet={HERO_IMG.srcSet} imageSizes={HERO_SIZES} fetchPriority="high" />
-      </Helmet>
-
+  return (
+    <div className="lcf min-h-screen bg-background">
+      <Seo title={TITLE} description={DESCRIPTION} path={PATH} ogImage={HERO_IMG} />
       <StructuredData
-        includeLocalBusiness={false}
-        includeOrganization={false}
         services={[
-          { name: "Concrete Polishing", description: "Mechanically polished concrete for commercial showrooms, retail, restaurants, and industrial facilities across Dallas-Fort Worth.", url: "/concrete-polishing" },
-          { name: "Industrial Epoxy", description: "Heavy-duty epoxy and urethane cement systems for warehouses, manufacturing plants, and industrial facilities in DFW.", url: "/industrial-epoxy" },
-          { name: "Flake Floors", description: "Decorative flake broadcast flooring for commercial retail, showrooms, kennels, and food-service back-of-house.", url: "/flake-floors" },
+          {
+            name: "Commercial & Industrial Epoxy Flooring",
+            description:
+              "Commercial and industrial epoxy flooring for warehouses, distribution centers, manufacturing plants, hangars, restaurants, retail, healthcare and schools.",
+            url: PATH,
+          },
         ]}
-        faqs={COMMERCIAL_FAQS.map((f) => ({ question: f.question, answer: f.answer }))}
+        faqs={FAQS.map((f) => ({ question: f.q, answer: f.a }))}
+        breadcrumbs={crumbs}
+      />
+      <SiteHeader />
+
+      <PageHero
+        eyebrow="Dallas–Fort Worth · All of Texas · Nationwide"
+        title="Commercial & Industrial Epoxy Flooring"
+        subhead="Epoxy flooring is a seamless resin floor bonded to your concrete, built for forklifts, foot traffic, spills and daily cleaning. We install it in warehouses, manufacturing plants, hangars, restaurants, retail and healthcare across Dallas–Fort Worth, all of Texas and nationwide, often nights and weekends so you stay open."
+        image={HERO_IMG}
+        imageAlt={JOB.craneBay.alt}
+        crumbs={crumbs}
+        rating
       />
 
-      <PageBreadcrumbs items={[{ name: "Home", url: "/" }, { name: "Commercial", url: "/commercial" }]} />
+      <ProofBar />
+      <ClientStrip light />
 
-      <div className="min-h-screen bg-white">
-        <HeaderGeneric />
-        
-        {/* Hero Section */}
-        <section className="pt-24 pb-16 bg-slate-50 border-b border-slate-200">
-          <div className="container mx-auto px-4">
-            <div className="grid lg:grid-cols-2 gap-12 items-center">
-              <div>
-                <h1 className="text-4xl lg:text-5xl font-bold text-gray-900 mb-6 leading-tight">
-                  Professional <span className="text-blue-900">Commercial Flooring</span> Solutions
-                </h1>
-                <p className="text-xl text-gray-600 mb-8 leading-relaxed">
-                  Transform your commercial space with our professional flooring systems. 
-                  We specialize in industrial epoxy, concrete polishing, and decorative floors perfect for 
-                  warehouses, retail stores, restaurants, and commercial facilities across Dallas-Fort Worth.
-                </p>
-                <div className="flex flex-col sm:flex-row gap-4">
-                  <Button asChild className="bg-blue-900 hover:bg-blue-950 text-white px-8 py-3 rounded-full shadow-md hover:shadow-lg transition-all duration-300">
-                    <a href="tel:214-305-6516">
-                      <Phone className="mr-2 h-5 w-5" />
-                      Call Us Now
-                    </a>
-                  </Button>
-                  <Button variant="outline" onClick={() => setIsBookingModalOpen(true)} className="border-blue-900 text-blue-900 hover:bg-blue-900 hover:text-white px-8 py-3 rounded-full transition-all duration-300">
-                    <Calendar className="mr-2 h-5 w-5" />
-                    Book An Estimate
-                  </Button>
+      <section className="py-20 md:py-28">
+        <div className="max-w-7xl mx-auto px-6 md:px-8 lg:px-12">
+          <Eyebrow>Our Work</Eyebrow>
+          <h2 className={H2}>Solutions for Every Environment</h2>
+          <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 md:gap-4">
+            {GALLERY.map((g) => (
+              <figure key={g.src} className="m-0">
+                <div className="aspect-[4/3] overflow-hidden bg-muted">
+                  <img src={g.src} alt={g.alt} loading="lazy" decoding="async" width={800} height={600} className="w-full h-full object-cover" />
                 </div>
-
-              </div>
-              <div className="relative">
-                <img {...responsiveImage("/lovable-uploads/171b7f71-4aa3-4b54-8c96-5f7143dddebf.png", HERO_SIZES)} alt="Professional commercial flooring installation" className="relative w-full h-96 object-cover rounded-xl shadow-xl" loading="eager" decoding="async" fetchPriority="high" />
-              </div>
-            </div>
+                <figcaption className="mt-2 text-[13px] text-muted-foreground">{g.caption}</figcaption>
+              </figure>
+            ))}
           </div>
-        </section>
+        </div>
+      </section>
 
-        {/* Commercial Floor Solutions */}
-        <section className="py-20 bg-white">
-          <div className="container mx-auto px-4">
-            <div className="text-center mb-16">
-              <h2 className="text-3xl lg:text-4xl font-bold mb-6 text-gray-900">
-                Our Commercial Solutions
-              </h2>
-              <p className="text-lg text-gray-700 max-w-3xl mx-auto leading-relaxed">
-                Durable, professional flooring systems designed for commercial and industrial environments
-              </p>
-            </div>
+      <section className="py-20 md:py-28 bg-secondary border-y border-border">
+        <div className="max-w-7xl mx-auto px-6 md:px-8 lg:px-12">
+          <Eyebrow>By Space</Eyebrow>
+          <h2 className={H2}>Epoxy Flooring and Floor Coatings for Every Building</h2>
+          <p className={`${P} max-w-3xl`}>
+            A warehouse aisle, a restaurant kitchen and a clinic corridor all need a commercial floor coating, but not the
+            same one. We choose the system around how each space is used and cleaned.
+          </p>
+          <LinkCards items={SPACES} />
+        </div>
+      </section>
 
-            <div className="grid lg:grid-cols-2 gap-12 items-center">
-              <div className="space-y-8">
-                {services.map((service, index) => <Card key={index} className="bg-white border border-slate-200 shadow-sm hover:shadow-md transition-all duration-300 group">
-                    <CardContent className="p-8">
-                      <h3 className="text-2xl font-bold text-gray-900 mb-4 group-hover:text-blue-900 transition-colors">
-                        {service.title}
-                      </h3>
-                      <p className="text-gray-700 leading-relaxed mb-6">
-                        {service.description}
-                      </p>
-                      <Button variant="outline" onClick={() => navigate(service.title === "Concrete Polishing" ? "/concrete-polishing" : service.title === "Industrial Epoxy" ? "/industrial-epoxy" : "/flake-floors")} className="border-blue-900 text-blue-900 hover:bg-blue-900 hover:text-white">
-                        Learn More <ArrowRight className="ml-2 h-4 w-4" />
-                      </Button>
-                    </CardContent>
-                  </Card>)}
-              </div>
-              
-              <div className="relative">
-                <div className="relative bg-white rounded-xl overflow-hidden shadow-xl aspect-[3/2]">
-                  <img {...responsiveImage("/lovable-uploads/171b7f71-4aa3-4b54-8c96-5f7143dddebf.png", "(min-width: 1024px) 50vw, 100vw")} alt="Commercial flooring installation" className="w-full h-full object-cover"  loading="lazy" decoding="async" />
-                </div>
-              </div>
-            </div>
+      <section className="py-20 md:py-28">
+        <div className="max-w-7xl mx-auto px-6 md:px-8 lg:px-12">
+          <Eyebrow>Systems</Eyebrow>
+          <h2 className={H2}>Types of Epoxy Floors and Coatings We Install</h2>
+          <p className={`${P} max-w-3xl`}>
+            We install manufacturer-warranted materials and size each floor to your traffic, chemicals and cleaning, so
+            it isn't under-built.
+          </p>
+          <LinkCards items={SYSTEMS} />
+        </div>
+      </section>
+
+      <section className="py-20 md:py-28 bg-secondary border-y border-border">
+        <div className="max-w-4xl mx-auto px-6 md:px-8 lg:px-12">
+          <Eyebrow>Open Businesses</Eyebrow>
+          <h2 className={H2}>Commercial Floor Coating Without Closing Your Doors</h2>
+          <p className={P}>
+            Most of our commercial projects happen in buildings that are open for business. We plan the work around
+            your hours, your customers and your other trades.
+          </p>
+          <ul className="list-disc pl-6 space-y-3 text-muted-foreground font-body text-[16px] leading-[1.75]">
+            {OPEN_BUSINESS.map((i) => (
+              <li key={i}>{i}</li>
+            ))}
+          </ul>
+        </div>
+      </section>
+
+      <ProcessPreview />
+
+
+      <BeforeAfter path={PATH} />
+
+      <JobVideo path={PATH} />
+
+      <ProjectCards items={projectsFor(PATH)} title="Recent Epoxy Flooring Projects" />
+
+      <section className="py-20 md:py-24 bg-secondary border-y border-border">
+        <div className="max-w-7xl mx-auto px-6 md:px-8 lg:px-12">
+          <Eyebrow>Service Area</Eyebrow>
+          <h2 className={H2}>Epoxy Flooring Near You</h2>
+          <p className={`${P} max-w-3xl`}>
+            Legacy Industrial Coatings is based in Plano, Texas and installs commercial and industrial epoxy floors across
+            Dallas–Fort Worth and all of Texas, including Houston, Austin and San Antonio, with crews that travel for
+            projects nationwide.
+          </p>
+          <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-px bg-border border border-border mb-6">
+            {CITIES.map(([name, slug]) => (
+              <a key={slug} href={`/epoxy-flooring/${slug}`} className="group bg-background px-5 py-4 flex items-center justify-between hover:bg-secondary transition-colors">
+                <span className="font-heading text-[14px] text-foreground group-hover:underline">Epoxy flooring {name}</span>
+                <ArrowRight size={14} className="text-muted-foreground flex-shrink-0" />
+              </a>
+            ))}
           </div>
-        </section>
+          <a href="/service-areas" className="inline-flex items-center gap-2 font-heading text-[12px] tracking-[0.2em] uppercase text-foreground hover:underline">
+            All service areas <ArrowRight size={12} />
+          </a>
+        </div>
+      </section>
 
-        {/* Commercial Spaces */}
-        <section className="py-20 bg-slate-50 border-y border-slate-200">
-          <div className="container mx-auto px-4 relative">
-            <div className="text-center mb-16">
-              <h2 className="text-3xl lg:text-4xl font-bold mb-6 text-gray-900">
-                Commercial Spaces We Install
-              </h2>
-              <p className="text-lg text-gray-700 max-w-3xl mx-auto leading-relaxed">
-                Professional flooring solutions for businesses across Dallas-Fort Worth
-              </p>
-            </div>
+      <CommercialTestimonials />
 
-            {/* Applications Grid */}
-            <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 mb-16">
-              {applications.map((app, index) => <div key={index} className="bg-white rounded-xl p-6 text-center border border-slate-200 hover:border-blue-900/30 transition-all duration-300 group shadow-sm hover:shadow-md">
-                  <div className="text-blue-900 mb-3 flex justify-center group-hover:scale-110 transition-transform duration-300">
-                    {app.icon}
-                  </div>
-                  <p className="text-gray-800 text-sm font-medium">{app.name}</p>
-                </div>)}
-            </div>
+      <FaqBlock heading="Epoxy Flooring Questions" faqs={FAQS} />
 
-            {/* Commercial Images Gallery */}
-            <div className="grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
-              {commercialImages.map((image, index) => <div key={index} className="relative">
-                  <div className="relative bg-white rounded-xl aspect-[3/2] overflow-hidden border border-slate-200 shadow-sm hover:shadow-md transition-all duration-300 group">
-                    <img {...responsiveImage(image.src, "(min-width: 1280px) 25vw, (min-width: 1024px) 33vw, (min-width: 768px) 50vw, 100vw")} alt={image.alt} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"  loading="lazy" decoding="async" />
-                  </div>
-                </div>)}
-            </div>
-
-            {/* Mid-page CTA */}
-            <div className="mt-16 flex flex-col sm:flex-row gap-4 justify-center">
-              <Button asChild className="bg-blue-900 hover:bg-blue-950 text-white px-8 py-3 rounded-full shadow-md hover:shadow-lg transition-all duration-300">
-                <a href="tel:214-305-6516">
-                  <Phone className="mr-2 h-5 w-5" />
-                  Call Us Now
-                </a>
-              </Button>
-              <Button variant="outline" onClick={() => setIsBookingModalOpen(true)} className="border-blue-900 text-blue-900 hover:bg-blue-900 hover:text-white px-8 py-3 rounded-full transition-all duration-300">
-                <Calendar className="mr-2 h-5 w-5" />
-                Book An Estimate
-              </Button>
-            </div>
-          </div>
-        </section>
-
-        {/* Final CTA Section */}
-        <section className="py-20 bg-blue-950 text-white">
-          <div className="container mx-auto px-4">
-            <div className="max-w-3xl mx-auto text-center">
-              <h2 className="text-3xl lg:text-4xl font-bold mb-6">
-                Ready to Transform Your Commercial Space?
-              </h2>
-              <p className="text-lg text-blue-100 mb-8 leading-relaxed">
-                Talk to our team today. Call us now for an immediate quote, or book a free on-site estimate at a time that works for you.
-              </p>
-              <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                <Button asChild size="lg" className="bg-white text-blue-950 hover:bg-slate-100 px-8 py-3 rounded-full shadow-md transition-all duration-300">
-                  <a href="tel:214-305-6516">
-                    <Phone className="mr-2 h-5 w-5" />
-                    Call 214-305-6516
-                  </a>
-                </Button>
-                <Button size="lg" variant="outline" onClick={() => setIsBookingModalOpen(true)} className="border-white text-white hover:bg-white hover:text-blue-950 px-8 py-3 rounded-full transition-all duration-300 bg-transparent">
-                  <Calendar className="mr-2 h-5 w-5" />
-                  Book An Estimate
-                </Button>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        {/* Commercial Quote Form */}
-        <section className="py-16 bg-white">
-          <div className="container mx-auto px-4">
-            <div className="max-w-4xl mx-auto">
-              <div className="text-center mb-8">
-                <h2 className="text-3xl lg:text-4xl font-bold mb-4 text-gray-900">
-                  Get Your Commercial Quote
-                </h2>
-                <p className="text-lg text-gray-700 max-w-2xl mx-auto">
-                  Tell us about your project and our team will follow up with pricing and next steps.
-                </p>
-              </div>
-              <div>
-                <RequestInfoForm id="request-info" />
-              </div>
-            </div>
-          </div>
-        </section>
-
-        {/* FAQ Section */}
-        <section className="py-20 bg-white">
-          <div className="container mx-auto px-4">
-            <div className="max-w-4xl mx-auto">
-              <div className="text-center mb-10">
-                <h2 className="text-3xl lg:text-4xl font-bold mb-4 text-gray-900">
-                  Commercial Flooring FAQs
-                </h2>
-                <p className="text-lg text-gray-700 max-w-2xl mx-auto">
-                  What GCs, facility managers, and property owners ask us most about commercial and industrial floor coatings.
-                </p>
-              </div>
-              <div className="space-y-4">
-                {COMMERCIAL_FAQS.map((faq) => (
-                  <Card key={faq.question} className="bg-white/80 backdrop-blur-sm border border-gray-200/50 shadow-md">
-                    <CardHeader className="p-5 sm:p-6">
-                      <CardTitle className="text-base sm:text-lg text-gray-900">
-                        {faq.question}
-                      </CardTitle>
-                    </CardHeader>
-                    <CardContent className="p-5 sm:p-6 pt-0 text-sm sm:text-base text-gray-700 leading-relaxed">
-                      {faq.answer}
-                    </CardContent>
-                  </Card>
-                ))}
-              </div>
-            </div>
-          </div>
-        </section>
-
-        <Footer />
-        
-        <BookingModal 
-          isOpen={isBookingModalOpen} 
-          onClose={() => setIsBookingModalOpen(false)} 
-        />
-      </div>
-    </>;
+      <SiteFooter
+        cta={{
+          title: "Get a bid on your commercial floor",
+          text: "Send drawings or a scope and we'll return a system recommendation and full bid within 24 hours of receiving plans.",
+        }}
+      />
+    </div>
+  );
 };
+
 export default Commercial;

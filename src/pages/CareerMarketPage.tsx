@@ -1,19 +1,27 @@
 import { Navigate, useParams, Link } from "react-router-dom";
 import { Helmet } from "react-helmet-async";
-import HeaderGeneric from "@/components/HeaderGeneric";
-import Footer from "@/components/Footer";
+import { ArrowRight, Mail } from "lucide-react";
+import SiteHeader from "@/components/site/SiteHeader";
+import SiteFooter from "@/components/site/SiteFooter";
+import { BTN, Eyebrow, PageHero } from "@/components/site/sections";
 import Seo from "@/components/seo/Seo";
 import { PageBreadcrumbs } from "@/components/seo/PageBreadcrumbs";
 import { getCareerMarket } from "@/data/careersMarkets";
+import { JOB } from "@/data/site/jobPhotos";
 
 const SITE_URL = "https://legacyindustrialcoatings.com";
 const APPLY_EMAIL = "careers@legacyindustrialcoatings.com";
 
+const WRAP = "max-w-4xl mx-auto px-6 md:px-8 lg:px-12";
+const H2 = "font-heading text-3xl md:text-[2.5rem] font-bold text-foreground leading-[1.1] text-balance";
+const P = "text-muted-foreground font-body text-[16px] leading-[1.85]";
+const H3 = "font-heading text-[11px] tracking-[0.2em] uppercase text-muted-foreground mb-4";
+
 const Bullets = ({ items }: { items: string[] }) => (
   <ul className="space-y-3">
     {items.map((t) => (
-      <li key={t} className="flex gap-3 text-slate-700 leading-relaxed">
-        <span className="mt-2 h-1.5 w-1.5 rounded-full bg-blue-900 shrink-0" />
+      <li key={t} className="flex gap-3 text-muted-foreground font-body text-[16px] leading-[1.75]">
+        <span aria-hidden="true" className="mt-[0.7em] h-1.5 w-1.5 bg-foreground shrink-0" />
         <span>{t}</span>
       </li>
     ))}
@@ -74,8 +82,31 @@ const CareerMarketPage = () => {
     `Sales Rep — ${market.city}`,
   )}`;
 
+  const sellingWith = [
+    {
+      h: "Commission paid in thirds",
+      p: "A third at signed contract, a third at first draw, the balance at final collection. Every competitor you've worked for made you wait until the job collected. We don't.",
+    },
+    {
+      h: "Recoverable draw available",
+      p: "If you need to bridge the first ninety days, we'll advance against commission. It's a bridge, not a base.",
+    },
+    {
+      h: "Crews that finish clean",
+      p: "Subcontractor model, no capacity ceiling, over 200 five-star reviews. Your referrals compound instead of dying on a bad install.",
+    },
+    {
+      h: "Pricing in hours",
+      p: "Direct access to the owner. You're not waiting a week on a number while the GC moves on.",
+    },
+    {
+      h: "No cap, no split territories",
+      p: "You close it, you get paid on it.",
+    },
+  ];
+
   return (
-    <div className="min-h-screen bg-white">
+    <div className="lcf min-h-screen bg-background">
       <Seo title={title} description={description} path={path} />
       <Helmet>
         <script type="application/ld+json">{JSON.stringify(jobPosting)}</script>
@@ -87,36 +118,42 @@ const CareerMarketPage = () => {
           { name: `${market.city}, ${market.state}`, url: path },
         ]}
       />
-      <HeaderGeneric />
+      <SiteHeader />
 
       <main>
         {/* 1. Header */}
-        <section className="bg-blue-900 text-white py-20">
-          <div className="container mx-auto px-4 max-w-4xl">
-            <p className="text-blue-200 uppercase tracking-widest text-sm font-semibold mb-4">
-              {market.city}, {market.state} — {market.seats}{" "}
-              {market.seats === 1 ? "seat" : "seats"}
-            </p>
-            <h1 className="text-4xl md:text-5xl font-bold leading-tight">
-              Commercial Flooring Sales Rep.
-            </h1>
-            <p className="mt-6 text-xl text-blue-100">{market.headline}</p>
-            <Link
-              to="/careers"
-              className="inline-block mt-8 text-sm text-blue-200 hover:text-white underline underline-offset-4"
-            >
-              All open markets
-            </Link>
-          </div>
-        </section>
+        <PageHero
+          eyebrow={`${market.city}, ${market.state} — ${market.seats} ${market.seats === 1 ? "seat" : "seats"}`}
+          title="Commercial Flooring Sales Rep."
+          subhead={market.headline}
+          image={JOB.dcSiteWalk.src}
+          imageAlt={JOB.dcSiteWalk.alt}
+          compact
+          action={
+            <>
+              <a
+                href="#apply"
+                className={`${BTN} bg-background text-foreground border border-background hover:bg-transparent hover:text-background`}
+              >
+                Apply
+                <ArrowRight size={14} className="transition-transform group-hover:translate-x-1" />
+              </a>
+              <Link
+                to="/careers"
+                className={`${BTN} border border-background/30 text-background hover:bg-background hover:text-foreground`}
+              >
+                All open markets
+              </Link>
+            </>
+          }
+        />
 
         {/* 2. Compensation */}
-        <section className="py-14 bg-white">
-          <div className="container mx-auto px-4 max-w-4xl">
-            <h2 className="text-2xl md:text-3xl font-bold text-slate-900">
-              Compensation
-            </h2>
-            <p className="mt-4 text-slate-700 leading-relaxed">
+        <section className="py-16 md:py-24">
+          <div className={WRAP}>
+            <Eyebrow>Compensation</Eyebrow>
+            <h2 className={`${H2} mb-6`}>Compensation</h2>
+            <p className={P}>
               This is a commission-only role. Contracts typically range from
               $20,000 to $500,000, with commission of $2,000 to $50,000 per
               deal. There is no cap and no split territories.
@@ -125,21 +162,18 @@ const CareerMarketPage = () => {
         </section>
 
         {/* 3. Why city */}
-        <section className="py-14 bg-slate-50 border-y border-slate-200">
-          <div className="container mx-auto px-4 max-w-4xl">
-            <h2 className="text-2xl md:text-3xl font-bold text-slate-900">
-              Why {market.city}
-            </h2>
-            <p className="mt-4 text-slate-700 leading-relaxed">{market.intro}</p>
-            <div className="grid md:grid-cols-2 gap-10 mt-10">
-              <div>
-                <h3 className="font-bold text-slate-900 mb-4">
-                  Where the work is
-                </h3>
+        <section className="py-16 md:py-24 bg-secondary border-y border-border">
+          <div className={WRAP}>
+            <Eyebrow>The market</Eyebrow>
+            <h2 className={`${H2} mb-6`}>Why {market.city}</h2>
+            <p className={P}>{market.intro}</p>
+            <div className="grid md:grid-cols-2 gap-px bg-border border border-border mt-10">
+              <div className="bg-background p-6 md:p-8">
+                <h3 className={H3}>Where the work is</h3>
                 <Bullets items={market.corridors} />
               </div>
-              <div>
-                <h3 className="font-bold text-slate-900 mb-4">Who buys</h3>
+              <div className="bg-background p-6 md:p-8">
+                <h3 className={H3}>Who buys</h3>
                 <Bullets items={market.industries} />
               </div>
             </div>
@@ -147,12 +181,11 @@ const CareerMarketPage = () => {
         </section>
 
         {/* 4. Who this is for */}
-        <section className="py-14 bg-white">
-          <div className="container mx-auto px-4 max-w-4xl">
-            <h2 className="text-2xl md:text-3xl font-bold text-slate-900">
-              Who this is for
-            </h2>
-            <p className="mt-4 text-lg font-bold text-slate-900">
+        <section className="py-16 md:py-24">
+          <div className={WRAP}>
+            <Eyebrow>Fit</Eyebrow>
+            <h2 className={`${H2} mb-6`}>Who this is for</h2>
+            <p className="font-heading text-[18px] md:text-xl font-semibold text-foreground">
               This is an experience job. Full stop.
             </p>
             <div className="mt-6">
@@ -169,22 +202,19 @@ const CareerMarketPage = () => {
         </section>
 
         {/* 5. Who this is not for */}
-        <section className="py-14 bg-slate-50 border-y border-slate-200">
-          <div className="container mx-auto px-4 max-w-4xl">
-            <h2 className="text-2xl md:text-3xl font-bold text-slate-900">
-              Who this is not for
-            </h2>
-            <div className="mt-6">
-              <Bullets
-                items={[
-                  "Anyone who needs a base or a draw to bridge the ramp",
-                  "Residential sales reps stepping up into commercial",
-                  "Order takers waiting on a lead sheet",
-                  "First sales job",
-                ]}
-              />
-            </div>
-            <p className="mt-6 text-slate-800 font-semibold">
+        <section className="py-16 md:py-24 bg-secondary border-y border-border">
+          <div className={WRAP}>
+            <Eyebrow>Not a fit</Eyebrow>
+            <h2 className={`${H2} mb-6`}>Who this is not for</h2>
+            <Bullets
+              items={[
+                "Anyone who needs a base or a draw to bridge the ramp",
+                "Residential sales reps stepping up into commercial",
+                "Order takers waiting on a lead sheet",
+                "First sales job",
+              ]}
+            />
+            <p className="mt-8 font-heading text-[17px] font-semibold text-foreground leading-snug">
               We're not going to be the ones who teach you this trade. Come in
               already knowing it.
             </p>
@@ -192,42 +222,15 @@ const CareerMarketPage = () => {
         </section>
 
         {/* 6. What you're selling with */}
-        <section className="py-14 bg-white">
-          <div className="container mx-auto px-4 max-w-4xl">
-            <h2 className="text-2xl md:text-3xl font-bold text-slate-900 mb-8">
-              What you're selling with
-            </h2>
-            <div className="grid md:grid-cols-2 gap-6">
-              {[
-                {
-                  h: "Commission paid in thirds",
-                  p: "A third at signed contract, a third at first draw, the balance at final collection. Every competitor you've worked for made you wait until the job collected. We don't.",
-                },
-                {
-                  h: "Recoverable draw available",
-                  p: "If you need to bridge the first ninety days, we'll advance against commission. It's a bridge, not a base.",
-                },
-                {
-                  h: "Crews that finish clean",
-                  p: "Subcontractor model, no capacity ceiling, over 200 five-star reviews. Your referrals compound instead of dying on a bad install.",
-                },
-                {
-                  h: "Pricing in hours",
-                  p: "Direct access to the owner. You're not waiting a week on a number while the GC moves on.",
-                },
-                {
-                  h: "No cap, no split territories",
-                  p: "You close it, you get paid on it.",
-                },
-              ].map((item) => (
-                <div
-                  key={item.h}
-                  className="border border-slate-200 p-6 bg-white"
-                >
-                  <h3 className="font-bold text-slate-900">{item.h}</h3>
-                  <p className="mt-2 text-slate-700 leading-relaxed">
-                    {item.p}
-                  </p>
+        <section className="py-16 md:py-24">
+          <div className="max-w-7xl mx-auto px-6 md:px-8 lg:px-12">
+            <Eyebrow>Support</Eyebrow>
+            <h2 className={`${H2} mb-10`}>What you're selling with</h2>
+            <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-px bg-border border border-border">
+              {sellingWith.map((item) => (
+                <div key={item.h} className="bg-background p-6 md:p-8">
+                  <h3 className="font-heading font-semibold text-[17px] text-foreground">{item.h}</h3>
+                  <p className="mt-2 text-[15px] text-muted-foreground leading-[1.75]">{item.p}</p>
                 </div>
               ))}
             </div>
@@ -235,13 +238,14 @@ const CareerMarketPage = () => {
         </section>
 
         {/* 7. Apply */}
-        <section className="py-16 bg-blue-900 text-white">
-          <div className="container mx-auto px-4 max-w-4xl">
-            <h2 className="text-2xl md:text-3xl font-bold">Apply</h2>
-            <p className="mt-4 text-blue-100">
+        <section id="apply" className="py-16 md:py-24 bg-foreground text-background scroll-mt-24">
+          <div className={WRAP}>
+            <Eyebrow light>{market.city}, {market.stateAbbr}</Eyebrow>
+            <h2 className="font-heading text-3xl md:text-[2.5rem] font-bold leading-[1.1] text-background">Apply</h2>
+            <p className="mt-6 font-body text-[16px] leading-[1.85] text-background/75">
               Send your resume and answer three questions:
             </p>
-            <ol className="mt-4 space-y-2 text-blue-100 list-decimal list-inside">
+            <ol className="mt-4 space-y-3 font-body text-[16px] leading-[1.75] text-background/75 list-decimal pl-5 marker:font-heading marker:text-background">
               <li>
                 The last three commercial jobs you closed. What they were and
                 what they were worth.
@@ -254,20 +258,21 @@ const CareerMarketPage = () => {
                 Who you already know in {market.city} that buys flooring.
               </li>
             </ol>
-            <p className="mt-4 text-blue-100">
+            <p className="mt-4 font-body text-[16px] leading-[1.85] text-background/75">
               Short answers are fine. Specific answers get a call.
             </p>
             <a
               href={mailto}
-              className="inline-block mt-8 bg-white text-blue-900 font-bold px-8 py-4 border border-white hover:bg-blue-50 transition-colors"
+              className={`${BTN} mt-10 max-w-full bg-background text-foreground border border-background hover:bg-transparent hover:text-background normal-case tracking-[0.05em] break-all`}
             >
-              Email {APPLY_EMAIL}
+              <Mail size={14} className="shrink-0" />
+              <span>Email {APPLY_EMAIL}</span>
             </a>
           </div>
         </section>
       </main>
 
-      <Footer />
+      <SiteFooter requestInfo={false} />
     </div>
   );
 };

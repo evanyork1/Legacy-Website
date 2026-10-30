@@ -1,5 +1,4 @@
 import { Helmet } from "react-helmet-async";
-import { DFW_CITIES } from "@/constants/serviceAreas";
 
 interface FAQItem {
   question: string;
@@ -39,9 +38,9 @@ export const StructuredData = ({
       alternateName: "Legacy Industrial Coatings DFW",
       url: SITE_URL,
       logo: `${SITE_URL}/lovable-uploads/31a07739-2d1a-4e04-afcf-284435670519.png`,
-      image: `${SITE_URL}/lovable-uploads/e90dc902-382c-49a1-92b3-46b9b06b6a4b.png`,
+      image: `${SITE_URL}/og/legacy-commercial-industrial-flooring.jpg`,
       description:
-        "Legacy Industrial Coatings is a licensed and insured flooring contractor specializing in epoxy flooring, polyurea garage floor coatings, mechanical polished concrete, and industrial floor coatings across the Dallas-Fort Worth metroplex.",
+        "Commercial and industrial epoxy flooring based in Plano, Texas, serving Dallas–Fort Worth, all of Texas and nationwide: epoxy floor coatings, polished concrete, urethane cement, quartz, ESD flooring, line striping and secondary containment.",
       telephone: "+1-214-305-6516",
       email: "support@legacyindustrialcoatings.com",
       address: {
@@ -56,20 +55,31 @@ export const StructuredData = ({
         "@type": "ContactPoint",
         telephone: "+1-214-305-6516",
         email: "support@legacyindustrialcoatings.com",
-        contactType: "customer service",
-        areaServed: "US-TX",
+        contactType: "sales",
+        areaServed: "US",
         availableLanguage: "English",
       },
       knowsAbout: [
-        "Epoxy flooring",
-        "Polyurea garage floor coatings",
-        "Mechanical polished concrete",
+        "Commercial epoxy flooring",
+        "Industrial epoxy flooring",
         "Industrial floor coatings",
+        "Warehouse floor coatings",
+        "Polished concrete",
+        "Concrete polishing",
+        "Urethane cement flooring",
+        "Resinous flooring",
+        "Warehouse line striping",
+        "Concrete moisture mitigation",
+        "Integral cove base",
+        "ESD flooring",
+        "Food processing plant flooring",
+        "Commercial kitchen flooring",
         "Concrete sealing",
         "Commercial flooring",
+        "Garage floor coatings",
       ],
       sameAs: [
-        "https://www.linkedin.com/company/legacy-industrial-coatings",
+        "https://www.linkedin.com/company/legacy-industrial-coatings1",
         "https://www.instagram.com/legacyindustrialcoatings/",
         "https://www.facebook.com/legacyindustrialcoatings",
         "https://maps.app.goo.gl/2idbg4BFnZVKvLNK9",
@@ -90,13 +100,14 @@ export const StructuredData = ({
   if (includeLocalBusiness) {
     schemas.push({
       "@context": "https://schema.org",
-      "@type": "LocalBusiness",
+      "@type": ["LocalBusiness", "GeneralContractor"],
       "@id": `${SITE_URL}#localbusiness`,
       name: "Legacy Industrial Coatings",
       description:
-        "Premium epoxy flooring, polyurea garage coatings, mechanical polished concrete, and industrial floor coatings serving the Dallas-Fort Worth Metroplex.",
-      image: `${SITE_URL}/lovable-uploads/e90dc902-382c-49a1-92b3-46b9b06b6a4b.png`,
+        "Commercial and industrial epoxy flooring based in Plano, Texas, serving Dallas–Fort Worth, all of Texas and nationwide: epoxy floor coatings, polished concrete, urethane cement, quartz, ESD flooring, line striping and secondary containment.",
+      image: `${SITE_URL}/og/legacy-commercial-industrial-flooring.jpg`,
       url: SITE_URL,
+      foundingDate: "2019-09",
       telephone: "+1-214-305-6516",
       priceRange: "$$",
       address: {
@@ -113,11 +124,9 @@ export const StructuredData = ({
         longitude: -96.6989,
       },
       areaServed: [
-        { "@type": "AdministrativeArea", name: "Dallas-Fort Worth Metroplex" },
-        ...DFW_CITIES.map((city) => ({
-          "@type": "City",
-          name: `${city}, TX`,
-        })),
+        { "@type": "AdministrativeArea", name: "Dallas-Fort Worth, TX" },
+        { "@type": "State", name: "Texas" },
+        { "@type": "Country", name: "United States" },
       ],
       makesOffer: [
         "Epoxy flooring",
@@ -144,14 +153,14 @@ export const StructuredData = ({
         },
       ],
       sameAs: [
-        "https://www.linkedin.com/company/legacy-industrial-coatings",
+        "https://www.linkedin.com/company/legacy-industrial-coatings1",
         "https://www.instagram.com/legacyindustrialcoatings/",
         "https://www.facebook.com/legacyindustrialcoatings",
       ],
       aggregateRating: {
         "@type": "AggregateRating",
         ratingValue: "5.0",
-        reviewCount: "200",
+        reviewCount: "201",
       },
     });
   }
@@ -165,13 +174,15 @@ export const StructuredData = ({
         name: s.name,
         description: s.description,
         provider: {
-          "@type": "LocalBusiness",
+          "@type": "Organization",
+          "@id": `${SITE_URL}#organization`,
           name: "Legacy Industrial Coatings",
+          url: SITE_URL,
         },
-        areaServed: {
-          "@type": "AdministrativeArea",
-          name: "Dallas-Fort Worth Metroplex",
-        },
+        areaServed: [
+          { "@type": "AdministrativeArea", name: "Dallas-Fort Worth, TX" },
+          { "@type": "Country", name: "United States" },
+        ],
         url: s.url ? `${SITE_URL}${s.url}` : undefined,
       });
     });

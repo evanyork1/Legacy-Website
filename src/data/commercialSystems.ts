@@ -303,12 +303,12 @@ export const products: Product[] = [
     title: "Commercial Deck Coatings in Dallas-Fort Worth",
     cardDesc: "Waterproof pedestrian and vehicular deck coatings for parking decks, balconies, and rooftops.",
     metaTitle: "Commercial Deck Coatings DFW | Legacy Industrial Coatings",
-    metaDescription: "Waterproof pedestrian and vehicular deck coating systems for parking garages, balconies, and rooftop decks across Dallas-Fort Worth. Installed with Neogard and Hempel systems.",
+    metaDescription: "Waterproof pedestrian and vehicular deck coating systems for parking garages, balconies, and rooftop decks across Dallas-Fort Worth. Installed with spec-grade urethane deck coating systems.",
     heroImage: apartmentExterior,
     gallery: gallery(apartmentExterior),
     intro: "Deck coatings waterproof and protect elevated concrete — parking garages, balconies, walkways, and rooftop decks — from water, freeze-thaw, and traffic wear. Legacy Industrial Coatings installs pedestrian and vehicular deck systems across the DFW Metroplex.",
     overview: [
-      "We install traffic-bearing urethane and polyurethane deck coatings from Neogard, Hempel, and other spec-grade manufacturers. Every install starts with slab prep, crack routing, and detail work at drains, expansion joints, and terminations.",
+      "We install traffic-bearing urethane and polyurethane deck coatings from spec-grade manufacturers. Every install starts with slab prep, crack routing, and detail work at drains, expansion joints, and terminations.",
       "Systems are built in layers — base coat, intermediate with aggregate broadcast, and UV-stable topcoat — matched to whether the deck sees pedestrian traffic, light vehicles, or full parking-garage loads.",
     ],
     benefits: [
@@ -333,7 +333,7 @@ export const products: Product[] = [
     ],
     faqs: [
       { q: "How long does a deck coating last?", a: "A properly installed vehicular deck coating lasts 8 to 15 years with periodic topcoat re-coats. Pedestrian systems on balconies can go longer with lighter wear." },
-      { q: "Do you install Neogard and Hempel systems?", a: "Yes. We're installers for Neogard and Hempel deck coating systems, and we can install to a specific engineer's or property manager's spec." },
+      { q: "Do you install to a specified deck coating system?", a: "Yes. We install spec-grade deck coating systems, and we can install to a specific engineer's or property manager's spec." },
       { q: "Can you re-coat an existing deck?", a: "Usually, yes. We inspect the existing coating, test adhesion, repair failed areas, and re-coat with a compatible topcoat to extend service life." },
     ],
   },

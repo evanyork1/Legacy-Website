@@ -5,20 +5,15 @@ import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { HelmetProvider } from "react-helmet-async";
 import { Toaster } from "@/components/ui/toaster";
 import { AuthProvider } from "@/hooks/useAuth";
-import About from "./pages/About";
 import Blog from "./pages/Blog";
 import BlogPostPage from "./pages/BlogPostPage";
 import Commercial from "./pages/Commercial";
-import ConcretePolishing from "./pages/ConcretePolishing";
-import ConcreteSealing from "./pages/ConcreteSealing";
 import Contact from "./pages/Contact";
 import FAQ from "./pages/FAQ";
 import Financing from "./pages/Financing";
-import FlakeFloors from "./pages/FlakeFloors";
 
 import Gallery from "./pages/Gallery";
 
-import IndustrialEpoxy from "./pages/IndustrialEpoxy";
 import NotFound from "./pages/NotFound";
 const PackagePresentation = lazy(() => import("./pages/PackagePresentation"));
 import PrivacyPolicy from "./pages/PrivacyPolicy";
@@ -31,7 +26,6 @@ import ServiceAreas from "./pages/ServiceAreas";
 import EpoxyFlooringCity from "./pages/EpoxyFlooringCity";
 import TermsAndConditions from "./pages/TermsAndConditions";
 import Warranty from "./pages/Warranty";
-import DFW from "./pages/DFW";
 const GPT = lazy(() => import("./pages/GPT"));
 import DFWResLanding from "./pages/DFWResLanding";
 const LandingVisual = lazy(() => import("./pages/LandingVisual"));
@@ -50,16 +44,31 @@ const CRM = lazy(() => import("./pages/CRM"));
 const SalesPresentation = lazy(() => import("./pages/SalesPresentation"));
 const CustomerPresentationPage = lazy(() => import("./pages/CustomerPresentationPage"));
 import SplashSelect from "./pages/SplashSelect";
-import CommercialFloors from "./pages/CommercialFloors";
-import CommercialMaintenance from "./pages/CommercialMaintenance";
-import AboutCommercial from "./pages/AboutCommercial";
 import AquaTotsFlooring from "./pages/AquaTotsFlooring";
 import CaseStudies from "./pages/CaseStudies";
 import CaseStudyDetail from "./pages/CaseStudyDetail";
 import CaseStudiesHub from "./pages/CaseStudiesHub";
-import CommercialIndustryPage from "./pages/CommercialIndustryPage";
-import CommercialSystemPage from "./pages/CommercialSystemPage";
-import { APPLICATIONS, SOLUTIONS } from "./data/commercialNav";
+import SiteHome from "./pages/site/Home";
+import SiteAbout from "./pages/site/About";
+import OurProcess from "./pages/site/OurProcess";
+import CapabilityPacket from "./pages/site/CapabilityPacket";
+import WhoWeServe from "./pages/site/WhoWeServe";
+import { IndustriesHub, ResourcesHub, ServicesHub } from "./pages/site/Hubs";
+import Warranties from "./pages/site/Warranties";
+import Reviews from "./pages/site/Reviews";
+import LineStriping from "./pages/site/LineStriping";
+import DataCenterFlooring from "./pages/site/DataCenterFlooring";
+import SiteIndustryPage from "./pages/site/IndustryPage";
+import SiteSystemPage from "./pages/site/SystemPage";
+import { Helmet } from "react-helmet-async";
+
+const NoIndex = () => (
+  <Helmet>
+    <meta name="robots" content="noindex, nofollow" />
+  </Helmet>
+);
+import { INDUSTRY_PAGES } from "./data/site/industries";
+import { SYSTEM_PAGES } from "./data/site/systems";
 import ScrollToTop from "./components/ScrollToTop";
 import EstimateRequestReceived from "./pages/EstimateRequestReceived";
 import Careers from "./pages/Careers";
@@ -94,8 +103,8 @@ function App() {
             <ScrollToTop />
             <Suspense fallback={<RouteLoading />}>
             <Routes>
-              <Route path="/" element={<DFW />} />
-              <Route path="/gpt" element={<GPT />} />
+              <Route path="/" element={<SiteHome />} />
+              <Route path="/gpt" element={<><GPT /><NoIndex /></>} />
               <Route path="/dfw" element={<Navigate to="/" replace />} />
               
               <Route path="/quotedfw" element={<QuoteDFW />} />
@@ -108,47 +117,56 @@ function App() {
               <Route path="/terms" element={<TermsAndConditions />} />
               <Route path="/privacy" element={<PrivacyPolicy />} />
               <Route path="/contact" element={<Contact />} />
-              <Route path="/flake-floors" element={<FlakeFloors />} />
               <Route path="/residential-patio" element={<ResidentialPatio />} />
               <Route path="/garagefloors" element={<ResidentialGarageFloors />} />
-              <Route path="/industrial-epoxy" element={<IndustrialEpoxy />} />
               <Route path="/commercial" element={<Commercial />} />
-              <Route path="/commercialfloors" element={<CommercialFloors />} />
-              <Route path="/about-commercial" element={<AboutCommercial />} />
-              <Route path="/commercial-floor-maintenance" element={<CommercialMaintenance />} />
-              <Route path="/concrete-polishing" element={<ConcretePolishing />} />
-              <Route path="/concrete-sealing" element={<ConcreteSealing />} />
+              {/* Consolidated into /commercial and /our-process (301s in public/_redirects). */}
+              <Route path="/commercialfloors" element={<Navigate to="/commercial" replace />} />
+              <Route path="/about-commercial" element={<Navigate to="/our-process" replace />} />
               <Route path="/faq" element={<FAQ />} />
               <Route path="/blog" element={<Blog />} />
               <Route path="/blog/:slug" element={<BlogPostPage />} />
               <Route path="/financing" element={<Financing />} />
-              <Route path="/about" element={<About />} />
+              <Route path="/about" element={<SiteAbout />} />
+              <Route path="/our-process" element={<OurProcess />} />
+              <Route path="/capability-packet" element={<CapabilityPacket />} />
+              <Route path="/who-we-serve" element={<WhoWeServe />} />
+              <Route path="/services" element={<ServicesHub />} />
+              <Route path="/warranties" element={<Warranties />} />
+              <Route path="/industries" element={<IndustriesHub />} />
+              <Route path="/resources" element={<ResourcesHub />} />
+              <Route path="/reviews" element={<Reviews />} />
+              <Route path="/materials" element={<Navigate to="/commercial" replace />} />
+              <Route path="/roof-deck-waterproofing" element={<Navigate to="/deck-coatings" replace />} />
+              <Route path="/line-striping" element={<LineStriping />} />
+              <Route path="/data-center-flooring" element={<DataCenterFlooring />} />
               <Route path="/case-studies" element={<CaseStudiesHub />} />
               <Route path="/case-studies/:slug" element={<CaseStudyDetail />} />
               <Route path="/commercial-case-studies" element={<CaseStudies category="commercial" />} />
               <Route path="/commercial-case-studies/:slug" element={<CaseStudyDetail />} />
               <Route path="/residential-case-studies" element={<CaseStudies category="residential" />} />
               <Route path="/residential-case-studies/:slug" element={<CaseStudyDetail />} />
-              <Route path="/packagepresentation" element={<PackagePresentation />} />
-              <Route path="/flakefloortemplate" element={<FlakeFloorTemplate />} />
+              <Route path="/packagepresentation" element={<><PackagePresentation /><NoIndex /></>} />
+              <Route path="/flakefloortemplate" element={<><FlakeFloorTemplate /><NoIndex /></>} />
 
-              {/* Commercial applications */}
-              {APPLICATIONS.map((a) => (
+              {/* Commercial industries — new template (data center has its own page) */}
+              {INDUSTRY_PAGES.map((i) => (
                 <Route
-                  key={a.path}
-                  path={a.path}
-                  element={<CommercialIndustryPage slug={a.slug!} />}
+                  key={i.path}
+                  path={i.path}
+                  element={<SiteIndustryPage path={i.path} />}
                 />
               ))}
 
-              {/* Commercial solutions */}
-              {SOLUTIONS.filter((s) => !s.existing).map((s) => (
+              {/* Commercial systems — every system page renders through the shared template. */}
+              {SYSTEM_PAGES.filter((s) => s.path !== "/industrial-epoxy").map((s) => (
                 <Route
                   key={s.path}
                   path={s.path}
-                  element={<CommercialSystemPage slug={s.slug!} />}
+                  element={<SiteSystemPage path={s.path} />}
                 />
               ))}
+              <Route path="/specialty-floor-systems" element={<Navigate to="/commercial" replace />} />
 
               {/* Keyword URL redirects to existing pages */}
               <Route path="/garage-floor-coating" element={<Navigate to="/garagefloors" replace />} />
@@ -156,7 +174,8 @@ function App() {
               <Route path="/polished-concrete" element={<Navigate to="/concrete-polishing" replace />} />
               <Route path="/warehouse-epoxy-flooring" element={<Navigate to="/warehouse-flooring" replace />} />
               <Route path="/commercial-flooring" element={<Navigate to="/commercial" replace />} />
-              <Route path="/epoxy-flooring-dallas" element={<Navigate to="/industrial-epoxy" replace />} />
+              <Route path="/epoxy-flooring-dallas" element={<Navigate to="/commercial" replace />} />
+              <Route path="/industrial-epoxy" element={<Navigate to="/commercial" replace />} />
 
               
           <Route path="/garagelandingform" element={<GarageLandingForm />} />
@@ -171,7 +190,7 @@ function App() {
               <Route path="/sales-dashboard" element={<SalesDashboard />} />
               <Route path="/crm" element={<CRM />} />
               <Route path="/sales-presentation" element={<SalesPresentation />} />
-              <Route path="/presentation/:id" element={<CustomerPresentationPage />} />
+              <Route path="/presentation/:id" element={<><CustomerPresentationPage /><NoIndex /></>} />
               <Route path="/aquatotsflooring" element={<AquaTotsFlooring />} />
               <Route path="/estimate-request-received" element={<EstimateRequestReceived />} />
               <Route path="/booking-confirmed" element={<EstimateRequestReceived />} />

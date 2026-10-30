@@ -17,4 +17,17 @@ http://www.legacyindustrialcoatings.com/*   https://legacyindustrialcoatings.com
 # Epoxy vs polyaspartic — consolidate
 /blog/epoxy-vs-polyaspartic-garage-floors-dfw-guide         /blog/epoxy-vs-polyaspartic-garage-coatings-dfw        301!
 
-/*            /index.html                                                    200
+# Page consolidation (Oct 2026): one page per search group
+/industrial-epoxy       /commercial    301!
+/epoxy-flooring-dallas  /commercial    301!
+/commercialfloors       /commercial    301!
+/commercialfloors/      /commercial    301!
+/about-commercial       /our-process   301!
+/about-commercial/      /our-process   301!
+
+# Old /case-studies/<slug> links → canonical category URLs
+/case-studies/argyle-luxury-home-metallic-floor-tear-out-redo  /residential-case-studies/argyle-luxury-home-metallic-floor-tear-out-redo  301!
+/case-studies/*  /commercial-case-studies/:splat  301!
+
+# SPA fallback serves the bare app shell (never the prerendered homepage)
+/*            /app-shell.html                                                200

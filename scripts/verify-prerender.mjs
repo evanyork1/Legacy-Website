@@ -15,11 +15,14 @@ const REQUIRED_BASE = "https://legacyindustrialcoatings.com";
 
 // Route file -> phrases that must appear in the rendered body.
 const KEYWORD_CHECKS = [
-  ["index.html", ["polyurea", "warranty"]],
+  ["index.html", ["epoxy", "polished concrete"]],
   ["commercial/index.html", ["warehouse", "polished concrete"]],
-  ["commercialfloors/index.html", ["industrial"]],
+  ["commercial/index.html", ["commercial epoxy flooring"]],
   ["garagefloors/index.html", ["polyurea", "garage"]],
-  ["industrial-epoxy/index.html", ["industrial", "epoxy"]],
+  ["commercial/index.html", ["industrial epoxy flooring"]],
+  ["concrete-polishing/index.html", ["polished concrete"]],
+  ["epoxy-flooring/dallas/index.html", ["commercial epoxy flooring", "polished concrete in dallas"]],
+  ["epoxy-flooring/fort-worth/index.html", ["commercial epoxy flooring", "polished concrete in fort worth"]],
   ["about/index.html", ["legacy"]],
   ["contact/index.html", ["contact"]],
 ];
@@ -36,10 +39,7 @@ const REQUIRED_FILES = [
   "flake-floors/index.html",
   "residential-patio/index.html",
   "garagefloors/index.html",
-  "industrial-epoxy/index.html",
   "commercial/index.html",
-  "commercialfloors/index.html",
-  "about-commercial/index.html",
   "concrete-polishing/index.html",
   "concrete-sealing/index.html",
   "faq/index.html",
@@ -148,7 +148,7 @@ function walk(dir) {
     const full = join(dir, entry);
     const s = statSync(full);
     if (s.isDirectory()) out.push(...walk(full));
-    else if (entry.endsWith(".html")) out.push(full);
+    else if (entry.endsWith(".html") && entry !== "app-shell.html") out.push(full);
   }
   return out;
 }

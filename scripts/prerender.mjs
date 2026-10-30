@@ -31,10 +31,7 @@ const STATIC_ROUTES = [
   "/flake-floors",
   "/residential-patio",
   "/garagefloors",
-  "/industrial-epoxy",
   "/commercial",
-  "/commercialfloors",
-  "/about-commercial",
   "/concrete-polishing",
   "/concrete-sealing",
   "/faq",
@@ -47,6 +44,34 @@ const STATIC_ROUTES = [
   "/floor-visualizer",
   "/commercial-floor-maintenance",
   "/careers",
+
+  // Commercial redesign (Phase 1 & 2)
+  "/our-process",
+  "/capability-packet",
+  "/who-we-serve",
+  "/services",
+  "/warranties",
+  "/industries",
+  "/resources",
+  "/reviews",
+  "/electronics-manufacturing-flooring",
+  "/food-processing-flooring",
+  "/pharmaceutical-flooring",
+  "/pharmacy-cleanroom-flooring",
+  "/restaurant-kitchen-flooring",
+  "/auto-dealership-flooring",
+  "/parking-garage-coatings",
+  "/secondary-containment-coatings",
+  "/battery-room-flooring",
+  "/joint-filling-crack-repair",
+  "/moisture-mitigation",
+  "/epoxy-cove-base",
+  "/resilient-flooring",
+  "/commercial-carpet-tile",
+  "/commercial-lvt-flooring",
+  "/novolac-epoxy-flooring",
+  "/mma-flooring",
+  "/line-striping",
 ];
 
 // Commercial application/solution pages come from src/data/commercialNav.ts.
@@ -195,6 +220,12 @@ function writeRouteHtml(route, html) {
 async function main() {
   if (!existsSync(join(DIST, "index.html"))) {
     throw new Error("dist/index.html missing — run `vite build` first.");
+  }
+  // Keep the unrendered app shell for Netlify's SPA fallback, so URLs that
+  // aren't prerendered never serve the homepage's HTML (duplicate content).
+  if (!existsSync(join(DIST, "app-shell.html"))) {
+    const shell = readFileSync(join(DIST, "index.html"), "utf8").replace(/<title>[^<]*<\/title>/, "<title>Legacy Industrial Coatings</title>");
+    writeFileSync(join(DIST, "app-shell.html"), shell, "utf8");
   }
   const preview = await startPreview();
   let browser;

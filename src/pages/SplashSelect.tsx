@@ -38,7 +38,7 @@ const SplashSelect = () => {
             Residential
           </button>
           <button
-            onClick={() => navigate("/commercialfloors")}
+            onClick={() => navigate("/commercial")}
             className="flex-1 border border-blue-500/60 bg-blue-600/10 backdrop-blur-sm text-white text-sm sm:text-base font-medium tracking-widest uppercase py-4 px-8 rounded transition-all duration-300 hover:bg-blue-600 hover:border-blue-500 hover:shadow-[0_0_30px_rgba(37,99,235,0.25)] active:scale-[0.97]"
           >
             Commercial

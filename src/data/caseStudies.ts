@@ -1,6 +1,18 @@
 // Case study data registry. Add new entries here and they'll show up on
 // /case-studies and resolve at /case-studies/:slug
 
+import plWalkBefore from "@/assets/jobs/walkway-striping-before.webp";
+import plWalkDuring from "@/assets/jobs/walkway-striping-removal.webp";
+import plWalkAfter from "@/assets/jobs/walkway-epoxy-after.webp";
+import parishBefore from "@/assets/jobs/parish-lab-before.webp";
+import parishGrind from "@/assets/jobs/parish-lab-grinding.webp";
+import parishAfter from "@/assets/jobs/parish-lab-after.webp";
+import dcBefore from "@/assets/jobs/transformer-containment-before.webp";
+import dcAfter from "@/assets/jobs/transformer-containment-after.webp";
+import dcWalk from "@/assets/jobs/data-center-site-walk.webp";
+import dcTruck from "@/assets/jobs/legacy-truck-data-center.webp";
+import supBefore from "@/assets/jobs/washroom-concrete-before.webp";
+import supAfter from "@/assets/jobs/washroom-epoxy-after.webp";
 import after1 from "@/assets/case-studies/fast-casual-restaurant/after-1.jpg";
 import after2 from "@/assets/case-studies/fast-casual-restaurant/after-2.jpg";
 import after3 from "@/assets/case-studies/fast-casual-restaurant/after-3.jpg";
@@ -117,6 +129,8 @@ export interface CaseStudy {
   beforePhotos: CaseStudyPhoto[];
   duringPhotos: CaseStudyPhoto[];
   afterPhotos: CaseStudyPhoto[];
+  /** Optional short job video (public path) with poster. */
+  video?: { src: string; poster: string; caption: string };
 }
 
 export const caseStudies: CaseStudy[] = [
@@ -435,6 +449,149 @@ export const caseStudies: CaseStudy[] = [
       { src: argyleAfter3, alt: "Detail of properly installed metallic epoxy showing depth and movement after correct substrate prep and material system" },
       { src: argyleAfter4, alt: "Wide view of finished metallic garage floor in Argyle TX luxury home — the floor the homeowner originally paid for, finally done right" },
       { src: argyleAfter5, alt: "Completed luxury home garage with sealed, bonded, high-performance metallic epoxy floor by Legacy Industrial Coatings" },
+    ],
+  },
+  {
+    slug: "parish-episcopal-school-stem-lab-flake-floor",
+    category: "commercial",
+    tag: "School",
+    title: "Parish Episcopal School, Dallas: Worn Lab Floor to a Seamless Flake Floor",
+    summary:
+      "Parish Episcopal School in Dallas needed a new floor in its science and engineering lab, where the old painted floor was worn, stained and patched. We ground off the old coating, prepped the slab and installed a seamless flake floor built for a hands-on lab.",
+    heroImage: parishAfter,
+    heroAlt: "Finished gray flake floor in the Parish Episcopal School science and engineering lab in Dallas",
+    metaTitle: "Parish Episcopal School Lab Flake Floor Case Study, Dallas TX | Legacy Industrial Coatings",
+    metaDescription:
+      "How Legacy Industrial Coatings replaced a worn, painted lab floor at Parish Episcopal School in Dallas with a seamless, easy-to-clean flake floor.",
+    location: "Dallas, TX",
+    serviceType: "Coating Removal + Flake Floor",
+    squareFootage: "Science and engineering lab",
+    timeline: "",
+    challenge: [
+      "The science and engineering lab at Parish Episcopal School gets heavy use from students, tools, carts and projects. Its old painted floor was worn through in spots, stained and patched, and no longer easy to keep clean.",
+      "Coating over a worn, painted floor just puts a new layer on a surface that is already letting go, so the old coating had to come off first.",
+    ],
+    solution: [
+      "We ground the old coating off down to sound concrete and prepped the slab so the new system could bond to it.",
+      "Then we installed a seamless flake floor: a base coat, a full broadcast of decorative flake, and a clear topcoat that seals it in. It is tough under carts and tools and easy for the school to clean.",
+    ],
+    result: [
+      "The lab went from a worn, patched floor to a bright, seamless flake floor that holds up to daily hands-on work and cleans up easily.",
+      "If your school has labs, shops, kitchens or corridors with worn or peeling floors, we can schedule the work around the academic calendar.",
+    ],
+    beforePhotos: [{ src: parishBefore, alt: "Worn, stained painted floor in the Parish Episcopal School lab before the new floor" }],
+    duringPhotos: [{ src: parishGrind, alt: "Diamond grinder removing the old coating in the Parish Episcopal School lab" }],
+    afterPhotos: [{ src: parishAfter, alt: "Seamless flake floor in the Parish Episcopal School lab after installation" }],
+    video: { src: "/video/parish-lab-base-coat.mp4", poster: "/video/parish-lab-base-coat.jpg", caption: "Spreading the base coat in the lab" },
+  },
+  {
+    slug: "data-center-transformer-containment-coating",
+    category: "commercial",
+    tag: "Data Center",
+    title: "Irving Data Center Transformer Containment Pits: Cracked Concrete to a Watertight Coating",
+    summary:
+      "A data center substation in Irving, Texas had transformer containment pits with cracked, stained bare concrete, each about 1,500 square feet of coatable space. We prepped each pit and installed a seamless, watertight coating over the floor, walls, curbs and equipment pads, so transformer oil stays contained and out of the concrete.",
+    heroImage: dcAfter,
+    heroAlt: "Watertight coating on a data center transformer containment pit",
+    metaTitle: "Data Center Transformer Containment Coating Case Study, Irving TX | Legacy Industrial Coatings",
+    metaDescription:
+      "How Legacy Industrial Coatings turned cracked bare-concrete transformer containment pits at an Irving, TX data center, about 1,500 SF each, into seamless, watertight containment coatings.",
+    location: "Irving, TX",
+    serviceType: "Transformer Containment Coating (Watertight)",
+    squareFootage: "Transformer pits, about 1,500 SF of coatable space each",
+    timeline: "",
+    challenge: [
+      "Transformers at this Irving, Texas data center substation hold large volumes of mineral oil. The concrete pit around each transformer is there to catch it if a leak or failure ever happens. Each pit had about 1,500 square feet of coatable space across the floor, walls, curbs and pads.",
+      "The pits were bare concrete with cracks running across the floor and staining around the equipment pads. Bare, cracked concrete soaks up oil and water and lets them through, which defeats the purpose of a containment pit.",
+    ],
+    solution: [
+      "Our team walked the substation with the site team, then prepped each pit down to clean, sound concrete so the coating could bond.",
+      "We repaired the cracks and installed a seamless, watertight coating across the floor, up the walls and curbs, and around the transformer and post foundations, so there are no open joints or bare edges for oil or water to find.",
+    ],
+    result: [
+      "Each pit went from cracked, stained concrete to a continuous, watertight surface that keeps transformer oil contained and is easy to inspect and clean.",
+      "If you run a data center, substation or power facility with transformer or fuel containment that is bare, cracked or failing, we can walk it and recommend the right coating.",
+    ],
+    beforePhotos: [{ src: dcBefore, alt: "Cracked, stained concrete transformer containment pit before coating" }],
+    duringPhotos: [
+      { src: dcWalk, alt: "Legacy Industrial Coatings team walking a data center substation before the containment work" },
+      { src: dcTruck, alt: "Legacy Industrial Coatings truck and trailer on site at the data center" },
+    ],
+    afterPhotos: [{ src: dcAfter, alt: "Seamless watertight coating on the transformer containment pit after installation" }],
+    video: { src: "/video/containment-pit-prep.mp4", poster: "/video/containment-pit-prep.jpg", caption: "Prepping the containment pit before coating" },
+  },
+  {
+    slug: "plano-distribution-center-walkway-epoxy",
+    category: "commercial",
+    tag: "Distribution Center",
+    title: "40,000 SF Plano Distribution Center: Failed Line Striping Replaced with Forklift-Ready Epoxy",
+    summary:
+      "A 40,000 square foot distribution center in Plano had walkway and aisle striping that was fading badly and was poorly installed the first time. We removed all of it, installed an epoxy floor with a high-traffic urethane finish and put down new line striping, built for forklift traffic and daily use, in about two weeks.",
+    heroImage: plWalkAfter,
+    heroAlt: "Epoxy walkway with high-traffic urethane finish in a 40,000 SF Plano, TX distribution center",
+    metaTitle: "40,000 SF Warehouse Epoxy & Line Striping Case Study, Plano TX | Legacy Industrial Coatings",
+    metaDescription:
+      "How Legacy Industrial Coatings removed failed, fading line striping in a 40,000 SF Plano, TX distribution center and installed forklift-ready epoxy with a high-traffic urethane finish and new striping in about two weeks.",
+    location: "Plano, TX",
+    serviceType: "Striping Removal, Epoxy Floor with High-Traffic Urethane Finish, New Line Striping",
+    squareFootage: "40,000 SF warehouse",
+    timeline: "About two weeks",
+    challenge: [
+      "This 40,000 square foot distribution center in Plano had pedestrian walkway and aisle striping that was fading badly. It had been poorly installed the first time, and under daily forklift traffic it was wearing off and no longer marking the walkways clearly.",
+      "Faded lines are more than a looks problem in a working warehouse. The lines tell forklift drivers and people on foot where each belongs, and when they fade, that separation goes with them.",
+    ],
+    solution: [
+      "We removed all of the old striping instead of painting over it. Coating on top of a failing line only hides the problem until the new layer comes up with the old one.",
+      "With the old markings gone, we prepared the concrete and installed an epoxy floor with a high-traffic urethane finish on the walkways, then put down new line striping. The urethane topcoat is what takes the wear from forklift tires and daily foot traffic.",
+      "The epoxy and line striping took about two weeks, phased so the building could keep running.",
+    ],
+    result: [
+      "The facility now has clean, clearly marked walkways and aisles built to hold up to forklift traffic and daily use, instead of striping that wears off.",
+      "If your warehouse lines are fading, peeling or were never put down right, we can remove them and put down a floor and markings that last. Send us a layout or a few photos to get started.",
+    ],
+    beforePhotos: [
+      { src: plWalkBefore, alt: "Faded, poorly installed walkway striping in a Plano distribution center before removal" },
+    ],
+    duringPhotos: [],
+    afterPhotos: [
+      { src: plWalkAfter, alt: "Finished epoxy walkway with high-traffic urethane finish in a Plano distribution center" },
+      { src: plWalkDuring, alt: "New aisle and walkway line striping in a Plano distribution center after the failed striping was removed" },
+    ],
+  },
+  {
+    slug: "dallas-supplement-manufacturing-washroom-epoxy",
+    category: "commercial",
+    tag: "Supplement Manufacturing",
+    title: "Dallas Supplement Manufacturing Plant: Bare Concrete Wash Room to Seamless Epoxy",
+    summary:
+      "A supplement manufacturer in Dallas had a bare, stained concrete floor in its production wash room. We prepared the slab and installed a seamless epoxy floor that is bright, easy to clean and built for daily wet cleaning.",
+    heroImage: supAfter,
+    heroAlt: "Seamless epoxy floor in a Dallas supplement manufacturing wash room",
+    metaTitle: "Supplement Plant Wash Room Epoxy Case Study, Dallas TX | Legacy Industrial Coatings",
+    metaDescription:
+      "How Legacy Industrial Coatings turned a stained bare-concrete wash room at a Dallas supplement manufacturing plant into a seamless, easy-to-clean epoxy floor.",
+    location: "Dallas, TX",
+    serviceType: "Seamless Epoxy Floor Coating",
+    squareFootage: "Production wash room",
+    timeline: "",
+    challenge: [
+      "This supplement manufacturing facility in Dallas had a bare concrete floor in its wash room, where carts, bins and equipment get cleaned every day.",
+      "Bare concrete soaks up water and residue, stains, and is hard to truly clean. In a plant that makes products people ingest, the floor needs to be a surface that can be washed down and kept sanitary, and this one wasn't.",
+    ],
+    solution: [
+      "We prepared the concrete so the coating could bond to it, then installed a seamless epoxy floor across the room and around the floor drain.",
+      "Seamless means no grout lines or open pores for water and residue to settle into, so the floor can be cleaned the same way the equipment is.",
+    ],
+    result: [
+      "The wash room went from dark, stained concrete to a bright, seamless floor that is easy to keep clean every day.",
+      "If you run a supplement, nutraceutical, food or pharmaceutical plant with bare or failing floors in wet areas, we can walk the space and recommend the right system for how it gets cleaned.",
+    ],
+    beforePhotos: [
+      { src: supBefore, alt: "Stained bare concrete floor in a Dallas supplement plant wash room before epoxy" },
+    ],
+    duringPhotos: [],
+    afterPhotos: [
+      { src: supAfter, alt: "Seamless epoxy floor in a Dallas supplement manufacturing wash room after installation" },
     ],
   },
 ];

@@ -32,13 +32,10 @@ const staticUrls: UrlEntry[] = [
 
   // Commercial
   { loc: "/commercial", changefreq: "monthly", priority: "0.8", lastmod: today },
-  { loc: "/commercialfloors", changefreq: "monthly", priority: "0.8", lastmod: today },
   { loc: "/flake-floors", changefreq: "monthly", priority: "0.8", lastmod: today },
-  { loc: "/industrial-epoxy", changefreq: "monthly", priority: "0.8", lastmod: today },
   { loc: "/concrete-polishing", changefreq: "monthly", priority: "0.8", lastmod: today },
   { loc: "/concrete-sealing", changefreq: "monthly", priority: "0.8", lastmod: today },
   { loc: "/commercial-case-studies", changefreq: "monthly", priority: "0.7", lastmod: today },
-  { loc: "/about-commercial", changefreq: "monthly", priority: "0.7", lastmod: today },
   { loc: "/commercial-floor-maintenance", changefreq: "monthly", priority: "0.8", lastmod: today },
 
   // About dropdown
@@ -58,6 +55,42 @@ const staticUrls: UrlEntry[] = [
   // Tools / utility
   { loc: "/floor-visualizer", changefreq: "monthly", priority: "0.7", lastmod: today },
 
+
+  // Commercial redesign (Phase 1 & 2)
+  { loc: "/our-process", changefreq: "monthly", priority: "0.7", lastmod: today },
+  { loc: "/capability-packet", changefreq: "monthly", priority: "0.7", lastmod: today },
+  { loc: "/who-we-serve", changefreq: "monthly", priority: "0.7", lastmod: today },
+  { loc: "/services", changefreq: "monthly", priority: "0.8", lastmod: today },
+  { loc: "/industries", changefreq: "monthly", priority: "0.8", lastmod: today },
+  { loc: "/resources", changefreq: "weekly", priority: "0.8", lastmod: today },
+  { loc: "/blog/polished-concrete-cost-per-square-foot", changefreq: "monthly", priority: "0.7", lastmod: today },
+  { loc: "/blog/urethane-cement-vs-epoxy-flooring", changefreq: "monthly", priority: "0.7", lastmod: today },
+  { loc: "/blog/best-flooring-for-commercial-kitchens", changefreq: "monthly", priority: "0.7", lastmod: today },
+  { loc: "/blog/best-flooring-for-forklift-traffic", changefreq: "monthly", priority: "0.7", lastmod: today },
+  { loc: "/blog/esd-flooring-requirements-and-testing", changefreq: "monthly", priority: "0.7", lastmod: today },
+  { loc: "/blog/how-long-does-commercial-epoxy-installation-take", changefreq: "monthly", priority: "0.7", lastmod: today },
+  { loc: "/blog/novolac-vs-standard-epoxy", changefreq: "monthly", priority: "0.7", lastmod: today },
+  { loc: "/blog/sealed-vs-polished-concrete", changefreq: "monthly", priority: "0.7", lastmod: today },
+  { loc: "/reviews", changefreq: "monthly", priority: "0.7", lastmod: today },
+  { loc: "/electronics-manufacturing-flooring", changefreq: "monthly", priority: "0.8", lastmod: today },
+  { loc: "/food-processing-flooring", changefreq: "monthly", priority: "0.8", lastmod: today },
+  { loc: "/pharmaceutical-flooring", changefreq: "monthly", priority: "0.8", lastmod: today },
+  { loc: "/pharmacy-cleanroom-flooring", changefreq: "monthly", priority: "0.8", lastmod: today },
+  { loc: "/restaurant-kitchen-flooring", changefreq: "monthly", priority: "0.8", lastmod: today },
+  { loc: "/auto-dealership-flooring", changefreq: "monthly", priority: "0.8", lastmod: today },
+  { loc: "/parking-garage-coatings", changefreq: "monthly", priority: "0.8", lastmod: today },
+  { loc: "/secondary-containment-coatings", changefreq: "monthly", priority: "0.8", lastmod: today },
+  { loc: "/battery-room-flooring", changefreq: "monthly", priority: "0.8", lastmod: today },
+  { loc: "/joint-filling-crack-repair", changefreq: "monthly", priority: "0.8", lastmod: today },
+  { loc: "/moisture-mitigation", changefreq: "monthly", priority: "0.8", lastmod: today },
+  { loc: "/epoxy-cove-base", changefreq: "monthly", priority: "0.8", lastmod: today },
+  { loc: "/commercial-carpet-tile", changefreq: "monthly", priority: "0.8", lastmod: today },
+  { loc: "/commercial-lvt-flooring", changefreq: "monthly", priority: "0.8", lastmod: today },
+  { loc: "/resilient-flooring", changefreq: "monthly", priority: "0.8", lastmod: today },
+  { loc: "/novolac-epoxy-flooring", changefreq: "monthly", priority: "0.8", lastmod: today },
+  { loc: "/mma-flooring", changefreq: "monthly", priority: "0.8", lastmod: today },
+  { loc: "/line-striping", changefreq: "monthly", priority: "0.8", lastmod: today },
+
   // Legal
   { loc: "/warranty", changefreq: "yearly", priority: "0.4", lastmod: today },
   { loc: "/privacy", changefreq: "yearly", priority: "0.3", lastmod: today },
@@ -70,6 +103,10 @@ const commercialCaseStudies = [
   "pharmaceutical-manufacturing-polished-concrete",
   "dog-training-grooming-facility-flake-floor",
   "swim-school-flake-floor-multi-location",
+  "plano-distribution-center-walkway-epoxy",
+  "dallas-supplement-manufacturing-washroom-epoxy",
+  "data-center-transformer-containment-coating",
+  "parish-episcopal-school-stem-lab-flake-floor",
   "restaurant-pump-room-integrated-cove-base",
 ];
 const residentialCaseStudies = [
