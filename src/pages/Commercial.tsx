@@ -146,23 +146,6 @@ const OPEN_BUSINESS = [
   "One point of contact who coordinates with your GC, property manager or facility team",
 ];
 
-const PRICES = [
-  ["High-traffic epoxy", "$3.50–$10 / SF"],
-  ["Polished concrete", "$2.25–$8 / SF"],
-  ["Flake floors", "$7.50–$9 / SF"],
-  ["Quartz flooring", "about $15 / SF"],
-  ["Urethane cement", "about $21 / SF"],
-  ["Integral cove base", "about $15 / LF"],
-] as const;
-
-const COST_FACTORS = [
-  "Square footage and how the space is divided",
-  "Removal of existing flooring, coatings or adhesives",
-  "Moisture test results and whether a moisture-mitigating primer is needed",
-  "The system and thickness (sealed concrete, thin-film epoxy, flake, quartz or urethane cement)",
-  "Crack, joint and substrate repair, and integral cove base",
-  "Phasing, after-hours and weekend work",
-];
 
 const FAQS = [
   {
@@ -175,7 +158,7 @@ const FAQS = [
   },
   {
     q: "How much does commercial epoxy flooring cost per square foot?",
-    a: "Our standard high-traffic epoxy floors typically run about $3.50 to $10 per square foot, depending mostly on the size of the job: large open floors land near the low end and small rooms near the high end. Flake runs about $7.50 to $9, quartz about $15 and urethane cement about $21 per square foot, with integral cove base about $15 per linear foot. Prep, moisture, repairs and after-hours phasing confirm the final number.",
+    a: "Our standard high-traffic epoxy floors typically run about $3.50 to $10 per square foot, depending mostly on the size of the job: large open floors land near the low end and small rooms near the high end. Flake runs about $7.50 to $9, quartz about $15 and urethane cement about $21 per square foot, with integral cove base about $15 per linear foot. Prep, moisture testing, repairs, removal of old coatings and after-hours phasing confirm the final number, which we put in writing after a site walk or a look at your plans.",
   },
   {
     q: "Do you install epoxy flooring near me?",
@@ -304,40 +287,6 @@ const Commercial = () => {
 
       <ProcessPreview />
 
-      <section className="py-20 md:py-28 border-t border-border">
-        <div className="max-w-4xl mx-auto px-6 md:px-8 lg:px-12">
-          <Eyebrow>Cost</Eyebrow>
-          <h2 className={H2}>What Commercial Epoxy Flooring Costs</h2>
-          <p className={P}>
-            Commercial epoxy flooring is priced per square foot, and the size of the job moves the price the most. These
-            are our typical ranges:
-          </p>
-          <div className="grid sm:grid-cols-2 gap-px bg-border border border-border mb-8">
-            {PRICES.map(([name, price]) => (
-              <div key={name} className="bg-background px-5 py-4 flex items-center justify-between gap-4">
-                <span className="font-heading text-[14px] text-foreground">{name}</span>
-                <span className="font-heading text-[14px] font-semibold text-foreground whitespace-nowrap">{price}</span>
-              </div>
-            ))}
-          </div>
-          <p className={P}>Within those ranges, these are the factors that set your number:</p>
-          <ul className="list-disc pl-6 space-y-3 mb-8 text-muted-foreground font-body text-[16px] leading-[1.75]">
-            {COST_FACTORS.map((i) => (
-              <li key={i}>{i}</li>
-            ))}
-          </ul>
-          <p className={P}>
-            Send drawings or request a site walk and we return a full bid within 24 hours of receiving plans, with the
-            system, thickness and phasing spelled out line by line.
-          </p>
-          <a
-            href="/blog/commercial-epoxy-flooring-cost-per-square-foot-dfw"
-            className="inline-flex items-center gap-2 border border-border px-4 py-2 font-heading text-[11px] tracking-[0.15em] uppercase text-foreground hover:border-foreground transition-colors"
-          >
-            Commercial epoxy flooring cost guide <ArrowRight size={12} />
-          </a>
-        </div>
-      </section>
 
       <BeforeAfter path={PATH} />
 
